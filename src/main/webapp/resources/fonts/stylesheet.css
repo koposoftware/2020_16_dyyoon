@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Hana CM';
+    src: url('HanaCM.woff2') format('woff2'),
+        url('HanaCM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hana L';
+    src: url('HanaL.woff2') format('woff2'),
+        url('HanaL.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hana B';
+    src: url('HanaB.woff2') format('woff2'),
+        url('HanaB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hana UL';
+    src: url('HanaUL.woff2') format('woff2'),
+        url('HanaUL.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hana M';
+    src: url('HanaM.woff2') format('woff2'),
+        url('HanaM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
