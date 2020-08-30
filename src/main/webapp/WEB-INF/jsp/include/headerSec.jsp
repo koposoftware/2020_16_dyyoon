@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!-- header-section start -->
     <div class="top-bar">
         <div class="container">
@@ -35,21 +35,31 @@
                     <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
                         <a href="${ pageContext.request.contextPath }"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png" alt="Tour and Travel Agency - Responsive Website Template"></a>
                     </div>
+                   
                     <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
-                        <div class="navigation">
+                        <div class="navigation d-flex justify-content-end navForBtn">
+                        <c:choose>
+                        <c:when test="${ empty loginVO }">
+	                      	<button class="btn btn-light" onclick="window.location.href='${ pageContext.request.contextPath }/login'">로그인</button>
+	                      	<button class="btn btn-light">회원가입</button>
+                        </c:when>
+                        <c:otherwise>
+                        	<span class="nav-span"><span>${ loginVO.name }</span>님 어서오세요</span>
+	                      	<button class="btn btn-light" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
+                        </c:otherwise>
+                        </c:choose>
+                        	
                             <div id="navigation">
                             
                                 <ul>
-                                    <li class="active"><button class="mt-1 ml-2 btn btn-light" onclick="window.location.href='${ pageContext.request.contextPath }/login'">로그인</button></li>
-                                    <li class="active"><button class="mt-1 ml-2 btn btn-light">회원가입</button></li>
                                     <li class="active"><a href="#" title="Home">서비스 소개</a></li>
                                     <li class="has-sub"><a href="#" title="Tours">해외송금</a>
                                         <ul>
-                                            <li><a href="#">송금정보 등록</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remInfo">송금정보 조회</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remInfoReg">송금정보 등록</a></li>
                                             <li><a href="#">해외송금 신청</a></li>
                                             <li><a href="#">해외송금 예약</a></li>
                                             <li><a href="#">송금내역 조회</a></li>
-                                            <li><a href="#">외국환거래은행 지정</a></li>
                                             <li><a href="#">착오송금 신고</a></li>
                                         </ul>
                                     </li>

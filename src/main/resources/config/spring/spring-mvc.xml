@@ -58,18 +58,17 @@
 		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
 	</mvc:view-resolvers>
 	
-	<!-- 
+	<!-- 인터셉터 처리  -->
 	<bean class="kr.ac.kopo.interceptor.LoginInterceptor" id="loginInterceptor"></bean>
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/"/>
 			<mvc:exclude-mapping path="/login"/>
-			<mvc:exclude-mapping path="/board"/>
 			<mvc:exclude-mapping path="/resources/**"/>
 			<ref bean="loginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors> 
-	-->
+
 	
 	<!-- 트랜잭션 처리  -->
 	<!-- 

@@ -59,13 +59,4 @@
             </div>
         </div>
     </div>
-    <!-- tiny-footer-start -->
-    <div class="tiny-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></div>
-            </div>
-        </div>
-        <!-- tiny-footer-start -->
-    </div>
     <!-- footer close -->

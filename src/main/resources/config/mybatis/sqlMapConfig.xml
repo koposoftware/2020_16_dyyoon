@@ -5,5 +5,6 @@
 <configuration>
 	 <typeAliases>
 	 	<typeAlias type="kr.ac.kopo.member.vo.MemberVO" alias="memberVO"/>
+	 	<typeAlias type="kr.ac.kopo.reminfo.vo.RemInfoVO" alias="remInfoVO"/>
 	 </typeAliases>
 </configuration>

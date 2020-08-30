@@ -15,11 +15,30 @@
 	<div class="hero-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-					<div class="hero-section-caption-withcolor pinside40">
-						<h1 class="hero-title">Discover The Places You’ve Never Been
-							Before</h1>
-						<a href="#" class="btn btn-primary ">view tours</a>
+				<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+					<div id="hero-today-send"class="hero-section-caption-withcolor pinside40">
+					
+						<div>오늘 송금보내면</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+								<span class="input-group-text">KRW</span>
+								</div>
+								<input type="text" placeholder="0.00" class="form-control text-right">
+							</div>
+							<div class="input-group mt-3 mb-3">
+							  <div class="input-group-prepend">
+							    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+							      USD
+							    </button>
+							    <div class="dropdown-menu">
+							      <a class="dropdown-item" href="#">Link 1</a>
+							      <a class="dropdown-item" href="#">Link 2</a>
+							      <a class="dropdown-item" href="#">Link 3</a>
+							    </div>
+							  </div>
+							  <input type="text" placeholder="0.00" class="form-control text-right">
+							</div>
+						<a href="#" class="btn btn-info ">송금하기</a>
 					</div>
 				</div>
 			</div>
@@ -42,8 +61,7 @@
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="service-block">
 						<div class="service-img">
-							<a href="#"><img src="images/service-img-1.jpg"
-								alt="Tour and Travel Agency - Responsive Website Template"></a>
+							<a href="#">이미지</a>
 						</div>
 						<div class="service-content">
 							<h3>
@@ -66,8 +84,7 @@
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="service-block">
 						<div class="service-img">
-							<a href="#"><img src="images/service-img-2.jpg"
-								alt="Tour and Travel Agency - Responsive Website Template"></a>
+							<a href="#">ㅇㅇㅇ</a>
 						</div>
 						<div class="service-content">
 							<h3>
@@ -90,8 +107,7 @@
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="service-block">
 						<div class="service-img">
-							<a href="#"><img src="images/service-img-3.jpg"
-								alt="Tour and Travel Agency - Responsive Website Template"></a>
+							<a href="#">ddd</a>
 						</div>
 						<div class="service-content">
 							<h3>
@@ -181,9 +197,7 @@
 				<!-- destination-one-start -->
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="destination-img">
-						<a href="#" class="imghover"><img
-							src="images/destination-1.jpg" alt "Tour and Travel
-							Agency - Responsive Website Template" class="img-responsive"></a>
+						<a href="#" class="imghover">ddd</a>
 					</div>
 					<div class="destination-content">
 						<h3>
@@ -195,9 +209,7 @@
 				<!-- destination-two-start -->
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="destination-img imghover">
-						<a href="#" class="imghover"><img
-							src="images/destination-2.jpg" alt "Tour and Travel
-							Agency - Responsive Website Template" class="img-responsive"></a>
+						<a href="#" class="imghover">ddddd</a>
 					</div>
 					<div class="destination-content">
 						<h3>
@@ -209,9 +221,7 @@
 				<!-- destination-three-start -->
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="destination-img imghover">
-						<a href="#"><img src="images/destination-3.jpg" alt "Tour and
-							Travel Agency - Responsive Website
-							Template" class="img-responsive"></a>
+						<a href="#">dddd</a>
 					</div>
 					<div class="destination-content">
 						<h3>

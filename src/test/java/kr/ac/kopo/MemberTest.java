@@ -22,7 +22,7 @@ public class MemberTest {
 	public void 로그인테스트() throws Exception {
 		MemberVO member = new MemberVO();
 		member.setId("admin");
-		member.setPassword("admin");
+		member.setPassword("1234");
 		
 		MemberVO loginVO = memberDAO.login(member);
 		

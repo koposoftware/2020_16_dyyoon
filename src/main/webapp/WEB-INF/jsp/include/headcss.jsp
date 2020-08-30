@@ -7,6 +7,8 @@
 <meta name="keywords" content="transfer, safe, HanaBank, HanaSafe">
 <title>Hana Safe 해외송금</title>
 <link href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/resources/css/bootstrap-grid.min.css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/resources/css/bootstrap-reboot.min.css" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 <link href="${ pageContext.request.contextPath }/resources/css/font-awesome.min.css" rel="stylesheet">

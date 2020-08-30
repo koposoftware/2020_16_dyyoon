@@ -3,9 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.dao.MemberDAO">
-	<select id="login" parameterType="memberVO" resultType="memberVO">
-		select id, password, type
-		from t_member
+	<resultMap type="memberVO" id="memberMap">
+		<result column="eng_name" property="engName"/>
+		<result column="addr_detail" property="addrDetail"/>
+	</resultMap>
+	<select id="login" parameterType="memberVO" resultMap="memberMap">
+		select *
+		from hs_t_member
 		where id = #{id} and password = #{password}
 	</select>
 </mapper>
