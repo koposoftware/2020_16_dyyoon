@@ -14,7 +14,7 @@ public class RemittanceVO {
 	private int		cableCharge;
 //	RM 수신인 부담 / RC 수취자부담
 	private String	chargeCover;
-//	RM 수신인 부담 / RC 수취자부담
+//	RS(예약) / RM(수신은행) IN(중계은행) RC(수취은행)
 	private String 	status;
 	
 	public RemittanceVO() {

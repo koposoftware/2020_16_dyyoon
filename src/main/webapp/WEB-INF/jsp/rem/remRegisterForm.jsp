@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +38,7 @@
 	
 
 
-	<!-- remInfo page start -->
+	<!-- remRegisterForm page start -->
 	
 	<div class="container allAccount-con pt-3 pb-3">
 		<div class="row">
@@ -45,39 +46,96 @@
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
 			
 			<div class="col-md-9">
-				<div><strong>수신인 정보</strong></div>
+				
+			<form:form commandName="remittanceVO" method="post">
+				<div>송금정보</div>
+				
 				<table class="table table-sm">
 					<tr>
-						<td colspan="2">영문이름</td>
-						<td>${ loginVO.engName }</td>
+						<td>내정보</td>
+						<td>
+							${ loginVO.engName }
+							<button>상세보기</button>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="2">전화번호</td>
-						<td>${ loginVO.phone }</td>
+						<td>송금사유</td>
+						<td>
+							<form:radiobutton path="reason" value="미화 $5,000 이하 송금" checked="checked" label="미화 $5,000 이하 송금" />
+							<form:radiobutton path="reason" value="해외유학생 유학경비 송금" label="해외유학생 유학경비 송금" />
+							<form:radiobutton path="reason" value="해외체재자 체재비 송금" label="해외체재자 체재비 송금" />
+						</td>
 					</tr>
 					<tr>
-						<td colspan="2">이메일</td>
-						<td>${ loginVO.email }</td>
+						<td>수취인정보선택</td>
+						<td>
+							<select name="infoNo">
+								<option value="">---선택하세요---</option>
+								<c:forEach items="${ remInfoList }" var="remInfo">
+									<option value="${ remInfo.infoNo }">${ remInfo.name } ( ${ remInfo.accNo } )</option>
+								</c:forEach>
+							</select>
+							<button>상세보기</button>
+						</td>
 					</tr>
 					<tr>
-						<td rowspan="2">영문주소</td>
-						<td >주소</td>
-						<td>${ loginVO.addr }</td>
-					</tr>
-					<tr>
-						<td>세부주소</td>
-						<td>${ loginVO.addrDetail }</td>
+						<td>수수료 부담자</td>
+						<td>
+							<form:radiobutton path="chargeCover" value="RM" checked="checked" label="보내는분" />
+							<form:radiobutton path="chargeCover" value="RC" label="받는분(송금수수료 제외)" />
+							<form:radiobutton path="chargeCover" value="RA" label="받는분(송금수수료 포함)" />
+						</td>
 					</tr>
 				</table>
-				<div><strong>수취인 정보</strong></div>
-					
-				
-				
-				
+				<br>
+				<div>송금액 및 계좌 정보</div>				
+				<table class="table table-sm">
+					<tr>
+						<td>송금계좌선택</td>
+						<td>
+							<select name="accNo">
+								<option value="">---선택하세요---</option>
+								<c:forEach items="${ accountList }" var="account">
+									<option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</option>
+								</c:forEach>
+							</select>
+							<button>잔액조회</button>
+						</td>
+					</tr>
+					<tr>
+						<td>송금 금액</td>
+						<td>
+							<form:input path="amount"/>
+						</td>
+					</tr>
+					<tr>
+						<td>송금 계좌 비밀번호</td>
+						<td>
+							<input type="password">
+						</td>
+					</tr>
+					<tr>
+						<td>수수료출금계좌</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>수수료 출금계좌 비밀번호</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>총출금금액(원화)</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>총출금금액(외화)</td>
+						<td></td>
+					</tr>
+				</table>
+			</form:form>
 			</div>
 		</div>
 	</div>
-	<!-- remInfo page close -->
+	<!-- remRegisterForm page close -->
 	
 	
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
