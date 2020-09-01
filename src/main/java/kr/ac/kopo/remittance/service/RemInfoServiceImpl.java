@@ -1,12 +1,12 @@
-package kr.ac.kopo.reminfo.service;
+package kr.ac.kopo.remittance.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.ac.kopo.reminfo.dao.RemInfoDAO;
-import kr.ac.kopo.reminfo.vo.RemInfoVO;
+import kr.ac.kopo.remittance.dao.RemInfoDAO;
+import kr.ac.kopo.remittance.vo.RemInfoVO;
 @Service
 public class RemInfoServiceImpl implements RemInfoService {
 
@@ -21,6 +21,11 @@ public class RemInfoServiceImpl implements RemInfoService {
 	@Override
 	public RemInfoVO selectRemInfoDetail(int remInfoNo) {
 		return dao.selectRemInfoDetail(remInfoNo);
+	}
+
+	@Override
+	public void insertRemInfo(RemInfoVO remInfo) {
+		dao.insertRemInfo(remInfo);
 	}
 
 }

@@ -1,10 +1,10 @@
-package kr.ac.kopo.reminfo.service;
+package kr.ac.kopo.remittance.dao;
 
 import java.util.List;
 
-import kr.ac.kopo.reminfo.vo.RemInfoVO;
+import kr.ac.kopo.remittance.vo.RemInfoVO;
 
-public interface RemInfoService {
+public interface RemInfoDAO {
 	
 	/**
 	 * 모든 송금정보 등록 현황 조회 기능
@@ -19,5 +19,11 @@ public interface RemInfoService {
 	 * @return RemInfoVO 송금정보VO
 	 */
 	RemInfoVO selectRemInfoDetail(int remInfoNo);
+	
+	/**
+	 * 송금정보 등록하기
+	 * @param 송금정보VO
+	 */
+	void insertRemInfo(RemInfoVO remInfo);
 
 }

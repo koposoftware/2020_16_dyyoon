@@ -40,6 +40,10 @@
 		<td>${ remInfoDetail.bankName }</td>
 	</tr>
 	<tr>
+		<td colspan="2">계좌번호</td>
+		<td>${ remInfoDetail.accNo }</td>
+	</tr>
+	<tr>
 		<td colspan="2">은행코드</td>
 		<td>${ remInfoDetail.bankCode }</td>
 	</tr>

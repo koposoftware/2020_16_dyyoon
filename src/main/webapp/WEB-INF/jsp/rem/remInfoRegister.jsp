@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,66 +43,76 @@
 			<!-- side menu col-md-3   -->
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
 			
+			
 			<div class="col-md-9">
-			<form action="#" method="post">
-				<table class="table table-sm">
-					<tr>
-						<td colspan="2">영문이름</td>
-						<td><input type="text" name="name"></td>
-					</tr>
-					<tr>
-						<td colspan="2">전화번호</td>
-						<td><input type="text" name="phone"></td>
-					</tr>
-					<tr>
-						<td colspan="2">이메일</td>
-						<td><input type="text" name="email"></td>
-					</tr>
-					<tr>
-						<td rowspan="3">영문주소</td>
-						<td>국가</td>
-						<td><input type="text" name="nation"></td>
-					</tr>
-					<tr>
-						<td >주소</td>
-						<td><input type="text" name="addr"></td>
-					</tr>
-					<tr>
-						<td>세부주소</td>
-						<td><input type="text" name="addrDetail"></td>
-					</tr>
-					<tr>
-						<td colspan="2">통화</td>
-						<td><input type="text" name="currency"></td>
-					</tr>
-					<tr>
-						<td colspan="2">은행명</td>
-						<td><input type="text" name="bankName"></td>
-					</tr>
-					<tr>
-						<td colspan="2">은행코드</td>
-						<td><input type="text" name="bankCode"></td>
-					</tr>
-					<tr>
-						<td rowspan="3">은행주소</td>
-						<td >은행국가</td>
-						<td><input type="text" name="bankNation"></td>
-					</tr>
-					<tr>
-						<td>은행주소</td>
-						<td><input type="text" name="bankAddr"></td>
-					</tr>
-					<tr>
-						<td>세부주소</td>
-						<td><input type="text" name="bankAddrDetail"></td>
-					</tr>
-					<tr>
-						<td colspan="2">직원전달사항</td>
-						<td><input type="text" name="myDesc"></td>
-					</tr>
-				</table>
-				<input type="button" value="등록">
-				</form>
+			송금정보 신청이 완료되었습니다
+			<button>목록</button>
+			<button>상세보기</button>
+			
+			<table class="table table-sm ">
+				<tr>
+					<td colspan="2">영문이름</td>
+					<td>${ remInfoDetail.name }</td>
+				</tr>
+				<tr>
+					<td colspan="2">전화번호</td>
+					<td>${ remInfoDetail.phone }</td>
+				</tr>
+				<tr>
+					<td colspan="2">이메일</td>
+					<td>${ remInfoDetail.email }</td>
+				</tr>
+				<tr>
+					<td rowspan="3">영문주소</td>
+					<td>국가</td>
+					<td>${ remInfoDetail.nation }</td>
+				</tr>
+				<tr>
+					<td >주소</td>
+					<td>${ remInfoDetail.addr }</td>
+				</tr>
+				<tr>
+					<td>세부주소</td>
+					<td>${ remInfoDetail.addrDetail }</td>
+				</tr>
+				<tr>
+					<td colspan="2">통화</td>
+					<td>${ remInfoDetail.currency }</td>
+				</tr>
+				<tr>
+					<td colspan="2">은행명</td>
+					<td>${ remInfoDetail.bankName }</td>
+				</tr>
+				<tr>
+					<td colspan="2">계좌번호</td>
+					<td>${ remInfoDetail.accNo }</td>
+				</tr>
+				<tr>
+					<td colspan="2">은행코드</td>
+					<td>${ remInfoDetail.bankCode }</td>
+				</tr>
+				<tr>
+					<td rowspan="3">은행주소</td>
+					<td >은행국가</td>
+					<td>${ remInfoDetail.bankNation }</td>
+				</tr>
+				<tr>
+					<td>은행주소</td>
+					<td>${ remInfoDetail.bankAddr }</td>
+				</tr>
+				<tr>
+					<td>세부주소</td>
+					<td>${ remInfoDetail.bankAddrDetail }</td>
+				</tr>
+				<tr>
+					<td colspan="2">직원전달사항</td>
+					<td>${ remInfoDetail.myDesc }</td>
+				</tr>
+			</table>
+			
+			
+			
+			
 			</div>
 		</div>
 	</div>

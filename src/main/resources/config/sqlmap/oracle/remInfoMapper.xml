@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="reminfo.dao.RemInfoDAO">
+<mapper namespace="remittance.dao.RemInfoDAO">
 	<resultMap type="remInfoVO" id="remInfoMap">
 		<result column="info_no" property="infoNo"/>
 		<result column="addr_detail" property="addrDetail"/>
@@ -21,4 +21,10 @@
 	<select id="selectRemInfoDetail" parameterType="int" resultMap="remInfoMap">
 		select * from hs_t_rem_info where info_no=#{remInfoNo}
 	</select>
+	<insert id="insertRemInfo" parameterType="remInfoVO">
+		insert into hs_t_rem_info 
+		values(seq_rem_info_no.nextval, #{name}, #{phone}, #{email}, #{nation}, #{addr}, #{addrDetail}, 
+			   #{currency}, #{bankName}, #{bankCode}, #{accNo}, #{bankNation}, #{bankAddr}, #{bankAddrDetail}, 
+			   #{myDesc}, #{status}, #{statusDesc, jdbcType=VARCHAR}, #{id})
+	</insert>
 </mapper>

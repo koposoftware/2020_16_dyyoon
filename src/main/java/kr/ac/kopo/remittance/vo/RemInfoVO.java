@@ -1,20 +1,35 @@
-package kr.ac.kopo.reminfo.vo;
+package kr.ac.kopo.remittance.vo;
+
+import javax.validation.constraints.NotEmpty;
 
 public class RemInfoVO {
 	
 	private int infoNo;
+	@NotEmpty(message = "필수항목입니다")
 	private String name;
+	@NotEmpty(message = "필수항목입니다")
 	private String phone;
+	@NotEmpty(message = "필수항목입니다")
 	private String email;
+	@NotEmpty(message = "필수항목입니다")
 	private String nation;
+	@NotEmpty(message = "필수항목입니다")
 	private String addr;
+	@NotEmpty(message = "필수항목입니다")
 	private String addrDetail;
+	@NotEmpty(message = "필수항목입니다")
 	private String currency;
+	@NotEmpty(message = "필수항목입니다")
 	private String bankName;
+	@NotEmpty(message = "필수항목입니다")
 	private String bankCode;
+	@NotEmpty(message = "필수항목입니다")
 	private String accNo;
+	@NotEmpty(message = "필수항목입니다")
 	private String bankNation;
+	@NotEmpty(message = "필수항목입니다")
 	private String bankAddr;
+	@NotEmpty(message = "필수항목입니다")
 	private String bankAddrDetail;
 	private String myDesc;
 	private String status;

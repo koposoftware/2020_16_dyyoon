@@ -56,7 +56,7 @@
                                     <li class="has-sub"><a href="#" title="Tours">해외송금</a>
                                         <ul>
                                             <li><a href="${ pageContext.request.contextPath }/remInfo">송금정보 조회</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/remInfoReg">송금정보 등록</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remInfo/register">송금정보 등록</a></li>
                                             <li><a href="#">해외송금 신청</a></li>
                                             <li><a href="#">해외송금 예약</a></li>
                                             <li><a href="#">송금내역 조회</a></li>

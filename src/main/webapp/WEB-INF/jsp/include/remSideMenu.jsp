@@ -10,7 +10,7 @@
 	    <a class="nav-link" href="${ pageContext.request.contextPath}/remInfo">송금정보조회</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="${ pageContext.request.contextPath}/remInfoReg">송금정보등록</a>
+	    <a class="nav-link" href="${ pageContext.request.contextPath}/remInfo/register">송금정보등록</a>
 	  </li>
 	  <li class="nav-item">
 	    <a class="nav-link" href="${ pageContext.request.contextPath}/">해외송금신청</a>
