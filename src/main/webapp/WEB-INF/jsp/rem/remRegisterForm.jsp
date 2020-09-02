@@ -47,7 +47,7 @@
 			
 			<div class="col-md-9">
 				
-			<form:form commandName="remittanceVO" method="post">
+			<form:form name="remForm" commandName="remittanceVO" method="post" onsubmit="return true">
 				<div>송금정보</div>
 				
 				<table class="table table-sm">
@@ -55,7 +55,7 @@
 						<td>내정보</td>
 						<td>
 							${ loginVO.engName }
-							<button>상세보기</button>
+							<button type="button">상세보기</button>
 						</td>
 					</tr>
 					<tr>
@@ -72,10 +72,10 @@
 							<select name="infoNo">
 								<option value="">---선택하세요---</option>
 								<c:forEach items="${ remInfoList }" var="remInfo">
-									<option value="${ remInfo.infoNo }">${ remInfo.name } ( ${ remInfo.accNo } )</option>
+									<option value="${ remInfo.infoNo }">[${ remInfo.currency }]${ remInfo.name } ( ${ remInfo.accNo } )</option>
 								</c:forEach>
 							</select>
-							<button>상세보기</button>
+							<button type="button">상세보기</button>
 						</td>
 					</tr>
 					<tr>
@@ -99,13 +99,13 @@
 									<option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</option>
 								</c:forEach>
 							</select>
-							<button>잔액조회</button>
+							<button type="button">잔액조회</button>
 						</td>
 					</tr>
 					<tr>
 						<td>송금 금액</td>
 						<td>
-							<form:input path="amount"/>
+							<input type="text" name="amount">
 						</td>
 					</tr>
 					<tr>
@@ -116,21 +116,36 @@
 					</tr>
 					<tr>
 						<td>수수료출금계좌</td>
-						<td></td>
+						<td>
+							<select name="chargeAccNo">
+								<option value="">---선택하세요---</option>
+								<c:forEach items="${ accountList }" var="account">
+									<option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</option>
+								</c:forEach>
+							</select>
+							<button type="button">잔액조회</button>
+						</td>
 					</tr>
 					<tr>
 						<td>수수료 출금계좌 비밀번호</td>
-						<td></td>
+						<td>
+							<input type="password">
+						</td>
 					</tr>
 					<tr>
 						<td>총출금금액(원화)</td>
-						<td></td>
+						<td id="krwTotal">
+							
+						</td>
 					</tr>
 					<tr>
 						<td>총출금금액(외화)</td>
-						<td></td>
+						<td id="otherTotal">
+						
+						</td>
 					</tr>
 				</table>
+				<button type="submit" >다음</button>
 			</form:form>
 			</div>
 		</div>

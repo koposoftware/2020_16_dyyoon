@@ -22,7 +22,7 @@
 		select * from hs_t_rem_info where info_no=#{remInfoNo}
 	</select>
 	<insert id="insertRemInfo" parameterType="remInfoVO">
-		insert into hs_t_rem_info 
+		insert into hs_t_rem_info
 		values(seq_rem_info_no.nextval, #{name}, #{phone}, #{email}, #{nation}, #{addr}, #{addrDetail}, 
 			   #{currency}, #{bankName}, #{bankCode}, #{accNo}, #{bankNation}, #{bankAddr}, #{bankAddrDetail}, 
 			   #{myDesc}, #{status}, #{statusDesc, jdbcType=VARCHAR}, #{id})

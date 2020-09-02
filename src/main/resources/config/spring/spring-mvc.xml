@@ -4,6 +4,7 @@
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:tx="http://www.springframework.org/schema/tx"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
     xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context   
@@ -11,9 +12,14 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd
     http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd ">
+    http://www.springframework.org/schema/tx/spring-tx.xsd 
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.0.xsd ">
 
 	<context:component-scan base-package="kr.ac.kopo" />
+	<context:property-placeholder location="classpath:config/properties/key.properties" /> 
+
+	<!-- <util:properties id="property" location="classpath:config/properties/key.properties" /> -->
 	
     <mvc:annotation-driven>
     	<mvc:message-converters>
@@ -37,9 +43,9 @@
     
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-    	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-    	<property name="username" value="hr" />
-    	<property name="password" value="hr" />
+    	<property name="url" value="${db.oracle.url}" />
+    	<property name="username" value="${db.oracle.username}" />
+    	<property name="password" value="${db.oracle.password}" />
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -52,6 +58,11 @@
     	<constructor-arg ref="sqlSessionFactory" />
     </bean>
     
+    <!-- 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:config/properties/key.properties" />
+    </bean>
+     -->
 	<mvc:default-servlet-handler />
 	
 	<mvc:view-resolvers>
@@ -68,7 +79,22 @@
 			<ref bean="loginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors> 
-
+	
+	<!-- Gmail -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="${email.id.gmail}" />
+		<property name="password" value="${email.password.gmail}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
 	
 	<!-- 트랜잭션 처리  -->
 	<!-- 

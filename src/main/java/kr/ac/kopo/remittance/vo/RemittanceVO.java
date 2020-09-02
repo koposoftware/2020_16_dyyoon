@@ -9,8 +9,12 @@ public class RemittanceVO {
 	private int 	exchangeRate;
 	private String	reason;
 	private String	remDate;
+	private String 	chargeAccNo;
+//	5천달러 이하 3,000원 / 5천달러 이상 5,000원
 	private int		remCharge;
+//	
 	private int		interCharge;
+//	전신료 5,000원
 	private int		cableCharge;
 //	RM 수신인 부담 / RC 수취자부담
 	private String	chargeCover;
@@ -19,6 +23,14 @@ public class RemittanceVO {
 	
 	public RemittanceVO() {
 		super();
+	}
+
+	public String getChargeAccNo() {
+		return chargeAccNo;
+	}
+
+	public void setChargeAccNo(String chargeAccNo) {
+		this.chargeAccNo = chargeAccNo;
 	}
 
 	public int getRemNo() {
