@@ -55,7 +55,7 @@
 						<td>내정보</td>
 						<td>
 							${ loginVO.engName }
-							<button type="button">상세보기</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">상세보기</button>
 						</td>
 					</tr>
 					<tr>
@@ -67,7 +67,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>수취인정보선택</td>
+						<td>수취인 정보</td>
 						<td>
 							<select name="infoNo">
 								<option value="">---선택하세요---</option>
@@ -90,6 +90,15 @@
 				<br>
 				<div>송금액 및 계좌 정보</div>				
 				<table class="table table-sm">
+					<tr>
+						<td>계좌 유형 선택</td>
+						<td>
+							<input type="radio" name="which" checked="checked" id="krwAccount" value="krw">
+							<label for="krwAccount">원화계좌출금</label>
+							<input type="radio" name="which" id="otherAccount" value="other">
+							<label for="otherAccount">외화계좌출금</label>
+						</td>
+					</tr>
 					<tr>
 						<td>송금계좌선택</td>
 						<td>
@@ -151,6 +160,31 @@
 		</div>
 	</div>
 	<!-- remRegisterForm page close -->
+	
+	
+	<!-- Modal -->
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	
+	      <!-- Modal body -->
+	      <div class="modal-body">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        Modal body..
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	      </div>
+	
+	    </div>
+	  </div>
+	</div>
+
+
+
+
+
+	<!-- Modal -->
 	
 	
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>

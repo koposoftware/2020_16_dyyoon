@@ -19,25 +19,16 @@
 					<div id="hero-today-send"class="hero-section-caption-withcolor pinside40">
 					
 						<div>오늘 송금보내면</div>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-								<span class="input-group-text">KRW</span>
-								</div>
-								<input type="text" placeholder="0.00" class="form-control text-right">
-							</div>
-							<div class="input-group mt-3 mb-3">
-							  <div class="input-group-prepend">
-							    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
-							      USD
-							    </button>
-							    <div class="dropdown-menu">
-							      <a class="dropdown-item" href="#">Link 1</a>
-							      <a class="dropdown-item" href="#">Link 2</a>
-							      <a class="dropdown-item" href="#">Link 3</a>
-							    </div>
-							  </div>
+						
+							<div><i class="kr flag" ></i> KRW</div>
+							<input type="text" placeholder="0.00" class="form-control text-right">
+							
+							<select>
+								<option>USD</option>
+								<option>JPY</option>
+								<option>EUR</option>
+							</select>
 							  <input type="text" placeholder="0.00" class="form-control text-right">
-							</div>
 						<a href="#" class="btn btn-info ">송금하기</a>
 					</div>
 				</div>
