@@ -11,14 +11,14 @@
                         	<li><a href="#">KEB하나은행</a></li>
                         	<li>
 	                        	<div class="dropdown show">
-	                        	<a href="#" class="dropdown-toggle" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                        		Language</i>
-	                        	</a>
-	                        	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
-								    <a class="dropdown-item" href="#"><i class="kr flag"></i>한국어</a><br>
-								    <a class="dropdown-item" href="#"><i class="us flag"></i>English</a><br>
-								    <a class="dropdown-item" href="#"><i class="cn flag"></i>中文</a><br>
-								</div>
+		                        	<a href="#" class="dropdown-toggle" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                        		Language</i>
+		                        	</a>
+		                        	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
+									    <a class="dropdown-item" href="#"><i class="kr flag"></i>한국어</a>
+									    <a class="dropdown-item" href="#"><i class="us flag"></i>English</a>
+									    <a class="dropdown-item" href="#"><i class="cn flag"></i>中文</a>
+									</div>
 	                        	</div>
                         	</li>
                             <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -38,17 +38,18 @@
                    
                     <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
                         <div class="navigation d-flex justify-content-end navForBtn">
+                        <div>
                         <c:choose>
                         <c:when test="${ empty loginVO }">
-	                      	<button class="btn btn-light" onclick="window.location.href='${ pageContext.request.contextPath }/login'">로그인</button>
-	                      	<button class="btn btn-light">회원가입</button>
+	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/login'">로그인</button>
+	                      	<button class="btn btn-light mt-2 mr-2">회원가입</button>
                         </c:when>
                         <c:otherwise>
-                        	<span class="nav-span"><span>${ loginVO.name }</span>님 어서오세요</span>
-	                      	<button class="btn btn-light" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
+	                      	<button class="btn btn-white mt-2"><span>${ loginVO.name }</span>님 어서오세요</button>
+	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
                         </c:otherwise>
                         </c:choose>
-                        	
+                        </div>	
                             <div id="navigation">
                             
                                 <ul>

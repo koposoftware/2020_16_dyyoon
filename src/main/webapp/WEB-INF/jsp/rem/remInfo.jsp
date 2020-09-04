@@ -127,12 +127,7 @@ $(document).ready(function(){
 						 
 					</c:otherwise>
 				</c:choose>
-				<div id="viewRemInfo">
-					
-				
-				
-				
-				</div>
+				<div id="viewRemInfo"></div>
 			</div>
 		</div>
 	</div>
