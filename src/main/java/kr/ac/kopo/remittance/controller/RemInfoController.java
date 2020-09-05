@@ -1,5 +1,7 @@
 package kr.ac.kopo.remittance.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.ac.kopo.country.service.CountryService;
+import kr.ac.kopo.country.vo.CountryVO;
 import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.remittance.service.RemInfoService;
 import kr.ac.kopo.remittance.vo.RemInfoVO;
@@ -23,6 +27,8 @@ public class RemInfoController {
 	
 	@Autowired
 	private RemInfoService service;
+	@Autowired
+	private CountryService countryService;
 
 	@GetMapping("/remInfo")
 	public ModelAndView remInfoList(HttpSession session) {
@@ -42,12 +48,16 @@ public class RemInfoController {
 	}
 	
 	@GetMapping("/remInfo/register")
-	public String remInfoRegForm(Model model) {
+	public ModelAndView remInfoRegForm(Model model) {
+		ModelAndView mav = new ModelAndView("rem/remInfoRegisterForm");
 		
 		RemInfoVO remInfoVO = new RemInfoVO();
-		model.addAttribute("remInfoVO", remInfoVO);
+		List<CountryVO> countryList = countryService.selectAllCountryList();
 		
-		return "rem/remInfoRegisterForm";
+		mav.addObject("remInfoVO", remInfoVO);
+		mav.addObject("countryList", countryList);
+		
+		return mav;
 	}
 	
 	@PostMapping("/remInfo/register")

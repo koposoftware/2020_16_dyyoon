@@ -11,6 +11,7 @@
 		color : red;
 	}
 </style>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/jsp/include/headerSec.jsp"></jsp:include>
@@ -49,109 +50,149 @@
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
 			
 			<div class="col-md-9">
+			<div class="d-flex">
+				<div>보내는 분 정보 </div>
+				<button type="button" class="btn btn-secondary ml-auto">내 정보 수정하기</button>
+			</div>
+			<table class="table table-sm">
+				<tr>
+					<th colspan="2">영문성명</th>
+					<td>${ loginVO.engName }</td>
+				</tr>
+				<tr>
+					<th colspan="2">전화번호</th>
+					<td>${ loginVO.phone }</td>
+				</tr>
+				<tr>
+					<th colspan="2">이메일</th>
+					<td>${ loginVO.email }</td>
+				</tr>
+				<tr>
+					<th rowspan="2">영문주소</th>
+					<th>주소</th>
+					<td>${ loginVO.addr }</td>
+				</tr>
+				<tr>
+					<th>세부주소</th>
+					<td>${ loginVO.addrDetail }</td>
+				</tr>
+				
+			</table>
+
+
 			<form:form commandName="remInfoVO" method="post">
+			<br>
+			<div class="d-flex">
+				<div>받는 분 정보 </div>
+				<button type="button" class="btn btn-secondary ml-auto" data-toggle="tooltip" data-placement="top" title="정보 입력을 요청해보세요">수취인직접입력</button>
+			</div>
 			<table class="table table-sm">
 					<tr>
-						<td colspan="2">영문이름</td>
+						<th colspan="2">영문이름</th>
 						<td>
-							<form:input path="name"/><br>
+							<form:input path="name" class="form-control"/>
 							<form:errors path="name" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">전화번호</td>
+						<th colspan="2">전화번호</th>
 						<td>
-							<form:input path="phone"/>
+							<form:input path="phone" class="form-control"/>
 							<form:errors path="phone" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">이메일</td>
+						<th colspan="2">이메일</th>
 						<td>
-							<form:input path="email"/>
+							<form:input path="email" class="form-control"/>
 							<form:errors path="email" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="3">영문주소</td>
-						<td>국가</td>
+						<th rowspan="3">영문주소</th>
+						<th>국가</th>
 						<td>
-							<form:input path="nation"/>
+							<select>
+								<c:forEach items="${ countryList }" var="country">
+									<option value="${ countryList }">${ country.countryName }</option>
+								</c:forEach>
+							</select>
+							<form:input path="nation" class="form-control"/>
 							<form:errors path="nation" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td >주소</td>
+						<th >주소</th>
 						<td>
-							<form:input path="addr"/>
+							<form:input path="addr"  class="form-control"/>
 							<form:errors path="addr" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td>세부주소</td>
+						<th>세부주소</th>
 						<td>
-							<form:input path="addrDetail"/>
+							<form:input path="addrDetail"  class="form-control"/>
 							<form:errors path="addrDetail" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">통화</td>
+						<th colspan="2">통화</th>
 						<td>
-							<form:input path="currency"/>
+							<form:input path="currency"  class="form-control"/>
 							<form:errors path="currency" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">은행명</td>
+						<th colspan="2">은행명</th>
 						<td>
-							<form:input path="bankName"/>
+							<form:input path="bankName"  class="form-control"/>
 							<form:errors path="bankName" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">계좌번호</td>
+						<th colspan="2">계좌번호</th>
 						<td>
-							<form:input path="accNo"/>
+							<form:input path="accNo"  class="form-control"/>
 							<form:errors path="accNo" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">은행코드</td>
+						<th colspan="2">은행코드</th>
 						<td>
-							<form:input path="bankCode"/>
+							<form:input path="bankCode" class="form-control"/>
 							<form:errors path="bankCode" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="3">은행주소</td>
-						<td >은행국가</td>
+						<th rowspan="3">은행주소</th>
+						<th >은행국가</th>
 						<td>
-							<form:input path="bankNation"/>
+							<form:input path="bankNation" class="form-control"/>
 							<form:errors path="bankNation" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td>은행주소</td>
+						<th>은행주소</th>
 						<td>
-							<form:input path="bankAddr"/>
+							<form:input path="bankAddr" class="form-control"/>
 							<form:errors path="bankAddr" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td>세부주소</td>
+						<th>세부주소</th>
 						<td>
-							<form:input path="bankAddrDetail"/>
+							<form:input path="bankAddrDetail" class="form-control"/>
 							<form:errors path="bankAddrDetail" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">직원전달사항</td>
+						<th colspan="2">직원전달사항</th>
 						<td>
-							<form:input path="myDesc"/>
+							<form:input path="myDesc"  class="form-control"/>
 						</td>
 					</tr>
 				</table>
-				<button type="button">수취인직접입력</button>
+				
 				<button type="submit">등록</button>
 			
 			</form:form>
@@ -163,5 +204,10 @@
 	
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+	<script>
+	$(document).ready(function(){
+	  $('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
 </body>
 </html>

@@ -45,7 +45,8 @@
 	                      	<button class="btn btn-light mt-2 mr-2">회원가입</button>
                         </c:when>
                         <c:otherwise>
-	                      	<button class="btn btn-white mt-2"><span>${ loginVO.name }</span>님 어서오세요</button>
+	                      	<button class="btn btn-white mt-2" disabled="disabled"><span>${ loginVO.name }</span>님 어서오세요</button>
+	                      	<button class="btn btn-light mt-2">마이페이지</button>
 	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
                         </c:otherwise>
                         </c:choose>
