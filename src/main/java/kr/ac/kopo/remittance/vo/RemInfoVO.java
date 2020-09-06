@@ -1,10 +1,11 @@
 package kr.ac.kopo.remittance.vo;
 
+
 import javax.validation.constraints.NotEmpty;
 
 public class RemInfoVO {
 	
-	private int infoNo;
+	private Integer infoNo;
 	@NotEmpty(message = "필수항목입니다")
 	private String name;
 	@NotEmpty(message = "필수항목입니다")
@@ -39,12 +40,12 @@ public class RemInfoVO {
 	public RemInfoVO() {
 		super();
 	}
-
-	public int getInfoNo() {
+	
+	public Integer getInfoNo() {
 		return infoNo;
 	}
 
-	public void setInfoNo(int infoNo) {
+	public void setInfoNo(Integer infoNo) {
 		this.infoNo = infoNo;
 	}
 

@@ -18,7 +18,7 @@ public interface RemInfoService {
 	 * @param remInfoNo 송금정보번호
 	 * @return RemInfoVO 송금정보VO
 	 */
-	RemInfoVO selectRemInfoDetail(int remInfoNo);
+	RemInfoVO selectRemInfoDetail(Integer remInfoNo);
 	/**
 	 * 송금정보 등록하기
 	 * @param 송금정보VO

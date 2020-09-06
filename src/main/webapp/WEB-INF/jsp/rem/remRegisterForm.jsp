@@ -52,10 +52,14 @@
 				
 				<table class="table table-sm">
 					<tr>
-						<td>내정보</td>
+						<td>보내는 분</td>
 						<td>
-							${ loginVO.engName }
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">상세보기</button>
+						<div class="input-group">
+							<input type="text" class="form-control" value="${ loginVO.engName }" disabled="disabled">
+							 <div class="input-group-append">
+							    <button class="btn btn-info" type="button">상세보기</button>
+							  </div>
+						</div>
 						</td>
 					</tr>
 					<tr>
@@ -67,15 +71,21 @@
 						</td>
 					</tr>
 					<tr>
-						<td>수취인 정보</td>
+						<td>받는 분</td>
 						<td>
-							<select name="infoNo">
-								<option value="">---선택하세요---</option>
+						<div class="input-group">
+							<form:select class="custom-select" path="remNo">
+								<form:option value="-1">받는 분을 선택하세요</form:option>
 								<c:forEach items="${ remInfoList }" var="remInfo">
-									<option value="${ remInfo.infoNo }">[${ remInfo.currency }]${ remInfo.name } ( ${ remInfo.accNo } )</option>
+									<form:option value="${ remInfo.infoNo }">
+										${ remInfo.name } ( ${ remInfo.bankName }, ${ remInfo.accNo } )
+									</form:option>
 								</c:forEach>
-							</select>
-							<button type="button">상세보기</button>
+							</form:select>	
+							<div class="input-group-append">
+							    <button class="btn btn-info" type="button">상세보기</button>
+							  </div>						
+						</div>	
 						</td>
 					</tr>
 					<tr>
@@ -102,43 +112,62 @@
 					<tr>
 						<td>송금계좌선택</td>
 						<td>
-							<select name="accNo">
-								<option value="">---선택하세요---</option>
+						<div class="input-group">
+							<form:select class="custom-select" path="accNo">
+								<form:option value="">계좌를 선택하세요</form:option>
 								<c:forEach items="${ accountList }" var="account">
-									<option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</option>
+									<form:option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</form:option>
 								</c:forEach>
-							</select>
-							<button type="button">잔액조회</button>
+							</form:select>
+							 <div class="input-group-append">
+							    <button class="btn btn-info" type="button">잔액조회</button>
+							  </div>
+						</div>
 						</td>
 					</tr>
 					<tr>
 						<td>송금 금액</td>
 						<td>
-							<input type="text" name="amount">
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+							      <span class="input-group-text" id="input-group-phone-code">KRW</span>
+							    </div>
+								<form:input path="amount" type="text" class="form-control" id="krwAmountInput"/>
+							</div>
+							<div class="input-group">
+								<div class="input-group-prepend">
+							      <span class="input-group-text" id="input-group-phone-code">USD</span>
+							    </div>
+							    <input type="text" class="form-control" placeholder="0.00" id="otherAmountInput">
+							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>송금 계좌 비밀번호</td>
 						<td>
-							<input type="password">
+							<input type="password" class="form-control">
 						</td>
 					</tr>
 					<tr>
 						<td>수수료출금계좌</td>
 						<td>
-							<select name="chargeAccNo">
-								<option value="">---선택하세요---</option>
+							<div class="input-group">
+							<form:select class="custom-select" path="chargeAccNo">
+								<form:option value="">계좌를 선택하세요</form:option>
 								<c:forEach items="${ accountList }" var="account">
-									<option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</option>
+									<form:option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</form:option>
 								</c:forEach>
-							</select>
-							<button type="button">잔액조회</button>
+							</form:select>
+							 <div class="input-group-append">
+							    <button class="btn btn-info" type="button">잔액조회</button>
+							  </div>
+						</div>
 						</td>
 					</tr>
 					<tr>
 						<td>수수료 출금계좌 비밀번호</td>
 						<td>
-							<input type="password">
+							<input type="password" class="form-control">
 						</td>
 					</tr>
 					<tr>
@@ -154,6 +183,12 @@
 						</td>
 					</tr>
 				</table>
+				
+				<div>송금상세</div>
+				<table class="table table-sm">
+				
+				</table>
+				
 				<button type="submit" >다음</button>
 			</form:form>
 			</div>
@@ -189,5 +224,13 @@
 	
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+	
+	<script type="text/javascript">
+	$('#krwAmountInput').keypress(function() {
+		
+		console.log(this.value)
+		
+	})
+	</script>
 </body>
 </html>

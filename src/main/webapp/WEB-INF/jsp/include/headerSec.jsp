@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
-                        <a href="${ pageContext.request.contextPath }"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png" alt="Tour and Travel Agency - Responsive Website Template"></a>
+                        <a href="${ pageContext.request.contextPath }"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png"></a>
                     </div>
                    
                     <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
@@ -45,8 +45,7 @@
 	                      	<button class="btn btn-light mt-2 mr-2">회원가입</button>
                         </c:when>
                         <c:otherwise>
-	                      	<button class="btn btn-white mt-2" disabled="disabled"><span>${ loginVO.name }</span>님 어서오세요</button>
-	                      	<button class="btn btn-light mt-2">마이페이지</button>
+	                      	<button class="btn btn-link mt-2 shadow-none text-secondary"><span class="text-info">${ loginVO.name }</span>님 어서오세요</button>
 	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
                         </c:otherwise>
                         </c:choose>

@@ -97,7 +97,13 @@
 					<tr>
 						<th colspan="2">전화번호</th>
 						<td>
-							<form:input path="phone" class="form-control"/>
+							
+							<div class="input-group">
+							<div class="input-group-prepend">
+						      <span class="input-group-text" id="input-group-phone-code">+ 000</span>
+						    </div>
+							<form:input path="phone" type="text" class="form-control"/>
+							</div>
 							<form:errors path="phone" class="error" />
 						</td>
 					</tr>
@@ -112,12 +118,16 @@
 						<th rowspan="3">영문주소</th>
 						<th>국가</th>
 						<td>
-							<select>
+							<form:select class="custom-select" path="nation" id="rcNationSelect">
+								<form:option value="">국가를 선택하세요</form:option>
 								<c:forEach items="${ countryList }" var="country">
-									<option value="${ countryList }">${ country.countryName }</option>
+									<form:option value="${ country.countryCode }" 
+												data-value="${ country.currencyCode } (${ country.currencyName })"
+												data-phone="${ country.phoneCode }">
+										${ country.countryEngName } (${ country.countryName })
+									</form:option>
 								</c:forEach>
-							</select>
-							<form:input path="nation" class="form-control"/>
+							</form:select>
 							<form:errors path="nation" class="error" />
 						</td>
 					</tr>
@@ -138,15 +148,22 @@
 					<tr>
 						<th colspan="2">통화</th>
 						<td>
-							<form:input path="currency"  class="form-control"/>
+							<form:input path="currency"  class="form-control" id="currencyInput" disabled="true"/>
 							<form:errors path="currency" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">은행명</th>
+						<th colspan="2">은행코드</th>
 						<td>
-							<form:input path="bankName"  class="form-control"/>
-							<form:errors path="bankName" class="error" />
+							
+							<div class="input-group">
+							<form:input path="bankCode" class="form-control"/>
+							  <div class="input-group-append">
+							    <button class="btn btn-info" type="button">코드 확인</button>
+							  </div>
+							</div>
+							
+							<form:errors path="bankCode" class="error" />
 						</td>
 					</tr>
 					<tr>
@@ -157,31 +174,31 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">은행코드</th>
+						<th colspan="2">은행명</th>
 						<td>
-							<form:input path="bankCode" class="form-control"/>
-							<form:errors path="bankCode" class="error" />
+							<form:input path="bankName"  class="form-control"  disabled="true"/>
+							<form:errors path="bankName" class="error" />
 						</td>
 					</tr>
 					<tr>
 						<th rowspan="3">은행주소</th>
 						<th >은행국가</th>
 						<td>
-							<form:input path="bankNation" class="form-control"/>
+							<form:input path="bankNation" class="form-control"  disabled="true"/>
 							<form:errors path="bankNation" class="error" />
 						</td>
 					</tr>
 					<tr>
 						<th>은행주소</th>
 						<td>
-							<form:input path="bankAddr" class="form-control"/>
+							<form:input path="bankAddr" class="form-control"  disabled="true"/>
 							<form:errors path="bankAddr" class="error" />
 						</td>
 					</tr>
 					<tr>
 						<th>세부주소</th>
 						<td>
-							<form:input path="bankAddrDetail" class="form-control"/>
+							<form:input path="bankAddrDetail" class="form-control"  disabled="true"/>
 							<form:errors path="bankAddrDetail" class="error" />
 						</td>
 					</tr>
@@ -207,6 +224,15 @@
 	<script>
 	$(document).ready(function(){
 	  $('[data-toggle="tooltip"]').tooltip();
+	  
+	  $('#rcNationSelect').change(function(){
+		   
+		  console.log($(this).val())
+		  console.log($(this).children('option:selected').data('value'))
+		  $('#currencyInput').val($(this).children('option:selected').data('value'))
+		  $('#input-group-phone-code').text('+ ' + $(this).children('option:selected').data('phone'))
+	  })
+	  
 	});
 </script>
 </body>

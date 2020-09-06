@@ -2,20 +2,20 @@ package kr.ac.kopo.remittance.vo;
 
 public class RemittanceVO {
 	
-	private int 	remNo;
-	private int 	infoNo;
+	private Integer 	remNo;
+	private Integer 	infoNo;
 	private String 	accNo;
-	private int 	amount;
-	private int 	exchangeRate;
+	private Integer amount;
+	private Integer exchangeRate;
 	private String	reason;
 	private String	remDate;
 	private String 	chargeAccNo;
 //	5천달러 이하 3,000원 / 5천달러 이상 5,000원
-	private int		remCharge;
+	private Integer		remCharge;
 //	
-	private int		interCharge;
+	private Integer		interCharge;
 //	전신료 5,000원
-	private int		cableCharge;
+	private Integer		cableCharge;
 //	RM 수신인 부담 / RC 수취자부담
 	private String	chargeCover;
 //	RS(예약) / RM(수신은행) IN(중계은행) RC(수취은행)
@@ -33,19 +33,19 @@ public class RemittanceVO {
 		this.chargeAccNo = chargeAccNo;
 	}
 
-	public int getRemNo() {
+	public Integer getRemNo() {
 		return remNo;
 	}
 
-	public void setRemNo(int remNo) {
+	public void setRemNo(Integer remNo) {
 		this.remNo = remNo;
 	}
 
-	public int getInfoNo() {
+	public Integer getInfoNo() {
 		return infoNo;
 	}
 
-	public void setInfoNo(int infoNo) {
+	public void setInfoNo(Integer infoNo) {
 		this.infoNo = infoNo;
 	}
 
@@ -57,19 +57,19 @@ public class RemittanceVO {
 		this.accNo = accNo;
 	}
 
-	public int getAmount() {
+	public Integer getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 
-	public int getExchangeRate() {
+	public Integer getExchangeRate() {
 		return exchangeRate;
 	}
 
-	public void setExchangeRate(int exchangeRate) {
+	public void setExchangeRate(Integer exchangeRate) {
 		this.exchangeRate = exchangeRate;
 	}
 
@@ -89,27 +89,27 @@ public class RemittanceVO {
 		this.remDate = remDate;
 	}
 
-	public int getRemCharge() {
+	public Integer getRemCharge() {
 		return remCharge;
 	}
 
-	public void setRemCharge(int remCharge) {
+	public void setRemCharge(Integer remCharge) {
 		this.remCharge = remCharge;
 	}
 
-	public int getInterCharge() {
+	public Integer getInterCharge() {
 		return interCharge;
 	}
 
-	public void setInterCharge(int interCharge) {
+	public void setInterCharge(Integer interCharge) {
 		this.interCharge = interCharge;
 	}
 
-	public int getCableCharge() {
+	public Integer getCableCharge() {
 		return cableCharge;
 	}
 
-	public void setCableCharge(int cableCharge) {
+	public void setCableCharge(Integer cableCharge) {
 		this.cableCharge = cableCharge;
 	}
 

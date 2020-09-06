@@ -9,7 +9,7 @@ public class AccountVO {
 	private String 	accName;
 	private String 	alias;
 	private String 	openDate;
-	private int		balance;
+	private Integer		balance;
 	private String 	id;
 	
 	public AccountVO() {
@@ -72,11 +72,11 @@ public class AccountVO {
 		this.openDate = openDate;
 	}
 
-	public int getBalance() {
+	public Integer getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(Integer balance) {
 		this.balance = balance;
 	}
 

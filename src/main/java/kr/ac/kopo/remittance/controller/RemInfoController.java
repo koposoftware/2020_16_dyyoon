@@ -63,11 +63,11 @@ public class RemInfoController {
 	@PostMapping("/remInfo/register")
 	public ModelAndView remInfoReg(@Valid RemInfoVO remInfo, BindingResult result, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(remInfo.getAccNo());
-		System.out.println(remInfo.getName());
 		
 		if(result.hasErrors()) {
 			System.out.println("필수항목 입력 필요");
+			List<CountryVO> countryList = countryService.selectAllCountryList();
+			mav.addObject("countryList", countryList);
 			mav.setViewName("rem/remInfoRegisterForm");
 		}else {
 			remInfo.setStatus("신청중");

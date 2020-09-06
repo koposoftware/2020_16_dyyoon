@@ -19,7 +19,7 @@ public class RemInfoServiceImpl implements RemInfoService {
 	}
 
 	@Override
-	public RemInfoVO selectRemInfoDetail(int remInfoNo) {
+	public RemInfoVO selectRemInfoDetail(Integer remInfoNo) {
 		return dao.selectRemInfoDetail(remInfoNo);
 	}
 

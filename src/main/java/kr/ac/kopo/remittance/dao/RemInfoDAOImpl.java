@@ -20,7 +20,7 @@ public class RemInfoDAOImpl implements RemInfoDAO {
 	}
 
 	@Override
-	public RemInfoVO selectRemInfoDetail(int remInfoNo) {
+	public RemInfoVO selectRemInfoDetail(Integer remInfoNo) {
 		return session.selectOne("remittance.dao.RemInfoDAO.selectRemInfoDetail", remInfoNo);
 	}
 
