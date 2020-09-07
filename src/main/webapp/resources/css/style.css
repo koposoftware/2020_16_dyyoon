@@ -76,6 +76,8 @@ a:focus, a:hover { text-decoration: none; color: #599642; }
 strong { color: #333; font-weight: 800; }
 hr { margin-top: 20px; margin-bottom: 20px; border: 0; border-top: 1px solid #f1f3f8; }
 
+table th{ background-color: #EBF7F9;}
+
 /*----------------------- 
     2 Form Elements:
 -------------------------*/

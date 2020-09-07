@@ -5,17 +5,17 @@ public class RemittanceVO {
 	private Integer 	remNo;
 	private Integer 	infoNo;
 	private String 	accNo;
-	private Integer amount;
-	private Integer exchangeRate;
+	private Float amount;
+	private Float exchangeRate;
 	private String	reason;
 	private String	remDate;
 	private String 	chargeAccNo;
 //	5천달러 이하 3,000원 / 5천달러 이상 5,000원
-	private Integer		remCharge;
+	private Float		remCharge;
 //	
-	private Integer		interCharge;
+	private Float		interCharge;
 //	전신료 5,000원
-	private Integer		cableCharge;
+	private Float		cableCharge;
 //	RM 수신인 부담 / RC 수취자부담
 	private String	chargeCover;
 //	RS(예약) / RM(수신은행) IN(중계은행) RC(수취은행)
@@ -57,19 +57,19 @@ public class RemittanceVO {
 		this.accNo = accNo;
 	}
 
-	public Integer getAmount() {
+	public Float getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Integer amount) {
+	public void setAmount(Float amount) {
 		this.amount = amount;
 	}
 
-	public Integer getExchangeRate() {
+	public Float getExchangeRate() {
 		return exchangeRate;
 	}
 
-	public void setExchangeRate(Integer exchangeRate) {
+	public void setExchangeRate(Float exchangeRate) {
 		this.exchangeRate = exchangeRate;
 	}
 
@@ -89,27 +89,27 @@ public class RemittanceVO {
 		this.remDate = remDate;
 	}
 
-	public Integer getRemCharge() {
+	public Float getRemCharge() {
 		return remCharge;
 	}
 
-	public void setRemCharge(Integer remCharge) {
+	public void setRemCharge(Float remCharge) {
 		this.remCharge = remCharge;
 	}
 
-	public Integer getInterCharge() {
+	public Float getInterCharge() {
 		return interCharge;
 	}
 
-	public void setInterCharge(Integer interCharge) {
+	public void setInterCharge(Float interCharge) {
 		this.interCharge = interCharge;
 	}
 
-	public Integer getCableCharge() {
+	public Float getCableCharge() {
 		return cableCharge;
 	}
 
-	public void setCableCharge(Integer cableCharge) {
+	public void setCableCharge(Float cableCharge) {
 		this.cableCharge = cableCharge;
 	}
 

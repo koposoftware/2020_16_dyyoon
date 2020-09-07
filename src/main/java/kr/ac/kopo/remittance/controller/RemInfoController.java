@@ -40,7 +40,7 @@ public class RemInfoController {
 	}
 	
 	@GetMapping("/remInfo/{remInfoNo}")
-	public ModelAndView remInfoDetail(@PathVariable("remInfoNo") int remInfoNo) {
+	public ModelAndView remInfoDetail(@PathVariable("remInfoNo") Integer remInfoNo) {
 		
 		ModelAndView mav = new ModelAndView("rem/remInfoDetail");
 		mav.addObject("remInfoDetail", service.selectRemInfoDetail(remInfoNo));

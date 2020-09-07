@@ -19,7 +19,7 @@ $(document).ready(function(){
 			url : '${pageContext.request.contextPath}/remInfo/' + remNo,
 			type : 'get',
 			success : function(data){
-				console.log('통신성공~!');
+				//console.log('통신성공~!');
 				$('#viewRemInfo').empty();
 				$('#viewRemInfo').html(data)
  			},
@@ -41,7 +41,7 @@ $(document).ready(function(){
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                     <div class="page-section">
-                        <h1 class="page-title">송금정보</h1>
+                        <h1 class="page-title ">송금정보</h1>
                     </div>
                 </div>
             </div>
@@ -70,37 +70,37 @@ $(document).ready(function(){
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
 			
 			<div class="col-md-9">
-				<div><strong>수신인 정보</strong></div>
+				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">수신인 정보</span></div>
 				<table class="table table-sm">
 					<tr>
-						<td colspan="2">영문이름</td>
+						<th colspan="2">영문이름</th>
 						<td>${ loginVO.engName }</td>
 					</tr>
 					<tr>
-						<td colspan="2">전화번호</td>
+						<th colspan="2">전화번호</th>
 						<td>${ loginVO.phone }</td>
 					</tr>
 					<tr>
-						<td colspan="2">이메일</td>
+						<th colspan="2">이메일</th>
 						<td>${ loginVO.email }</td>
 					</tr>
 					<tr>
-						<td rowspan="2">영문주소</td>
-						<td >주소</td>
+						<th rowspan="2">영문주소</th>
+						<th >주소</th>
 						<td>${ loginVO.addr }</td>
 					</tr>
 					<tr>
-						<td>세부주소</td>
+						<th>세부주소</th>
 						<td>${ loginVO.addrDetail }</td>
 					</tr>
 				</table>
-				<div><strong>수취인 정보</strong></div>
+				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">수취인 정보</span></div>
 				<c:choose>
 					<c:when test="${ empty remInfoList }">
 						<div class="mx-auto">등록된 송금정보가 없습니다</div>
 					</c:when>
 					<c:otherwise>
-					<table class="table table-hover text-center" id="table-rem-info">
+					<table class="table table-hover text-center table-sm" id="table-rem-info">
 					
 					<thead>
 							<tr>

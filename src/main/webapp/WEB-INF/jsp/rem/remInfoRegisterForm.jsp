@@ -51,7 +51,7 @@
 			
 			<div class="col-md-9">
 			<div class="d-flex">
-				<div>보내는 분 정보 </div>
+				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">보내는 분 정보</span></div>
 				<button type="button" class="btn btn-secondary ml-auto">내 정보 수정하기</button>
 			</div>
 			<table class="table table-sm">
@@ -83,8 +83,8 @@
 			<form:form commandName="remInfoVO" method="post">
 			<br>
 			<div class="d-flex">
-				<div>받는 분 정보 </div>
-				<button type="button" class="btn btn-secondary ml-auto" data-toggle="tooltip" data-placement="top" title="정보 입력을 요청해보세요">수취인직접입력</button>
+				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">받는 분 정보</span></div>
+				<button type="button" class="btn btn-secondary ml-auto" data-toggle="tooltip" data-placement="top" title="이메일로 받는 분에게 직접 요청해보세요">입력 요청하기</button>
 			</div>
 			<table class="table table-sm">
 					<tr>
@@ -227,8 +227,8 @@
 	  
 	  $('#rcNationSelect').change(function(){
 		   
-		  console.log($(this).val())
-		  console.log($(this).children('option:selected').data('value'))
+		  //console.log($(this).val())
+		  //console.log($(this).children('option:selected').data('value'))
 		  $('#currencyInput').val($(this).children('option:selected').data('value'))
 		  $('#input-group-phone-code').text('+ ' + $(this).children('option:selected').data('phone'))
 	  })
