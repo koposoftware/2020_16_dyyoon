@@ -15,4 +15,9 @@
 		select *
 		from hs_t_country
 	</select>
+	<select id="selectCountryRemittanceRate" parameterType="String" resultType="float">
+		select b.remittance  
+    	from hs_t_country a, hs_t_currencyrate b  
+    	where a.currency_code = b.currency and a.currency_code = #{currencyCode}
+	</select>
 </mapper>

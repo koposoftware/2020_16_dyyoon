@@ -7,9 +7,12 @@
 		<result column="eng_name" property="engName"/>
 		<result column="addr_detail" property="addrDetail"/>
 	</resultMap>
+	<sql id="selectAllMemberColumn">
+		select id, password, type, name, eng_name, phone, email, addr, addr_detail
+		 from hs_t_member
+	</sql>
 	<select id="login" parameterType="memberVO" resultMap="memberMap">
-		select *
-		from hs_t_member
+		<include refid="selectAllMemberColumn" />
 		where id = #{id} and password = #{password}
 	</select>
 </mapper>

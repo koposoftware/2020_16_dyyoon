@@ -65,7 +65,7 @@ public class RemInfoController {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
-			System.out.println("필수항목 입력 필요");
+			//System.out.println("필수항목 입력 필요");
 			List<CountryVO> countryList = countryService.selectAllCountryList();
 			mav.addObject("countryList", countryList);
 			mav.setViewName("rem/remInfoRegisterForm");

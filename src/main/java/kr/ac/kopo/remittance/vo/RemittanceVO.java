@@ -1,15 +1,20 @@
 package kr.ac.kopo.remittance.vo;
 
+import javax.validation.constraints.NotNull;
+
 public class RemittanceVO {
 	
+	
 	private Integer 	remNo;
+	@NotNull(message = "필수 항목입니다~")
 	private Integer 	infoNo;
-	private String 	accNo;
-	private Float amount;
-	private Float exchangeRate;
-	private String	reason;
-	private String	remDate;
-	private String 	chargeAccNo;
+	private String 		accType;
+	private String 		accNo;
+	private Float 		amount;
+	private Float 		exchangeRate;
+	private String		reason;
+	private String		remDate;
+	private String 		chargeAccNo;
 //	5천달러 이하 3,000원 / 5천달러 이상 5,000원
 	private Float		remCharge;
 //	
@@ -23,6 +28,14 @@ public class RemittanceVO {
 	
 	public RemittanceVO() {
 		super();
+	}
+
+	public String getAccType() {
+		return accType;
+	}
+
+	public void setAccType(String accType) {
+		this.accType = accType;
 	}
 
 	public String getChargeAccNo() {

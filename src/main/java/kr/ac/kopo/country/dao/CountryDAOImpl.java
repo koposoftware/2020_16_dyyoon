@@ -18,4 +18,9 @@ public class CountryDAOImpl implements CountryDAO {
 		return session.selectList("country.dao.CountryDAO.selectAllCountryList");
 	}
 
+	@Override
+	public Float selectCountryRemittanceRate(String currencyCode) {
+		return session.selectOne("country.dao.CountryDAO.selectCountryRemittanceRate", currencyCode);
+	}
+
 }

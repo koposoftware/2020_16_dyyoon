@@ -9,9 +9,12 @@
 		<result column="open_date" property="openDate"/>
 		<result column="charge_acc_no" property="chargeAccNo"/>
 	</resultMap>
+	<sql id="selectAllAccountColumn">
+		select acc_no, pwd, type, currency, acc_name, alias, open_date, balance, id
+		 from hs_t_account
+	</sql>
 	<select id="selectAccountList" parameterType="String" resultMap="accountMap">
-		select *
-		from hs_t_account
+		<include refid="selectAllAccountColumn" />
 		where id = #{id}
 	</select>
 </mapper>

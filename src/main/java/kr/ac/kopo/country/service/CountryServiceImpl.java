@@ -18,6 +18,11 @@ public class CountryServiceImpl implements CountryService {
 	public List<CountryVO> selectAllCountryList() {
 		return countryDAO.selectAllCountryList();
 	}
+
+	@Override
+	public Float selectCountryRemittanceRate(String currencyCode) {
+		return countryDAO.selectCountryRemittanceRate(currencyCode);
+	}
 	
 	
 

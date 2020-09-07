@@ -64,8 +64,10 @@
 		<th>세부주소</th>
 		<td>${ remInfoDetail.bankAddrDetail }</td>
 	</tr>
+	<c:if test="${ status ne 'remittanceConfirm' }">
 	<tr>
 		<th colspan="2">직원전달사항</th>
 		<td>${ remInfoDetail.myDesc }</td>
 	</tr>
+	</c:if>
 </table>
