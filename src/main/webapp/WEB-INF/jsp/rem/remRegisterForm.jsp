@@ -76,6 +76,12 @@
 								<form:radiobutton path="reason" value="미화 $5,000 이하 송금"	checked="checked" label="미화 $5,000 이하 송금" /> 
 								<form:radiobutton path="reason" value="해외유학생 유학경비 송금" label="해외유학생 유학경비 송금" /> 
 								<form:radiobutton path="reason" value="해외체재자 체재비 송금" label="해외체재자 체재비 송금" />
+								<textarea class="form-control text-secondary p-3"  style="resize:none" rows="5" disabled="disabled">1. 순수한 증여성 송금 이외의 해외부동산 취득, 유학생경비, 재외동포 국내재산반출, 해외차입금 상환등을 목적으로 송금하실 경우에는 외국환거래규정에 위배되므로 유의 하셔야 합니다.&#13;&#10;2. "증빙서류 미제출 송금"은 당행의 모든 채널을 통해 동일한 수취인앞으로 송금된 누계액이 미화 5만불 상당액을 초과하는 경우 인터넷/모바일 등 비대면 채널을 통한 송금이 불가합니다.&#13;&#10;3. 해외예금(신탁)계약, 금전대차계약, 증권취득, 회원권 취득 등 자본거래를 위해 건당 미화 5천불 상당액 이하로 분할 송금시, 분할된 송금액의 합계가 미화 5천불 상당액을 초과하면 외국환거래규정에 따른 자본 거래 신고를 하여야 하므로 영업점을 방문하셔서 사전신고 및 송금거래 하시기 바랍니다.
+								</textarea>
+								<div class="text-right">
+									 <input type="checkbox" class="form-check-input align-middle" id="checkReason">
+    								<label class="form-check-label" for="checkReason">확인함</label>
+								</div>
 							</td>
 						</tr>
 						<tr>
@@ -107,9 +113,9 @@
 						<tr>
 							<th>수수료 부담자</th>
 							<td>
-								<form:radiobutton path="chargeCover" value="RM" checked="checked" label="보내는분" /> 
-								<form:radiobutton path="chargeCover" value="RC" label="받는분(송금수수료 제외)" /> 
-								<form:radiobutton path="chargeCover" value="RA" label="받는분(송금수수료 포함)" />
+								<form:radiobutton class="chargeCover-radiobutton-cal" path="chargeCover" value="RM" checked="checked" label="보내는분" /> 
+								<form:radiobutton class="chargeCover-radiobutton-cal" path="chargeCover" value="RC" label="받는분(송금수수료 제외)" /> 
+								<form:radiobutton class="chargeCover-radiobutton-cal" path="chargeCover" value="RA" label="받는분(송금수수료 포함)" />
 							</td>
 						</tr>
 					</table>
@@ -149,7 +155,7 @@
 							<td>
 								<div class="input-group mb-2">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="input-group-phone-code">KRW</span>
+										<span class="input-group-text" id="registerForm-amount-krw-prepend">KRW</span>
 									</div>
 									<form:input path="amount" type="text" class="form-control"
 										placeholder="0.00" id="krwAmountInput" />
@@ -159,14 +165,14 @@
 								</div>
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="input-group-phone-code">미지정</span>
+										<span class="input-group-text" id="registerForm-amount-other-prepend">미지정</span>
 									</div>
 									<input type="text" class="form-control" placeholder="0.00"
 										id="otherAmountInput">
 								</div>
-								<div>
+								<div class="text-secondary">
 									적용환율 : 
-									<span class="text-danger">통화 미지정</span>
+									<span id="registerForm-amount-remittanceRate">통화 미지정</span>
 								</div>
 							</td>
 						</tr>
@@ -181,7 +187,9 @@
 									<form:select class="custom-select" path="chargeAccNo">
 										<form:option value="">계좌를 선택하세요</form:option>
 										<c:forEach items="${ accountList }" var="account">
+										<c:if test="${ account.type eq '03' }">
 											<form:option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</form:option>
+										</c:if>	
 										</c:forEach>
 									</form:select>
 									<div class="input-group-append">
@@ -197,19 +205,19 @@
 						<tr>
 							<th>송금수수료</th>
 							<td>
-								<form:input class="form-control" path="remCharge" disabled="true"/>
+								<form:input id="remForm-remCharge" class="form-control" path="remCharge" readonly="true" value="3000"/>
 							</td>
 						</tr>
 						<tr>
 							<th>중계수수료</th>
 							<td>
-								<form:input class="form-control" path="interCharge" disabled="true"/>
+								<form:input id="remForm-interCharge" class="form-control" path="interCharge" readonly="true" value="23000"/>
 							</td>
 						</tr>
 						<tr>
 							<th>전신료</th>
 							<td>
-								<form:input class="form-control" path="cableCharge" disabled="true"/>
+								<form:input class="form-control" path="cableCharge" readonly="true" value="5000"/>
 							</td>
 						</tr>
 						<tr>
@@ -304,7 +312,7 @@
 					</button>
 				</div>
 				<!-- Modal body -->
-				<div class="modal-body" id="registerForm-remNo-modal-body"></div>
+				<div class="modal-body" id="registerForm-infoNo-modal-body"></div>
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-info" data-dismiss="modal">닫기</button>
@@ -326,8 +334,53 @@
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
 
 	<script type="text/javascript">
+		$('.chargeCover-radiobutton-cal').change(function(){
+			var chargeCoverVal = $(this).val()
+			var remCharge = $('#remForm-remCharge').val()
+			var interCharge = $('#remForm-interCharge').val()
+			
+			if(chargeCoverVal == 'RM'){
+				//보내는 분 부담 - (보내는분)전신료, 송금수수료, 중계수수료
+				$('#remForm-interCharge').val(23000)
+				$('#remForm-remCharge').val(3000)
+			}else if(chargeCoverVal == 'RC'){
+				//받는 분(송금수수료제외) 부담 - (보내는분)전신료, 송금수수료
+				$('#remForm-interCharge').val(0)
+				$('#remForm-remCharge').val(3000)
+			}else{
+				//받는 분(송금수수료 포함) 부담 - (보내는분)전신료
+				$('#remForm-interCharge').val(0)
+				$('#remForm-remCharge').val(0)
+			}
+			
+		})
+	
+		// 원화를 입력하면 해외 통화 값 자동으로 변환
 		$('#krwAmountInput').keyup(function() {
-
+			var amount = parseFloat($(this).val());
+			var currencyCode = $('#registerForm-infoNo-select').children('option:selected').data('currency')
+			
+			if(currencyCode !== undefined ){
+				$.ajax({
+					url : '${pageContext.request.contextPath}/country/remittance/' + currencyCode,
+					type : 'get',
+					success : function(data) {
+						var rate = parseFloat(data);
+						if($('#krwAmountInput').val().length > 0 || rate != 0){
+							$('#otherAmountInput').val((amount / rate).toFixed(2))
+						}else{
+							$('#otherAmountInput').val(0.00)
+						}
+					},
+					error : function() {
+						alert('실패')
+					}
+				})
+			}
+		})
+		
+		// 다른 통화 금액을 입력하면 원화 값 자동으로 변환
+		$('#otherAmountInput').keyup(function() {
 			var amount = parseFloat($(this).val());
 			var currencyCode = $('#registerForm-infoNo-select').children('option:selected').data('currency')
 			
@@ -338,10 +391,8 @@
 					type : 'get',
 					success : function(data) {
 						var rate = parseFloat(data);
-						console.log(rate)
-						console.log(typeof rate)
-						if($('#krwAmountInput').val().length > 0 || rate != 0){
-							$('#otherAmountInput').val((amount / rate).toFixed(2))
+						if($('#otherAmountInput').val().length > 0 || rate != 0){
+							$('#krwAmountInput').val((amount * rate).toFixed(2))
 							
 						}
 						
@@ -350,16 +401,15 @@
 						alert('실패')
 					}
 				})
-				
-				
-				
 			}
-			 
-			 
-			 
-			
-
 		})
+		
+		
+		
+		
+		
+		
+		
 
 		$('#registerForm-infoNo-select').change(
 				function() {
@@ -369,6 +419,24 @@
 						$('#registerForm-infoNo-btn').attr('disabled', 'disabled')
 					} else {
 						$('#registerForm-infoNo-btn').removeAttr('disabled');
+						var currencyCode = $('#registerForm-infoNo-select').children('option:selected').data('currency')
+						
+						// 선택한 infoNo의 통화코드 표시 
+						$('#registerForm-amount-other-prepend').text(currencyCode)
+						
+						// 선택한 infoNo의 통화코드의 현재 환율 표시
+						$.ajax({
+								url : '${pageContext.request.contextPath}/country/remittance/' + currencyCode,
+								type : 'get',
+								success : function(data) {
+									$('#registerForm-amount-remittanceRate').text(data)
+									
+									$('<input/>').attr({type:'hidden', name:'exchangeRate', value:data}).appendTo('form[name="remForm"]');									
+								},
+								error : function() {
+									alert('실패')
+								}
+							})
 						
 					}
 

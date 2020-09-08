@@ -16,7 +16,7 @@
 	    <a class="nav-link" href="${ pageContext.request.contextPath}/remittance">해외송금신청</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="${ pageContext.request.contextPath}/ ">해외송금예약</a>
+	    <a class="nav-link" href="${ pageContext.request.contextPath}/remittance/reserve ">해외송금예약</a>
 	  </li>
 	  <li class="nav-item">
 	    <a class="nav-link" href="${ pageContext.request.contextPath}/ ">송금내역조회</a>

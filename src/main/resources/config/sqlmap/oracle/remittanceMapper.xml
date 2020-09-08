@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="remittance.dao.RemittanceDAO">
+	<resultMap type="remittanceVO" id="remittanceMap">
+		<result column="REM_NO" property="remNo"/>
+		<result column="INFO_NO" property="infoNo"/>
+		<result column="ACC_TYPE" property="accType"/>
+		<result column="ACC_NO" property="accNo"/>
+		<result column="EXCHANGE_RATE" property="exchangeRate"/>
+		<result column="REM_DATE" property="remDate"/>
+		<result column="CHARGE_ACC_NO" property="chargeAccNo"/>
+		<result column="REM_CHARGE" property="remCharge"/>
+		<result column="INTER_CHARGE" property="interCharge"/>
+		<result column="CABLE_CHARGE" property="cableCharge"/>
+		<result column="CHARGE_COVER" property="chargeCover"/>
+		<result column="RESERVED_DATE" property="reservedDate"/>
+	</resultMap>
+	<sql id="allColumn">
+		rem_no, info_no, acc_type, acc_no, amount, exchange_rate,  
+		reason, rem_date, charge_acc_no, rem_charge, inter_charge, cable_charge, charge_cover, status, reserved_date 
+	</sql>
+	<insert id="insertRemittance" parameterType="remittanceVO">
+		insert into hs_t_remittance ( rem_no, info_no, acc_type, acc_no, amount, exchange_rate, 
+									reason, charge_acc_no, rem_charge, inter_charge, cable_charge, charge_cover)
+		values(seq_remittance_no.nextval, #{infoNo}, #{accType}, #{accNo}, #{amount}, #{exchangeRate}, 
+			   #{reason}, #{chargeAccNo}, #{remCharge}, #{interCharge}, #{cableCharge}, #{chargeCover} )
+	</insert>
+	<insert id="insertReservation" parameterType="remittanceVO">
+		insert into hs_t_remittance ( <include refid="allColumn" /> ) 
+		values(seq_remittance_no.nextval, #{infoNo}, #{accType}, #{accNo}, #{amount}, #{exchangeRate}, 
+			   #{reason}, to_date(#{remDate}, 'YYYY-MM-DD'), #{chargeAccNo}, #{remCharge}, #{interCharge}, #{cableCharge}, #{chargeCover}, 'RM', SYSDATE )
+	</insert>
+</mapper>

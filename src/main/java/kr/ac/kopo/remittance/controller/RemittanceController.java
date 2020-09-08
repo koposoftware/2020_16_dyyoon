@@ -17,6 +17,7 @@ import kr.ac.kopo.account.service.AccountService;
 import kr.ac.kopo.country.vo.CountryVO;
 import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.remittance.service.RemInfoService;
+import kr.ac.kopo.remittance.service.RemittanceService;
 import kr.ac.kopo.remittance.vo.RemInfoVO;
 import kr.ac.kopo.remittance.vo.RemittanceVO;
 
@@ -27,6 +28,8 @@ public class RemittanceController {
 	RemInfoService remInfoService;
 	@Autowired
 	AccountService accountService;
+	@Autowired
+	RemittanceService remittanceService;
 	
 	@GetMapping("/remittance")
 	public ModelAndView remRegisterForm(HttpSession session) {
@@ -43,30 +46,6 @@ public class RemittanceController {
 	}
 	
 	
-	 /* 이따 지울것
-	  
-	  @GetMapping("/remittance/confirm") public ModelAndView
-	  remRegisterConfirm(@Valid RemittanceVO remittanceVO, BindingResult result,
-	  HttpSession session) {
-	  
-	  ModelAndView mav = new ModelAndView(); String id =
-	  ((MemberVO)session.getAttribute("loginVO")).getId();
-	  
-	  if(result.hasErrors()) { mav.addObject("remInfoList",
-	  remInfoService.selectRemInfoList(id)); mav.addObject("accountList",
-	  accountService.selectAccountList(id));
-	  mav.setViewName("rem/remRegisterForm"); }else { RemInfoVO remInfoVO =
-	  remInfoService.selectRemInfoDetail(remittanceVO.getInfoNo()); String status =
-	  "remittanceConfirm";
-	  
-	  mav.addObject("status", status); mav.addObject("remittanceVO", remittanceVO);
-	  mav.addObject("remInfoDetail", remInfoVO);
-	  
-	  mav.setViewName("rem/remRegisterConfirm"); }
-	  
-	  return mav; }
-	 */
-	
 	@PostMapping("/remittance")
 	public ModelAndView remRegister(@Valid RemittanceVO remittanceVO, BindingResult result, HttpSession session) {
 		ModelAndView mav = new ModelAndView(); 
@@ -78,10 +57,52 @@ public class RemittanceController {
 			mav.setViewName("rem/remRegisterForm"); 
 		}else { 
 			RemInfoVO remInfoVO = remInfoService.selectRemInfoDetail(remittanceVO.getInfoNo()); 
+			
 			String status = "remittanceConfirm";
 			mav.addObject("status", status); 
 			mav.addObject("remittanceVO", remittanceVO);
 			mav.addObject("remInfoDetail", remInfoVO);
+			
+			System.out.println(remittanceVO);
+			remittanceService.insertRemittance(remittanceVO);
+			mav.setViewName("rem/remRegister"); 
+		}
+		return mav;
+	}
+	
+	@GetMapping("/remittance/reserve")
+	public ModelAndView remReserveForm(HttpSession session) {
+		
+		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
+		ModelAndView mav = new ModelAndView("rem/remReserveForm");
+		mav.addObject("remInfoList", remInfoService.selectRemInfoList(id));
+		mav.addObject("accountList", accountService.selectAccountList(id));
+		
+		RemittanceVO remittanceVO = new RemittanceVO();
+		mav.addObject("remittanceVO", remittanceVO);
+		
+		return mav;
+	}
+	
+	@PostMapping("/remittance/reserve")
+	public ModelAndView remReserve(@Valid RemittanceVO remittanceVO, BindingResult result, HttpSession session) {
+		ModelAndView mav = new ModelAndView(); 
+		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
+		
+		if(result.hasErrors()) { 
+			mav.addObject("remInfoList", remInfoService.selectRemInfoList(id)); 
+			mav.addObject("accountList", accountService.selectAccountList(id));
+			mav.setViewName("rem/remRegisterForm"); 
+		}else { 
+			RemInfoVO remInfoVO = remInfoService.selectRemInfoDetail(remittanceVO.getInfoNo()); 
+			
+			String status = "remittanceConfirm";
+			mav.addObject("status", status); 
+			mav.addObject("remittanceVO", remittanceVO);
+			mav.addObject("remInfoDetail", remInfoVO);
+			
+			System.out.println(remittanceVO);
+			remittanceService.insertReservation(remittanceVO);
 			mav.setViewName("rem/remRegister"); 
 		}
 		return mav;

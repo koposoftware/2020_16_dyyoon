@@ -16,19 +16,31 @@ public class RemittanceVO {
 	private String		remDate;
 	private String 		chargeAccNo;
 //	5천달러 이하 3,000원 / 5천달러 이상 5,000원
-	private Float		remCharge;
+	private Integer		remCharge;
 //	
-	private Float		interCharge;
+	private Integer		interCharge;
 //	전신료 5,000원
-	private Float		cableCharge;
+	private Integer		cableCharge;
 //	RM 수신인 부담 / RC 수취자부담
 	private String	chargeCover;
 //	RS(예약) / RM(수신은행) IN(중계은행) RC(수취은행)
 	private String 	status;
+	private String 	reservedDate;
 	
 	public RemittanceVO() {
 		super();
 	}
+	
+	
+	public String getReservedDate() {
+		return reservedDate;
+	}
+
+
+	public void setReservedDate(String reservedDate) {
+		this.reservedDate = reservedDate;
+	}
+
 
 	public String getAccType() {
 		return accType;
@@ -102,27 +114,27 @@ public class RemittanceVO {
 		this.remDate = remDate;
 	}
 
-	public Float getRemCharge() {
+	public Integer getRemCharge() {
 		return remCharge;
 	}
 
-	public void setRemCharge(Float remCharge) {
+	public void setRemCharge(Integer remCharge) {
 		this.remCharge = remCharge;
 	}
 
-	public Float getInterCharge() {
+	public Integer getInterCharge() {
 		return interCharge;
 	}
 
-	public void setInterCharge(Float interCharge) {
+	public void setInterCharge(Integer interCharge) {
 		this.interCharge = interCharge;
 	}
 
-	public Float getCableCharge() {
+	public Integer getCableCharge() {
 		return cableCharge;
 	}
 
-	public void setCableCharge(Float cableCharge) {
+	public void setCableCharge(Integer cableCharge) {
 		this.cableCharge = cableCharge;
 	}
 
@@ -142,12 +154,14 @@ public class RemittanceVO {
 		this.status = status;
 	}
 
+
 	@Override
 	public String toString() {
-		return "RemittanceVO [remNo=" + remNo + ", infoNo=" + infoNo + ", accNo=" + accNo + ", amount=" + amount
-				+ ", exchangeRate=" + exchangeRate + ", reason=" + reason + ", remDate=" + remDate + ", remCharge="
-				+ remCharge + ", interCharge=" + interCharge + ", cableCharge=" + cableCharge + ", chargeCover="
-				+ chargeCover + ", status=" + status + "]";
+		return "RemittanceVO [remNo=" + remNo + ", infoNo=" + infoNo + ", accType=" + accType + ", accNo=" + accNo
+				+ ", amount=" + amount + ", exchangeRate=" + exchangeRate + ", reason=" + reason + ", remDate="
+				+ remDate + ", chargeAccNo=" + chargeAccNo + ", remCharge=" + remCharge + ", interCharge=" + interCharge
+				+ ", cableCharge=" + cableCharge + ", chargeCover=" + chargeCover + ", status=" + status
+				+ ", reservedDate=" + reservedDate + "]";
 	}
 	
 }
