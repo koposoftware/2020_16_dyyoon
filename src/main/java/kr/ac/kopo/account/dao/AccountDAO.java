@@ -11,5 +11,12 @@ public interface AccountDAO {
 	 * @return  계좌 list
 	 */
 	List<AccountVO> selectAccountList(String id);
+	
+	/**
+	 * 해당 계좌의 잔액 조회
+	 * @param accNo 계좌번호
+	 * @return float 잔액
+	 */
+	Float selectAccountBalance(String accNo);
 
 }

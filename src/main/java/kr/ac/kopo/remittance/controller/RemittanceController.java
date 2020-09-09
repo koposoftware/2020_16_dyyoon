@@ -107,6 +107,23 @@ public class RemittanceController {
 		}
 		return mav;
 	}
+	
+	@GetMapping("/remittance/list")
+	public ModelAndView remList(HttpSession session) {
+		ModelAndView mav = new ModelAndView("rem/remList"); 
+		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
+		
+		return mav;
+	}
+	
+	
+	@GetMapping("/remittance/mistake")
+	public ModelAndView remMistakeList(HttpSession session) {
+		ModelAndView mav = new ModelAndView("rem/remList"); 
+		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
+		
+		return mav;
+	}
 
 	
 }

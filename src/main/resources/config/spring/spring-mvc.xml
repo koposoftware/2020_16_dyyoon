@@ -94,7 +94,21 @@
 		</property>
 	</bean>
 	
-	
+	<!-- 이메일 format thymeleaf 설정 -->
+	<bean id="templateResolver"
+		  class="org.thymeleaf.spring3.templateresolver.SpringResourceTemplateResolver">
+		<property name="prefix" value="classpath:/templates/" />
+		<property name="suffix" value=".jsp" />
+		<property name="templateMode" value="LEGACYHTML5" />
+		<property name="cacheable" value="false" />
+	</bean>
+	<bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+	<bean id="viewResolver" class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+		<property name="characterEncoding" value="UTF-8" />
+		<property name="templateEngine" ref="templateEngine" />
+	</bean>
 	
 	<!-- 트랜잭션 처리  -->
 	<!-- 

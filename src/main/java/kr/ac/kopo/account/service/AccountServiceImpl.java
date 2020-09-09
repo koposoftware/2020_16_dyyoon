@@ -18,4 +18,9 @@ public class AccountServiceImpl implements AccountService {
 		return accountDAO.selectAccountList(id);
 	}
 
+	@Override
+	public Float selectAccountBalance(String accNo) {
+		return accountDAO.selectAccountBalance(accNo);
+	}
+
 }

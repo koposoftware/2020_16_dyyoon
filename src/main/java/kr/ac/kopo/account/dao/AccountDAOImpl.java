@@ -18,4 +18,10 @@ public class AccountDAOImpl implements AccountDAO {
 		return session.selectList("account.dao.AccountDAO.selectAccountList", id);
 	}
 
+	@Override
+	public Float selectAccountBalance(String accNo) {
+		return session.selectOne("account.dao.AccountDAO.selectAccountBalance", accNo);
+	}
+
+	
 }

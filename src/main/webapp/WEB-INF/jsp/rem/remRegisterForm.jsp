@@ -89,7 +89,7 @@
 							<td>
 								<div class="input-group">
 								
-									<form:select class="custom-select" path="infoNo" id="registerForm-infoNo-select">
+									<form:select class="custom-select registerForm-infoNo-select" path="infoNo">
 										<form:option value="">받는 분을 선택하세요</form:option>
 										<c:forEach items="${ remInfoList }" var="remInfo">
 											<c:if test="${ remInfo.status eq '승인' }">
@@ -101,8 +101,7 @@
 									</form:select>
 									
 									<div class="input-group-append">
-										<button class="btn btn-info" type="button" disabled="disabled"
-											id="registerForm-infoNo-btn" data-toggle="modal"
+										<button class="btn btn-info registerForm-infoNo-btn" type="button" disabled="disabled" data-toggle="modal"
 											data-target="#registerForm-infoNo-modal">상세보기</button>
 									</div>
 									
@@ -128,51 +127,72 @@
 						<tr>
 							<th>계좌 유형 선택</th>
 							<td>
-								<form:radiobutton path="accType" value="원화계좌출금" checked="checked" label="원화계좌출금" /> 
-								<form:radiobutton path="accType" value="외화계좌출금" label="외화계좌출금" /> 
+								<form:radiobutton class="accType-radiobutton" path="accType" value="원화계좌출금" checked="checked" label="원화계좌출금" /> 
+								<form:radiobutton class="accType-radiobutton" path="accType" value="외화계좌출금" label="외화계좌출금" /> 
 							</td>
 						</tr>
 						<tr>
 							<th>송금계좌선택</th>
 							<td>
-								<div class="input-group">
-									<form:select class="custom-select" path="accNo">
+								<!-- 원화계좌출금  -->
+								<div class="input-group rem-krwAccount-input-group">
+									<form:select class="custom-select" path="accNo" disabled="false">
 										<form:option value="">계좌를 선택하세요</form:option>
 										<c:forEach items="${ accountList }" var="account">
+										<c:if test="${ account.type eq '03' }">
 											<form:option value="${ account.accNo }">
-												[${account.type }] ${ account.accNo } ( ${ account.accName } )
+												[ 자유입출금 ] ${ account.accNo } ( ${ account.accName } )
 											</form:option>
+										</c:if>
 										</c:forEach>
 									</form:select>
 									<div class="input-group-append">
-										<button class="btn btn-info" type="button">잔액조회</button>
+										<button class="btn btn-info registerForm-accNo-btn" type="button">잔액조회</button>
 									</div>
 								</div>
+								
+								<!-- 외화계좌출금  -->
+								<div class="input-group d-none rem-otherAccount-input-group">
+									<form:select class="custom-select" id="otherAccNo" path="accNo" disabled="true">
+										<form:option value="">계좌를 선택하세요</form:option>
+										<c:forEach items="${ accountList }" var="account">
+										<c:if test="${ account.type eq '04'}">
+											<form:option value="${ account.accNo }" data-currency="${ account.currency }">
+												[ 외화 - ${ account.currency } ] ${ account.accNo } ( ${ account.accName } )
+											</form:option>
+										</c:if>
+										</c:forEach>
+									</form:select>
+									<div class="input-group-append">
+										<button class="btn btn-info registerForm-otherAccNo-btn" type="button">잔액조회</button>
+									</div>
+								</div>
+								
+								<div class="text-secondary remRegister-mainAccountBalance"></div>
 							</td>
 						</tr>
 						<tr>
 							<th>송금 금액</th>
-							<td>
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="registerForm-amount-krw-prepend">KRW</span>
-									</div>
-									<form:input path="amount" type="text" class="form-control"
-										placeholder="0.00" id="krwAmountInput" />
-								</div>
-								<div class="text-center">
-									<span class="material-icons">cached</span>
-								</div>
+							<td class="remittanceAmount">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="registerForm-amount-other-prepend">미지정</span>
+										<span class="input-group-text registerForm-amount-krw-prepend">KRW</span>
 									</div>
-									<input type="text" class="form-control" placeholder="0.00"
-										id="otherAmountInput">
+									<form:input path="amount" type="text" class="form-control krwAmountInput"
+										placeholder="0.00" />
 								</div>
-								<div class="text-secondary">
+								<div class="text-center align-middle accType-hideAndShow">
+									<span class="material-icons">cached</span>
+								</div>
+								<div class="input-group accType-hideAndShow">
+									<div class="input-group-prepend">
+										<span class="input-group-text registerForm-amount-other-prepend">미지정</span>
+									</div>
+									<input type="text" class="form-control otherAmountInput" placeholder="0.00">
+								</div>
+								<div class="text-secondary accType-hideAndShow">
 									적용환율 : 
-									<span id="registerForm-amount-remittanceRate">통화 미지정</span>
+									<span class="registerForm-amount-remittanceRate">통화 미지정</span>
 								</div>
 							</td>
 						</tr>
@@ -183,19 +203,22 @@
 						<tr>
 							<th>수수료출금계좌</th>
 							<td>
-								<div class="input-group">
+								<div class="input-group rem-chargeAccount-input-group">
 									<form:select class="custom-select" path="chargeAccNo">
 										<form:option value="">계좌를 선택하세요</form:option>
 										<c:forEach items="${ accountList }" var="account">
 										<c:if test="${ account.type eq '03' }">
-											<form:option value="${ account.accNo }">[${account.type }] ${ account.accNo } ( ${ account.accName } )</form:option>
+											<form:option value="${ account.accNo }">
+											[ 자유입출금 ] ${ account.accNo } ( ${ account.accName } )
+											</form:option>
 										</c:if>	
 										</c:forEach>
 									</form:select>
 									<div class="input-group-append">
-										<button class="btn btn-info" type="button">잔액조회</button>
+										<button class="btn btn-info registerForm-chargeAccNo-btn" type="button">잔액조회</button>
 									</div>
 								</div>
+								<div class="text-secondary" id="remRegister-chargeAccountBalance"></div>
 							</td>
 						</tr>
 						<tr>
@@ -205,13 +228,13 @@
 						<tr>
 							<th>송금수수료</th>
 							<td>
-								<form:input id="remForm-remCharge" class="form-control" path="remCharge" readonly="true" value="3000"/>
+								<form:input class="form-control remForm-remCharge" path="remCharge" readonly="true" value="3000"/>
 							</td>
 						</tr>
 						<tr>
 							<th>중계수수료</th>
 							<td>
-								<form:input id="remForm-interCharge" class="form-control" path="interCharge" readonly="true" value="23000"/>
+								<form:input class="form-control remForm-interCharge" path="interCharge" readonly="true" value="23000"/>
 							</td>
 						</tr>
 						<tr>
@@ -333,32 +356,69 @@
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
 
+
+	<!------------------------------------------------------------ JS  ------------------------------------------------------------>
 	<script type="text/javascript">
+	
+		//계좌 유형에 따라 표시되는 계좌 달라짐 & amount는 현지통화방식
+		$('.accType-radiobutton').change(function(){
+			$('.remRegister-mainAccountBalance').empty();
+			var accType = $(this).val()
+			if(accType == '원화계좌출금'){
+				//원화출금계좌
+				$('.rem-krwAccount-input-group').removeClass("d-none")
+				$('.rem-krwAccount-input-group select').prop("disabled", false)
+				$('.rem-otherAccount-input-group select').prop("disabled", true)
+				$('.rem-otherAccount-input-group').addClass("d-none")
+				
+				$('.accType-hideAndShow').show()
+				$('.registerForm-amount-krw-prepend').text('KRW')
+			}else{
+				//외화출금계좌 선택
+				$('.rem-otherAccount-input-group').removeClass("d-none")
+				$('.rem-otherAccount-input-group select').prop("disabled", false)
+				$('.rem-krwAccount-input-group select').prop("disabled", true)
+				$('.rem-krwAccount-input-group').addClass("d-none")
+				
+				$('.accType-hideAndShow').hide()
+				
+				var optionValue = $('.registerForm-infoNo-select').children('option:selected').val();
+				if(optionValue != ''){
+					var currencyCode = $('.registerForm-infoNo-select').children('option:selected').data('currency')
+					$('.registerForm-amount-krw-prepend').text(currencyCode)
+				}else{
+					$('.registerForm-amount-krw-prepend').text('미지정')
+				}
+				
+			}
+		})
+	
+		//수수료 계산기
 		$('.chargeCover-radiobutton-cal').change(function(){
 			var chargeCoverVal = $(this).val()
-			var remCharge = $('#remForm-remCharge').val()
-			var interCharge = $('#remForm-interCharge').val()
+			var remCharge = $('.remForm-remCharge').val()
+			var interCharge = $('.remForm-interCharge').val()
 			
 			if(chargeCoverVal == 'RM'){
 				//보내는 분 부담 - (보내는분)전신료, 송금수수료, 중계수수료
-				$('#remForm-interCharge').val(23000)
-				$('#remForm-remCharge').val(3000)
+				$('.remForm-interCharge').val(23000)
+				$('.remForm-remCharge').val(3000)
 			}else if(chargeCoverVal == 'RC'){
 				//받는 분(송금수수료제외) 부담 - (보내는분)전신료, 송금수수료
-				$('#remForm-interCharge').val(0)
-				$('#remForm-remCharge').val(3000)
+				$('.remForm-interCharge').val(0)
+				$('.remForm-remCharge').val(3000)
 			}else{
 				//받는 분(송금수수료 포함) 부담 - (보내는분)전신료
-				$('#remForm-interCharge').val(0)
-				$('#remForm-remCharge').val(0)
+				$('.remForm-interCharge').val(0)
+				$('.remForm-remCharge').val(0)
 			}
 			
 		})
 	
 		// 원화를 입력하면 해외 통화 값 자동으로 변환
-		$('#krwAmountInput').keyup(function() {
+		$('.krwAmountInput').keyup(function() {
 			var amount = parseFloat($(this).val());
-			var currencyCode = $('#registerForm-infoNo-select').children('option:selected').data('currency')
+			var currencyCode = $('.registerForm-infoNo-select').children('option:selected').data('currency')
 			
 			if(currencyCode !== undefined ){
 				$.ajax({
@@ -366,23 +426,23 @@
 					type : 'get',
 					success : function(data) {
 						var rate = parseFloat(data);
-						if($('#krwAmountInput').val().length > 0 || rate != 0){
-							$('#otherAmountInput').val((amount / rate).toFixed(2))
+						if($('.krwAmountInput').val().length > 0 || rate != 0){
+							$('.otherAmountInput').val((amount / rate).toFixed(2))
 						}else{
-							$('#otherAmountInput').val(0.00)
+							$('.otherAmountInput').val(0.00)
 						}
 					},
 					error : function() {
-						alert('실패')
+						alert('원화를 입력하면 해외 통화 값 자동으로 변환')
 					}
 				})
 			}
 		})
 		
 		// 다른 통화 금액을 입력하면 원화 값 자동으로 변환
-		$('#otherAmountInput').keyup(function() {
+		$('.otherAmountInput').keyup(function() {
 			var amount = parseFloat($(this).val());
-			var currencyCode = $('#registerForm-infoNo-select').children('option:selected').data('currency')
+			var currencyCode = $('.registerForm-infoNo-select').children('option:selected').data('currency')
 			
 			
 			if(currencyCode !== undefined ){
@@ -391,50 +451,87 @@
 					type : 'get',
 					success : function(data) {
 						var rate = parseFloat(data);
-						if($('#otherAmountInput').val().length > 0 || rate != 0){
-							$('#krwAmountInput').val((amount * rate).toFixed(2))
+						if($('.otherAmountInput').val().length > 0 || rate != 0){
+							$('.krwAmountInput').val((amount * rate).toFixed(2))
 							
 						}
 						
 					},
 					error : function() {
-						alert('실패')
+						alert('다른 통화 금액을 입력하면 원화 값 자동으로 변환')
 					}
 				})
 			}
 		})
 		
+		//계좌 잔액 구하기 ajax
+		function getAccountBalance(accNo, divSection){
+			$.ajax({
+				url : '${pageContext.request.contextPath}/account/balance/' + accNo,
+				type : 'get',
+				success : function(data) {
+					divSection = '.' + divSection;
+					//var addBalance = document.getElementById(divSection);
+					//addBalance.append('잔액 : ' + data)
+					$(divSection).empty();
+					$(divSection).text('잔액 : ' + data)
+				},
+				error : function() {
+					alert('계좌잔액구하기 에러')
+				}
+			})
+		}
+		
+		//원화계좌 잔액 조회
+		$('.registerForm-accNo-btn').on('click', function(){
+			var infoNo = $('.rem-krwAccount-input-group option:selected').val();
+			getAccountBalance(infoNo, 'remRegister-mainAccountBalance');
+		})
+		//외화통장 잔액조회
+		$('.registerForm-otherAccNo-btn').on('click', function(){
+			var infoNo = $('.rem-otherAccount-input-group option:selected').val();
+			getAccountBalance(infoNo, 'remRegister-mainAccountBalance');
+		})
+		//수수료통장 잔액 조회
+		$('.registerForm-chargeAccNo-btn').on('click', function(){
+			var infoNo = $('.rem-chargeAccount-input-group option:selected').val();
+			getAccountBalance(infoNo, 'remRegister-chargeAccountBalance');
+		})
 		
 		
-		
-		
-		
-		
-
-		$('#registerForm-infoNo-select').change(
-				function() {
-					var optionValue = $('#registerForm-infoNo-select').children(
-							'option:selected').val();
+		// 보낼 상대방 선택하면 상대방의 통화에 따라 통화명과 환율이 적용됨
+		$('.registerForm-infoNo-select').change(function() {
+					var optionValue = $('.registerForm-infoNo-select').children('option:selected').val();
+					
+					//상대방 선택안하면 btn 클릭 안됨
 					if (optionValue == '') {
-						$('#registerForm-infoNo-btn').attr('disabled', 'disabled')
+						$('.registerForm-infoNo-btn').attr('disabled', 'disabled')
 					} else {
-						$('#registerForm-infoNo-btn').removeAttr('disabled');
-						var currencyCode = $('#registerForm-infoNo-select').children('option:selected').data('currency')
+						$('.registerForm-infoNo-btn').removeAttr('disabled');
+						var currencyCode = $('.registerForm-infoNo-select').children('option:selected').data('currency')
+						
+						//외화출금계좌에서 해당 currency만 클릭할수있게! 나머지 disabled
+						$('.rem-otherAccount-input-group option').each(function(){
+							optionCurrency = $(this).data('currency')
+							if(optionCurrency != currencyCode){
+								$(this).hide()
+							}
+						})
 						
 						// 선택한 infoNo의 통화코드 표시 
-						$('#registerForm-amount-other-prepend').text(currencyCode)
+						$('.registerForm-amount-other-prepend').text(currencyCode)
 						
 						// 선택한 infoNo의 통화코드의 현재 환율 표시
 						$.ajax({
 								url : '${pageContext.request.contextPath}/country/remittance/' + currencyCode,
 								type : 'get',
 								success : function(data) {
-									$('#registerForm-amount-remittanceRate').text(data)
+									$('.registerForm-amount-remittanceRate').text(data)
 									
 									$('<input/>').attr({type:'hidden', name:'exchangeRate', value:data}).appendTo('form[name="remForm"]');									
 								},
 								error : function() {
-									alert('실패')
+									alert('선택한 infoNo의 통화코드의 현재 환율 표시')
 								}
 							})
 						
@@ -442,9 +539,11 @@
 
 				})
 
-		$('#registerForm-infoNo-btn').on('click',
+		
+		//받는 분 정보 상세 modal 띄우기		
+		$('.registerForm-infoNo-btn').on('click',
 				function() {
-					var infoNo = $('#registerForm-infoNo-select').children('option:selected').val();
+					var infoNo = $('.registerForm-infoNo-select').children('option:selected').val();
 					
 					$.ajax({
 						url : '${pageContext.request.contextPath}/remInfo/'	+ infoNo,
@@ -454,7 +553,7 @@
 							$('#registerForm-infoNo-modal-body').html(data)
 						},
 						error : function() {
-							alert('실패')
+							alert('받는 분 정보 상세 modal 띄우기')
 						}
 					})
 				})

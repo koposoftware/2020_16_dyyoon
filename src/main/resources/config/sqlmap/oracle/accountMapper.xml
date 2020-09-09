@@ -17,4 +17,9 @@
 		<include refid="selectAllAccountColumn" />
 		where id = #{id}
 	</select>
+	<select id="selectAccountBalance" parameterType="String" resultType="Float">
+		select balance
+		 from hs_t_account
+		 where acc_no = #{ accNo }
+	</select>
 </mapper>

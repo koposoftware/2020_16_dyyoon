@@ -60,8 +60,8 @@
                                             <li><a href="${ pageContext.request.contextPath }/remInfo/register">송금정보 등록</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/remittance">해외송금 신청</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/remittance/reserve">해외송금 예약</a></li>
-                                            <li><a href="#">송금내역 조회</a></li>
-                                            <li><a href="#">착오송금 신고</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remittance/list">송금내역 조회</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remittance/mistake">착오송금 신고</a></li>
                                         </ul>
                                     </li>
                                     <li class="active"><a href="#" title="Home">환율</a></li>
