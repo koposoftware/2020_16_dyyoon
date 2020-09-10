@@ -27,11 +27,24 @@ public class RemittanceVO {
 	private String 	status;
 	private String 	reservedDate;
 	
+	//이건 VO에만
+	private String 	remInfoDesc;
+	
 	public RemittanceVO() {
 		super();
 	}
 	
 	
+	public String getRemInfoDesc() {
+		return remInfoDesc;
+	}
+
+
+	public void setRemInfoDesc(String remInfoDesc) {
+		this.remInfoDesc = remInfoDesc;
+	}
+
+
 	public String getReservedDate() {
 		return reservedDate;
 	}

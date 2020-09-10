@@ -60,4 +60,19 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
+	@PostMapping("/member/modify")
+	public ModelAndView modifyMyInfo(MemberVO memberVO, HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView("redirect:/remInfo/register");
+		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
+		memberVO.setId(id);
+		memberService.updateMyInfo(memberVO);
+		
+		MemberVO loginVO = memberService.selectInformationById(id);
+		
+		mav.addObject("loginVO", loginVO);
+		
+		return mav;
+	}
 }

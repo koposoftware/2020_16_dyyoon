@@ -1,5 +1,7 @@
 package kr.ac.kopo.remittance.dao;
 
+import java.util.List;
+
 import kr.ac.kopo.remittance.vo.RemittanceVO;
 
 public interface RemittanceDAO {
@@ -16,4 +18,10 @@ public interface RemittanceDAO {
 	 */
 	void insertReservation(RemittanceVO remittanceVO);
 	
+	/**
+	 * 모든 해외송금 내역 조회
+	 * @param id
+	 * @return
+	 */
+	List<RemittanceVO> selectAllRemittance(String id);
 }

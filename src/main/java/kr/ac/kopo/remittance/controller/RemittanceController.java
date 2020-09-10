@@ -103,7 +103,7 @@ public class RemittanceController {
 			
 			System.out.println(remittanceVO);
 			remittanceService.insertReservation(remittanceVO);
-			mav.setViewName("rem/remRegister"); 
+			mav.setViewName("rem/remReserve"); 
 		}
 		return mav;
 	}
@@ -113,13 +113,16 @@ public class RemittanceController {
 		ModelAndView mav = new ModelAndView("rem/remList"); 
 		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
 		
+		List<RemittanceVO> remittanceList = remittanceService.selectAllRemittance(id);
+		mav.addObject("remittanceList", remittanceList);
+		
 		return mav;
 	}
 	
 	
 	@GetMapping("/remittance/mistake")
 	public ModelAndView remMistakeList(HttpSession session) {
-		ModelAndView mav = new ModelAndView("rem/remList"); 
+		ModelAndView mav = new ModelAndView("rem/remMistakeList"); 
 		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
 		
 		return mav;

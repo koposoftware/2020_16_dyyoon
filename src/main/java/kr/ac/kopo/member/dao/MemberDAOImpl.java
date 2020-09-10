@@ -19,4 +19,15 @@ public class MemberDAOImpl implements MemberDAO {
 		return loginVO;
 	}
 
+	@Override
+	public MemberVO selectInformationById(String id) {
+		return sqlSession.selectOne("member.dao.MemberDAO.selectInformationById", id);
+	}
+	
+	@Override
+	public void updateMyInfo(MemberVO member) {
+		sqlSession.update("member.dao.MemberDAO.updateMyInfo", member);
+	}
+
+
 }

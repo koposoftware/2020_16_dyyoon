@@ -16,6 +16,7 @@
 		<result column="CABLE_CHARGE" property="cableCharge"/>
 		<result column="CHARGE_COVER" property="chargeCover"/>
 		<result column="RESERVED_DATE" property="reservedDate"/>
+		<result column="rem_info_desc" property="remInfoDesc"/>
 	</resultMap>
 	<sql id="allColumn">
 		rem_no, info_no, acc_type, acc_no, amount, exchange_rate,  
@@ -30,6 +31,13 @@
 	<insert id="insertReservation" parameterType="remittanceVO">
 		insert into hs_t_remittance ( <include refid="allColumn" /> ) 
 		values(seq_remittance_no.nextval, #{infoNo}, #{accType}, #{accNo}, #{amount}, #{exchangeRate}, 
-			   #{reason}, to_date(#{remDate}, 'YYYY-MM-DD'), #{chargeAccNo}, #{remCharge}, #{interCharge}, #{cableCharge}, #{chargeCover}, 'RM', SYSDATE )
+			   #{reason}, to_date(#{remDate}, 'YYYY-MM-DD'), #{chargeAccNo}, #{remCharge}, #{interCharge}, #{cableCharge}, #{chargeCover}, 'RS', SYSDATE )
 	</insert>
+	<select id="selectAllRemittance" parameterType="String" resultMap="remittanceMap">
+		select '['||ri.name||']'||ri.bank_name||', '||ri.acc_no as rem_info_desc,
+				to_char(r.rem_date, 'yyyy/mm/dd') as rem_date, r.acc_no, r.amount, r.status
+		from hs_t_remittance r, hs_t_rem_info ri 
+		where r.info_no = ri.info_no and ri.id = #{id}
+		 	
+	</select>
 </mapper>

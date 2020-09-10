@@ -15,4 +15,13 @@
 		<include refid="selectAllMemberColumn" />
 		where id = #{id} and password = #{password}
 	</select>
+	<select id="selectInformationById" parameterType="String" resultMap="memberMap">
+		<include refid="selectAllMemberColumn" /> 
+		where id = #{id}
+	</select>
+	<update id="updateMyInfo" parameterType="memberVO">
+		update hs_t_member  
+		set (eng_name, phone, email, addr, addr_detail) = (select #{engName}, #{phone}, #{email}, #{addr}, #{addrDetail} from dual)  
+		where id=#{id}
+	</update>
 </mapper>

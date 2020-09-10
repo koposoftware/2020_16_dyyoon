@@ -8,48 +8,31 @@
 <jsp:include page="/WEB-INF/jsp/include/headcss.jsp"></jsp:include>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/jsp/include/headerSec.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/jsp/include/headerSecForEmail.jsp"></jsp:include>
 	<!-- page-header-start -->
 	<div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-                    <div class="page-section">
-                        <h1 class="page-title">송금정보</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	<div class="page-breadcrumb">
 		<div class="container">
 			<div class="row">
-				<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-end navForBtn">
-					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li>송금정보</li>
-					</ol>
+				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+					<div class="page-section">
+						<h1 class="page-title">송금 정보 입력</h1>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- page-header-close -->
 
+	<!-- 페이지 시작 -->
+		<div class="container allAccount-con pt-1 pb-5">
+		<div class="row d-flex justify-content-center h-75 align-items-center">
+			
+			<div class="col-md-8 text-center">
 
-	<!-- remInfo page start -->
-	
-	<div class="container allAccount-con pt-3 pb-3">
-		<div class="row">
-			<!-- side menu col-md-3   -->
-			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
-			
-			
-			<div class="col-md-9">
-			<div class="d-flex">
-					<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">송금 정보 등록이 완료되었습니다</span></div>
+				<div class="d-flex">
+					<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle"> 성공적으로 등록되었습니다</span></div>
 				</div>
-			
-			<table class="table table-sm ">
+				<table class="table table-sm ">
 				<tr>
 					<th colspan="2">영문이름</th>
 					<td>${ remInfoDetail.name }</td>
@@ -109,18 +92,17 @@
 					<td>${ remInfoDetail.myDesc }</td>
 				</tr>
 			</table>
-			<div class="text-center mt-2 mb-2">
-			<button class="btn btn-info" onclick="window.location.href='${ pageContext.request.contextPath }/remInfo'">목록</button>
-			<button class="btn btn-light" onclick="window.location.href='${ pageContext.request.contextPath }/remInfo/register'">재등록</button>
-			</div>
-			
+				
+
 			</div>
 		</div>
 	</div>
-	<!-- remInfo page close -->
+	
+	<!-- 페이지 끝 -->
 	
 	
-	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+	
+<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
 </body>
 </html>

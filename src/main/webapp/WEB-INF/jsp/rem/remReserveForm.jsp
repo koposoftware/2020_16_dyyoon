@@ -264,7 +264,7 @@
 					<div class="text-center">
 					
 					<button class="btn btn-light" type="button">다시 입력하기</button>
-					<button class="btn btn-info" type="submit">해외송금하기</button>
+					<button class="btn btn-info" type="submit">해외송금 예약하기</button>
 					</div>
 					
 				</form:form>

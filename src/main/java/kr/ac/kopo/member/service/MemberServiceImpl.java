@@ -18,4 +18,16 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.login(memberVO);
 	}
 
+	@Override
+	public MemberVO selectInformationById(String id) {
+		return memberDAO.selectInformationById(id);
+	}
+	
+	@Override
+	public void updateMyInfo(MemberVO member) {
+		memberDAO.updateMyInfo(member);
+	}
+
+
+
 }

@@ -1,18 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- <html xmlns:v="urn:schemas-microsoft-com:vml"> -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel="stylesheet">
     <!-- 노토산스 noto sans font  -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    
-
-    <title>Material Design for Bootstrap</title>
-
-    <style type="text/css">
+	<title>해외송금 정보 입력 신청</title>
+	<style type="text/css">
         body {
             width: 100%;
             background-color: #ffffff;
@@ -129,23 +127,9 @@
             }
         }
     </style>
-   
 </head>
-
-
-<body class="respond" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <!-- pre-header -->
-    <table style="display:none!important;">
-        <tr>
-            <td>
-                <div style="overflow:hidden;display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;maxheight:0px;max-width:0px;opacity:0;">
-                    Pre-header for the newsletter template
-                </div>
-            </td>
-        </tr>
-    </table>
-    <!-- pre-header end -->
-    <!-- header -->
+<body  class="respond" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+	    <!-- header -->
     <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff">
 
         <tr>
@@ -164,7 +148,7 @@
                                 <tr>
                                     <td align="center" height="70" style="height:70px;">
                                         <a href="" style="display: block; border-style: none !important; border: 0 !important;">
-                                        <img width="200" border="0" style="display: block; width: 200px;" src="cid:hanasafe-logo.png" alt="" />
+                                        <img width="200" border="0" style="display: block; width: 200px;"  src="hanasafe-logo.png" alt=""  th:src="|cid:${hanasafe-logo}|" />
                                         </a>
                                     </td>
                                 </tr>
@@ -181,21 +165,17 @@
         </tr>
     </table>
     <!-- end header -->
-
-    <!-- big image section -->
+	<!-- big image section -->
     <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="bg_color">
 
         <tr>
             <td align="center">
                 <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
                     <tr>
-
                         <td align="center" class="section-img">
-                            <a href="" style=" border-style: none !important; display: block; border: 0 !important;"><img src="cid:hero-airballoon.jpg" style="display: block; width: 500px;" width="500" border="0" alt="" /></a>
-
-
-
-
+                            <a href="" style=" border-style: none !important; display: block; border: 0 !important;">
+                            <img src="hero-airballoon.jpg" style="display: block; width: 500px;" width="500" border="0" alt="" th:src="|cid:${hero-airballoon}|"/>
+                            </a>
                         </td>
                     </tr>
                     <tr>
@@ -203,20 +183,14 @@
                     </tr>
                     <tr>
                         <td align="center" style="color: #343434; font-size: 24px; font-family: 'Noto Sans KR', sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;" class="main-header">
-
-
                             <div style="line-height: 35px">
-
                                 <span style="color: #5caad2;">송금 정보</span> 입력 요청
-
                             </div>
                         </td>
                     </tr>
-
                     <tr>
                         <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
                     </tr>
-
                     <tr>
                         <td align="center">
                             <table border="0" width="40" align="center" cellpadding="0" cellspacing="0" bgcolor="eeeeee">
@@ -226,20 +200,15 @@
                             </table>
                         </td>
                     </tr>
-
                     <tr>
                         <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
                     </tr>
-
                     <tr>
                         <td align="center">
                             <table border="0" width="400" align="center" cellpadding="0" cellspacing="0" class="container590">
                                 <tr>
                                     <td align="center" style="color: #888888; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; line-height: 24px;">
-
-
                                         <div style="line-height: 24px">
-
                                            	고객님께 송금정보(수취인 정보) 입력 요청이 들어왔습니다
                                            	아래 버튼을 클릭해 정보를 입력해주세요 
                                         </div>
@@ -248,26 +217,19 @@
                             </table>
                         </td>
                     </tr>
-
                     <tr>
                         <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td>
                     </tr>
-
                     <tr>
                         <td align="center">
                             <table border="0" align="center" width="160" cellpadding="0" cellspacing="0" bgcolor="5caad2" style="">
-
                                 <tr>
                                     <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
                                 </tr>
-   
                                 <tr>
                                     <td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; line-height: 26px;">
-
-
                                         <div style="line-height: 26px;">
-                                            <a href="/Hana-Safe/" style="color: #ffffff; text-decoration: none;">입력</a>
-                                            <button onclick="window.location.href='/Hana-Safe/'">입력</button>
+                                            <a href="/Hana-Safe/" th:href="@{${homepageUrl}}" style="color: #ffffff; text-decoration: none;">입력</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -288,8 +250,8 @@
 
     </table>
     <!-- end section -->
-
-    <!-- contact section -->
+    
+      <!-- contact section -->
     <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="bg_color">
 
         <tr class="hide">
@@ -314,7 +276,9 @@
                                 <tr>
                                     <!-- logo -->
                                     <td align="left">
-                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="120" border="0" style="display: block; width: 120px;" src="cid:hanasafe-logo.png" alt="" /></a>
+                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;">
+                                        <img width="120" border="0" style="display: block; width: 120px;" src="hanasafe-logo.png" alt=""  th:src="|cid:${hanasafe-logo}|" />
+                                        </a>
                                     </td>
                                 </tr>
 
@@ -357,15 +321,15 @@
                                         <table border="0" align="right" cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td>
-                                                    <a href="https://www.facebook.com/mdbootstrap" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://i.imgur.com/Qc3zTxn.png" alt=""></a>
+                                                    <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://i.imgur.com/Qc3zTxn.png" alt=""></a>
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                                 <td>
-                                                    <a href="https://twitter.com/MDBootstrap" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://i.imgur.com/RBRORq1.png" alt=""></a>
+                                                    <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://i.imgur.com/RBRORq1.png" alt=""></a>
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                                 <td>
-                                                    <a href="https://plus.google.com/u/0/b/107863090883699620484/107863090883699620484/posts" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://i.imgur.com/Wji3af6.png" alt=""></a>
+                                                    <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://i.imgur.com/Wji3af6.png" alt=""></a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -385,8 +349,8 @@
 
     </table>
     <!-- end section -->
-
-
+    
+    
+	
 </body>
-
 </html>

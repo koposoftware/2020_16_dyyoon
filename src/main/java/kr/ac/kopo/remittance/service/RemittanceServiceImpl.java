@@ -1,5 +1,7 @@
 package kr.ac.kopo.remittance.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,11 @@ public class RemittanceServiceImpl implements RemittanceService {
 	@Override
 	public void insertReservation(RemittanceVO remittanceVO) {
 		remittanceDAO.insertReservation(remittanceVO);
+	}
+
+	@Override
+	public List<RemittanceVO> selectAllRemittance(String id) {
+		return remittanceDAO.selectAllRemittance(id);
 	}
 	
 	
