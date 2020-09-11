@@ -24,8 +24,6 @@ public class EmailServiceImpl implements EmailService {
 	public void sendEmail(String emailAddr, String fromName) throws MessagingException{
 		
 		Context context = new Context();
-		context.setVariable("hero-airballoon", "hero-airballoon");
-		context.setVariable("hanasafe-logo", "hanasafe-logo");
 		context.setVariable("homepageUrl", "http://localhost:9999/Hana-Safe/remInfo/ask/auth");
 		
 		
@@ -40,8 +38,6 @@ public class EmailServiceImpl implements EmailService {
 		String htmlContent = springTemplateEngine.process("remInfoEmail", context);
 		helper.setText(htmlContent, true);
 		
-		//helper.addInline("hero-airballoon", new ClassPathResource("/templates/hero-airballoon.jpg"), "image/jpg");
-		//helper.addInline("hanasafe-logo", new ClassPathResource("/templates/hanasafe-logo.png"), "image/png");
 		
 		mailSender.send(message);
 		

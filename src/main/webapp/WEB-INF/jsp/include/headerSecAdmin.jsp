@@ -29,57 +29,29 @@
         </div>
     </div>
     <div class="header-wrapper">
-        <div class="header">
+        <div class="header shadow">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                         <a href="${ pageContext.request.contextPath }"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png"></a>
                     </div>
                    
-                    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                         <div class="navigation d-flex justify-content-end navForBtn">
-                        <div>
-                        <c:choose>
-                        <c:when test="${ empty loginVO }">
-	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/login'">로그인</button>
-	                      	<button class="btn btn-light mt-2 mr-2">회원가입</button>
-                        </c:when>
-                        <c:otherwise>
-	                      	<button class="btn btn-link mt-2 shadow-none text-secondary"><span class="text-info">${ loginVO.name }</span>님 어서오세요</button>
-	   					                    	
-                        <!--
-	                      	<span class="dropdown show">
-		                      	<button class="dropdown-toggle btn btn-link mt-2 shadow-none text-secondary" id="welcomeUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                      		<span class="text-info">${ loginVO.name }</span>님 어서오세요
-		                      	</button>
-		                      		<%-- 
-		                        	<a href="#" class="dropdown-toggle mt-2 text-secondary" id="welcomeUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                        		<span class="text-info">${ loginVO.name }</span>님 어서오세요
-		                        	</a>
-		                        	 --%>
-		                        	<span class="dropdown-menu" aria-labelledby="welcomeUser" style="font-size: 14px;">
-									    <a class="dropdown-item" href="#">
-									    	<span class="material-icons text-secondary align-middle mr-2">person</span><span class="align-middle">계정관리</span>
-									    </a>
-									    <a class="dropdown-item" href="#">
-									    	<span class="material-icons text-secondary align-middle mr-2">settings</span><span class="align-middle">설정</span>
-									    </a>
-									</span>
-	                        </span>
-	   					  --> 
-	                      	
-	                      	
-	                      	
-	                      	
-	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
-                        </c:otherwise>
-                        </c:choose>
-                        </div>	
+	                      	<button class="btn btn-link shadow-none text-secondary" data-badge="6">
+		                      	<span class="text-info">${ loginVO.name }</span>님 어서오세요
+		                      	 <span class="badge badge-danger badge-pill">4</span>
+	                      	</button>
+	                      	<!-- 
+	                      	<button class="btn btn-link shadow-none text-secondary pl-0"> 
+	                      		<span class="material-icons align-middle">notifications</span>
+	                      	</button>
+	                      	 -->
+	                      	<button class="btn btn-info" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
+
                             <div id="navigation">
-                            
                                 <ul>
-                                    <li class="active"><a href="#" title="Home">서비스 소개</a></li>
-                                    <li class="has-sub"><a href="#" title="Tours">해외송금</a>
+                                    <li class="has-sub"><a href="#" title="Tours">해외송금 관리</a>
                                         <ul>
                                             <li><a href="${ pageContext.request.contextPath }/remInfo">송금정보 조회</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/remInfo/register">송금정보 등록</a></li>
@@ -89,9 +61,8 @@
                                             <li><a href="${ pageContext.request.contextPath }/remittance/mistake">착오송금 신고</a></li>
                                         </ul>
                                     </li>
-                                    <li class="active"><a href="#" title="Home">환율</a></li>
-                                    <li class="active"><a href="#" title="Home">계좌조회</a></li>
-                                    <li class="active"><a href="#" title="Home">고객센터</a></li>
+                                    <li class="active"><a href="#" title="Home">사용자 관리</a></li>
+                                    <li class="active"><a href="#" title="Home">고객센터 관리</a></li>
                                 </ul>
                             </div>
                         </div>

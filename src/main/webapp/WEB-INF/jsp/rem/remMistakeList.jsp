@@ -6,7 +6,6 @@
 <html>
 <head>
 <jsp:include page="/WEB-INF/jsp/include/headcss.jsp"></jsp:include>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 </head>
 <body>
 	<jsp:include page="/WEB-INF/jsp/include/headerSec.jsp"></jsp:include>
@@ -46,10 +45,33 @@
 			
 			<div class="col-md-9">
 			
+			<table class="table table-sm">
+				<tr>
+					<th>조회기간</th>
+					<td>
+						<input type="date"> ~
+						<input type="date">
+					</td>
+				</tr>
+			</table>
+			
+			<div class="text-center">
+				<button class="btn btn-info">조회하기</button>
+			</div>
 			
 			
-			
-			
+			<table class="table table-sm mt-3">
+				<tr class="text-center">
+					<th>착오송금번호</th>
+					<th>해외송금 상대계좌</th>
+					<th>본인계좌</th>
+					<th>송금액</th>
+					<th>상태</th>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button class="btn btn-info" onclick="window.location.href='${ pageContext.request.contextPath}/remittance/mistake/write'">착오송금 신청하기</button>
+			</div>
 			
 			</div>
 		</div>
@@ -59,6 +81,5 @@
 	
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/jsp/include/datepickerHS.jsp"></jsp:include>
 </body>
 </html>

@@ -5,7 +5,9 @@
 <html>
 <head>
 <jsp:include page="/WEB-INF/jsp/include/headcss.jsp"></jsp:include>
+<!-- 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+ -->
 </head>
 <body>
 	<jsp:include page="/WEB-INF/jsp/include/headerSec.jsp"></jsp:include>
@@ -50,8 +52,8 @@
 				<tr>
 					<th>조회기간</th>
 					<td>
-						<input type="date" class="datepickerHS"> ~
-						<input type="date" class="datepickerHS">
+						<input type="date"> ~
+						<input type="date">
 					</td>
 				</tr>
 			</table>
@@ -92,6 +94,5 @@
 	
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/jsp/include/datepickerHS.jsp"></jsp:include>
 </body>
 </html>

@@ -37,15 +37,20 @@ public class MemberController {
 			System.out.println("로그인실패");
 			mav.setViewName("redirect:/login");
 		}else {
-			//로그인성공
-			String dest = (String)session.getAttribute("dest");
-			if(dest == null) {
-				//로그인 인터셉터 안거친것 - 메인페이지로가면됨
-				mav.setViewName("redirect:/");
-			}else {
-				//로그인 인터셉터 거친 것
-				mav.setViewName("redirect:" + dest);
-				session.removeAttribute("dest");
+				// 로그인성공
+				String dest = (String)session.getAttribute("dest");
+				if(dest == null) {
+					//로그인 인터셉터 안거친것 - 메인페이지로가면됨
+					mav.setViewName("redirect:/");
+					if(loginVO.getType().equals("S")) {
+						mav.setViewName("redirect:/admin");
+					}
+				}else {
+					//로그인 인터셉터 거친 것
+					mav.setViewName("redirect:" + dest);
+					session.removeAttribute("dest");
+				
+				
 			}
 			
 			mav.addObject("loginVO", loginVO);
@@ -75,4 +80,14 @@ public class MemberController {
 		
 		return mav;
 	}
+	
+	@GetMapping("/admin")
+	public ModelAndView adminIndex() {
+		ModelAndView mav = new ModelAndView("admin/adminIndex");
+		
+		
+		return mav;
+		
+	}
+	
 }

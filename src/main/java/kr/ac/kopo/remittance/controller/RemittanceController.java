@@ -120,13 +120,7 @@ public class RemittanceController {
 	}
 	
 	
-	@GetMapping("/remittance/mistake")
-	public ModelAndView remMistakeList(HttpSession session) {
-		ModelAndView mav = new ModelAndView("rem/remMistakeList"); 
-		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
-		
-		return mav;
-	}
+	
 
 	
 }

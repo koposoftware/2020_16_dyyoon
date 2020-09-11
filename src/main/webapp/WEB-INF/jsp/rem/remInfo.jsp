@@ -118,7 +118,19 @@ $(document).ready(function(){
 									<td>${ remInfo.currency }</td>
 									<td>${ remInfo.bankName }</td>
 									<td>${ remInfo.accNo }</td>
-									<td>${ remInfo.status }</td>
+									<td>
+									<c:choose>
+										<c:when test="${ remInfo.status eq '승인' }">
+											<span class="text-success"> ${ remInfo.status } </span>
+										</c:when>
+										<c:when test="${ remInfo.status eq '비승인' }">
+											<span class="text-danger"> ${ remInfo.status } </span>
+										</c:when>
+										<c:otherwise>
+											<span> ${ remInfo.status } </span>
+										</c:otherwise>
+									</c:choose>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

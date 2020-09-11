@@ -45,23 +45,37 @@
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
 			
 			<div class="col-md-9">
-			
+			<div class="font-weight-bold">
+			<span class="material-icons align-middle text-info">report</span>
+			<span class="align-middle">착오송금반환신청</span>
+			</div>
 			<form:form>
 			
 			
 			<table class="table table-sm">
 				<tr>
-					<th>해외송금 선택</th>
+					<th>해외송금 내역 선택	</th>
 					<td>
-						<input type="date" class="datepickerHS"> ~
-						<input type="date" class="datepickerHS mr-3">
-						<button class="btn btn-info">조회하기</button>
-						<br>
-						
+						<select class="form-control">
+							<option>선택하세요</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
-					
+					<th>
+						착오송금 사유 선택
+					</th>
+					<td>	
+						<select class="form-control">
+							<option>선택하세요</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>착오송금 사유 상세</th>
+					<td>
+						<textarea rows="10" cols="70"></textarea>
+					</td>
 				</tr>
 			</table>
 			
