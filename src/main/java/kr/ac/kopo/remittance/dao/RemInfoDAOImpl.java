@@ -1,6 +1,7 @@
 package kr.ac.kopo.remittance.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,24 @@ public class RemInfoDAOImpl implements RemInfoDAO {
 	@Override
 	public void insertRemInfo(RemInfoVO remInfo) {
 		session.insert("remittance.dao.RemInfoDAO.insertRemInfo", remInfo);
+	}
+
+	/*-------------------------
+			ADMIN PAGE
+	-------------------------*/	
+	@Override
+	public List<RemInfoVO> selectAllRemInfoList() {
+		return session.selectList("remittance.dao.RemInfoDAO.selectAllRemInfoList");
+	}
+
+	@Override
+	public Map<String, Object> selectRemInfoCount() {
+		return session.selectOne("remittance.dao.RemInfoDAO.selectRemInfoCount");
+	}
+
+	@Override
+	public void updateStatusRemInfo(RemInfoVO remInfo) {
+		session.update("remittance.dao.RemInfoDAO.updateStatusRemInfo", remInfo);
 	}
 	
 }

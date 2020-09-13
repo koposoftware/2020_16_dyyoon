@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +33,13 @@
 		             <div class="card-body">
 		               <div class="row no-gutters align-items-center">
 		                 <div class="col mr-2">
-		                   <div class="text-xs font-weight-bold text-info mb-1">송금정보 승인요청 건수</div>
-		                   <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+		                   <div class="text-xs font-weight-bold text-info mb-1">보낸 해외송금 승인 요청 건수</div>
+		                   <div class="h5 mb-0 font-weight-bold text-gray-800">
+		                   		${ remittanceCount["COUNTWAITING"] } / ${ remittanceCount["COUNTALL"] }
+		                   </div>
 		                 </div>
 		                 <div class="col-auto">
-		                   <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+		                   <i class="material-icons">how_to_reg</i>
 		                 </div>
 		               </div>
 		             </div>
@@ -50,30 +53,32 @@
 				<div>
 					<div class="card shadow mb-4">
 			            <div class="card-header py-3">
-			              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+			              <h6 class="m-0 font-weight-bold text-info">보낸 해외송금 승인</h6>
 			            </div>
 			            <div class="card-body">
 			              <div class="table-responsive">
-			                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			                <table class="table table-bordered table-hover admin-table-select" id="dataTable" >
 			                  <thead>
 			                    <tr>
-			                      <th>Name</th>
-			                      <th>Position</th>
-			                      <th>Office</th>
-			                      <th>Age</th>
-			                      <th>Start date</th>
-			                      <th>Salary</th>
+			                      <th>송금 일자</th>
+			                      <th>보낸 분 계좌번호</th>
+			                      <th>받는 분</th>
+			                      <th>받는 분 계좌번호</th>
+			                      <th>통화</th>
+			                      <th>송금액</th>
 			                    </tr>
 			                  </thead>
 			                  <tbody>
-			                  	<tr>
-			                      <td>Donna Snider</td>
-			                      <td>Customer Support</td>
-			                      <td>New York</td>
-			                      <td>27</td>
-			                      <td>2011/01/25</td>
-			                      <td>$112,000</td>
-			                    </tr>
+			                    <c:forEach items="${ remittanceList }" var="remittance">
+									<tr class="table-row-clickable" data-value="${ remittance.remNo }">
+										<td>${ remittance.remDate }</td>
+										<td>${ remittance.accNo }</td>
+										<td>${ remittance.infoNo }</td>
+										<td>${ remittance.infoNo }</td>
+										<td>${ remittance.infoNo }</td>
+										<td>${ remittance.amount }</td>
+									</tr>
+								</c:forEach>
 			                  </tbody>
 			                 </table>
 			                </div>
@@ -93,5 +98,12 @@
 
 <jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjsAdmin.jsp"></jsp:include>
+<script>
+	$(".admin-table-select tbody tr").on('click', function() {
+		var remNo = $(this).data("value");
+		window.location.href = '${pageContext.request.contextPath}/admin/remittance/' + remNo;
+	    
+	  });
+</script>
 </body>
 </html>

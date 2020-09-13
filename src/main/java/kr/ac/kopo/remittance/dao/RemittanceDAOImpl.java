@@ -1,6 +1,7 @@
 package kr.ac.kopo.remittance.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,26 @@ public class RemittanceDAOImpl implements RemittanceDAO {
 	public List<RemittanceVO> selectAllRemittance(String id) {
 		return session.selectList("remittance.dao.RemittanceDAO.selectAllRemittance", id);
 	}
+
+	
+	
+	/*-------------------------
+		ADMIN PAGE
+	-------------------------*/
+	@Override
+	public List<RemittanceVO> selectAllRemittanceAdmin() {
+		return session.selectList("remittance.dao.RemittanceDAO.selectAllRemittanceAdmin");
+	}
+	
+	@Override
+	public Map<String, Object> selectRemittanceCount() {
+		return session.selectOne("remittance.dao.RemittanceDAO.selectRemittanceCount");
+	}
+	
+	@Override
+	public void updateStatusRemittance(RemittanceVO remittance) {
+		session.update("remittance.dao.RemittanceDAO.updateStatusRemittance");
+	}
+	
 
 }

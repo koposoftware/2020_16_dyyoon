@@ -1,6 +1,7 @@
 package kr.ac.kopo.remittance.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,25 @@ public class RemInfoServiceImpl implements RemInfoService {
 	@Override
 	public void insertRemInfo(RemInfoVO remInfo) {
 		dao.insertRemInfo(remInfo);
+	}
+	
+	
+	/*-------------------------
+			ADMIN PAGE
+	-------------------------*/
+	@Override
+	public List<RemInfoVO> selectAllRemInfoList() {
+		return dao.selectAllRemInfoList();
+	}
+
+	@Override
+	public Map<String, Object> selectRemInfoCount() {
+		return dao.selectRemInfoCount();
+	}
+
+	@Override
+	public void updateStatusRemInfo(RemInfoVO remInfo) {
+		dao.updateStatusRemInfo(remInfo);
 	}
 
 }

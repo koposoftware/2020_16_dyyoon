@@ -1,11 +1,13 @@
 package kr.ac.kopo.remittance.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -90,7 +92,31 @@ public class RemInfoController {
 	
 	@GetMapping("/admin/remInfo")
 	public ModelAndView remInfoCheckList() {
-		ModelAndView mav = new ModelAndView("admin/rem/remInfoCheck");
+		ModelAndView mav = new ModelAndView("admin/remInfo/remInfoCheck");
+		mav.addObject("remInfoList", service.selectAllRemInfoList());
+		Map<String, Object> map = service.selectRemInfoCount();
+		mav.addObject("remInfoCount", map);
+		
 		return mav;
 	}
+	
+	@GetMapping("/admin/remInfo/{remInfoNo}")
+	public ModelAndView remInfoCheckDetail(@PathVariable("remInfoNo") Integer remInfoNo) {
+		
+		ModelAndView mav = new ModelAndView("admin/remInfo/remInfoCheckDetail");
+		mav.addObject("remInfoDetail", service.selectRemInfoDetail(remInfoNo));
+		
+		return mav;
+	}
+	
+	@PostMapping("/admin/remInfo")
+	public ModelAndView remInfoCheck(RemInfoVO remInfo) {
+		
+		ModelAndView mav = new ModelAndView("redirect:/admin/remInfo");
+		service.updateStatusRemInfo(remInfo);
+		
+		return mav;
+	}
+	
+	
 }

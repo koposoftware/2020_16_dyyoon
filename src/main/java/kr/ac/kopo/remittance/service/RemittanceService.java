@@ -1,6 +1,7 @@
 package kr.ac.kopo.remittance.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.kopo.remittance.vo.RemittanceVO;
 
@@ -24,5 +25,28 @@ public interface RemittanceService {
 	 * @return
 	 */
 	List<RemittanceVO> selectAllRemittance(String id);
+
+	
+	
+	/*-------------------------
+		ADMIN PAGE
+	-------------------------*/
+	/**
+	* 심사해야할 모든 해외송금내역 조회
+	* @return
+	*/
+	List<RemittanceVO> selectAllRemittanceAdmin();
+	
+	/**
+	* 송금 총 수 / 대기 수 
+	* @return countAll - 총 / countWaiting - 대기중
+	*/
+	Map<String, Object> selectRemittanceCount();
+	
+	/**
+	* 해외송금 심사 
+	* @param remittance
+	*/
+	void updateStatusRemittance(RemittanceVO remittance);
 
 }

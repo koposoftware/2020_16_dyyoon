@@ -1,6 +1,7 @@
 package kr.ac.kopo.remittance.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -120,7 +121,21 @@ public class RemittanceController {
 	}
 	
 	
-	
+	/*-------------------------------------------
+	 * 
+	 * 				admin page
+	 * 
+	 * -------------------------------------------*/
+	@GetMapping("/admin/remittance")
+	public ModelAndView allRemList() {
+		ModelAndView mav = new ModelAndView("admin/remittance/remittanceCheck");
+		
+		mav.addObject("remittanceList", remittanceService.selectAllRemittanceAdmin());
+		Map<String, Object> map = remittanceService.selectRemittanceCount();
+		mav.addObject("remittanceCount", map);
+		
+		return mav;
+	}
 
 	
 }

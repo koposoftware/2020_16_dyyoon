@@ -31,7 +31,7 @@
                                         <ul>
                                             <li><a href="${ pageContext.request.contextPath }/admin">오늘의 해외송금</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/admin/remInfo">송금정보 승인</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/admin">보낸 해외송금 승인</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/admin/remittance">보낸 해외송금 승인</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/admin">받은 해외송금 승인</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/admin">착오송금 처리</a></li>
                                         </ul>

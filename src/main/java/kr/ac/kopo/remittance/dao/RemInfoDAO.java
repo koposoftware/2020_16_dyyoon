@@ -1,6 +1,7 @@
 package kr.ac.kopo.remittance.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.kopo.remittance.vo.RemInfoVO;
 
@@ -25,5 +26,26 @@ public interface RemInfoDAO {
 	 * @param 송금정보VO
 	 */
 	void insertRemInfo(RemInfoVO remInfo);
+	
+	/*-------------------------
+	   		ADMIN PAGE
+	 -------------------------*/
+	/**
+	 * 모든 송금 정보 신청 내역들을 보는 기능
+	 * @return RemInfoVO LIST
+	 */
+	List<RemInfoVO> selectAllRemInfoList();
+	
+	/**
+	 * 송금정보 총 수 / 대기 수 
+	 * @return countAll - 총 / countWaiting - 대기중
+	 */
+	Map<String, Object> selectRemInfoCount();
+	
+	/**
+	 * 송금정보 심사 
+	 * @param remInfo
+	 */
+	void updateStatusRemInfo(RemInfoVO remInfo);
 
 }

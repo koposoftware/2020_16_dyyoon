@@ -38,6 +38,20 @@
 				to_char(r.rem_date, 'yyyy/mm/dd') as rem_date, r.acc_no, r.amount, r.status
 		from hs_t_remittance r, hs_t_rem_info ri 
 		where r.info_no = ri.info_no and ri.id = #{id}
-		 	
 	</select>
+	
+	
+	<select id="selectAllRemittanceAdmin" resultMap="remittanceMap">
+		select ri.bank_name||', '||ri.acc_no as rem_info_desc,
+				to_char(r.rem_date, 'yyyy/mm/dd') as rem_date, r.acc_no, r.amount, r.status, r.info_no
+		from hs_t_remittance r, hs_t_rem_info ri 
+		where r.info_no = ri.info_no
+	</select>
+	<select id="selectRemittanceCount" resultType="hashmap">
+		select count(*) countAll, count(case when status='RM' then 1 end) countWaiting 
+		from hs_t_remittance
+	</select>
+	<update id="updateStatusRemittance" parameterType="remittanceVO">
+		update hs_t_remittance set status=#{status} where rem_no=#{remNo}
+	</update>
 </mapper>

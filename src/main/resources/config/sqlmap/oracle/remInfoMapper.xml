@@ -30,9 +30,24 @@
 			where info_no=#{remInfoNo}
 	</select>
 	<insert id="insertRemInfo" parameterType="remInfoVO">
-		insert into hs_t_rem_info
+		insert into hs_t_rem _info
 		values(seq_rem_info_no.nextval, #{name}, #{phone}, #{email}, #{nation}, #{addr}, #{addrDetail}, 
 			   #{currency}, #{bankName}, #{bankCode}, #{accNo}, #{bankNation}, #{bankAddr}, #{bankAddrDetail}, 
 			   #{myDesc}, #{status}, #{statusDesc, jdbcType=VARCHAR}, #{id})
 	</insert>
+	
+
+
+
+
+	<select id="selectAllRemInfoList" resultMap="remInfoMap">
+		<include refid="selectAllRemInfoColumn" />
+	</select>
+	<select id="selectRemInfoCount" resultType="hashmap">
+		select count(*) countAll, count(case when status='신청중' then 1 end) countWaiting 
+		from hs_t_rem_info
+	</select>
+	<update id="updateStatusRemInfo" parameterType="remInfoVO">
+		update hs_t_rem_info set status=#{status} where info_no=#{infoNo}
+	</update>
 </mapper>
