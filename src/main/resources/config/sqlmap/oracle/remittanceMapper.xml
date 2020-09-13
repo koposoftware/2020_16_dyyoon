@@ -34,7 +34,7 @@
 			   #{reason}, to_date(#{remDate}, 'YYYY-MM-DD'), #{chargeAccNo}, #{remCharge}, #{interCharge}, #{cableCharge}, #{chargeCover}, 'RS', SYSDATE )
 	</insert>
 	<select id="selectAllRemittance" parameterType="String" resultMap="remittanceMap">
-		select '['||ri.name||']'||ri.bank_name||', '||ri.acc_no as rem_info_desc,
+		select ri.bank_name||', '||ri.acc_no as rem_info_desc,
 				to_char(r.rem_date, 'yyyy/mm/dd') as rem_date, r.acc_no, r.amount, r.status
 		from hs_t_remittance r, hs_t_rem_info ri 
 		where r.info_no = ri.info_no and ri.id = #{id}

@@ -6,8 +6,6 @@
 <html>
 <head>
 <jsp:include page="/WEB-INF/jsp/include/headcss.jsp"></jsp:include>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/jsp/include/headerSec.jsp"></jsp:include>
@@ -61,7 +59,7 @@
                   <tr>
                      <th>예약 송금 날짜</th>
                      <td>
-                        <form:input type="date" path="remDate" class="form-control datepickerHS"/>
+                        <form:input type="date" path="remDate" class="form-control"/>
                      </td>
 
 						<tr>
@@ -363,7 +361,6 @@
 
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/jsp/include/datepickerHS.jsp"></jsp:include>
 
 	<!------------------------------------------------------------ JS  ------------------------------------------------------------>
 	<script type="text/javascript">

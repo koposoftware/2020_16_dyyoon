@@ -15,9 +15,9 @@
 		                        		Language
 		                        	</a>
 		                        	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
-									    <a class="dropdown-item" href="#"><i class="kr flag"></i>한국어</a>
-									    <a class="dropdown-item" href="#"><i class="us flag"></i>English</a>
-									    <a class="dropdown-item" href="#"><i class="cn flag"></i>中文</a>
+									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=ko"><i class="kr flag"></i>한국어</a>
+									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=en"><i class="us flag"></i>English</a>
+									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=ch"><i class="cn flag"></i>中文</a>
 									</div>
 	                        	</div>
                         	</li>
@@ -46,31 +46,6 @@
                         </c:when>
                         <c:otherwise>
 	                      	<button class="btn btn-link mt-2 shadow-none text-secondary"><span class="text-info">${ loginVO.name }</span>님 어서오세요</button>
-	   					                    	
-                        <!--
-	                      	<span class="dropdown show">
-		                      	<button class="dropdown-toggle btn btn-link mt-2 shadow-none text-secondary" id="welcomeUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                      		<span class="text-info">${ loginVO.name }</span>님 어서오세요
-		                      	</button>
-		                      		<%-- 
-		                        	<a href="#" class="dropdown-toggle mt-2 text-secondary" id="welcomeUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                        		<span class="text-info">${ loginVO.name }</span>님 어서오세요
-		                        	</a>
-		                        	 --%>
-		                        	<span class="dropdown-menu" aria-labelledby="welcomeUser" style="font-size: 14px;">
-									    <a class="dropdown-item" href="#">
-									    	<span class="material-icons text-secondary align-middle mr-2">person</span><span class="align-middle">계정관리</span>
-									    </a>
-									    <a class="dropdown-item" href="#">
-									    	<span class="material-icons text-secondary align-middle mr-2">settings</span><span class="align-middle">설정</span>
-									    </a>
-									</span>
-	                        </span>
-	   					  --> 
-	                      	
-	                      	
-	                      	
-	                      	
 	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
                         </c:otherwise>
                         </c:choose>
@@ -81,12 +56,13 @@
                                     <li class="active"><a href="#" title="Home">서비스 소개</a></li>
                                     <li class="has-sub"><a href="#" title="Tours">해외송금</a>
                                         <ul>
-                                            <li><a href="${ pageContext.request.contextPath }/remInfo">송금정보 조회</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/remInfo/register">송금정보 등록</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/remittance">해외송금 신청</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/remittance/reserve">해외송금 예약</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/remittance/list">송금내역 조회</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/remittance/mistake">착오송금 신고</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remInfo">송금정보 조회/등록</a></li>
+                                          <%--   <li><a href="${ pageContext.request.contextPath }/remInfo/register">송금정보 등록</a></li> --%>
+                                            <li><a href="${ pageContext.request.contextPath }/remittance/list">해외송금/예약 조회</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remittance">해외송금 보내기</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remittance/reserve">해외송금 예약하기</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/">받은 해외송금 조회</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remittance/mistake">착오송금 조회/신고</a></li>
                                         </ul>
                                     </li>
                                     <li class="active"><a href="#" title="Home">환율</a></li>

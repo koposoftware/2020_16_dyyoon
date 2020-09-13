@@ -50,7 +50,14 @@
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
 			
 			<div class="col-md-9">
+			
+			<div style="height:40px;" class="mb-2">
+				<img style="height:100%;" class="float-right d-block" alt="" src="${ pageContext.request.contextPath }/resources/images/step1.png">
+			</div>
+			
+			
 			<div class="d-flex">
+			
 				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">보내는 분 정보</span></div>
 				<button type="button" class="btn btn-secondary ml-auto" data-toggle="modal" data-target="#remInfo-myData-modify-modal">내 정보 수정하기</button>
 			</div>
@@ -82,6 +89,7 @@
 
 			<form:form commandName="remInfoVO" method="post">
 			<br>
+			
 			<div class="d-flex">
 				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">받는 분 정보</span></div>
 				<button type="button" class="btn btn-secondary ml-auto" data-target="#reminfo-ask-modal" data-toggle="modal">입력 요청하기</button>

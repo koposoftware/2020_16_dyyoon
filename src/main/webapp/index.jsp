@@ -16,22 +16,35 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-					<div id="hero-today-send"class="hero-section-caption-withcolor pinside40">
-					
-						<div>오늘 송금보내면</div>
-						
-							<div><i class="kr flag" ></i> KRW</div>
-							<input type="text" placeholder="0.00" class="form-control text-right">
-							
-							<select>
-								<option>USD</option>
-								<option>JPY</option>
-								<option>EUR</option>
-							</select>
-							  <input type="text" placeholder="0.00" class="form-control text-right">
-						<a href="#" class="btn btn-info ">송금하기</a>
-					</div>
+						<div class="hero-section-caption-withcolor">
+								<div class="pinside40">
+									<h1>오늘 송금보내면...</h1>
+									<div>
+										<div class="float-left">보내는 분</div>
+										<div class="float-right">
+										<i class="kr flag" ></i> KRW
+										</div>
+									</div>
+									<input type="text" placeholder="0.00" class="form-control text-right">
+									
+									<div>
+										<div class="float-left">받는 분</div>
+										<div class="float-right">
+											<select>
+												<option><span class="us flag"></span> USD</option>
+												<option>JPY</option>
+												<option>EUR</option>
+											</select>
+										</div>
+									  <input type="text" placeholder="0.00" class="form-control text-right">
+									<div class="text-right"><button class="btn btn-info">송금하기</button></div>
+								</div>
+								
+						</div>
 				</div>
+				</div>
+				
+				
 			</div>
 		</div>
 	</div>
