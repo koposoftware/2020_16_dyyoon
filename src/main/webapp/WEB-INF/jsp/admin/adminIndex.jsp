@@ -10,19 +10,6 @@
 <body>
 <jsp:include page="/WEB-INF/jsp/include/headerSecAdmin.jsp"></jsp:include>
 
-
-	<!-- hero-section start -->
-	<div class="hero-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- hero-section close -->
-	
-	
 	
 	<!-- admin page start  -->
 	<div class="pt-4" style="background-color: #F5F5F5;">

@@ -29,3 +29,5 @@
   <link href="${ pageContext.request.contextPath }/resources/css/sb-admin-2.css" rel="stylesheet">
   <link href="${ pageContext.request.contextPath }/resources/css/styleAdmin.css" rel="stylesheet">
 
+  <!-- Custom styles for this page -->
+  <link href="${ pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">

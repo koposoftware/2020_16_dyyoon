@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <a href="${ pageContext.request.contextPath }"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png"></a>
+                        <a href="${ pageContext.request.contextPath }/admin"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png"></a>
                     </div>
                    
                     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -29,11 +29,11 @@
                                 <ul>
                                     <li class="has-sub"><a href="#" title="Tours">해외송금 관리</a>
                                         <ul>
-                                            <li><a href="${ pageContext.request.contextPath }">오늘의 해외송금</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }">송금정보 승인</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }">보낸 해외송금 승인</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }">받은 해외송금 승인</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }">착오송금 처리</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/admin">오늘의 해외송금</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/admin/remInfo">송금정보 승인</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/admin">보낸 해외송금 승인</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/admin">받은 해외송금 승인</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/admin">착오송금 처리</a></li>
                                         </ul>
                                     </li>
                                     <li class="active"><a href="#" title="Home">사용자 관리</a></li>

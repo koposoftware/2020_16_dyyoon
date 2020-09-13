@@ -23,3 +23,9 @@
 <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/jquery.sticky.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/sticky-header.js"></script>
 
+<!-- Page level plugins -->
+<script src="${ pageContext.request.contextPath }/resources/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="${ pageContext.request.contextPath }/resources/js/demo/datatables-demo.js"></script>

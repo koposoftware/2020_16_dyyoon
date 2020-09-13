@@ -17,21 +17,7 @@
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 					<div class="page-section">
-						<h1 class="page-title ">송금정보</h1>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="page-breadcrumb">
-		<div class="container">
-			<div class="row">
-				<div
-					class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-end navForBtn">
-					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li>송금정보</li>
-					</ol>
 				</div>
 			</div>
 		</div>
@@ -42,12 +28,30 @@
 
 	<!-- remRegisterConfirm page start -->
 
-	<div class="container allAccount-con pt-3 pb-3">
-		<div class="row">
+	<div class="container allAccount-con pb-3">
+	
+		<div class="row" style="color: #c6c6c6">
+			<div class="col-md-12 d-flex justify-content-end whereThisPageIs">
+				<span class="material-icons md-12 lineHeight mr-1">home</span>
+				<div>Home</div>
+				<div class="material-icons md-12 lineHeight">keyboard_arrow_right</div>
+				<div>해외송금</div>
+				<div class="material-icons md-12 lineHeight">keyboard_arrow_right</div>
+				<div>해외송금 보내기</div>
+			</div>	
+		</div>
+		
+		
+		<div class="row pt-2">
 			<!-- side menu col-md-3   -->
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
-
+			
 			<div class="col-md-9">
+			
+			<div class="font-weight-bold text-body mb-2" style="font-size: 25px;">
+				<i class="material-icons align-middle">send</i>
+				<span class="align-middle">해외송금 보내기</span>
+			</div>
 
 				<div class="bg-light font-weight-bold p-3 mb-2 rounded"><span class="material-icons align-middle">check_circle</span> <span class="align-middle">해외송금 신청이 완료되었습니다</span></div>
 				<div class="text-center">

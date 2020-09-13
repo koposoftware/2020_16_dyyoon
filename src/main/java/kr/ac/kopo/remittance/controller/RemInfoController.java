@@ -80,4 +80,17 @@ public class RemInfoController {
 		
 		return mav;
 	}
+	
+	
+	/*-------------------------------------------
+	 * 
+	 * 				admin page
+	 * 
+	 * -------------------------------------------*/
+	
+	@GetMapping("/admin/remInfo")
+	public ModelAndView remInfoCheckList() {
+		ModelAndView mav = new ModelAndView("admin/rem/remInfoCheck");
+		return mav;
+	}
 }

@@ -41,35 +41,41 @@ $(document).ready(function(){
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                     <div class="page-section">
-                        <h1 class="page-title ">송금정보</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-	<div class="page-breadcrumb">
-		<div class="container">
-			<div class="row">
-				<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-end navForBtn">
-					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li>송금정보</li>
-					</ol>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- page-header-close -->
 
 
 	<!-- remInfo page start -->
 	
-	<div class="container allAccount-con pt-3 pb-3">
-		<div class="row">
+	<div class="container allAccount-con pb-3">
+		<div class="row" style="color: #c6c6c6">
+			<div class="col-md-12 d-flex justify-content-end whereThisPageIs">
+				<span class="material-icons md-12 lineHeight mr-1">home</span>
+				<div>Home</div>
+				<div class="material-icons md-12 lineHeight">keyboard_arrow_right</div>
+				<div>해외송금</div>
+				<div class="material-icons md-12 lineHeight">keyboard_arrow_right</div>
+				<div>송금정보 조회/등록</div>
+			</div>	
+		</div>
+	
+	
+	
+		<div class="row pt-2">
 			<!-- side menu col-md-3   -->
 			<jsp:include page="/WEB-INF/jsp/include/remSideMenu.jsp"></jsp:include>
 			
 			<div class="col-md-9">
+				<div class="font-weight-bold text-body mb-2 topTitle" style="font-size: 25px;">
+					<i class="material-icons align-middle">how_to_reg</i>
+					<span class="align-middle">송금정보 조회/등록</span>
+				</div>
+			
+			
 				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">수신인 정보</span></div>
 				<table class="table table-sm">
 					<tr>
@@ -140,6 +146,10 @@ $(document).ready(function(){
 					</c:otherwise>
 				</c:choose>
 				<div id="viewRemInfo"></div>
+				<div class="text-center">
+					<button class="btn btn-light">즐겨찾기 등록</button>
+					<button class="btn btn-info" onclick="window.location.href='${ pageContext.request.contextPath }/remInfo/register'">새로 등록하기</button>
+				</div>
 			</div>
 		</div>
 	</div>

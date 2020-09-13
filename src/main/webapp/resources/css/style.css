@@ -59,15 +59,6 @@ Created by :        https://easetemplate.com/
 /*-----------------------------------
     font-family 
 -----------------------------------*/
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-            
-
-
             
 /*-----------------------------------
     1. Body / Typography 
@@ -437,15 +428,17 @@ th{
 /*----------------------------------------------
     5.4 Page Header
 ----------------------------------------------*/
-.page-header { height: 150px; background: url(../images/hero-airballoon.jpg) no-repeat center; background-size: cover; margin: 0px; }
-.page-section { padding-top: 50px; padding-bottom: 50px; }
+
+.page-header { height: 100px; background: url(../images/hero-airballoon.jpg) no-repeat center; background-size: cover; margin: 0px; }
+.page-section { 
+	padding-top: 50px;  padding-bottom: 50px;
+ }
 .page-description { }
 .page-description p { color: #FFF; }
 .page-title { font-size: 38px; color: #fff; font-weight: 700; }
 .page-breadcrumb { color: #098fd0; padding-bottom: 3px; border-bottom: 1px #e8e8e8 solid; }
 .page-breadcrumb .breadcrumb { background-color: transparent; padding: 5px 0px; margin-bottom: 0px; font-size: 13px; font-weight: 600; border: none; letter-spacing: 0.5px; text-transform: uppercase; color: #6c6c6c;  }
 .breadcrumb>li+li:before { padding: 0 5px; color: 6c6c6c; content: "/\00a0"; }
-
 /*-----------------------------------
 8. Footer 
 -------------------------------------*/

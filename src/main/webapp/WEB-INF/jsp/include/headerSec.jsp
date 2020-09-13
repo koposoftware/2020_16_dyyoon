@@ -17,7 +17,7 @@
 		                        	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
 									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=ko"><i class="kr flag"></i>한국어</a>
 									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=en"><i class="us flag"></i>English</a>
-									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=ch"><i class="cn flag"></i>中文</a>
+									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=zh"><i class="cn flag"></i>中文</a>
 									</div>
 	                        	</div>
                         	</li>
@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
-                        <a href="${ pageContext.request.contextPath }"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png"></a>
+                        <a href="${ pageContext.request.contextPath }/"><img src="${ pageContext.request.contextPath }/resources/images/hanasafe-logo.png"></a>
                     </div>
                    
                     <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
@@ -57,11 +57,9 @@
                                     <li class="has-sub"><a href="#" title="Tours">해외송금</a>
                                         <ul>
                                             <li><a href="${ pageContext.request.contextPath }/remInfo">송금정보 조회/등록</a></li>
-                                          <%--   <li><a href="${ pageContext.request.contextPath }/remInfo/register">송금정보 등록</a></li> --%>
-                                            <li><a href="${ pageContext.request.contextPath }/remittance/list">해외송금/예약 조회</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/remittance/list">해외송금 전체 조회</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/remittance">해외송금 보내기</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/remittance/reserve">해외송금 예약하기</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/">받은 해외송금 조회</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/remittance/mistake">착오송금 조회/신고</a></li>
                                         </ul>
                                     </li>
