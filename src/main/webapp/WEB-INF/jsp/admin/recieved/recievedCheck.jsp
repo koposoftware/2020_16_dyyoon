@@ -34,7 +34,7 @@
 		                 <div class="col mr-2">
 		                   <div class="text-xs font-weight-bold text-info mb-1">받은 해외송금 승인 요청 건수</div>
 		                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-		                   		<%-- ${ remittanceCount["COUNTALL"] } 건 --%>
+		                   		 ${ recievedCount["COUNTALL"] } 건 
 		                   </div>
 		                 </div>
 		                 <div class="col-auto">
@@ -49,10 +49,10 @@
 				<div class="mb-4">
 				  <div class="card border-left-info shadow h-100 py-2">
 		             <div class="card-body">
-		             	<h4 class="small font-weight-bold text-info">승인 완료 현황 <span class="float-right">${ remittanceCount["PERCENTAGE"] } %</span></h4>
+		             	<h4 class="small font-weight-bold text-info">승인 완료 현황 <span class="float-right">${ recievedCount["PERCENTAGE"] } %</span></h4>
 		                   <div class="progress mb-1">
 		                     <div class="progress-bar bg-info" role="progressbar" 
-		                     		style="width: ${ remittanceCount['PERCENTAGE'] }%" aria-valuenow="${ remittanceCount['PERCENTAGE'] }" 
+		                     		style="width: ${ recievedCount['PERCENTAGE'] }%" aria-valuenow="${ recievedCount['PERCENTAGE'] }" 
 		                     		aria-valuemin="0" aria-valuemax="100">
 		                     </div>
 		                   </div>
@@ -69,7 +69,7 @@
 		<div class="col-md-12">
 			<div class="card shadow mb-4">
 	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-info">보낸 해외송금 승인</h6>
+	              <h6 class="m-0 font-weight-bold text-info">받은 해외송금 승인대기</h6>
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
@@ -86,16 +86,16 @@
 	                    </tr>
 	                  </thead>
 	                  <tbody>
-	                    <c:forEach items="${ remittanceList }" var="remittance">
-	                    <c:if test="${ remittance['STATUS'] eq 'RM'}">
-							<tr class="table-row-clickable" data-value="${ remittance['REM_NO'] }">
-								<td>${ remittance['REM_DATE'] }</td>
-								<td>${ remittance['MY_ACC_NO'] }</td>
-								<td>${ remittance['NAME'] }</td>
-								<td>${ remittance['YOUR_ACC_NO'] }</td>
-								<td>${ remittance['CURRENCY'] }</td>
-								<td>${ remittance['AMOUNT'] }</td>
-								<td>${ remittance['STATUS'] }</td>
+	                    <c:forEach items="${ recievedList }" var="recieved">
+	                    <c:if test="${ recieved.status eq '요청됨'}">
+							<tr class="table-row-clickable" data-value="${ recieved.recievedNo }">
+								<td>${ recieved.recievedDate }</td>
+								<td>${ recieved.fromAccNo }</td>
+								<td>${ recieved.getName }</td>
+								<td>${ recieved.getAccNo }</td>
+								<td>${ recieved.currency }</td>
+								<td>${ recieved.amount }</td>
+								<td>${ recieved.status }</td>
 							</tr>
 						</c:if>
 						</c:forEach>
@@ -113,14 +113,14 @@
 		<div class="col-md-12">
 			<div class="card shadow mb-4">
 	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-info">보낸 해외송금 승인</h6>
+	              <h6 class="m-0 font-weight-bold text-info">받은 해외송금 승인완료</h6>
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
 	                <table class="table table-bordered table-hover admin-table-select table-th-info displayDataTable" >
 	                  <thead>
 	                    <tr>
-	                      <th>송금 일자</th>
+	                      <th>영업점 도착일</th>
 	                      <th>보낸 분 계좌번호</th>
 	                      <th>받는 분</th>
 	                      <th>받는 분 계좌번호</th>
@@ -130,18 +130,18 @@
 	                    </tr>
 	                  </thead>
 	                  <tbody>
-	                    <c:forEach items="${ remittanceList }" var="remittance">
-	                    <c:if test="${ remittance['STATUS'] eq 'IN' or remittance['STATUS'] eq 'RC' or remittance['STATUS'] eq 'ER' }">
-							<tr class="table-row-clickable" data-value="${ remittance['REM_NO'] }">
-								<td>${ remittance['REM_DATE'] }</td>
-								<td>${ remittance['MY_ACC_NO'] }</td>
-								<td>${ remittance['NAME'] }</td>
-								<td>${ remittance['YOUR_ACC_NO'] }</td>
-								<td>${ remittance['CURRENCY'] }</td>
-								<td>${ remittance['AMOUNT'] }</td>
-								<td>${ remittance['STATUS'] }</td>
+	                   <c:forEach items="${ recievedList }" var="recieved">
+	                    <c:if test="${ recieved.status ne '요청됨'}">
+							<tr class="table-row-clickable" data-value="${ recieved.recievedNo }">
+								<td>${ recieved.recievedDate }</td>
+								<td>${ recieved.fromAccNo }</td>
+								<td>${ recieved.getName }</td>
+								<td>${ recieved.getAccNo }</td>
+								<td>${ recieved.currency }</td>
+								<td>${ recieved.amount }</td>
+								<td>${ recieved.status }</td>
 							</tr>
-						</c:if>	
+						</c:if>
 						</c:forEach>
 	                  </tbody>
 	                 </table>
@@ -159,8 +159,8 @@
 <jsp:include page="/WEB-INF/jsp/include/footerjsAdmin.jsp"></jsp:include>
 <script>
 	$(".admin-table-select tbody tr").on('click', function() {
-		var remNo = $(this).data("value");
-		window.location.href = '${pageContext.request.contextPath}/admin/remittance/' + remNo;
+		var recievedNo = $(this).data("value");
+		window.location.href = '${pageContext.request.contextPath}/admin/recieved/' + recievedNo;
 	    
 	  });
 </script>

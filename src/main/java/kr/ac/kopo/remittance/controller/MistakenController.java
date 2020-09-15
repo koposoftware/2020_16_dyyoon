@@ -8,13 +8,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.ac.kopo.account.service.AccountService;
+import kr.ac.kopo.account.vo.AccountVO;
 import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.remittance.service.MistakenService;
+import kr.ac.kopo.remittance.service.RemInfoService;
 import kr.ac.kopo.remittance.service.RemittanceService;
 import kr.ac.kopo.remittance.vo.MistakenVO;
+import kr.ac.kopo.remittance.vo.RemInfoVO;
 import kr.ac.kopo.remittance.vo.RemittanceVO;
 
 @Controller
@@ -25,6 +30,12 @@ public class MistakenController {
 	
 	@Autowired
 	MistakenService mistakenService;
+	
+	@Autowired
+	AccountService accountService;
+	
+	@Autowired
+	RemInfoService remInfoService;
 	
 	@GetMapping("/remittance/mistake")
 	public ModelAndView remMistakeList(HttpSession session) {
@@ -66,9 +77,27 @@ public class MistakenController {
 	 * 
 	 * -------------------------------------------*/
 	@GetMapping("/admin/mistaken")
-	public ModelAndView allRemList() {
+	public ModelAndView allMisatkenList() {
 		ModelAndView mav = new ModelAndView("admin/mistaken/mistakenCheck");
 		
+		mav.addObject("mistakenList", mistakenService.selectAllMistakenAdmin());
+		mav.addObject("mistakenCount", mistakenService.selectMistakenCount());
+		return mav;
+	}
+	
+	@GetMapping("/admin/mistaken/{misNo}")
+	public ModelAndView selectOneMistaken(@PathVariable("misNo") Integer misNo) {
+		ModelAndView mav = new ModelAndView("admin/mistaken/mistakenCheckDetail");
+		
+		MistakenVO mistakenVO = mistakenService.selectMistakenByMisNo(misNo);
+		RemittanceVO remittanceVO = remittanceService.selectRemittanceByRemNo(mistakenVO.getRemNo());
+		AccountVO accountVO = accountService.selectAccountByAccNo(remittanceVO.getAccNo());
+		RemInfoVO remInfoVO = remInfoService.selectRemInfoDetail(remittanceVO.getInfoNo());
+		
+		mav.addObject("mistaken", mistakenVO);
+		mav.addObject("remittance", remittanceVO);
+		mav.addObject("account", accountVO);
+		mav.addObject("remInfo", remInfoVO);
 		
 		return mav;
 	}

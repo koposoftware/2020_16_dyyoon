@@ -23,5 +23,10 @@ public class AccountDAOImpl implements AccountDAO {
 		return session.selectOne("account.dao.AccountDAO.selectAccountBalance", accNo);
 	}
 
+	@Override
+	public AccountVO selectAccountByAccNo(String accNo) {
+		return session.selectOne("account.dao.AccountDAO.selectAccountByAccNo", accNo);
+	}
+
 	
 }

@@ -22,4 +22,8 @@
 		 from hs_t_account
 		 where acc_no = #{ accNo }
 	</select>
+	<select id="selectAccountByAccNo" parameterType="String" resultMap="accountMap">
+		<include refid="selectAllAccountColumn"></include>
+		where acc_no = #{ accNo }
+	</select>
 </mapper>

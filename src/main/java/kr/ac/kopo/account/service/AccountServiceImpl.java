@@ -23,4 +23,9 @@ public class AccountServiceImpl implements AccountService {
 		return accountDAO.selectAccountBalance(accNo);
 	}
 
+	@Override
+	public AccountVO selectAccountByAccNo(String accNo) {
+		return accountDAO.selectAccountByAccNo(accNo);
+	}
+
 }

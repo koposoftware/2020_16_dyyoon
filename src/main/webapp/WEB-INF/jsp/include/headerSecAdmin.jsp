@@ -32,7 +32,7 @@
                                             <li><a href="${ pageContext.request.contextPath }/admin">오늘의 해외송금</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/admin/remInfo">송금정보 승인</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/admin/remittance">보내는 해외송금 승인</a></li>
-                                            <li><a href="${ pageContext.request.contextPath }/admin/recieve">받은 해외송금 승인</a></li>
+                                            <li><a href="${ pageContext.request.contextPath }/admin/recieved">받은 해외송금 승인</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/admin/mistaken">착오송금 처리</a></li>
                                         </ul>
                                     </li>

@@ -24,4 +24,27 @@ public class MistakenServiceImpl implements MistakenService {
 		return mistakenDAO.selectAllMistaken(id);
 	}
 
+	
+	
+	/*------------------------------------
+	 * 
+	 * 			ADMIN PAGE
+	 * 
+	 * ----------------------------------*/
+	@Override
+	public List<Map<String, Object>> selectAllMistakenAdmin() {
+		return mistakenDAO.selectAllMistakenAdmin();
+	}
+
+	@Override
+	public Map<String, Object> selectMistakenCount() {
+		return mistakenDAO.selectMistakenCount();
+	}
+
+	@Override
+	public MistakenVO selectMistakenByMisNo(Integer misNo) {
+		return mistakenDAO.selectMistakenByMisNo(misNo);
+	}
+	
+
 }

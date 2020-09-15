@@ -20,6 +20,7 @@
 		<result column="GET_NATION" property="getNation"/>
 		<result column="GET_ADDR" property="getAddr"/>
 		<result column="GET_ADDR_DETAIL" property="getAddrDetail"/>
+		<result column="STATUS_DESC" property="statusDesc"/>
 		<result column="RECIEVED_DATE" property="recievedDate"/>
 		<result column="RECIEVED_DATE_WITHOUT_TIME" property="recievedDateWithoutTime"/>
 	</resultMap>
@@ -29,4 +30,21 @@
 		 	   and acc.id=#{id} 
 		 order by rec.recieved_date desc
 	</select>
+	<select id="selectRecievedDetail" parameterType="Integer" resultMap="recievedMap">
+		select * from hs_t_recieved 
+		where recieved_no=#{recievedNo}
+	</select>
+
+	
+	<select id="selectAllRecievedAdmin" resultMap="recievedMap">
+		select to_char(rec.recieved_date, 'yyyy-mm-dd') as recieved_date_without_time, rec.* from hs_t_recieved rec
+	</select>
+	<select id="selectRecievedCount" resultType="map">
+		select count(*) countAll, count(case when status='승인' OR STATUS='비승인' then 1 end) countDone, 
+			   round((count(case when status='승인' OR STATUS='비승인' then 1 end))/count(*)*100) percentage
+		from hs_t_recieved
+	</select>
+	<update id="updateStatusRecieved" parameterType="recievedVO">
+		update hs_t_recieved set status=#{status}, status_desc=#{statusDesc, jdbcType=VARCHAR} where recieved_no=#{recievedNo}	
+	</update>
 </mapper>

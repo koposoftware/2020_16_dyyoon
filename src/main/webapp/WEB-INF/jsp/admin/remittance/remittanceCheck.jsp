@@ -32,7 +32,7 @@
 		             <div class="card-body">
 		               <div class="row no-gutters align-items-center">
 		                 <div class="col mr-2">
-		                   <div class="text-xs font-weight-bold text-success mb-1">보낸 해외송금 승인 요청 건수</div>
+		                   <div class="text-xs font-weight-bold text-success mb-1">보내는 해외송금 승인 요청 건수</div>
 		                   <div class="h5 mb-0 font-weight-bold text-gray-800">
 		                   		${ remittanceCount["COUNTALL"] } 건
 		                   </div>
@@ -69,7 +69,7 @@
 		<div class="col-md-12">
 			<div class="card shadow mb-4">
 	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-success">보낸 해외송금 승인</h6>
+	              <h6 class="m-0 font-weight-bold text-success">보내는 해외송금 승인대기</h6>
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
@@ -113,7 +113,7 @@
 		<div class="col-md-12">
 			<div class="card shadow mb-4">
 	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-success">보낸 해외송금 승인</h6>
+	              <h6 class="m-0 font-weight-bold text-success">보내는 해외송금 승인완료</h6>
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">

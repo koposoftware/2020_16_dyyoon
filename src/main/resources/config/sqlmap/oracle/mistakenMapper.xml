@@ -7,6 +7,7 @@
 		<result column="mis_no" property="misNo"/>
 		<result column="reason_desc" property="reasonDesc"/>
 		<result column="reg_date" property="regDate"/>
+		<result column="rem_no" property="remNo"/>
 	</resultMap>
 	<sql id="selectAllMistakenColumn">
 		select mis_no, reason, reason_desc, status, rem_no, reg_date
@@ -21,5 +22,23 @@
 			   info.acc_no your_acc, rem.acc_no my_acc, rem.amount, info.currency, mis.status, info.id
 		from hs_t_mistaken mis, hs_t_remittance rem, hs_t_rem_info info 
 		where mis.rem_no = rem.rem_no and rem.info_no = info.info_no and info.id = #{id}
+	</select>
+	<select id="selectMistakenByMisNo" parameterType="integer" resultMap="mistakenMap">
+		<include refid="selectAllMistakenColumn" /> 
+		where mis_no=#{misNo}
+	</select>
+	
+	
+	<select id="selectAllMistakenAdmin" resultType="map">
+		select mis.mis_no, to_char(mis.reg_date, 'yyyy-mm-dd') as reg_date, mis.reason, 
+		rem.acc_no, acc.currency, rem.amount, to_char(rem.rem_date, 'yyyy-mm-dd') as rem_date,  
+		mis.status, rem.status as rem_status 
+		from hs_t_mistaken mis, hs_t_remittance rem, hs_t_account acc 
+		where mis.rem_no = rem.rem_no and acc.acc_no = rem.acc_no 
+	</select>
+	<select id="selectMistakenCount" resultType="map">
+		select count(*) countAll, count(case when status='완료' then 1 end) countDone,  
+			   round((count(case when status='완료' then 1 end))/count(*)*100) percentage 
+		from hs_t_mistaken
 	</select>
 </mapper>

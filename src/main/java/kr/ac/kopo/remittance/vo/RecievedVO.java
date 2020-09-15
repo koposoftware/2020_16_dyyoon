@@ -13,6 +13,7 @@ public class RecievedVO {
 	private String fromAccNo;
 	private String currency;
 	private Float amount;
+	
 	private String getAccNo;
 	private String getName;
 	private String getPhone;
@@ -20,7 +21,9 @@ public class RecievedVO {
 	private String getNation;
 	private String getAddr;
 	private String getAddrDetail;
+//   -- 요청됨 / 비승인 / 승인 / 
 	private String status;
+	private String statusDesc;
 	private String recievedDate;
 	
 	
@@ -30,6 +33,14 @@ public class RecievedVO {
 		super();
 	}
 	
+	public String getStatusDesc() {
+		return statusDesc;
+	}
+
+	public void setStatusDesc(String statusDesc) {
+		this.statusDesc = statusDesc;
+	}
+
 	public String getRecievedDateWithoutTime() {
 		return recievedDateWithoutTime;
 	}

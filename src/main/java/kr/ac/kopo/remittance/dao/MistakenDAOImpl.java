@@ -25,4 +25,26 @@ public class MistakenDAOImpl implements MistakenDAO {
 		return session.selectList("remittance.dao.MistakenDAO.selectAllMistaken", id);
 	}
 
+	
+	/*------------------------------------
+	 * 
+	 * 			ADMIN PAGE
+	 * 
+	 * ----------------------------------*/
+	@Override
+	public List<Map<String, Object>> selectAllMistakenAdmin() {
+		return session.selectList("remittance.dao.MistakenDAO.selectAllMistakenAdmin");
+	}
+
+	@Override
+	public Map<String, Object> selectMistakenCount() {
+		return session.selectOne("remittance.dao.MistakenDAO.selectMistakenCount");
+	}
+
+	@Override
+	public MistakenVO selectMistakenByMisNo(Integer misNo) {
+		return session.selectOne("remittance.dao.MistakenDAO.selectMistakenByMisNo", misNo);
+	}
+	
+
 }
