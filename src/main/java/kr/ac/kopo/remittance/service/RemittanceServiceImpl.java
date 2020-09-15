@@ -26,12 +26,21 @@ public class RemittanceServiceImpl implements RemittanceService {
 	}
 
 	@Override
-	public List<RemittanceVO> selectAllRemittance(String id) {
+	public List<Map<String, Object>> selectAllRemittance(String id) {
 		return remittanceDAO.selectAllRemittance(id);
 	}
 
 	@Override
-	public List<RemittanceVO> selectAllRemittanceAdmin() {
+	public RemittanceVO selectRemittanceByRemNo(Integer remNo) {
+		return remittanceDAO.selectRemittanceByRemNo(remNo);
+	}
+	
+	
+	/*-------------------------
+		ADMIN PAGE
+	-------------------------*/
+	@Override
+	public List<Map<String, Object>> selectAllRemittanceAdmin() {
 		return remittanceDAO.selectAllRemittanceAdmin();
 	}
 
@@ -44,6 +53,7 @@ public class RemittanceServiceImpl implements RemittanceService {
 	public void updateStatusRemittance(RemittanceVO remittance) {
 		remittanceDAO.updateStatusRemittance(remittance);
 	}
+
 	
 	
 	

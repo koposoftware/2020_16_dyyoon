@@ -17,6 +17,22 @@
    box-shadow:0 0 1px #333;
 }
 
-table th{
+.table-th-primary th{
 	background-color: #dee6fa;
+}
+
+.table-th-info th{
+	background-color: #e0f4f8;
+}
+
+.table-th-success th{
+	background-color: #dafaef;
+}
+
+.table-th-warning th{
+	background-color: #fef5de;
+}
+
+.table-detail th{
+	width: 120px;
 }

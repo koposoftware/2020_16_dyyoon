@@ -36,11 +36,31 @@ public class RemInfoVO {
 	private String status;
 	private String statusDesc;
 	private String id;
+	private String regDate;
+	
+	private String regDateWithoutTime;
+	
 	
 	public RemInfoVO() {
 		super();
 	}
 	
+	public String getRegDateWithoutTime() {
+		return regDateWithoutTime;
+	}
+
+	public void setRegDateWithoutTime(String regDateWithoutTime) {
+		this.regDateWithoutTime = regDateWithoutTime;
+	}
+
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
 	public Integer getInfoNo() {
 		return infoNo;
 	}

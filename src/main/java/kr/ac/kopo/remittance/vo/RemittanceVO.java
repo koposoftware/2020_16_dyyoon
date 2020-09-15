@@ -27,6 +27,8 @@ public class RemittanceVO {
 	private String 	status;
 	private String 	reservedDate;
 	
+	private String statusDesc;
+	
 	//이건 VO에만
 	private String 	remInfoDesc;
 	
@@ -34,7 +36,14 @@ public class RemittanceVO {
 		super();
 	}
 	
-	
+	public String getStatusDesc() {
+		return statusDesc;
+	}
+
+	public void setStatusDesc(String statusDesc) {
+		this.statusDesc = statusDesc;
+	}
+
 	public String getRemInfoDesc() {
 		return remInfoDesc;
 	}
@@ -167,14 +176,17 @@ public class RemittanceVO {
 		this.status = status;
 	}
 
-
 	@Override
 	public String toString() {
 		return "RemittanceVO [remNo=" + remNo + ", infoNo=" + infoNo + ", accType=" + accType + ", accNo=" + accNo
 				+ ", amount=" + amount + ", exchangeRate=" + exchangeRate + ", reason=" + reason + ", remDate="
 				+ remDate + ", chargeAccNo=" + chargeAccNo + ", remCharge=" + remCharge + ", interCharge=" + interCharge
 				+ ", cableCharge=" + cableCharge + ", chargeCover=" + chargeCover + ", status=" + status
-				+ ", reservedDate=" + reservedDate + "]";
+				+ ", reservedDate=" + reservedDate + ", statusDesc=" + statusDesc + ", remInfoDesc=" + remInfoDesc
+				+ "]";
 	}
+	
+
+
 	
 }

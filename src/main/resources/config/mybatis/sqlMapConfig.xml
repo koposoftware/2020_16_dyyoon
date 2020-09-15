@@ -8,6 +8,8 @@
 	 	<typeAlias type="kr.ac.kopo.account.vo.AccountVO" alias="accountVO"/>
 	 	<typeAlias type="kr.ac.kopo.remittance.vo.RemInfoVO" alias="remInfoVO"/>
 	 	<typeAlias type="kr.ac.kopo.remittance.vo.RemittanceVO" alias="remittanceVO"/>
+	 	<typeAlias type="kr.ac.kopo.remittance.vo.RecievedVO" alias="recievedVO"/>
+	 	<typeAlias type="kr.ac.kopo.remittance.vo.MistakenVO" alias="mistakenVO"/>
 	 	<typeAlias type="kr.ac.kopo.country.vo.CountryVO" alias="countryVO"/>
 	 </typeAliases>
 </configuration>

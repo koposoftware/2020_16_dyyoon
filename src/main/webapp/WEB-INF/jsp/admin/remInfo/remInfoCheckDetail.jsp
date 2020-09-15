@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +32,7 @@
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
-	                <table class="table table-bordered">
+	                <table class="table table-bordered table-th-primary table-detail">
 							<tr>
 								<th colspan="2">영문이름</th>
 								<td>${ remInfoDetail.name }</td>
@@ -86,13 +87,22 @@
 								<th>세부주소</th>
 								<td>${ remInfoDetail.bankAddrDetail }</td>
 							</tr>
+							<tr>
+								<th colspan="2">승인 현황</th>
+								<td>
+									${ remInfoDetail.status }
+									<c:if test="${ not empty remInfoDetail.statusDesc }">
+										<br>사유 : ${ remInfoDetail.statusDesc }
+									</c:if>
+								</td>
+							</tr>
 						</table>
-						
+						<c:if test="${ remInfoDetail.status eq '신청중' }">
 						<form action="${ pageContext.request.contextPath }/admin/remInfo" method="post">
 						<input type="hidden" name="infoNo" value="${ remInfoDetail.infoNo } ">
-						<table class="table table-bordered">
+						<table class="table table-bordered table-th-primary table-detail">
 							<tr>
-								<th >승인 결과</th>
+								<th style="width: 240px;">승인 결과</th>
 								<td>
 									<select class="form-control" name="status">
 										<option>선택하세요</option>
@@ -111,6 +121,14 @@
 							<button class="btn btn-primary" type="submit">승인심사 완료</button>
 						</div>
 						</form>
+						</c:if>
+						<c:if test="${ remInfoDetail.status ne '신청중' }">
+							<div class="text-center">
+								<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/remInfo'">목록</button>
+								<button class="btn btn-primary" type="button">승인심사 수정</button>
+							</div>
+							
+						</c:if>
 	                </div>
 	               </div>
 	           </div>

@@ -17,7 +17,7 @@
 	</select>
 	<select id="selectCountryRemittanceRate" parameterType="String" resultType="float">
 		select b.remittance  
-    	from hs_t_country a, hs_t_currencyrate b  
+    	from hs_t_country a, hs_t_currency_rate b  
     	where a.currency_code = b.currency and a.currency_code = #{currencyCode} and rownum = 1
 	</select>
 </mapper>

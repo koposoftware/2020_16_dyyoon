@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,6 @@
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 					<div class="page-section">
-						<h1 class="page-title">송금 정보 입력</h1>
 					</div>
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle"> ID 인증</span></div>
 			</div>
 			<div class="pt-3">
-				<div class="text-left">요청한 분의 아이디를 입력하세요</div>
+				<div class="text-left"><spring:message code="formEngName" />요청한 분의 아이디를 입력하세요</div>
 				
 				
 				<form method="post" action="${ pageContext.request.contextPath }/remInfo/ask">

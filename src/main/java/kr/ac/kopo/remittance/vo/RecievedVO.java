@@ -9,12 +9,8 @@ public class RecievedVO {
 	private String fromNation;
 	private String fromAddr;
 	private String fromAddrDetail;
-	private String fromBankName;
 	private String fromBankCode;
 	private String fromAccNo;
-	private String fromBankNation;
-	private String fromBankAddr;
-	private String fromBankAddrDetail;
 	private String currency;
 	private Float amount;
 	private String getAccNo;
@@ -25,18 +21,32 @@ public class RecievedVO {
 	private String getAddr;
 	private String getAddrDetail;
 	private String status;
+	private String recievedDate;
+	
+	
+	private String recievedDateWithoutTime;
 	
 	public RecievedVO() {
 		super();
 	}
 	
-	public String getStatus() {
-		return status;
+	public String getRecievedDateWithoutTime() {
+		return recievedDateWithoutTime;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setRecievedDateWithoutTime(String recievedDateWithoutTime) {
+		this.recievedDateWithoutTime = recievedDateWithoutTime;
 	}
+
+	public String getRecievedDate() {
+		return recievedDate;
+	}
+
+	public void setRecievedDate(String recievedDate) {
+		this.recievedDate = recievedDate;
+	}
+
+
 
 	public Integer getRecievedNo() {
 		return recievedNo;
@@ -94,14 +104,6 @@ public class RecievedVO {
 		this.fromAddrDetail = fromAddrDetail;
 	}
 
-	public String getFromBankName() {
-		return fromBankName;
-	}
-
-	public void setFromBankName(String fromBankName) {
-		this.fromBankName = fromBankName;
-	}
-
 	public String getFromBankCode() {
 		return fromBankCode;
 	}
@@ -116,30 +118,6 @@ public class RecievedVO {
 
 	public void setFromAccNo(String fromAccNo) {
 		this.fromAccNo = fromAccNo;
-	}
-
-	public String getFromBankNation() {
-		return fromBankNation;
-	}
-
-	public void setFromBankNation(String fromBankNation) {
-		this.fromBankNation = fromBankNation;
-	}
-
-	public String getFromBankAddr() {
-		return fromBankAddr;
-	}
-
-	public void setFromBankAddr(String fromBankAddr) {
-		this.fromBankAddr = fromBankAddr;
-	}
-
-	public String getFromBankAddrDetail() {
-		return fromBankAddrDetail;
-	}
-
-	public void setFromBankAddrDetail(String fromBankAddrDetail) {
-		this.fromBankAddrDetail = fromBankAddrDetail;
 	}
 
 	public String getCurrency() {
@@ -214,17 +192,25 @@ public class RecievedVO {
 		this.getAddrDetail = getAddrDetail;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "RecievedVO [recievedNo=" + recievedNo + ", fromName=" + fromName + ", fromPhone=" + fromPhone
 				+ ", fromEmail=" + fromEmail + ", fromNation=" + fromNation + ", fromAddr=" + fromAddr
-				+ ", fromAddrDetail=" + fromAddrDetail + ", fromBankName=" + fromBankName + ", fromBankCode="
-				+ fromBankCode + ", fromAccNo=" + fromAccNo + ", fromBankNation=" + fromBankNation + ", fromBankAddr="
-				+ fromBankAddr + ", fromBankAddrDetail=" + fromBankAddrDetail + ", currency=" + currency + ", amount="
-				+ amount + ", getAccNo=" + getAccNo + ", getName=" + getName + ", getPhone=" + getPhone + ", getEmail="
-				+ getEmail + ", getNation=" + getNation + ", getAddr=" + getAddr + ", getAddrDetail=" + getAddrDetail
-				+ ", status=" + status + "]";
+				+ ", fromAddrDetail=" + fromAddrDetail + ", fromBankCode=" + fromBankCode + ", fromAccNo=" + fromAccNo
+				+ ", currency=" + currency + ", amount=" + amount + ", getAccNo=" + getAccNo + ", getName=" + getName
+				+ ", getPhone=" + getPhone + ", getEmail=" + getEmail + ", getNation=" + getNation + ", getAddr="
+				+ getAddr + ", getAddrDetail=" + getAddrDetail + ", status=" + status + ", recievedDate=" + recievedDate
+				+ "]";
 	}
 
+	
 	
 }

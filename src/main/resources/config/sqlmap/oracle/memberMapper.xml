@@ -24,4 +24,9 @@
 		set (eng_name, phone, email, addr, addr_detail) = (select #{engName}, #{phone}, #{email}, #{addr}, #{addrDetail} from dual)  
 		where id=#{id}
 	</update>
+	<select id="selectIdInfoOfAcc" parameterType="String" resultMap="memberMap">
+		select mem.* 
+		from hs_t_account acc, hs_t_member mem 
+		where acc.id = mem.id and acc.acc_no=#{accNo}
+	</select>
 </mapper>

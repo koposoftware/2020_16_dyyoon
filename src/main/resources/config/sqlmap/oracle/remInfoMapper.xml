@@ -14,11 +14,14 @@
 		<result column="bank_addr_detail" property="bankAddrDetail"/>
 		<result column="my_desc" property="myDesc"/>
 		<result column="status_desc" property="statusDesc"/>
+		<result column="REG_DATE" property="regDate"/>
+		<result column="REG_DATE_WITHOUT_TIME" property="regDateWithoutTime"/>
 	</resultMap>
 	<sql id="selectAllRemInfoColumn">
 		select info_no, name, phone, email, nation, addr, addr_detail, 
 			   currency, bank_name, bank_code, acc_no, bank_nation, 
-			   bank_addr, bank_addr_detail, my_desc, status, status_desc, id 
+			   bank_addr, bank_addr_detail, my_desc, status, status_desc, id, reg_date,
+			   to_char(reg_date, 'yyyy-mm-dd') as reg_date_without_time 
 		 from hs_t_rem_info
 	</sql>
 	<select id="selectRemInfoList" parameterType="String" resultMap="remInfoMap">
@@ -30,7 +33,9 @@
 			where info_no=#{remInfoNo}
 	</select>
 	<insert id="insertRemInfo" parameterType="remInfoVO">
-		insert into hs_t_rem _info
+		insert into hs_t_rem_info( info_no, name, phone, email, nation, addr, addr_detail,
+									currency, bank_name, bank_code, acc_no, bank_nation, bank_addr, bank_addr_detail,
+									my_desc, status, status_desc, id )
 		values(seq_rem_info_no.nextval, #{name}, #{phone}, #{email}, #{nation}, #{addr}, #{addrDetail}, 
 			   #{currency}, #{bankName}, #{bankCode}, #{accNo}, #{bankNation}, #{bankAddr}, #{bankAddrDetail}, 
 			   #{myDesc}, #{status}, #{statusDesc, jdbcType=VARCHAR}, #{id})
@@ -41,13 +46,14 @@
 
 
 	<select id="selectAllRemInfoList" resultMap="remInfoMap">
-		<include refid="selectAllRemInfoColumn" />
+		<include refid="selectAllRemInfoColumn" /> order by reg_date desc
 	</select>
 	<select id="selectRemInfoCount" resultType="hashmap">
-		select count(*) countAll, count(case when status='신청중' then 1 end) countWaiting 
+		select count(*) countAll, count(case when status='승인' or status='비승인' then 1 end) countDone,
+			   round((count(case when status='승인' or status='비승인' then 1 end))/count(*)*100) percentage
 		from hs_t_rem_info
 	</select>
 	<update id="updateStatusRemInfo" parameterType="remInfoVO">
-		update hs_t_rem_info set status=#{status} where info_no=#{infoNo}
+		update hs_t_rem_info set status=#{status}, status_desc=#{statusDesc, jdbcType=VARCHAR} where info_no=#{infoNo}
 	</update>
 </mapper>

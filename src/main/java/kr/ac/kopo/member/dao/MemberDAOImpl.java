@@ -29,5 +29,10 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.update("member.dao.MemberDAO.updateMyInfo", member);
 	}
 
+	@Override
+	public MemberVO selectIdInfoOfAcc(String accNo) {
+		return sqlSession.selectOne("member.dao.MemberDAO.selectIdInfoOfAcc", accNo);
+	}
+
 
 }

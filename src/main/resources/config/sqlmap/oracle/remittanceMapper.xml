@@ -16,11 +16,12 @@
 		<result column="CABLE_CHARGE" property="cableCharge"/>
 		<result column="CHARGE_COVER" property="chargeCover"/>
 		<result column="RESERVED_DATE" property="reservedDate"/>
+		<result column="status_desc" property="statusDesc"/>
 		<result column="rem_info_desc" property="remInfoDesc"/>
 	</resultMap>
 	<sql id="allColumn">
 		rem_no, info_no, acc_type, acc_no, amount, exchange_rate,  
-		reason, rem_date, charge_acc_no, rem_charge, inter_charge, cable_charge, charge_cover, status, reserved_date 
+		reason, rem_date, charge_acc_no, rem_charge, inter_charge, cable_charge, charge_cover, status, reserved_date, status_desc 
 	</sql>
 	<insert id="insertRemittance" parameterType="remittanceVO">
 		insert into hs_t_remittance ( rem_no, info_no, acc_type, acc_no, amount, exchange_rate, 
@@ -29,29 +30,37 @@
 			   #{reason}, #{chargeAccNo}, #{remCharge}, #{interCharge}, #{cableCharge}, #{chargeCover} )
 	</insert>
 	<insert id="insertReservation" parameterType="remittanceVO">
-		insert into hs_t_remittance ( <include refid="allColumn" /> ) 
+		insert into hs_t_remittance ( rem_no, info_no, acc_type, acc_no, amount, exchange_rate,
+									  reason, rem_date, charge_acc_no, rem_charge, inter_charge, cable_charge, charge_cover, status, reserved_date    ) 
 		values(seq_remittance_no.nextval, #{infoNo}, #{accType}, #{accNo}, #{amount}, #{exchangeRate}, 
 			   #{reason}, to_date(#{remDate}, 'YYYY-MM-DD'), #{chargeAccNo}, #{remCharge}, #{interCharge}, #{cableCharge}, #{chargeCover}, 'RS', SYSDATE )
 	</insert>
-	<select id="selectAllRemittance" parameterType="String" resultMap="remittanceMap">
-		select ri.bank_name||', '||ri.acc_no as rem_info_desc,
-				to_char(r.rem_date, 'yyyy/mm/dd') as rem_date, r.acc_no, r.amount, r.status
-		from hs_t_remittance r, hs_t_rem_info ri 
-		where r.info_no = ri.info_no and ri.id = #{id}
+	<select id="selectAllRemittance" parameterType="String" resultType="map">
+		select rem.rem_no, to_char(rem.rem_date, 'yyyy-mm-dd') rem_date, rem.acc_no my_acc_no, 
+			   info.name, info.acc_no your_acc_no, info.currency, rem.amount,
+			   rem.status, rem.reserved_date  
+		from hs_t_remittance rem, hs_t_rem_info info 
+		where rem.info_no = info.info_no and info.id=#{id}
+	</select>
+	<select id="selectRemittanceByRemNo" parameterType="Integer" resultMap="remittanceMap">
+		select * from hs_t_remittance 
+		where rem_no=#{remNo}
 	</select>
 	
 	
-	<select id="selectAllRemittanceAdmin" resultMap="remittanceMap">
-		select ri.bank_name||', '||ri.acc_no as rem_info_desc,
-				to_char(r.rem_date, 'yyyy/mm/dd') as rem_date, r.acc_no, r.amount, r.status, r.info_no
+	<select id="selectAllRemittanceAdmin" resultType="map">
+		select to_char(r.rem_date, 'yyyy/mm/dd') as rem_date, r.rem_no, r.acc_no as my_acc_no, r.amount, r.status, r.info_no,
+        	   ri.name, ri.acc_no as your_acc_no, ri.currency
 		from hs_t_remittance r, hs_t_rem_info ri 
 		where r.info_no = ri.info_no
 	</select>
 	<select id="selectRemittanceCount" resultType="hashmap">
-		select count(*) countAll, count(case when status='RM' then 1 end) countWaiting 
-		from hs_t_remittance
+		select count(*) countAll, count(case when status='IN' or status='RC' or status='ER' then 1 end) countDone, 
+			   round((count(case when status='IN' or status='RC' or status='ER' then 1 end))/count(*)*100) percentage 
+		from hs_t_remittance where status != 'RS' and status != 'CA'
 	</select>
 	<update id="updateStatusRemittance" parameterType="remittanceVO">
-		update hs_t_remittance set status=#{status} where rem_no=#{remNo}
+		update hs_t_remittance set status=#{status}, status_desc=#{statusDesc, jdbcType=VARCHAR} where rem_no=#{remNo}
 	</update>
+	
 </mapper>

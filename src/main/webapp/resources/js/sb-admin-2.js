@@ -55,3 +55,8 @@
   
 
 })(jQuery); // End of use strict
+
+
+$(document).ready(function() {
+	  $('table.displayDataTable').DataTable();
+	} );

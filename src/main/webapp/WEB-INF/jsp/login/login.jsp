@@ -13,30 +13,17 @@
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                     <div class="page-section">
-                        <h1 class="page-title">로그인</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="page-breadcrumb">
-		<div class="container">
-			<div class="row">
-				<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-end navForBtn">
-					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li>로그인</li>
-					</ol>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- page-header-close -->
 
 	<div class="container">
 		<div class="row d-flex justify-content-center h-75 align-items-center">
 			<!-- <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12"> -->
-			<div class="col-6 text-center">
+			<div class="col-6 text-center mt-5 pt-5">
 				<form name="loginF" action="${ pageContext.request.contextPath }/login" method="post">
 				<br><h3>환영합니다</h3><br>
 					<input class="form-control" type="text" name="id" placeholder="아이디" value="hong">

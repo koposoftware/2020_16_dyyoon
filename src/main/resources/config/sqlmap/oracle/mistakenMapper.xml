@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="remittance.dao.MistakenDAO">
+	<resultMap type="mistakenVO" id="mistakenMap">
+		<result column="mis_no" property="misNo"/>
+		<result column="reason_desc" property="reasonDesc"/>
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+	<sql id="selectAllMistakenColumn">
+		select mis_no, reason, reason_desc, status, rem_no, reg_date
+		 from hs_t_mistaken
+	</sql>
+	<insert id="insertMistaken" parameterType="mistakenVO">
+		insert into hs_t_mistaken(mis_no, reason, reason_desc, status, rem_no) 
+		values(seq_mistaken_no.nextval, #{reason}, #{reasonDesc, jdbcType=VARCHAR}, '신청', #{remNo})
+	</insert>
+	<select id="selectAllMistaken" parameterType="string" resultType="map">
+		select mis.mis_no, to_char(mis.reg_date, 'yyyy-mm-dd') reg_date, 
+			   info.acc_no your_acc, rem.acc_no my_acc, rem.amount, info.currency, mis.status, info.id
+		from hs_t_mistaken mis, hs_t_remittance rem, hs_t_rem_info info 
+		where mis.rem_no = rem.rem_no and rem.info_no = info.info_no and info.id = #{id}
+	</select>
+</mapper>

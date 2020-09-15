@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="remittance.dao.RecievedDAO">
+	<resultMap type="recievedVO" id="recievedMap">
+		<result column="RECIEVED_NO" property="recievedNo"/>
+		<result column="FROM_NAME" property="fromName"/>
+		<result column="FROM_PHONE" property="fromPhone"/>
+		<result column="FROM_EMAIL" property="fromEmail"/>
+		<result column="FROM_NATION" property="fromNation"/>
+		<result column="FROM_ADDR" property="fromAddr"/>
+		<result column="FROM_ADDR_DETAIL" property="fromAddrDetail"/>
+		<result column="FROM_BANK_CODE" property="fromBankCode"/>
+		<result column="FROM_ACC_NO" property="fromAccNo"/>
+		<result column="GET_ACC_NO" property="getAccNo"/>
+		<result column="GET_NAME" property="getName"/>
+		<result column="GET_PHONE" property="getPhone"/>
+		<result column="GET_EMAIL" property="getEmail"/>
+		<result column="GET_NATION" property="getNation"/>
+		<result column="GET_ADDR" property="getAddr"/>
+		<result column="GET_ADDR_DETAIL" property="getAddrDetail"/>
+		<result column="RECIEVED_DATE" property="recievedDate"/>
+		<result column="RECIEVED_DATE_WITHOUT_TIME" property="recievedDateWithoutTime"/>
+	</resultMap>
+	<select id="selectRecieved" parameterType="string" resultMap="recievedMap">
+		select to_char(rec.recieved_date, 'yyyy-mm-dd') as recieved_date_without_time, rec.* from hs_t_recieved rec, hs_t_account acc 
+		 where rec.get_acc_no = acc.acc_no 
+		 	   and acc.id=#{id} 
+		 order by rec.recieved_date desc
+	</select>
+</mapper>

@@ -11,14 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.account.service.AccountService;
 import kr.ac.kopo.country.vo.CountryVO;
+import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.remittance.service.RecievedService;
 import kr.ac.kopo.remittance.service.RemInfoService;
 import kr.ac.kopo.remittance.service.RemittanceService;
+import kr.ac.kopo.remittance.vo.RecievedVO;
 import kr.ac.kopo.remittance.vo.RemInfoVO;
 import kr.ac.kopo.remittance.vo.RemittanceVO;
 
@@ -26,11 +30,15 @@ import kr.ac.kopo.remittance.vo.RemittanceVO;
 public class RemittanceController {
 	
 	@Autowired
+	MemberService memberService;
+	@Autowired
 	RemInfoService remInfoService;
 	@Autowired
 	AccountService accountService;
 	@Autowired
 	RemittanceService remittanceService;
+	@Autowired
+	RecievedService recievedService;
 	
 	@GetMapping("/remittance")
 	public ModelAndView remRegisterForm(HttpSession session) {
@@ -114,8 +122,11 @@ public class RemittanceController {
 		ModelAndView mav = new ModelAndView("rem/remList"); 
 		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
 		
-		List<RemittanceVO> remittanceList = remittanceService.selectAllRemittance(id);
+		List<Map<String, Object>> remittanceList = remittanceService.selectAllRemittance(id);
+		List<RecievedVO> recievedList = recievedService.selectRecieved(id);
+		
 		mav.addObject("remittanceList", remittanceList);
+		mav.addObject("recievedList", recievedList);
 		
 		return mav;
 	}
@@ -130,10 +141,42 @@ public class RemittanceController {
 	public ModelAndView allRemList() {
 		ModelAndView mav = new ModelAndView("admin/remittance/remittanceCheck");
 		
-		mav.addObject("remittanceList", remittanceService.selectAllRemittanceAdmin());
 		Map<String, Object> map = remittanceService.selectRemittanceCount();
+
+		mav.addObject("remittanceList", remittanceService.selectAllRemittanceAdmin());
 		mav.addObject("remittanceCount", map);
 		
+		return mav;
+	}
+	
+	@GetMapping("/admin/remittance/{remNo}")
+	public ModelAndView remCheckDetail(@PathVariable("remNo") Integer remNo) {
+		
+		ModelAndView mav = new ModelAndView("admin/remittance/remittanceCheckDetail");
+		//remittance 정보
+		RemittanceVO remittance = remittanceService.selectRemittanceByRemNo(remNo);
+		
+		//accNo에 해당하는 id찾고 id관련 정보 취득
+		MemberVO member = memberService.selectIdInfoOfAcc(remittance.getAccNo());
+		//remInfo정보 얻기
+		RemInfoVO remInfo = remInfoService.selectRemInfoDetail(remittance.getInfoNo());
+		
+		
+		mav.addObject("remittance", remittance);
+		mav.addObject("member", member);
+		mav.addObject("remInfoDetail", remInfo);
+		
+		
+		return mav;
+	}
+	
+	@PostMapping("/admin/remittance")
+	public ModelAndView remCheck(RemittanceVO remittance) {
+		
+		ModelAndView mav = new ModelAndView("redirect:/admin/remittance");
+		//remittance 승인(IN 중계은행으로 넘어감) / 승인거절(ER)
+		remittanceService.updateStatusRemittance(remittance);
+		System.out.println(remittance);
 		return mav;
 	}
 

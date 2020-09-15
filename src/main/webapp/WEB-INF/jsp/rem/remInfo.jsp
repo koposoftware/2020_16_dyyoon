@@ -145,11 +145,11 @@ $(document).ready(function(){
 						 
 					</c:otherwise>
 				</c:choose>
-				<div id="viewRemInfo"></div>
 				<div class="text-center">
 					<button class="btn btn-light">즐겨찾기 등록</button>
 					<button class="btn btn-info" onclick="window.location.href='${ pageContext.request.contextPath }/remInfo/register'">새로 등록하기</button>
 				</div>
+				<div id="viewRemInfo"></div>
 			</div>
 		</div>
 	</div>

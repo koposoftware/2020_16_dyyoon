@@ -76,14 +76,25 @@
 			</div>
 			 -->
 			
-			<table class="table table-sm mt-3">
-				<tr class="text-center">
+			<table class="table table-sm mt-3 text-center">
+				<tr>
 					<th>신고일자</th>
 					<th>해외송금 상대계좌</th>
 					<th>본인계좌</th>
+					<th>통화</th>
 					<th>송금액</th>
 					<th>상태</th>
 				</tr>
+				<c:forEach items="${ mistakenList }" var="mistaken">
+					<tr>
+						<td>${ mistaken['REG_DATE'] }</td>
+						<td>${ mistaken['YOUR_ACC'] }</td>
+						<td>${ mistaken['MY_ACC'] }</td>
+						<td>${ mistaken['CURRENCY'] }</td>
+						<td class="text-right">${ mistaken['AMOUNT'] }</td>
+						<td>${ mistaken['STATUS'] }</td>
+					</tr>
+				</c:forEach>
 			</table>
 			<div class="text-center">
 				<button class="btn btn-outline-info" onclick="window.location.href='${ pageContext.request.contextPath}/remittance/mistake/write'">착오송금 신청하기</button>

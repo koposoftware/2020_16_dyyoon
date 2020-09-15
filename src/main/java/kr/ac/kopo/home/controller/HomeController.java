@@ -33,6 +33,15 @@ public class HomeController {
 		
 		Locale locales = null;
 		
+		String uri = request.getRequestURI();
+		uri = uri.substring(request.getContextPath().length());
+		String query = request.getQueryString();
+		if(query != null && query.length() != 0) {
+			uri = uri + "?" + query;
+		}
+		
+	
+		
 		if(locale.matches("en")) {
 			locales = Locale.ENGLISH;
 		}else if (locale.matches("zh")) {
@@ -43,6 +52,6 @@ public class HomeController {
 		
 		session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, locales);
 		
-		return "redirect:/";
+		return "redirect:/remInfo/ask/auth";
 	}
 }

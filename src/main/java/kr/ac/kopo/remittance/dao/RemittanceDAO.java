@@ -25,7 +25,14 @@ public interface RemittanceDAO {
 	 * @param id
 	 * @return
 	 */
-	List<RemittanceVO> selectAllRemittance(String id);
+	List<Map<String, Object>> selectAllRemittance(String id);
+	
+	/**
+	 * 해당 remNo의 상세한 송금 내역 조회
+	 * @param remNo
+	 * @return
+	 */
+	RemittanceVO selectRemittanceByRemNo(Integer remNo);
 	
 	
 	
@@ -36,7 +43,7 @@ public interface RemittanceDAO {
 	 * 심사해야할 모든 해외송금내역 조회
 	 * @return
 	 */
-	List<RemittanceVO> selectAllRemittanceAdmin();
+	List<Map<String, Object>> selectAllRemittanceAdmin();
 	
 	/**
 	 * 송금 총 수 / 대기 수 

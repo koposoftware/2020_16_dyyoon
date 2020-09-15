@@ -28,6 +28,11 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.updateMyInfo(member);
 	}
 
+	@Override
+	public MemberVO selectIdInfoOfAcc(String accNo) {
+		return memberDAO.selectIdInfoOfAcc(accNo);
+	}
 
+	
 
 }

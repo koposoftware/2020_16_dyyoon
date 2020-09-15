@@ -27,17 +27,22 @@ public class RemittanceDAOImpl implements RemittanceDAO {
 	}
 
 	@Override
-	public List<RemittanceVO> selectAllRemittance(String id) {
+	public List<Map<String, Object>> selectAllRemittance(String id) {
 		return session.selectList("remittance.dao.RemittanceDAO.selectAllRemittance", id);
 	}
 
+	@Override
+	public RemittanceVO selectRemittanceByRemNo(Integer remNo) {
+		return session.selectOne("remittance.dao.RemittanceDAO.selectRemittanceByRemNo", remNo);
+	}
+	
 	
 	
 	/*-------------------------
 		ADMIN PAGE
 	-------------------------*/
 	@Override
-	public List<RemittanceVO> selectAllRemittanceAdmin() {
+	public List<Map<String, Object>> selectAllRemittanceAdmin() {
 		return session.selectList("remittance.dao.RemittanceDAO.selectAllRemittanceAdmin");
 	}
 	
@@ -48,8 +53,9 @@ public class RemittanceDAOImpl implements RemittanceDAO {
 	
 	@Override
 	public void updateStatusRemittance(RemittanceVO remittance) {
-		session.update("remittance.dao.RemittanceDAO.updateStatusRemittance");
+		session.update("remittance.dao.RemittanceDAO.updateStatusRemittance", remittance);
 	}
+
 	
 
 }

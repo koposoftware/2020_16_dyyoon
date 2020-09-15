@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,6 @@
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 					<div class="page-section">
-						<h1 class="page-title">송금 정보 입력</h1>
 					</div>
 				</div>
 			</div>
@@ -38,14 +38,20 @@
 			</div>
 			<table class="table table-sm">
 					<tr>
-						<th colspan="2">영문이름</th>
+						<th colspan="2">ID</th>
+						<td>
+							<input type="text" name="id" value="${ id }" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2"><spring:message code="formEngName" /> </th>
 						<td>
 							<form:input path="name" class="form-control"/>
 							<form:errors path="name" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">전화번호</th>
+						<th colspan="2"><spring:message code="formPhone" /></th>
 						<td>
 							
 							<div class="input-group">
@@ -58,15 +64,15 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">이메일</th>
+						<th colspan="2"><spring:message code="formEmail" />이메일</th>
 						<td>
 							<form:input path="email" class="form-control"/>
 							<form:errors path="email" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th rowspan="3">영문주소</th>
-						<th>국가</th>
+						<th rowspan="3"><spring:message code="formEngAddr" />영문주소</th>
+						<th><spring:message code="formNation" /></th>
 						<td>
 							<form:select class="custom-select" path="nation" id="rcNationSelect-email">
 								<form:option value="">국가를 선택하세요</form:option>
@@ -82,28 +88,28 @@
 						</td>
 					</tr>
 					<tr>
-						<th >주소</th>
+						<th ><spring:message code="formAddr1" />주소</th>
 						<td>
 							<form:input path="addr"  class="form-control"/>
 							<form:errors path="addr" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th>세부주소</th>
+						<th><spring:message code="formAddr2" />세부주소</th>
 						<td>
 							<form:input path="addrDetail"  class="form-control"/>
 							<form:errors path="addrDetail" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">통화</th>
+						<th colspan="2"><spring:message code="formCurrency" />통화</th>
 						<td>
 							<form:input path="currency"  class="form-control" id="currencyInput-email" readonly="true"/>
 							<form:errors path="currency" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">은행코드</th>
+						<th colspan="2"><spring:message code="formBankCode" />은행코드</th>
 						<td>
 							
 							<div class="input-group">
@@ -117,51 +123,51 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">계좌번호</th>
+						<th colspan="2"><spring:message code="formAccNo" />계좌번호</th>
 						<td>
 							<form:input path="accNo"  class="form-control"/>
 							<form:errors path="accNo" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">은행명</th>
+						<th colspan="2"><spring:message code="formBankName" />은행명</th>
 						<td>
 							<form:input path="bankName"  class="form-control"  readonly="true"/>
 							<form:errors path="bankName" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th rowspan="3">은행주소</th>
-						<th >은행국가</th>
+						<th rowspan="3"><spring:message code="formBankAddr" />은행주소</th>
+						<th ><spring:message code="formBankNation" />은행국가</th>
 						<td>
 							<form:input path="bankNation" class="form-control"  readonly="true"/>
 							<form:errors path="bankNation" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th>은행주소</th>
+						<th><spring:message code="formBankAddr1" />은행주소</th>
 						<td>
 							<form:input path="bankAddr" class="form-control"  readonly="true"/>
 							<form:errors path="bankAddr" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th>세부주소</th>
+						<th><spring:message code="formBankAddr2" />세부주소</th>
 						<td>
 							<form:input path="bankAddrDetail" class="form-control"  readonly="true"/>
 							<form:errors path="bankAddrDetail" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2">직원전달사항</th>
+						<th colspan="2"><spring:message code="formForward" />직원전달사항</th>
 						<td>
 							<form:input path="myDesc"  class="form-control"/>
 						</td>
 					</tr>
 				</table>
 				
-				<button type="submit" class="btn btn-light">전체 삭제</button>
-				<button type="submit" class="btn btn-info">정보 등록</button>
+				<button type="submit" class="btn btn-light"><spring:message code="formPhone" />전체 삭제</button>
+				<button type="submit" class="btn btn-info"><spring:message code="formPhone" />정보 등록</button>
 			
 			</form:form>
 			</div>

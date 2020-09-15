@@ -50,19 +50,25 @@
 				<i class="material-icons align-middle">error</i>
 				<span class="align-middle">착오송금 조회/신고</span>
 			</div>
-			<div class="font-weight-bold">
-			<span class="material-icons align-middle text-info">report</span>
-			<span class="align-middle">착오송금반환신청</span>
-			</div>
-			<form:form>
 			
 			
+			
+			
+			
+			<form:form name="formMistake">
 			<table class="table table-sm">
 				<tr>
 					<th>해외송금 내역 선택	</th>
 					<td>
-						<select class="form-control">
-							<option>선택하세요</option>
+						<select class="form-control" name="remNo">
+							<option value="">선택하세요</option>
+							<c:forEach items="${ remittanceList }" var="remittance">
+							<c:if test="${ remittance['STATUS'] eq 'RM' or remittance['STATUS'] eq 'IN' or remittance['STATUS'] eq 'RC' }">
+								<option value="${ remittance['REM_NO'] }">
+									[출금계좌] ${ remittance['MY_ACC_NO']} : ${ remittance['CURRENCY'] } ${ remittance['AMOUNT'] }
+									</option>
+							</c:if>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -71,19 +77,27 @@
 						착오송금 사유 선택
 					</th>
 					<td>	
-						<select class="form-control">
-							<option>선택하세요</option>
+						<select class="form-control" name="reason">
+							<option value="">선택하세요</option>
+							<option value="계좌번호 기재 착오">계좌번호 기재 착오</option>
+							<option value="금액 입력 오류">금액 입력 오류</option>
+							<option value="이중입금">이중입금</option>
+							<option value="기타사유">기타사유</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<th>착오송금 사유 상세</th>
 					<td>
-						<textarea rows="10" cols="70"></textarea>
+						<textarea rows="10" cols="70" name="reasonDesc" class="form-control"></textarea>
 					</td>
 				</tr>
 			</table>
 			
+			<div class="text-center">
+				<button class="btn btn-light" type="button">목록</button>
+				<button class="btn btn-info" type="submit">착오송금 신고</button>
+			</div>
 			</form:form>
 			
 			

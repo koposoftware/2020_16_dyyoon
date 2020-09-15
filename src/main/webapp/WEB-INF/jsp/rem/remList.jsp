@@ -70,21 +70,23 @@
 					<table class="table table-sm mt-3">
 						<tr class="text-center">
 							<th>송금일자</th>
-							<th>보낸 분 계좌번호</th>
+							<th>내 계좌번호</th>
 							<th>받는 분</th>
 							<th>받는 분 계좌번호</th>
-							<th>통화</th>
+							<th style="width: 5%;">통화</th>
 							<th>송금액</th>
 						</tr>
 						<c:forEach items="${ remittanceList }" var="remittance">
+							<c:if test="${ remittance['STATUS'] ne 'RS' }">
 							<tr class="text-center">
-								<td>${ remittance.remDate }</td>
-								<td>${ remittance.accNo }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.amount }</td>
+								<td>${ remittance['REM_DATE'] }</td>
+								<td>${ remittance['MY_ACC_NO'] }</td>
+								<td>${ remittance['NAME'] }</td>
+								<td>${ remittance['YOUR_ACC_NO'] }</td>
+								<td>${ remittance['CURRENCY'] }</td>
+								<td>${ remittance['AMOUNT'] }</td>
 							</tr>
+							</c:if>
 						</c:forEach>
 					</table>				
 				</div>
@@ -92,24 +94,24 @@
 				<div id="remListReserve" class="container tab-pane fade">
 					<table class="table table-sm mt-3">
 						<tr class="text-center">
-							<th>예약일자</th>
-							<th>예약된 송금일자</th>
-							<th>보낸 분 계좌번호</th>
+							<th>예약 송금일자</th>
+							<th>내 계좌번호</th>
 							<th>받는 분</th>
 							<th>받는 분 계좌번호</th>
-							<th>통화</th>
+							<th style="width: 5%;">통화</th>
 							<th>송금액</th>
 						</tr>
 						<c:forEach items="${ remittanceList }" var="remittance">
+						<c:if test="${ remittance['STATUS'] eq 'RS' }">
 							<tr class="text-center">
-								<td>${ remittance.remDate }</td>
-								<td>${ remittance.remDate }</td>
-								<td>${ remittance.accNo }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.amount }</td>
+								<td>${ remittance['REM_DATE'] }</td>
+								<td>${ remittance['MY_ACC_NO'] }</td>
+								<td>${ remittance['NAME'] }</td>
+								<td>${ remittance['YOUR_ACC_NO'] }</td>
+								<td>${ remittance['CURRENCY'] }</td>
+								<td>${ remittance['AMOUNT'] }</td>
 							</tr>
+						</c:if>
 						</c:forEach>
 					</table>	
 				
@@ -119,21 +121,21 @@
 					
 					<table class="table table-sm mt-3">
 						<tr class="text-center">
-							<th>해외송금 수취일자</th>
-							<th>받는 분 계좌번호</th>
-							<th>보낸 분</th>
-							<th>보낸 분 계좌번호</th>
-							<th>통화</th>
-							<th>송금액</th>
+							<th>영업점 도착일</th>
+							<th>송금 계좌번호</th>
+							<th style="width:10%;">통화</th>
+							<th>송금금액</th>
+							<th>송금인</th>
+							<th>입금계좌번호</th>
 						</tr>
-						<c:forEach items="${ remittanceList }" var="remittance">
-							<tr class="text-center">
-								<td>${ remittance.remDate }</td>
-								<td>${ remittance.accNo }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.remInfoDesc }</td>
-								<td>${ remittance.amount }</td>
+						<c:forEach items="${ recievedList }" var="recieved">
+							<tr class="text-center" >
+								<td>${ recieved.recievedDate }</td>
+								<td>${ recieved.fromAccNo }</td>
+								<td>${ recieved.currency }</td>
+								<td>${ recieved.amount }</td>
+								<td>${ recieved.fromName }</td>
+								<td>${ recieved.getAccNo }</td>
 							</tr>
 						</c:forEach>
 					</table>	

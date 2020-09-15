@@ -23,4 +23,11 @@ public interface MemberService {
 	 * @param member 영문이름, 전화번호, 이메일, 주소, 상세주소
 	 */
 	void updateMyInfo(MemberVO member);
+	
+	/**
+	 * 해당 accNo의 멤버 정보 얻기
+	 * @param accNo
+	 * @return
+	 */
+	MemberVO selectIdInfoOfAcc(String accNo);
 }

@@ -53,8 +53,8 @@
                             <div id="navigation">
                             
                                 <ul>
-                                    <li class="active"><a href="#" title="Home">서비스 소개</a></li>
-                                    <li class="has-sub"><a href="#" title="Tours">해외송금</a>
+                                    <!-- <li class="active"><a href="#" title="Home">서비스 소개</a></li> -->
+                                    <li class="has-sub ml-2"><a href="#" title="Tours">해외송금</a>
                                         <ul>
                                             <li><a href="${ pageContext.request.contextPath }/remInfo">송금정보 조회/등록</a></li>
                                             <li><a href="${ pageContext.request.contextPath }/remittance/list">해외송금 전체 조회</a></li>
@@ -63,9 +63,9 @@
                                             <li><a href="${ pageContext.request.contextPath }/remittance/mistake">착오송금 조회/신고</a></li>
                                         </ul>
                                     </li>
-                                    <li class="active"><a href="#" title="Home">환율</a></li>
-                                    <li class="active"><a href="#" title="Home">계좌조회</a></li>
-                                    <li class="active"><a href="#" title="Home">고객센터</a></li>
+                                    <li class="active"><a href="${ pageContext.request.contextPath }/exchange" title="Home">환율</a></li>
+                                    <li class="active"><a href="${ pageContext.request.contextPath }/account" title="Home">계좌조회</a></li>
+                                    <li class="active"><a href="${ pageContext.request.contextPath }/service" title="Home">고객센터</a></li>
                                 </ul>
                             </div>
                         </div>
