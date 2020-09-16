@@ -12,7 +12,7 @@
                         	<li>
 	                        	<div class="dropdown show">
 		                        	<a href="#" class="dropdown-toggle" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                        		Language
+		                        		언어선택
 		                        	</a>
 		                        	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
 									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=ko"><i class="kr flag"></i>한국어</a>

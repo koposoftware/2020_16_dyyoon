@@ -10,7 +10,7 @@
 		<result column="charge_acc_no" property="chargeAccNo"/>
 	</resultMap>
 	<sql id="selectAllAccountColumn">
-		select acc_no, pwd, type, currency, acc_name, alias, open_date, balance, id
+		select acc_no, pwd, type, currency, acc_name, alias, open_date, balance, id, favorite 
 		 from hs_t_account
 	</sql>
 	<select id="selectAccountList" parameterType="String" resultMap="accountMap">
@@ -25,5 +25,8 @@
 	<select id="selectAccountByAccNo" parameterType="String" resultMap="accountMap">
 		<include refid="selectAllAccountColumn"></include>
 		where acc_no = #{ accNo }
+	</select>
+	<select id="selectUserAllKRWBalance" parameterType="String" resultType="Float">
+		select sum(balance) as sumBalance from hs_t_account where type='03' and id=#{id}
 	</select>
 </mapper>

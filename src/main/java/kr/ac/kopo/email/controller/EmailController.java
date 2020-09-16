@@ -88,16 +88,14 @@ public class EmailController {
 	public ModelAndView askedRegister(@Valid RemInfoVO remInfo, BindingResult result, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		
-		//System.out.println(remInfo);
 		
 		if(result.hasErrors()) {
-			//System.out.println("필수항목 입력 필요");
 			List<CountryVO> countryList = countryService.selectAllCountryList();
 			mav.addObject("countryList", countryList);
 			mav.setViewName("email/remInfoAskForm");
 		}else {
 			remInfo.setStatus("신청중");
-			remInfoService.insertRemInfo(remInfo);
+			//remInfoService.insertRemInfo(remInfo);
 			
 			mav.setViewName("email/remInfoAsk");
 			mav.addObject("remInfoDetail", remInfo);

@@ -59,7 +59,7 @@
 						<span class="align-middle">송금정보</span>
 					</div>
 
-					<table class="table table-sm">
+					<table class="table ">
                   <tr>
                      <th>예약 송금 날짜</th>
                      <td>
@@ -67,7 +67,7 @@
                      </td>
 
 						<tr>
-							<th>보내는 분</th>
+							<th style="width:200px;">보내는 분</th>
 							<td>
 								<div class="input-group">
 									<input type="text" class="form-control"	value="${ loginVO.engName }" disabled="disabled">
@@ -133,7 +133,7 @@
 						<i class="material-icons md-18 align-middle text-info">monetization_on</i><span
 							class="align-middle">송금액 및 계좌 정보</span>
 					</div>
-					<table class="table table-sm">
+					<table class="table ">
 						<tr>
 							<th>계좌 유형 선택</th>
 							<td>
@@ -182,7 +182,7 @@
 							</td>
 						</tr>
 						<tr>
-							<th>송금 금액</th>
+							<th style="width:200px;">송금 금액</th>
 							<td class="remittanceAmount">
 								<div class="input-group">
 									<div class="input-group-prepend">
@@ -297,9 +297,9 @@
 						<i class="material-icons md-18 align-middle text-info">person</i><span
 							class="align-middle">보내는 분 정보</span>
 					</div>
-					<table class="table table-sm">
+					<table class="table ">
 						<tr>
-							<th colspan="2">영문이름</th>
+							<th colspan="2" >영문이름</th>
 							<td>${ loginVO.engName }</td>
 						</tr>
 						<tr>

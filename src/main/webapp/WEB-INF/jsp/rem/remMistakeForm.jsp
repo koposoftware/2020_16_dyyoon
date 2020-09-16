@@ -56,9 +56,9 @@
 			
 			
 			<form:form name="formMistake">
-			<table class="table table-sm">
+			<table class="table ">
 				<tr>
-					<th>해외송금 내역 선택	</th>
+					<th style="width:200px;">해외송금 내역 선택	</th>
 					<td>
 						<select class="form-control" name="remNo">
 							<option value="">선택하세요</option>

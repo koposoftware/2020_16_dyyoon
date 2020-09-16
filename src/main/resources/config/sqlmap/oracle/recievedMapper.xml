@@ -34,6 +34,13 @@
 		select * from hs_t_recieved 
 		where recieved_no=#{recievedNo}
 	</select>
+	<select id="selectReicevedOnlyApproved" parameterType="string" resultMap="recievedMap">
+		select to_char(rec.recieved_date, 'yyyy-mm-dd') as recieved_date_without_time, rec.* from hs_t_recieved rec, hs_t_account acc 
+		 where rec.get_acc_no = acc.acc_no 
+		 	   and acc.id=#{id} 
+		 	   and rec.status != '요청됨'
+		 order by rec.recieved_date desc
+	</select>
 
 	
 	<select id="selectAllRecievedAdmin" resultMap="recievedMap">

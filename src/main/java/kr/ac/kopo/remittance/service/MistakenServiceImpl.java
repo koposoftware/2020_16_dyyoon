@@ -45,6 +45,11 @@ public class MistakenServiceImpl implements MistakenService {
 	public MistakenVO selectMistakenByMisNo(Integer misNo) {
 		return mistakenDAO.selectMistakenByMisNo(misNo);
 	}
+
+	@Override
+	public void updateStatusMistaken(MistakenVO mistaken) {
+		mistakenDAO.updateStatusMistaken(mistaken);
+	}
 	
 
 }

@@ -65,9 +65,11 @@
 			
 			<!-- tab-bar 내용부 시작 -->
 			<div class="tab-content">
+			
 				<!-- 보낸 송금목록  -->
 				<div id="remListRemittance" class="container tab-pane active">
-					<table class="table table-sm mt-3">
+					<table class="table  mt-3 table-hover table-remittance-list">
+					<thead>
 						<tr class="text-center">
 							<th>송금일자</th>
 							<th>내 계좌번호</th>
@@ -76,9 +78,12 @@
 							<th style="width: 5%;">통화</th>
 							<th>송금액</th>
 						</tr>
+					</thead>
+					<tbody>
 						<c:forEach items="${ remittanceList }" var="remittance">
 							<c:if test="${ remittance['STATUS'] ne 'RS' }">
-							<tr class="text-center">
+							<tr class="text-center table-row-clickable" data-value="${ remittance['REM_NO'] }"
+								data-type="remittance">
 								<td>${ remittance['REM_DATE'] }</td>
 								<td>${ remittance['MY_ACC_NO'] }</td>
 								<td>${ remittance['NAME'] }</td>
@@ -88,11 +93,14 @@
 							</tr>
 							</c:if>
 						</c:forEach>
+					</tbody>
 					</table>				
 				</div>
+				
 				<!-- 예약한 송금목록  -->
 				<div id="remListReserve" class="container tab-pane fade">
-					<table class="table table-sm mt-3">
+					<table class="table  mt-3 table-hover table-remittance-list table-th-success">
+					<thead>
 						<tr class="text-center">
 							<th>예약 송금일자</th>
 							<th>내 계좌번호</th>
@@ -101,9 +109,12 @@
 							<th style="width: 5%;">통화</th>
 							<th>송금액</th>
 						</tr>
+					</thead>
+					<tbody>
 						<c:forEach items="${ remittanceList }" var="remittance">
 						<c:if test="${ remittance['STATUS'] eq 'RS' }">
-							<tr class="text-center">
+							<tr class="text-center table-row-clickable" data-value="${ remittance['REM_NO'] }"
+								data-type="reserved">
 								<td>${ remittance['REM_DATE'] }</td>
 								<td>${ remittance['MY_ACC_NO'] }</td>
 								<td>${ remittance['NAME'] }</td>
@@ -113,33 +124,38 @@
 							</tr>
 						</c:if>
 						</c:forEach>
+					</tbody>
 					</table>	
-				
 				</div>
+				
 				<!-- 받은 송금목록  -->
 				<div id="remListRecieved" class="container tab-pane fade">
 					
-					<table class="table table-sm mt-3">
+					<table class="table  mt-3 table-hover table-remittance-list table-th-warning">
+					<thead>
 						<tr class="text-center">
-							<th>영업점 도착일</th>
-							<th>송금 계좌번호</th>
-							<th style="width:10%;">통화</th>
-							<th>송금금액</th>
+							<th style="width:15%">영업점 도착일</th>
 							<th>송금인</th>
+							<th>송금 계좌번호</th>
+							<th style="width:5%;">통화</th>
+							<th>송금금액</th>
 							<th>입금계좌번호</th>
 						</tr>
+					</thead>
+					<tbody>
 						<c:forEach items="${ recievedList }" var="recieved">
-							<tr class="text-center" >
-								<td>${ recieved.recievedDate }</td>
+							<tr class="text-center table-row-clickable" data-value="${ recieved.recievedNo }"
+									data-type="recieved">
+								<td>${ recieved.recievedDateWithoutTime }</td>
+								<td>${ recieved.fromName }</td>
 								<td>${ recieved.fromAccNo }</td>
 								<td>${ recieved.currency }</td>
 								<td>${ recieved.amount }</td>
-								<td>${ recieved.fromName }</td>
 								<td>${ recieved.getAccNo }</td>
 							</tr>
 						</c:forEach>
+					</tbody>
 					</table>	
-					
 				</div>
 				
 				
@@ -151,10 +167,23 @@
 	<!-- remList page close -->
 	
 	
-	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
-	<script type="text/javascript">
-			
-	</script>
+<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+<script type="text/javascript">
+	$(".table-remittance-list tbody tr").on('click', function() {
+		var remNo = $(this).data("value");
+		var type = $(this).data("type");
+		
+		if(type == 'recieved'){
+		    window.location.href='${ pageContext.request.contextPath }/recieved/' + remNo;
+		}else if (type == 'reserved') {
+		    window.location.href='${ pageContext.request.contextPath }/reserved/' + remNo;
+		}else{
+		    window.location.href='${ pageContext.request.contextPath }/remittance/' + remNo;
+		}
+		
+		
+	  });	
+</script>
 </body>
 </html>

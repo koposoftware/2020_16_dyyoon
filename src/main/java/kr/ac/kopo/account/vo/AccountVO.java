@@ -11,9 +11,18 @@ public class AccountVO {
 	private String 	openDate;
 	private Float	balance;
 	private String 	id;
+	private String 	favorite;
 	
 	public AccountVO() {
 		super();
+	}
+	
+	public String getFavorite() {
+		return favorite;
+	}
+
+	public void setFavorite(String favorite) {
+		this.favorite = favorite;
 	}
 
 	public String getAccNo() {

@@ -9,7 +9,7 @@
 		<span class="align-middle text-danger">비승인 - 사유 : ${ remInfoDetail.statusDesc }</span>
 	</c:if>
 </div>
-<table class="table table-sm">
+<table class="table">
 	<tr>
 		<th colspan="2">영문이름</th>
 		<td>${ remInfoDetail.name }</td>
@@ -66,7 +66,7 @@
 	</tr>
 	<c:if test="${ status ne 'remittanceConfirm' }">
 	<tr>
-		<th colspan="2">직원전달사항</th>
+		<th colspan="2">직원앞 전달사항</th>
 		<td>${ remInfoDetail.myDesc }</td>
 	</tr>
 	</c:if>

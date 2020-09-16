@@ -37,8 +37,11 @@
 		where mis.rem_no = rem.rem_no and acc.acc_no = rem.acc_no 
 	</select>
 	<select id="selectMistakenCount" resultType="map">
-		select count(*) countAll, count(case when status='완료' then 1 end) countDone,  
-			   round((count(case when status='완료' then 1 end))/count(*)*100) percentage 
+		select count(*) countAll, count(case when status='반환완료' or status='처리중' then 1 end) countDone,  
+			   round((count(case when status='반환완료' or status='처리중' then 1 end))/count(*)*100) percentage 
 		from hs_t_mistaken
 	</select>
+	<update id="updateStatusMistaken" parameterType="mistakenVO">
+		update hs_t_mistaken set status='반환완료' where mis_no=#{misNo}	
+	</update>
 </mapper>

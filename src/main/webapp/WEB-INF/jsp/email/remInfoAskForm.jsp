@@ -27,22 +27,18 @@
 		<div class="container allAccount-con pt-1 pb-5">
 		<div class="row d-flex justify-content-center h-75 align-items-center">
 			
-			<div class="col-md-8 text-center">
+			<div class="col-md-10 text-center">
 
 
 			<form:form commandName="remInfoVO" method="post" action="${ pageContext.request.contextPath }/remInfo/ask/register">
 			<input type="hidden" name="id" value="${ id }">
 			<br>
 			<div class="d-flex">
-				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">받는 분 정보</span></div>
+				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i>
+				<span class="align-middle"><spring:message code="formTitle"></spring:message> </span>
+				</div>
 			</div>
-			<table class="table table-sm">
-					<tr>
-						<th colspan="2">ID</th>
-						<td>
-							<input type="text" name="id" value="${ id }" readonly="readonly">
-						</td>
-					</tr>
+			<table class="table">
 					<tr>
 						<th colspan="2"><spring:message code="formEngName" /> </th>
 						<td>
@@ -64,23 +60,29 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2"><spring:message code="formEmail" />이메일</th>
+						<th colspan="2"><spring:message code="formEmail" /></th>
 						<td>
 							<form:input path="email" class="form-control"/>
 							<form:errors path="email" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th rowspan="3"><spring:message code="formEngAddr" />영문주소</th>
+						<th rowspan="3"><spring:message code="formEngAddr" /></th>
 						<th><spring:message code="formNation" /></th>
 						<td>
 							<form:select class="custom-select" path="nation" id="rcNationSelect-email">
-								<form:option value="">국가를 선택하세요</form:option>
+								<form:option value=""><spring:message code="formNationSelect"></spring:message> </form:option>
 								<c:forEach items="${ countryList }" var="country">
 									<form:option value="${ country.countryCode }" 
 												data-value="${ country.currencyCode }"
 												data-phone="${ country.phoneCode }">
-										${ country.countryEngName } (${ country.countryName })
+									<c:choose>
+										<c:when test="${ languageSet eq 'en' }">${ country.countryEngName }</c:when>
+										<c:when test="${ languageSet eq 'zh' }">${ country.countryChName } (${ country.countryEngName })</c:when>
+										<c:otherwise>
+											${ country.countryName } (${ country.countryEngName })
+										</c:otherwise>
+									</c:choose>
 									</form:option>
 								</c:forEach>
 							</form:select>
@@ -88,34 +90,36 @@
 						</td>
 					</tr>
 					<tr>
-						<th ><spring:message code="formAddr1" />주소</th>
+						<th ><spring:message code="formAddr1" /></th>
 						<td>
 							<form:input path="addr"  class="form-control"/>
 							<form:errors path="addr" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th><spring:message code="formAddr2" />세부주소</th>
+						<th><spring:message code="formAddr2" /></th>
 						<td>
 							<form:input path="addrDetail"  class="form-control"/>
 							<form:errors path="addrDetail" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2"><spring:message code="formCurrency" />통화</th>
+						<th colspan="2"><spring:message code="formCurrency" /></th>
 						<td>
 							<form:input path="currency"  class="form-control" id="currencyInput-email" readonly="true"/>
 							<form:errors path="currency" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2"><spring:message code="formBankCode" />은행코드</th>
+						<th colspan="2"><spring:message code="formBankCode" /></th>
 						<td>
 							
 							<div class="input-group">
 							<form:input path="bankCode" class="form-control"/>
 							  <div class="input-group-append">
-							    <button class="btn btn-info bankCode-btn" type="button">코드 확인</button>
+							    <button class="btn btn-info bankCode-btn" type="button">
+									<spring:message code="formCodeCheck" />
+								</button>
 							  </div>
 							</div>
 							
@@ -123,51 +127,51 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2"><spring:message code="formAccNo" />계좌번호</th>
+						<th colspan="2"><spring:message code="formAccNo" /></th>
 						<td>
 							<form:input path="accNo"  class="form-control"/>
 							<form:errors path="accNo" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2"><spring:message code="formBankName" />은행명</th>
+						<th colspan="2"><spring:message code="formBankName" /></th>
 						<td>
 							<form:input path="bankName"  class="form-control"  readonly="true"/>
 							<form:errors path="bankName" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th rowspan="3"><spring:message code="formBankAddr" />은행주소</th>
-						<th ><spring:message code="formBankNation" />은행국가</th>
+						<th rowspan="3"><spring:message code="formBankAddr" /></th>
+						<th ><spring:message code="formBankNation" /></th>
 						<td>
 							<form:input path="bankNation" class="form-control"  readonly="true"/>
 							<form:errors path="bankNation" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th><spring:message code="formBankAddr1" />은행주소</th>
+						<th><spring:message code="formBankAddr1" /></th>
 						<td>
 							<form:input path="bankAddr" class="form-control"  readonly="true"/>
 							<form:errors path="bankAddr" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th><spring:message code="formBankAddr2" />세부주소</th>
+						<th><spring:message code="formBankAddr2" /></th>
 						<td>
 							<form:input path="bankAddrDetail" class="form-control"  readonly="true"/>
 							<form:errors path="bankAddrDetail" class="error" />
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2"><spring:message code="formForward" />직원전달사항</th>
+						<th colspan="2"><spring:message code="formForward" /></th>
 						<td>
 							<form:input path="myDesc"  class="form-control"/>
 						</td>
 					</tr>
 				</table>
 				
-				<button type="submit" class="btn btn-light"><spring:message code="formPhone" />전체 삭제</button>
-				<button type="submit" class="btn btn-info"><spring:message code="formPhone" />정보 등록</button>
+				<button type="button" class="btn btn-light"><spring:message code="formDeleteAll" /></button>
+				<button type="submit" class="btn btn-info"><spring:message code="formRegister" /></button>
 			
 			</form:form>
 			</div>
@@ -178,7 +182,7 @@
 	
 	
 	
-<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerSecForEmail.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
 <script type="text/javascript">
 	$('#rcNationSelect-email').change(function(){
@@ -190,10 +194,10 @@
 	})
 	
 	$('.bankCode-btn').on('click', function(){
-		$('input[name="bankName"]').val('Bank of 000')
-		$('input[name="bankNation"]').val('US')
-		$('input[name="bankAddr"]').val('New York, ABCD Street')
-		$('input[name="bankAddrDetail"]').val('JKH Building 123')
+		$('input[name="bankName"]').val('CITIBANK SINGAPORE LTD')
+		$('input[name="bankNation"]').val('SG')
+		$('input[name="bankAddr"]').val('SINGAPORE')
+		$('input[name="bankAddrDetail"]').val('PLAZA BY THE PARK, 51, BRAS BASAH ROAD')
 		
 	})
 	

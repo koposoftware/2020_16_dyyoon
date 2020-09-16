@@ -54,7 +54,7 @@
 					<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">송금 정보 등록이 완료되었습니다</span></div>
 				</div>
 			
-			<table class="table table-sm ">
+			<table class="table">
 				<tr>
 					<th colspan="2">영문이름</th>
 					<td>${ remInfoDetail.name }</td>

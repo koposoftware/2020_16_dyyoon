@@ -123,10 +123,42 @@ public class RemittanceController {
 		String id = ((MemberVO)session.getAttribute("loginVO")).getId();
 		
 		List<Map<String, Object>> remittanceList = remittanceService.selectAllRemittance(id);
-		List<RecievedVO> recievedList = recievedService.selectRecieved(id);
+		List<RecievedVO> recievedList = recievedService.selectReicevedOnlyApproved(id);
 		
 		mav.addObject("remittanceList", remittanceList);
 		mav.addObject("recievedList", recievedList);
+		
+		return mav;
+	}
+	
+	@GetMapping("/remittance/{remNo}")
+	public ModelAndView remDetail(@PathVariable("remNo") Integer remNo, HttpSession session) {
+		ModelAndView mav = new ModelAndView("rem/remListDetail");
+		//remittance 정보
+		RemittanceVO remittance = remittanceService.selectRemittanceByRemNo(remNo);
+		//remInfo정보 얻기
+		RemInfoVO remInfo = remInfoService.selectRemInfoDetail(remittance.getInfoNo());
+		
+		String status = "remittanceConfirm";
+		mav.addObject("status", status); 
+		mav.addObject("remittanceVO", remittance);
+		mav.addObject("remInfoDetail", remInfo);
+		
+		return mav;
+	}
+	
+	@GetMapping("/reserved/{remNo}")
+	public ModelAndView reservedDetail(@PathVariable("remNo") Integer remNo, HttpSession session) {
+		ModelAndView mav = new ModelAndView("rem/remListReservedDetail");
+		//remittance 정보
+		RemittanceVO remittance = remittanceService.selectRemittanceByRemNo(remNo);
+		//remInfo정보 얻기
+		RemInfoVO remInfo = remInfoService.selectRemInfoDetail(remittance.getInfoNo());
+		
+		String status = "remittanceConfirm";
+		mav.addObject("status", status); 
+		mav.addObject("remittanceVO", remittance);
+		mav.addObject("remInfoDetail", remInfo);
 		
 		return mav;
 	}

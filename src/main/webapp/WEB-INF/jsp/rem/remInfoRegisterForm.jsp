@@ -66,7 +66,7 @@
 				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">보내는 분 정보</span></div>
 				<button type="button" class="btn btn-secondary ml-auto" data-toggle="modal" data-target="#remInfo-myData-modify-modal">내 정보 수정하기</button>
 			</div>
-			<table class="table table-sm">
+			<table class="table ">
 				<tr>
 					<th colspan="2">영문성명</th>
 					<td>${ loginVO.engName }</td>
@@ -99,7 +99,7 @@
 				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">받는 분 정보</span></div>
 				<button type="button" class="btn btn-secondary ml-auto" data-target="#reminfo-ask-modal" data-toggle="modal">입력 요청하기</button>
 			</div>
-			<table class="table table-sm">
+			<table class="table ">
 					<tr>
 						<th colspan="2">영문이름</th>
 						<td>
@@ -251,7 +251,7 @@
 						<i class="material-icons md-18 align-middle text-info">person</i><span
 							class="align-middle">보내는 분 정보</span>
 					</div>
-					<table class="table table-sm">
+					<table class="table ">
 						<tr>
 							<th colspan="2">영문이름</th>
 							<td><input type="text" class="form-control" value="${ loginVO.engName }" name="engName"></td>

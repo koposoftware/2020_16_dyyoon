@@ -101,4 +101,16 @@ public class MistakenController {
 		
 		return mav;
 	}
+	
+	@PostMapping("/admin/mistaken")
+	public ModelAndView mistakenCheck(MistakenVO mistaken) {
+		ModelAndView mav = new ModelAndView("redirect:/admin/mistaken");
+		
+		//반환완료일 경우
+		if(mistaken.getStatus().equals("반환완료")) {
+			mistakenService.updateStatusMistaken(mistaken);
+		}
+		
+		return mav;
+	}
 }

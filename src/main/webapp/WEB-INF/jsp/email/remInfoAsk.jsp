@@ -16,7 +16,6 @@
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 					<div class="page-section">
-						<h1 class="page-title">송금 정보 입력</h1>
 					</div>
 				</div>
 			</div>
@@ -28,68 +27,71 @@
 		<div class="container allAccount-con pt-1 pb-5">
 		<div class="row d-flex justify-content-center h-75 align-items-center">
 			
-			<div class="col-md-8 text-center">
+			<div class="col-md-10 text-center">
 
-				<div class="d-flex">
-					<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle"> 성공적으로 등록되었습니다</span></div>
+				<div class="d-flex mt-2 mb-2">
+					<div class="font-weight-bold">
+					<i class="material-icons md-18 align-middle text-info" >person</i>
+					<span class="align-middle"><spring:message code="registerTitle"/> </span>
+					</div> 
 				</div>
-				<table class="table table-sm ">
+				<table class="table mt-2 mb-2">
 				<tr>
-					<th colspan="2">영문이름</th>
+					<th colspan="2"><spring:message code="formEngName" /> </th>
 					<td>${ remInfoDetail.name }</td>
 				</tr>
 				<tr>
-					<th colspan="2">전화번호</th>
+					<th colspan="2"><spring:message code="formPhone" /></th>
 					<td>${ remInfoDetail.phone }</td>
 				</tr>
 				<tr>
-					<th colspan="2">이메일</th>
+					<th colspan="2"><spring:message code="formEmail" /></th>
 					<td>${ remInfoDetail.email }</td>
 				</tr>
 				<tr>
-					<th rowspan="3">영문주소</th>
-					<th>국가</th>
+					<th rowspan="3"><spring:message code="formEngAddr" /></th>
+					<th><spring:message code="formNation" /> </th>
 					<td>${ remInfoDetail.nation }</td>
 				</tr>
 				<tr>
-					<th >주소</th>
+					<th ><spring:message code="formAddr1" /></th>
 					<td>${ remInfoDetail.addr }</td>
 				</tr>
 				<tr>
-					<th>세부주소</th>
+					<th><spring:message code="formAddr2" /></th>
 					<td>${ remInfoDetail.addrDetail }</td>
 				</tr>
 				<tr>
-					<th colspan="2">통화</th>
+					<th colspan="2"><spring:message code="formCurrency" /></th>
 					<td>${ remInfoDetail.currency }</td>
 				</tr>
 				<tr>
-					<th colspan="2">은행명</th>
+					<th colspan="2"><spring:message code="formBankName" /></th>
 					<td>${ remInfoDetail.bankName }</td>
 				</tr>
 				<tr>
-					<th colspan="2">계좌번호</th>
+					<th colspan="2"><spring:message code="formAccNo" /></th>
 					<td>${ remInfoDetail.accNo }</td>
 				</tr>
 				<tr>
-					<th colspan="2">은행코드</th>
+					<th colspan="2"><spring:message code="formBankCode" /></th>
 					<td>${ remInfoDetail.bankCode }</td>
 				</tr>
 				<tr>
-					<th rowspan="3">은행주소</th>
-					<th >은행국가</th>
+					<th rowspan="3"><spring:message code="formBankAddr" /></th>
+					<th ><spring:message code="formBankNation" /></th>
 					<td>${ remInfoDetail.bankNation }</td>
 				</tr>
 				<tr>
-					<th>은행주소</th>
+					<th><spring:message code="formBankAddr1" /></th>
 					<td>${ remInfoDetail.bankAddr }</td>
 				</tr>
 				<tr>
-					<th>세부주소</th>
+					<th><spring:message code="formBankAddr2" /></th>
 					<td>${ remInfoDetail.bankAddrDetail }</td>
 				</tr>
 				<tr>
-					<th colspan="2">직원전달사항</th>
+					<th colspan="2"><spring:message code="formForward" /></th>
 					<td>${ remInfoDetail.myDesc }</td>
 				</tr>
 			</table>
@@ -103,7 +105,7 @@
 	
 	
 	
-<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerSecForEmail.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
 </body>
 </html>

@@ -59,9 +59,9 @@
 						<span class="align-middle">송금정보</span>
 					</div>
 
-					<table class="table table-sm">
+					<table class="table ">
 						<tr>
-							<th>보내는 분</th>
+							<th style="width:200px;">보내는 분</th>
 							<td>
 								<div class="input-group">
 									<input type="text" class="form-control"	value="${ loginVO.engName }" disabled="disabled">
@@ -127,9 +127,9 @@
 						<i class="material-icons md-18 align-middle text-info">monetization_on</i><span
 							class="align-middle">송금액 및 계좌 정보</span>
 					</div>
-					<table class="table table-sm">
+					<table class="table ">
 						<tr>
-							<th>계좌 유형 선택</th>
+							<th style="width:200px;">계좌 유형 선택</th>
 							<td>
 								<form:radiobutton class="accType-radiobutton" path="accType" value="원화계좌출금" checked="checked" label="원화계좌출금" /> 
 								<form:radiobutton class="accType-radiobutton" path="accType" value="외화계좌출금" label="외화계좌출금" /> 
@@ -176,6 +176,10 @@
 							</td>
 						</tr>
 						<tr>
+							<th>송금계좌 비밀번호</th>
+							<td><input type="password" class="form-control"></td>
+						</tr>
+						<tr>
 							<th>송금 금액</th>
 							<td class="remittanceAmount">
 								<div class="input-group">
@@ -201,10 +205,6 @@
 							</td>
 						</tr>
 						<tr>
-							<th>송금 계좌 비밀번호</th>
-							<td><input type="password" class="form-control"></td>
-						</tr>
-						<tr>
 							<th>수수료출금계좌</th>
 							<td>
 								<div class="input-group rem-chargeAccount-input-group">
@@ -222,11 +222,11 @@
 										<button class="btn btn-info registerForm-chargeAccNo-btn" type="button">잔액조회</button>
 									</div>
 								</div>
-								<div class="text-secondary" id="remRegister-chargeAccountBalance"></div>
+								<div class="text-secondary remRegister-chargeAccountBalance"></div>
 							</td>
 						</tr>
 						<tr>
-							<th>수수료 출금계좌 비밀번호</th>
+							<th>수수료계좌 비밀번호</th>
 							<td><input type="password" class="form-control"></td>
 						</tr>
 						<tr>
@@ -246,14 +246,6 @@
 							<td>
 								<form:input class="form-control" path="cableCharge" readonly="true" value="5000"/>
 							</td>
-						</tr>
-						<tr>
-							<th>총출금금액(원화)</th>
-							<td id="krwTotal"></td>
-						</tr>
-						<tr>
-							<th>총출금금액(외화)</th>
-							<td id="otherTotal"></td>
 						</tr>
 					</table>
 
@@ -291,7 +283,7 @@
 						<i class="material-icons md-18 align-middle text-info">person</i><span
 							class="align-middle">보내는 분 정보</span>
 					</div>
-					<table class="table table-sm">
+					<table class="table ">
 						<tr>
 							<th colspan="2">영문이름</th>
 							<td>${ loginVO.engName }</td>
@@ -363,6 +355,8 @@
 
 	<!------------------------------------------------------------ JS  ------------------------------------------------------------>
 	<script type="text/javascript">
+	
+		//총 출금금액 계산
 	
 		//계좌 유형에 따라 표시되는 계좌 달라짐 & amount는 현지통화방식
 		$('.accType-radiobutton').change(function(){

@@ -52,7 +52,7 @@
 		             	<h4 class="small font-weight-bold text-warning">착오송금 신고 처리 현황 <span class="float-right">${ mistakenCount["PERCENTAGE"] } %</span></h4>
 		                   <div class="progress mb-1">
 		                     <div class="progress-bar bg-warning" role="progressbar" 
-		                     		style="width: ${ mistakenCount['PERCENTAGE'] } %" aria-valuenow="${ mistakenCount['PERCENTAGE'] } " 
+		                     		style="width: ${ mistakenCount['PERCENTAGE'] }%" aria-valuenow="${ mistakenCount['PERCENTAGE'] } " 
 		                     		aria-valuemin="0" aria-valuemax="100">
 		                     </div>
 		                   </div>

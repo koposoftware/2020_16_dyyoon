@@ -5,33 +5,7 @@
 <html>
 <head>
 <jsp:include page="/WEB-INF/jsp/include/headcss.jsp"></jsp:include>
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	$("#table-rem-info tbody tr").on('click', function() {
-		var remNo = $(this).data("value");
-		console.log(remNo);
-		
-		$(this).siblings().removeClass("table-active");
-		$(this).addClass("table-active");
-		
-		$.ajax({
-			url : '${pageContext.request.contextPath}/remInfo/' + remNo,
-			type : 'get',
-			success : function(data){
-				//console.log('통신성공~!');
-				$('#viewRemInfo').empty();
-				$('#viewRemInfo').html(data)
- 			},
-			error : function(){
-				alert('실패')
-			}
-		})
-        
-        
-      });
-});
-</script>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/jsp/include/headerSec.jsp"></jsp:include>
@@ -76,8 +50,8 @@ $(document).ready(function(){
 				</div>
 			
 			
-				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">수신인 정보</span></div>
-				<table class="table table-sm">
+				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">내 정보</span></div>
+				<table class="table ">
 					<tr>
 						<th colspan="2">영문이름</th>
 						<td>${ loginVO.engName }</td>
@@ -106,7 +80,7 @@ $(document).ready(function(){
 						<div class="mx-auto">등록된 송금정보가 없습니다</div>
 					</c:when>
 					<c:otherwise>
-					<table class="table table-hover text-center table-sm" id="table-rem-info">
+					<table class="table table-hover text-center " id="table-rem-info">
 					
 					<thead>
 							<tr>
@@ -156,7 +130,33 @@ $(document).ready(function(){
 	<!-- remInfo page close -->
 	
 	
-	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+<script>
+$(document).ready(function(){
+	$("#table-rem-info tbody tr").on('click', function() {
+		var remNo = $(this).data("value");
+		console.log(remNo);
+		
+		$(this).siblings().removeClass("table-active");
+		$(this).addClass("table-active");
+		
+		$.ajax({
+			url : '${pageContext.request.contextPath}/remInfo/' + remNo,
+			type : 'get',
+			success : function(data){
+				//console.log('통신성공~!');
+				$('#viewRemInfo').empty();
+				$('#viewRemInfo').html(data)
+ 			},
+			error : function(){
+				alert('실패')
+			}
+		})
+        
+        
+      });
+});
+</script>
 </body>
 </html>

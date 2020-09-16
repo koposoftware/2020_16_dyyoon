@@ -23,8 +23,9 @@
 		</div>
 	</div>
 	<!-- page-header-close -->
-	
-	
+
+
+
 	<!-- remRegisterConfirm page start -->
 
 	<div class="container allAccount-con pb-3">
@@ -36,7 +37,7 @@
 				<div class="material-icons md-12 lineHeight">keyboard_arrow_right</div>
 				<div>해외송금</div>
 				<div class="material-icons md-12 lineHeight">keyboard_arrow_right</div>
-				<div>해외송금 예약하기</div>
+				<div>해외송금 보내기</div>
 			</div>	
 		</div>
 		
@@ -48,19 +49,15 @@
 			<div class="col-md-9">
 			
 			<div class="font-weight-bold text-body mb-2" style="font-size: 25px;">
-				<i class="material-icons align-middle">event_available</i>
-				<span class="align-middle">해외송금 예약하기</span>
+				<i class="material-icons align-middle">list</i>
+				<span class="align-middle">보낸 해외송금 상세</span>
 			</div>
 			
-				<div class="bg-light font-weight-bold p-3 mb-2 rounded"><span class="material-icons align-middle">alarm_on</span> <span class="align-middle">해외송금 예약이 완료되었습니다</span></div>
-				<div class="text-center">
-					<button class="btn btn-info" type="button" data-toggle="collapse" data-target="#remReserveCollapse" aria-expanded="false" aria-controls="collapseExample">
-						상세내역보기
-					</button>
-					<button class="btn btn-light" onclick="window.location.href='${ pageContext.request.contextPath }/remittance/reserve'">계속예약</button>
-				</div>
-	
-				<div class="collapse" id="remReserveCollapse">
+			<!-- 송금 진행상황 추적 -->
+			<div>
+			
+			</div>
+
 				<div class="font-weight-bold">
 					<i class="material-icons md-18 align-middle text-info">monetization_on</i>
 					<span class="align-middle">송금정보</span>
@@ -68,7 +65,7 @@
 
 				<table class="table ">
 					<tr>
-						<th>예약날짜</th>
+						<th>송금 일자</th>
 						<td>${ remittanceVO.remDate }</td>
 					</tr>
 					<tr>
@@ -81,8 +78,7 @@
 					</tr>
 					<tr>
 						<th>받는 분</th>
-						<td>${ remInfoDetail.name } ( ${ remInfoDetail.bankName }, ${ remInfoDetail.accNo }
-							)</td>
+						<td>${ remInfoDetail.name } ( ${ remInfoDetail.bankName }, ${ remInfoDetail.accNo }	)</td>
 					</tr>
 					<tr>
 						<th>수수료 부담자</th>
@@ -99,16 +95,7 @@
 							</c:otherwise>
 						</c:choose>
 						</td>
-					</tr>
-				</table>
-				<br>
-
-				<div class="font-weight-bold">
-					<i class="material-icons md-18 align-middle text-info">monetization_on</i><span
-						class="align-middle">송금액 및 계좌 정보</span>
-				</div>
-				<table class="table ">
-					<tr>
+						<tr>
 						<th>계좌 유형 선택</th>
 						<td>${ remittanceVO.accType }</td>
 					</tr>
@@ -139,14 +126,10 @@
 						<td id="krwTotal"></td>
 					</tr>
 					<tr>
-						<th>총출금금액(외화)</th>
+						<th style="width:240px;">총출금금액(외화)</th>
 						<td id="otherTotal"></td>
 					</tr>
 				</table>
-
-
-
-
 
 				<div class="font-weight-bold">
 					<i class="material-icons md-18 align-middle text-info">person</i><span
@@ -178,10 +161,6 @@
 
 				<jsp:include page="/WEB-INF/jsp/rem/remInfoDetail.jsp"></jsp:include>
 
-				</div>
-			
-			
-			
 			</div>
 		</div>
 	</div>
@@ -190,8 +169,7 @@
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
 	
-	
-	
-	
+
+
 </body>
 </html>

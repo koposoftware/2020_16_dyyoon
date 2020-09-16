@@ -21,6 +21,11 @@ public class RecievedDAOImpl implements RecievedDAO{
 	}
 
 	@Override
+	public List<RecievedVO> selectReicevedOnlyApproved(String id) {
+		return session.selectList("remittance.dao.RecievedDAO.selectReicevedOnlyApproved", id);
+	}
+
+	@Override
 	public RecievedVO selectRecievedDetail(Integer recievedNo) {
 		return session.selectOne("remittance.dao.RecievedDAO.selectRecievedDetail", recievedNo);
 	}

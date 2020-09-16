@@ -110,10 +110,36 @@
 						<input type="hidden" name="misNo" value="${ mistaken.misNo }">
 						<table class="table table-bordered table-th-warning">
 						</table>
-					<div class="text-center">
-						<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/mistaken'">목록</button>
-						<button class="btn btn-warning" type="submit">착오송금 반환 승인</button>
-					</div>
+						<div class="text-center">
+							<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/mistaken'">목록</button>
+							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mistakenConfirmModal">착오송금 반환 승인</button>
+						</div>
+						<!-- 착오송금 반환 확인 모달창 -->
+						<!-- Modal -->
+						<div class="modal fade" id="mistakenConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered">
+						    <div class="modal-content ">
+						      <div class="modal-header bg-warning">
+						        <h5 class="modal-title" id="exampleModalLabel">착오송금 반환 승인 확인</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        <div class="text-center">
+						        	<input type="hidden" name="status" value="반환완료">
+						        	${ remInfo.bankName }, ${ remInfo.accNo } 해외송금건의 착오송금 반환<br>
+						        	${ remittance.accNo }로 ${ remittance.amount } 원이 반환됩니다
+						        </div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="submit" class="btn btn-warning">승인</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- 모달창 끝 -->
+						
 					</form>
                    </div>
                </div>

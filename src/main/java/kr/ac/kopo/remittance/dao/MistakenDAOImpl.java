@@ -45,6 +45,10 @@ public class MistakenDAOImpl implements MistakenDAO {
 	public MistakenVO selectMistakenByMisNo(Integer misNo) {
 		return session.selectOne("remittance.dao.MistakenDAO.selectMistakenByMisNo", misNo);
 	}
-	
+
+	@Override
+	public void updateStatusMistaken(MistakenVO mistaken) {
+		session.update("remittance.dao.MistakenDAO.updateStatusMistaken", mistaken);
+	}
 
 }

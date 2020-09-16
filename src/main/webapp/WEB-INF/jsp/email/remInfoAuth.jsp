@@ -32,17 +32,20 @@
 
 			<br>
 			<div class="d-flex">
-				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle"> ID 인증</span></div>
+				<div class="font-weight-bold">
+					<i class="material-icons md-18 align-middle text-info" >person</i>
+					<span class="align-middle"><spring:message code="authID" /></span>
+				</div>
 			</div>
 			<div class="pt-3">
-				<div class="text-left"><spring:message code="formEngName" />요청한 분의 아이디를 입력하세요</div>
+				<div class="text-left"><spring:message code="authIDTitle" /></div>
 				
 				
 				<form method="post" action="${ pageContext.request.contextPath }/remInfo/ask">
 				<div class="input-group mb-3 mt-2">
-				  <input type="text" name="id" class="form-control" placeholder="ID를 입력하세요">
+				  <input type="text" name="id" class="form-control" placeholder="<spring:message code="authPlaceHolder" />">
 				  <div class="input-group-append">
-				    <button class="btn btn-info" type="submit">인증하기</button>
+				    <button class="btn btn-info" type="submit"><spring:message code="authIDBtn" /></button>
 				  </div>
 				</div>
 				</form>
@@ -62,7 +65,7 @@
 	
 	
 	
-<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerSecForEmail.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
 </body>
 </html>

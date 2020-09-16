@@ -52,7 +52,7 @@
 				<span class="align-middle">착오송금 조회/신고</span>
 			</div>
 			<!-- 
-			<table class="table table-sm">
+			<table class="table ">
 				<tr>
 					<th>조회기간</th>
 					<td>
@@ -76,12 +76,12 @@
 			</div>
 			 -->
 			
-			<table class="table table-sm mt-3 text-center">
+			<table class="table  mt-3 text-center">
 				<tr>
-					<th>신고일자</th>
+					<th style="width:15%;">신고일자</th>
 					<th>해외송금 상대계좌</th>
 					<th>본인계좌</th>
-					<th>통화</th>
+					<th style="width:7%;">통화</th>
 					<th>송금액</th>
 					<th>상태</th>
 				</tr>

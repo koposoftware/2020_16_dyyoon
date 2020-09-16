@@ -10,6 +10,7 @@
 		<result column="CURRENCY_CODE" property="currencyCode"/>
 		<result column="CURRENCY_NAME" property="currencyName"/>
 		<result column="PHONE_CODE" property="phoneCode"/>
+		<result column="COUNTRY_CH_NAME" property="countryChName"/>
 	</resultMap>
 	<select id="selectAllCountryList" resultMap="countryMap">
 		select *

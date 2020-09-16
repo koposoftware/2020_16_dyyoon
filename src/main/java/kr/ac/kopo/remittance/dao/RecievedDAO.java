@@ -15,6 +15,14 @@ public interface RecievedDAO {
 	List<RecievedVO> selectRecieved(String id);
 	
 	/**
+	 * id의 모든 받은 송금내역 조회 (승인된거만 볼 수 있음! 요청된건 못봄)
+	 * @param id
+	 * @return
+	 */
+	List<RecievedVO> selectReicevedOnlyApproved(String id);
+	
+	
+	/**
 	 * 해당 받은 송금내역 상세정보
 	 * @param recievedNo integer 받은 송금내역 고유번호
 	 * @return recievedVO 

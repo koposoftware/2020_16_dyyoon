@@ -19,6 +19,11 @@ public class RecievedServiceImpl implements RecievedService {
 	public List<RecievedVO> selectRecieved(String id) {
 		return recievedDAO.selectRecieved(id);
 	}
+
+	@Override
+	public List<RecievedVO> selectReicevedOnlyApproved(String id) {
+		return recievedDAO.selectReicevedOnlyApproved(id);
+	}
 	
 	@Override
 	public RecievedVO selectRecievedDetail(Integer recievedNo) {

@@ -8,9 +8,18 @@ public class CountryVO {
 	private String currencyCode;
 	private String currencyName;
 	private String phoneCode;
+	private String countryChName;
 	
 	public CountryVO() {
 		super();
+	}
+	
+	public String getCountryChName() {
+		return countryChName;
+	}
+
+	public void setCountryChName(String countryChName) {
+		this.countryChName = countryChName;
 	}
 
 	public String getCountryCode() {

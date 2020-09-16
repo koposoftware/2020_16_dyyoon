@@ -46,4 +46,10 @@ public interface MistakenDAO {
 	 * @return
 	 */
 	MistakenVO selectMistakenByMisNo(Integer misNo);
+	
+	/**
+	 * 해당 mis no 처리 완료 (status 반환완료 로 변경)
+	 * @param mistaken
+	 */
+	void updateStatusMistaken(MistakenVO mistaken);
 }

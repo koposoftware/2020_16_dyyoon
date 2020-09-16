@@ -51,6 +51,7 @@ public class HomeController {
 		}
 		
 		session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, locales);
+		session.setAttribute("languageSet", locale);
 		
 		return "redirect:/remInfo/ask/auth";
 	}
