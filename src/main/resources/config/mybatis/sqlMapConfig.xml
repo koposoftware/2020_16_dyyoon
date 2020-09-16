@@ -11,5 +11,6 @@
 	 	<typeAlias type="kr.ac.kopo.remittance.vo.RecievedVO" alias="recievedVO"/>
 	 	<typeAlias type="kr.ac.kopo.remittance.vo.MistakenVO" alias="mistakenVO"/>
 	 	<typeAlias type="kr.ac.kopo.country.vo.CountryVO" alias="countryVO"/>
+	 	<typeAlias type="kr.ac.kopo.exchange.vo.ExchangeVO" alias="exchangeVO"/>
 	 </typeAliases>
 </configuration>

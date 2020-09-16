@@ -55,8 +55,35 @@
 			
 			<!-- 송금 진행상황 추적 -->
 			<div>
-			
+				<div class="md-stepper-horizontal orange">
+				    <div class="md-step step-rm">
+				      <div class="md-step-circle"><span>1</span></div>
+				      <div class="md-step-title">수신은행</div>
+				      <div class="md-step-optional"></div>
+				      <div class="md-step-bar-left"></div>
+				      <div class="md-step-bar-right"></div>
+				    </div>
+				    <div class="md-step step-in">
+				      <div class="md-step-circle"><span>2</span></div>
+				      <div class="md-step-title">중계은행</div>
+				      <div class="md-step-bar-left"></div>
+				      <div class="md-step-bar-right"></div>
+				    </div>
+				    <div class="md-step step-rc">
+				      <div class="md-step-circle"><span>3</span></div>
+				      <div class="md-step-title">수취은행</div>
+				      <div class="md-step-bar-left"></div>
+				      <div class="md-step-bar-right"></div>
+				    </div>
+				    <!-- <div class="md-step">
+				      <div class="md-step-circle"><span>4</span></div>
+				      <div class="md-step-title">Review</div>
+				      <div class="md-step-bar-left"></div>
+				      <div class="md-step-bar-right"></div>
+				    </div> -->
+				  </div>
 			</div>
+			<!-- 송금 진행상황 추적 끝 -->
 
 				<div class="font-weight-bold">
 					<i class="material-icons md-18 align-middle text-info">monetization_on</i>
@@ -106,15 +133,22 @@
 					<tr>
 						<th>송금 금액</th>
 						<td>
-							<div>KRW ${ remittanceVO.amount }</div>
-
-							<div class="text-center">
-								<span class="material-icons">cached</span>
-							</div>
-							<div>${ remInfoDetail.currency } ${ remittanceVO.amount }</div>
-							<div>
-								적용환율 : <span class="text-danger">${ remittanceVO.exchangeRate }</span>
-							</div>
+							<c:choose>
+								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
+									<div>KRW ${ remittanceVO.amount }</div>
+		
+									<div class="text-center">
+										<span class="material-icons">cached</span>
+									</div>
+									<div>${ remInfoDetail.currency } ${ otherAmount }</div>
+									<div>
+										적용환율 : <span class="text-danger">${ remittanceVO.exchangeRate }</span>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div>${ remInfoDetail.currency } ${ remittanceVO.amount }</div>
+								</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 					<tr>
@@ -123,11 +157,29 @@
 					</tr>
 					<tr>
 						<th>총출금금액(원화)</th>
-						<td id="krwTotal"></td>
+						<td id="krwTotal">
+							<c:choose>
+								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
+									${ remittanceVO.amount + remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }
+								</c:when>
+								<c:otherwise>
+									${ remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }
+								</c:otherwise>
+							</c:choose>
+						</td>
 					</tr>
 					<tr>
 						<th style="width:240px;">총출금금액(외화)</th>
-						<td id="otherTotal"></td>
+						<td id="otherTotal">
+							<c:choose>
+								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
+									0.00
+								</c:when>
+								<c:otherwise>
+									${ remittanceVO.amount }
+								</c:otherwise>
+							</c:choose>	
+						</td>
 					</tr>
 				</table>
 
@@ -168,8 +220,23 @@
 
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
-	
-
-
+<script>
+	$(document).ready(function(){
+		var test = '${ remittanceVO.status }'
+		
+		/* RS(예약) / RM(수신은행) IN(중계은행) RC(수취은행) / ER(승인거절) CA(취소)  
+			class - active, done 추가하기*/
+		if(test == 'RM'){
+			$('.step-rm').addClass('active done')
+		}else if (test == 'IN') {
+			$('.step-rm').addClass('active done')
+			$('.step-in').addClass('active done')
+		}else if (test == 'RC'){
+			$('.step-rm').addClass('active done')
+			$('.step-in').addClass('active done')
+			$('.step-rc').addClass('active done')
+		}
+	})
+</script>	
 </body>
 </html>

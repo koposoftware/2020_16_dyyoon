@@ -139,6 +139,21 @@ public class RemittanceController {
 		//remInfo정보 얻기
 		RemInfoVO remInfo = remInfoService.selectRemInfoDetail(remittance.getInfoNo());
 		
+		if(remittance.getAccType().equals("원화계좌출금")) {
+			Float krwAmount = remittance.getAmount();
+			Float rate = remittance.getExchangeRate();
+			Float otherAmount = krwAmount / rate;
+			
+			String amountCounted = String.format("%.2f", otherAmount);
+			
+			System.out.println(amountCounted);
+			
+			mav.addObject("otherAmount", amountCounted);
+			
+		}else {
+			
+		}
+		
 		String status = "remittanceConfirm";
 		mav.addObject("status", status); 
 		mav.addObject("remittanceVO", remittance);
