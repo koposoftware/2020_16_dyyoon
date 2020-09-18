@@ -253,14 +253,14 @@
 								<form:input class="form-control" path="cableCharge" readonly="true" value="5000"/>
 							</td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<th>총출금금액(원화)</th>
 							<td id="krwTotal"></td>
 						</tr>
 						<tr>
 							<th>총출금금액(외화)</th>
 							<td id="otherTotal"></td>
-						</tr>
+						</tr> -->
 					</table>
 
 					<div class="text-center">

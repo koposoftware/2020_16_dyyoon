@@ -6,6 +6,10 @@
 	<select id="selectAllExchangeRate" resultType="exchangeVO">
 		select * 
 		from hs_t_currency_rate 
-		where currency != 'dum'
+	</select>
+	<select id="selectExchangeRateByCountryCode">
+		select rate.* 
+		from hs_t_currency_rate rate and hs_t_country country
+		where rate.
 	</select>
 </mapper>

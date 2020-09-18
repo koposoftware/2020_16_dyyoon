@@ -85,7 +85,7 @@
 					<thead>
 							<tr>
 								<th>받는분</th>
-								<th>통화</th>
+								<th style="width:5%;">통화</th>
 								<th>입금은행</th>
 								<th>계좌번호</th>
 								<th>승인현황</th>

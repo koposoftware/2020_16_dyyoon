@@ -38,7 +38,7 @@
 	<select id="selectAllRemittance" parameterType="String" resultType="map">
 		select rem.rem_no, to_char(rem.rem_date, 'yyyy-mm-dd') rem_date, rem.acc_no my_acc_no, 
 			   info.name, info.acc_no your_acc_no, info.currency, rem.amount,
-			   rem.status, rem.reserved_date  
+			   rem.status, rem.reserved_date, rem.acc_type, case when rem.acc_Type = '원화계좌출금' then '원화' else '외화' end as acc_type_simple  
 		from hs_t_remittance rem, hs_t_rem_info info 
 		where rem.info_no = info.info_no and info.id=#{id}
 	</select>

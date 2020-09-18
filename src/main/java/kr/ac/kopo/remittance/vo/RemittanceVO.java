@@ -8,6 +8,7 @@ public class RemittanceVO {
 	private Integer 	remNo;
 	@NotNull(message = "필수 항목입니다~")
 	private Integer 	infoNo;
+	
 	private String 		accType;
 	private String 		accNo;
 	private Float 		amount;

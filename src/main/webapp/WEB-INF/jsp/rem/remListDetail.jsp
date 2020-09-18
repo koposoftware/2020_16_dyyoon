@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,18 +136,18 @@
 						<td>
 							<c:choose>
 								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
-									<div>KRW ${ remittanceVO.amount }</div>
+									<div>KRW <fmt:formatNumber type="number" pattern="#,##0" value ="${ remittanceVO.amount }" /></div>
 		
 									<div class="text-center">
 										<span class="material-icons">cached</span>
 									</div>
-									<div>${ remInfoDetail.currency } ${ otherAmount }</div>
+									<div>${ remInfoDetail.currency } <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ otherAmount }" /></div>
 									<div>
 										적용환율 : <span class="text-danger">${ remittanceVO.exchangeRate }</span>
 									</div>
 								</c:when>
 								<c:otherwise>
-									<div>${ remInfoDetail.currency } ${ remittanceVO.amount }</div>
+									<div>${ remInfoDetail.currency } <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ remittanceVO.amount }" /></div>
 								</c:otherwise>
 							</c:choose>
 						</td>
@@ -157,26 +158,28 @@
 					</tr>
 					<tr>
 						<th>총출금금액(원화)</th>
-						<td id="krwTotal">
+						<td>
 							<c:choose>
 								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
-									${ remittanceVO.amount + remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }
+								<fmt:formatNumber type="number" pattern="#,##0" value ="${ remittanceVO.amount + remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }" />
+									
 								</c:when>
 								<c:otherwise>
-									${ remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }
+								<fmt:formatNumber type="number" pattern="#,##0.00" value ="${ remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }" />
+									
 								</c:otherwise>
 							</c:choose>
 						</td>
 					</tr>
 					<tr>
 						<th style="width:240px;">총출금금액(외화)</th>
-						<td id="otherTotal">
+						<td>
 							<c:choose>
 								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
 									0.00
 								</c:when>
 								<c:otherwise>
-									${ remittanceVO.amount }
+									<fmt:formatNumber type="number" pattern="#,##0.00" value ="${ remittanceVO.amount }" />
 								</c:otherwise>
 							</c:choose>	
 						</td>

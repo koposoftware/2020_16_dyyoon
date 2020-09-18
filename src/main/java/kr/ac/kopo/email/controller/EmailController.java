@@ -95,7 +95,7 @@ public class EmailController {
 			mav.setViewName("email/remInfoAskForm");
 		}else {
 			remInfo.setStatus("신청중");
-			//remInfoService.insertRemInfo(remInfo);
+			remInfoService.insertRemInfo(remInfo);
 			
 			mav.setViewName("email/remInfoAsk");
 			mav.addObject("remInfoDetail", remInfo);
