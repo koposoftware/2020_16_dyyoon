@@ -140,4 +140,16 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- websocket handler 웹소켓 -->
+	<bean id="echoHandler" class="mentor.socketHandler.EchoHandler" />
+	
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler" path="/echo" />
+		<websocket:handshake-interceptors>
+	         <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+	      </websocket:handshake-interceptors>
+ 
+	      <websocket:sockjs/>
+	 </websocket:handlers>
 </beans>

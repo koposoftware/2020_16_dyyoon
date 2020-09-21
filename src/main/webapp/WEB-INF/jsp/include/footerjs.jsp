@@ -10,3 +10,8 @@
 <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/jquery.sticky.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/sticky-header.js"></script>
 
+<!-- notify js 알람창 -->
+<script src="${ pageContext.request.contextPath }/resources/js/notify.js"></script>
+<!-- toast alarm 창 -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+

@@ -424,10 +424,11 @@
 					type : 'get',
 					success : function(data) {
 						var rate = parseFloat(data);
-						if($('.krwAmountInput').val().length > 0 || rate != 0){
+						
+						if($('.krwAmountInput').val().length > 0 && rate != 0){
 							$('.otherAmountInput').val((amount / rate).toFixed(2))
 						}else{
-							$('.otherAmountInput').val(0.00)
+							$('.otherAmountInput').val(null)
 						}
 					},
 					error : function() {
@@ -449,9 +450,11 @@
 					type : 'get',
 					success : function(data) {
 						var rate = parseFloat(data);
-						if($('.otherAmountInput').val().length > 0 || rate != 0){
+						if($('.otherAmountInput').val().length > 0 && rate != 0){
 							$('.krwAmountInput').val((amount * rate).toFixed(2))
 							
+						}else{
+							$('.krwAmountInput').val(null)
 						}
 						
 					},

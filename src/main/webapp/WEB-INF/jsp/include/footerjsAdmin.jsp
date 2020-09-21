@@ -29,3 +29,6 @@
 
 <!-- Page level custom scripts -->
 <script src="${ pageContext.request.contextPath }/resources/js/demo/datatables-demo.js"></script>
+
+<!-- notify js 알람창 -->
+<script src="${ pageContext.request.contextPath }/resources/js/notify.js"></script>

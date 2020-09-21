@@ -11,7 +11,6 @@
 <body>
 <jsp:include page="/WEB-INF/jsp/include/headerSec.jsp"></jsp:include>
 
-
 	<!-- hero-section start -->
 	<div class="hero-section">
 		<div class="container">
@@ -38,7 +37,9 @@
 											</select>
 										</div>
 									  <input type="text" placeholder="0.00" class="form-control text-right">
-									<div class="text-right"><button class="btn btn-info">송금하기</button></div>
+									<div class="text-right"><button class="btn btn-info">송금하기</button>
+										<button onclick="clickalarm()">알림창</button>
+									</div>
 								</div>
 								
 						</div>
@@ -242,6 +243,38 @@
 
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+	<script type="text/javascript">
+	
+		
+		toastr.options = {
+		  "closeButton": true,
+		  "debug": false,
+		  "newestOnTop": true,
+		  "progressBar": false,
+		  "positionClass": "toast-bottom-right",
+		  "preventDuplicates": false,
+		  "hideDuration": "1000",
+		  "timeOut": 0,
+		  "extendedTimeOut": 0,
+		  "showEasing": "swing",
+		  "hideEasing": "linear",
+		  "showMethod": "fadeIn",
+		  "hideMethod": "fadeOut",
+		  "tapToDismiss": false
+		}
+		
+		toastr.options.onclick = function() { console.log('clicked'); alert('clicked') }
+		
+		
+		$(document).ready(function(){
+			toastr.success('신청한 해외송금 내역이 승인 완료되었습니다 <br> 바로 확인해보세요!<br><button class="btn btn-link text-white float-right">확인하러가기</button>', '해외 송금 승인 완료').css({
+				"width": "500px"
+				
+			
+			})
+		})
+		
+	</script>
 </body>
 
 </html>
