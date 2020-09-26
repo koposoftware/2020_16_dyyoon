@@ -14,12 +14,6 @@
 <script src="${ pageContext.request.contextPath }/resources/js/notify.js"></script>
 <!-- toast alarm 창 -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<!-- 숫자 통화 형식 맞추기 Format Currency  -->
-<script src="${ pageContext.request.contextPath }/resources/js/FormatMoney.js"></script>
-<!-- 한글로 표시  -->
-<script src="${ pageContext.request.contextPath }/resources/js/makeCurrencyKorean.js"></script>
+
 <!-- 언어변환 locale -->
 <script src="${ pageContext.request.contextPath }/resources/js/localeChange.js"></script>
-
-<!-- websocketJS  -->
-<script src="${ pageContext.request.contextPath }/resources/js/webSocket.js"></script> 

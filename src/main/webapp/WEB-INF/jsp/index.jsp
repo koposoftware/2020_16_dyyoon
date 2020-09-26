@@ -15,17 +15,18 @@
 	<div class="hero-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+				<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
 						<div class="hero-section-caption-withcolor">
-								<div class="pinside40">
-									<h1><spring:message code="heroSectionTitle" /> </h1>
-									<div>
+								<div class="pinside40 underLineHover">
+									<h1 class="gradient padding"><span>HanaSafe와 함께<br>쉽고 안전하게!<br>해외 송금을 이용해보세요</span></h1>
+									<%-- <h1 class="text-weight-bold"><spring:message code="heroSectionTitle" /> HanaSafe와 함께 쉽고 안전하게! <br> 해외 송금을 이용해보세요</h1> --%>
+									<!-- <div>
 										<div class="float-left">보내는 분</div>
 										<div class="float-right">
 										<i class="kr flag" ></i> KRW
 										</div>
 									</div>
-									<input type="text" placeholder="0.00" class="form-control text-right">
+									<input type="text" placeholder="0.00" class="text-right">
 									
 									<div>
 										<div class="float-left">받는 분</div>
@@ -36,11 +37,10 @@
 												<option>EUR</option>
 											</select>
 										</div>
-									  <input type="text" placeholder="0.00" class="form-control text-right">
-									<div class="text-right"><button class="btn btn-info">송금하기</button>
-										<button onclick="clickalarm()">알림창</button>
+									  <input type="text" placeholder="0.00" class="text-right">
+									<div class=""><button class="btn btn-info">송금하기</button>
 									</div>
-								</div>
+								</div> -->
 								
 						</div>
 				</div>
@@ -51,6 +51,29 @@
 		</div>
 	</div>
 	<!-- hero-section close -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- service-section start -->
 	<div class="space-medium">
@@ -243,38 +266,6 @@
 
 	<jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
-	<script type="text/javascript">
-	
-		
-		toastr.options = {
-		  "closeButton": true,
-		  "debug": false,
-		  "newestOnTop": true,
-		  "progressBar": false,
-		  "positionClass": "toast-bottom-right",
-		  "preventDuplicates": false,
-		  "hideDuration": "1000",
-		  "timeOut": 0,
-		  "extendedTimeOut": 0,
-		  "showEasing": "swing",
-		  "hideEasing": "linear",
-		  "showMethod": "fadeIn",
-		  "hideMethod": "fadeOut",
-		  "tapToDismiss": false
-		}
-		
-		toastr.options.onclick = function() { console.log('clicked'); alert('clicked') }
-		
-		
-		$(document).ready(function(){
-			toastr.success('신청한 해외송금 내역이 승인 완료되었습니다 <br> 바로 확인해보세요!<br><button class="btn btn-link text-white float-right">확인하러가기</button>', '해외 송금 승인 완료').css({
-				"width": "500px"
-				
-			
-			})
-		})
-		
-	</script>
 </body>
 
 </html>

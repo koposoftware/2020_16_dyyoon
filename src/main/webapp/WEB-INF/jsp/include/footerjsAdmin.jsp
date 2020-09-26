@@ -32,3 +32,8 @@
 
 <!-- notify js 알람창 -->
 <script src="${ pageContext.request.contextPath }/resources/js/notify.js"></script>
+<!-- 숫자 통화 형식 맞추기 Format Currency  -->
+<script src="${ pageContext.request.contextPath }/resources/js/FormatMoney.js"></script>
+
+<!-- webSocketJs 자바스크립트 --><%-- 
+<script src="${ pageContext.request.contextPath }/resources/js/webSocketAdmin.js"></script> --%>

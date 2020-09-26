@@ -25,7 +25,7 @@
 	
 	
 	<div class="row pt-2">
-		<div class="col-md-12">
+		<div class="col-md-9">
 			<div class="card shadow mb-4">
 	            <div class="card-header py-3">
 	              <h6 class="m-0 font-weight-bold text-warning">착오송금</h6>
@@ -103,49 +103,81 @@
 							</td>
 						</tr>
 					</table>
-					<div class="text-danger">**  '신청중'일 경우 취소가 가능하나 '중계은행 도착', '수취은행 도착'의 경우 해당 은행 연락이 필요합니다</div>	
+					<div class="text-danger mb-2">**  '신청중'일 경우 취소가 가능하나 '중계은행 도착', '수취은행 도착'의 경우 해당 은행 연락이 필요합니다</div>	
 						
+					<div class="text-center">
+						<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/mistaken'">목록</button>
+						<c:if test="${ remittance.status eq 'RM' }">
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#mistakenConfirmModal">착오송금 반환 승인</button>
+						</c:if>
+						<c:if test="${ remittance.status eq 'IN' or remittance.status eq 'RC' }">
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#mistakenConfirmModal">해당은행 연락 완료</button>
+						</c:if>
+					</div>
 						
-					<form action="${ pageContext.request.contextPath }/admin/mistaken" method="post">
-						<input type="hidden" name="misNo" value="${ mistaken.misNo }">
-						<table class="table table-bordered table-th-warning">
-						</table>
-						<div class="text-center">
-							<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/mistaken'">목록</button>
-							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mistakenConfirmModal">착오송금 반환 승인</button>
-						</div>
-						<!-- 착오송금 반환 확인 모달창 -->
-						<!-- Modal -->
-						<div class="modal fade" id="mistakenConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						  <div class="modal-dialog modal-dialog-centered">
-						    <div class="modal-content ">
-						      <div class="modal-header bg-warning">
-						        <h5 class="modal-title" id="exampleModalLabel">착오송금 반환 승인 확인</h5>
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						          <span aria-hidden="true">&times;</span>
-						        </button>
-						      </div>
-						      <div class="modal-body">
-						        <div class="text-center">
-						        	<input type="hidden" name="status" value="반환완료">
-						        	${ remInfo.bankName }, ${ remInfo.accNo } 해외송금건의 착오송금 반환<br>
-						        	${ remittance.accNo }로 ${ remittance.amount } 원이 반환됩니다
-						        </div>
-						      </div>
-						      <div class="modal-footer">
-						        <button type="submit" class="btn btn-warning">승인</button>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						<!-- 모달창 끝 -->
-						
-					</form>
+					
                    </div>
                </div>
            </div>
 		</div>
+		<div class="col-md-3">
+			<div class="card shadow mb-4" id="mistaken-bank-info">
+				<div class="card-header py-3">
+	              <h6 class="m-0 font-weight-bold text-warning">수취은행 정보</h6>
+	            </div>
+				<div class="card-body">
+					<div class="font-weight-bold">은행명</div> 
+					<div>CITIBANK SINGAPORE LTD</div>
+					<div class="font-weight-bold mt-3">전화번호</div>
+					<div>+03 0109283459</div>
+					<div></div>
+				</div>
+			</div>
+		
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</div>
+		<form action="${ pageContext.request.contextPath }/admin/mistaken" method="post">
+		<input type="hidden" name="misNo" value="${ mistaken.misNo }">
+		<!-- 착오송금 반환 확인 모달창 -->
+		<!-- Modal -->
+		<div class="modal fade" id="mistakenConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content ">
+		      <div class="modal-header bg-warning">
+		        <h5 class="modal-title" id="exampleModalLabel">착오송금 반환 승인 확인</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <div class="text-center">
+		        	<input type="hidden" name="status" value="반환완료">
+		        	${ remInfo.bankName }, ${ remInfo.accNo } 해외송금건의 착오송금 반환<br>
+		  	${ remittance.accNo }로 ${ remittance.amount } 원이 반환됩니다
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="submit" class="btn btn-info">승인</button>
+		        <button type="button" class="btn btn-primary webSocketTest">웹소켓확인</button>
+		        <input type="text" id="msg">
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- 모달창 끝 -->
+		</form>	
 </div>
 
 
@@ -153,5 +185,11 @@
 
 <jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjsAdmin.jsp"></jsp:include>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#mistaken-bank-info').sticky({topSpacing:100});
+	
+})
+</script>
 </body>
 </html>

@@ -25,7 +25,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
 		
 		if(loginVO == null) {
-			
 			String uri = request.getRequestURI();
 			uri = uri.substring(request.getContextPath().length());
 			
@@ -33,6 +32,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			if(query != null && query.length() != 0) {
 				uri = uri + "?" + query;
 			}
+			/*
+			 * if(uri.equals("/echo")) { uri = "/"; }
+			 */
 			
 			session.setAttribute("dest", uri);
 			

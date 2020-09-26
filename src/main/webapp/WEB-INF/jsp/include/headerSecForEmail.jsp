@@ -16,9 +16,9 @@
 		                        		<spring:message code="headerLanguage"></spring:message>
 		                        	</a>
 		                        	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
-									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=ko"><i class="kr flag"></i>한국어</a>
-									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=en"><i class="us flag"></i>English</a>
-									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=zh"><i class="cn flag"></i>中文</a>
+									    <a class="dropdown-item" href="javascript:localeChange('ko')"><i class="kr flag"></i>한국어</a>
+									    <a class="dropdown-item" href="javascript:localeChange('en')"><i class="us flag"></i>English</a>
+									    <a class="dropdown-item" href="javascript:localeChange('zh')"><i class="cn flag"></i>中文</a>
 									</div>
 	                        	</div>
                         	</li>

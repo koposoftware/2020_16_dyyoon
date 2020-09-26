@@ -113,6 +113,7 @@ public class RemInfoController {
 	public ModelAndView remInfoCheck(RemInfoVO remInfo) {
 		
 		ModelAndView mav = new ModelAndView("redirect:/admin/remInfo");
+		
 		service.updateStatusRemInfo(remInfo);
 		
 		return mav;

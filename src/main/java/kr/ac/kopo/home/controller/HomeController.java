@@ -16,43 +16,42 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		
 		
 		return "index";
 	}
 	
 	
-	@GetMapping("/change")
-	public String changeLanguage(@RequestParam(required = false) String locale, HttpSession session, HttpServletRequest request) {
-		
-		Locale locales = null;
-		
-		String uri = request.getRequestURI();
-		uri = uri.substring(request.getContextPath().length());
-		String query = request.getQueryString();
-		if(query != null && query.length() != 0) {
-			uri = uri + "?" + query;
-		}
-		
 	
+	@GetMapping("/change")
+	public String changeLocale(Locale locale, HttpSession session) {
 		
-		if(locale.matches("en")) {
-			locales = Locale.ENGLISH;
-		}else if (locale.matches("zh")) {
-			locales = Locale.CHINESE;
-		}else {
-			locales = Locale.KOREAN;
-		}
-		
-		session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, locales);
-		session.setAttribute("languageSet", locale);
-		
-		return "redirect:/remInfo/ask/auth";
+		return "redirect:/";
 	}
+	
+	
+	
+//	@GetMapping("/change")
+//	public String changeLanguage(@RequestParam(required = false) String locale, HttpSession session, HttpServletRequest request) {
+//		
+//		
+//		Locale locales = null;
+//		
+//		
+//		if(locale.matches("en")) {
+//			locales = Locale.ENGLISH;
+//		}else if (locale.matches("zh")) {
+//			locales = Locale.CHINESE;
+//		}else {
+//			locales = Locale.KOREAN;
+//		}
+//		
+//		session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, locales);
+//		session.setAttribute("languageSet", locale);
+//		
+//		return "redirect:/";
+//	}
 }

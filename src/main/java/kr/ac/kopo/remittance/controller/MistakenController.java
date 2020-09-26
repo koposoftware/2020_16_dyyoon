@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.socket.WebSocketHandler;
 
 import kr.ac.kopo.account.service.AccountService;
 import kr.ac.kopo.account.vo.AccountVO;
@@ -71,11 +72,11 @@ public class MistakenController {
 	}
 	
 	
-	/*-------------------------------------------
-	 * 
-	 * 				admin page
-	 * 
-	 * -------------------------------------------*/
+/*-------------------------------------------
+ * 
+ * 				admin page
+ * 
+ * -------------------------------------------*/
 	@GetMapping("/admin/mistaken")
 	public ModelAndView allMisatkenList() {
 		ModelAndView mav = new ModelAndView("admin/mistaken/mistakenCheck");
@@ -109,6 +110,7 @@ public class MistakenController {
 		//반환완료일 경우
 		if(mistaken.getStatus().equals("반환완료")) {
 			mistakenService.updateStatusMistaken(mistaken);
+			
 		}
 		
 		return mav;

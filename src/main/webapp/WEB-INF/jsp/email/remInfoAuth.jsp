@@ -66,6 +66,6 @@
 	
 	
 <jsp:include page="/WEB-INF/jsp/include/footerSecForEmail.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/include/footerjsEmail.jsp"></jsp:include>
 </body>
 </html>

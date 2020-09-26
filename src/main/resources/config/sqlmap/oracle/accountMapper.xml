@@ -29,4 +29,7 @@
 	<select id="selectUserAllKRWBalance" parameterType="String" resultType="Float">
 		select sum(balance) as sumBalance from hs_t_account where type='03' and id=#{id}
 	</select>
+	<update id="updateRemittanceAmount" parameterType="remittanceVO">
+		update hs_t_account set balance = balance - #{amount} where acc_no = #{accNo}
+	</update>
 </mapper>

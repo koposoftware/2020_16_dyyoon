@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -189,6 +190,7 @@
 									<form:input path="amount" type="text" class="form-control krwAmountInput"
 										placeholder="0.00" />
 								</div>
+								<div class="d-flex justify-content-end text-secondary"><span id="amountInputKorean"></span></div>
 								<div class="text-center align-middle accType-hideAndShow">
 									<span class="material-icons">cached</span>
 								</div>
@@ -355,6 +357,22 @@
 
 	<!------------------------------------------------------------ JS  ------------------------------------------------------------>
 	<script type="text/javascript">
+		//input 시에 바로 콤마 붙게하기
+		function inputNumberFormat(obj) {
+		    obj.value = comma(uncomma(obj.value));
+		}
+	
+		function comma(str) {
+		    str = String(str);
+		    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+		}
+	
+		function uncomma(str) {
+		    str = String(str);
+		    return str.replace(/[^\d]+/g, '');
+		}
+
+
 	
 		//총 출금금액 계산
 	
@@ -415,8 +433,19 @@
 	
 		// 원화를 입력하면 해외 통화 값 자동으로 변환
 		$('.krwAmountInput').keyup(function() {
+			//inputNumberFormat(this);
 			var amount = parseFloat($(this).val());
 			var currencyCode = $('.registerForm-infoNo-select').children('option:selected').data('currency')
+			
+			if(!isNaN(amount)){
+				var koreanAmount = currencyKoreanMaker(amount)
+				$('#amountInputKorean').html("일금 " + koreanAmount + "원정")
+				
+			}else{
+				$('#amountInputKorean').html("")
+				
+			}
+			
 			
 			if(currencyCode !== undefined ){
 				$.ajax({
@@ -451,7 +480,7 @@
 					success : function(data) {
 						var rate = parseFloat(data);
 						if($('.otherAmountInput').val().length > 0 && rate != 0){
-							$('.krwAmountInput').val((amount * rate).toFixed(2))
+							$('.krwAmountInput').val((amount * rate).toFixed(0))
 							
 						}else{
 							$('.krwAmountInput').val(null)
@@ -466,7 +495,7 @@
 		})
 		
 		//계좌 잔액 구하기 ajax
-		function getAccountBalance(accNo, divSection){
+		function getAccountBalance(accNo, divSection, accType){
 			$.ajax({
 				url : '${pageContext.request.contextPath}/account/balance/' + accNo,
 				type : 'get',
@@ -474,8 +503,17 @@
 					divSection = '.' + divSection;
 					//var addBalance = document.getElementById(divSection);
 					//addBalance.append('잔액 : ' + data)
+					if(accType == 'krw'){
+						
+						strMoney = FormatMoney(data, '₩ ', '', ',', '', 0, 0 )
+					}else{
+						strMoney = FormatMoney(data, '$ ', '', ',', '.', 2, 2 )
+						
+					}
+					
+
 					$(divSection).empty();
-					$(divSection).text('잔액 : ' + data)
+					$(divSection).text('잔액 : ' +  strMoney)
 				},
 				error : function() {
 					alert('계좌잔액구하기 에러')
@@ -486,17 +524,17 @@
 		//원화계좌 잔액 조회
 		$('.registerForm-accNo-btn').on('click', function(){
 			var infoNo = $('.rem-krwAccount-input-group option:selected').val();
-			getAccountBalance(infoNo, 'remRegister-mainAccountBalance');
+			getAccountBalance(infoNo, 'remRegister-mainAccountBalance', 'krw');
 		})
 		//외화통장 잔액조회
 		$('.registerForm-otherAccNo-btn').on('click', function(){
 			var infoNo = $('.rem-otherAccount-input-group option:selected').val();
-			getAccountBalance(infoNo, 'remRegister-mainAccountBalance');
+			getAccountBalance(infoNo, 'remRegister-mainAccountBalance', 'other');
 		})
 		//수수료통장 잔액 조회
 		$('.registerForm-chargeAccNo-btn').on('click', function(){
 			var infoNo = $('.rem-chargeAccount-input-group option:selected').val();
-			getAccountBalance(infoNo, 'remRegister-chargeAccountBalance');
+			getAccountBalance(infoNo, 'remRegister-chargeAccountBalance', 'krw');
 		})
 		
 		

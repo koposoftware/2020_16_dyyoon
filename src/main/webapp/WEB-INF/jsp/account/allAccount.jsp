@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +78,8 @@
 					        	</div>
 					        	<div style="font-size: 18px;">
 					        		<span class="font-weight-bold">${ account.accNo }</span>
-					        		<span class="float-right">잔액  :  ${ account.balance } 원</span>
+					        		<span class="float-right">잔액  :  <fmt:formatNumber type="number" pattern="#,##0" value ="${ account.balance }" /> 원
+					        		</span>
 					        		<br>
 					        	</div>
 					        	<div class="d-flex justify-content-end mt-2">
@@ -114,7 +116,7 @@
 					        	</div>
 					        	<div style="font-size: 18px;">
 					        		<span class="font-weight-bold">${ account.accNo }</span>
-					        		<span class="float-right">잔액  :  ${ account.balance } 원</span>
+					        		<span class="float-right">잔액  :  <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ account.balance }" /> </span>
 					        		<br>
 					        	</div>
 					        	<div class="d-flex justify-content-end mt-2">

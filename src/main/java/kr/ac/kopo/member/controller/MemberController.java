@@ -38,10 +38,12 @@ public class MemberController {
 			mav.setViewName("redirect:/login");
 		}else {
 				// 로그인성공
+				
 				String dest = (String)session.getAttribute("dest");
 				if(dest == null) {
 					//로그인 인터셉터 안거친것 - 메인페이지로가면됨
 					mav.setViewName("redirect:/");
+					
 					if(loginVO.getType().equals("S")) {
 						mav.setViewName("redirect:/admin");
 					}

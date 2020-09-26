@@ -2,6 +2,7 @@ package kr.ac.kopo.account.service;
 
 import java.util.List;
 
+import kr.ac.kopo.remittance.vo.RemittanceVO;
 import kr.ac.kopo.account.vo.AccountVO;
 
 public interface AccountService {
@@ -26,5 +27,10 @@ public interface AccountService {
 	 * @return
 	 */
 	AccountVO selectAccountByAccNo(String accNo);
+	/**
+	 * 송금하면 계좌에서 돈 나감
+	 * @param statement
+	 */
+	void updateRemittanceAmount(RemittanceVO remittanceVO);
 
 }

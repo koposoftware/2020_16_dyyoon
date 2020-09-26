@@ -14,7 +14,7 @@
                         <div class="navigation d-flex justify-content-end navForBtn">
                         <div class="pt-2">
 	                      	<button class="btn btn-link shadow-none text-secondary" data-badge="6">
-		                      	<span class="text-info"><%-- ${ loginVO.name } --%>관리자</span>님 어서오세요
+		                      	<span class="text-info"> ${ loginVO.name } </span>님 어서오세요
 		                      	<!--  <span class="badge badge-danger badge-pill">4</span> -->
 	                      	</button>
 	                      	<!-- 

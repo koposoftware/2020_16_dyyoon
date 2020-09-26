@@ -88,7 +88,7 @@
 	                  <tbody>
 	                    <c:forEach items="${ mistakenList }" var="mistaken">
 	                    <c:if test="${ mistaken['STATUS'] eq '신청'}">
-							<tr class="table-row-clickable" data-value="${ mistaken['MIS_NO'] }">
+							<tr class="table-row-clickable" data-value="waiting-${ mistaken['MIS_NO'] }">
 								<td>${ mistaken['REG_DATE'] }</td>
 								<td>${ mistaken['REM_DATE'] }</td>
 								<td>${ mistaken['REASON'] }</td>
@@ -132,7 +132,7 @@
 	                  <tbody>
 	                    <c:forEach items="${ mistakenList }" var="mistaken">
 	                    <c:if test="${ mistaken['STATUS'] ne '신청'}">
-							<tr class="table-row-clickable" data-value="${ mistaken['MIS_NO'] }">
+							<tr class="table-row-clickable" data-value="finish-${ mistaken['MIS_NO'] }">
 								<td>${ mistaken['REG_DATE'] }</td>
 								<td>${ mistaken['REM_DATE'] }</td>
 								<td>${ mistaken['REASON'] }</td>
@@ -160,7 +160,14 @@
 <script>
 	$(".admin-table-select tbody tr").on('click', function() {
 		var misNo = $(this).data("value");
-		window.location.href = '${pageContext.request.contextPath}/admin/mistaken/' + misNo;
+		var misNoArr = misNo.split("-");
+		
+		if(misNoArr[0] == 'waiting'){
+			window.location.href = '${pageContext.request.contextPath}/admin/mistaken/' + misNoArr[1];
+		}else if (misNoArr[1] == 'finish') {
+			//window.location.href = '${pageContext.request.contextPath}/admin/mistaken/' + misNoArr[1];
+		}
+		
 	    
 	  });
 </script>

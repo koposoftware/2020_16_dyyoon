@@ -35,61 +35,55 @@
 	                <table class="table table-bordered table-th-primary table-detail">
 							<tr>
 								<th colspan="2">영문이름</th>
-								<td>${ remInfoDetail.name }</td>
+								<td colspan="3">${ remInfoDetail.name }</td>
 							</tr>
 							<tr>
 								<th colspan="2">전화번호</th>
 								<td>${ remInfoDetail.phone }</td>
-							</tr>
-							<tr>
-								<th colspan="2">이메일</th>
+								<th>이메일</th>
 								<td>${ remInfoDetail.email }</td>
 							</tr>
 							<tr>
-								<th rowspan="3">영문주소</th>
+								<th rowspan="2">영문주소</th>
 								<th>국가</th>
-								<td>${ remInfoDetail.nation }</td>
+								<td colspan="3">${ remInfoDetail.nation }</td>
 							</tr>
 							<tr>
 								<th >주소</th>
 								<td>${ remInfoDetail.addr }</td>
-							</tr>
-							<tr>
 								<th>세부주소</th>
 								<td>${ remInfoDetail.addrDetail }</td>
 							</tr>
 							<tr>
 								<th colspan="2">통화</th>
-								<td>${ remInfoDetail.currency }</td>
+								<td  colspan="3">${ remInfoDetail.currency }</td>
 							</tr>
 							<tr>
 								<th colspan="2">은행명</th>
-								<td>${ remInfoDetail.bankName }</td>
+								<td colspan="3">${ remInfoDetail.bankName }</td>
 							</tr>
 							<tr>
 								<th colspan="2">계좌번호</th>
-								<td>${ remInfoDetail.accNo }</td>
+								<td colspan="3">${ remInfoDetail.accNo }</td>
 							</tr>
 							<tr>
 								<th colspan="2">은행코드</th>
-								<td>${ remInfoDetail.bankCode }</td>
+								<td colspan="3">${ remInfoDetail.bankCode }</td>
 							</tr>
 							<tr>
-								<th rowspan="3">은행주소</th>
+								<th rowspan="2">은행주소</th>
 								<th >은행국가</th>
-								<td>${ remInfoDetail.bankNation }</td>
+								<td colspan="3">${ remInfoDetail.bankNation }</td>
 							</tr>
 							<tr>
 								<th>은행주소</th>
 								<td>${ remInfoDetail.bankAddr }</td>
-							</tr>
-							<tr>
 								<th>세부주소</th>
 								<td>${ remInfoDetail.bankAddrDetail }</td>
 							</tr>
 							<tr>
 								<th colspan="2">승인 현황</th>
-								<td>
+								<td colspan="3">
 									${ remInfoDetail.status }
 									<c:if test="${ not empty remInfoDetail.statusDesc }">
 										<br>사유 : ${ remInfoDetail.statusDesc }
@@ -105,15 +99,16 @@
 								<th style="width: 240px;">승인 결과</th>
 								<td>
 									<select class="form-control" name="status">
-										<option>선택하세요</option>
+										<option value="">선택하세요</option>
 										<option value="승인">승인</option>
 										<option value="비승인">비승인</option>
 									</select>
 								</td>
 							</tr>
 							<tr>
-								<th>승인 결과  - 사유</th>
-								<td><input type="text" class="form-control" name="statusDesc"></td>
+								<th>비승인 사유<br>(비승인시 입력 필수)</th>
+								<td>
+								<textarea class="form-control" rows="3" cols="10" name="statusDesc"></textarea></td>
 							</tr>
 						</table>
 						<div class="text-center">

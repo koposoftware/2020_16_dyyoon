@@ -15,9 +15,9 @@
 		                        		언어선택
 		                        	</a>
 		                        	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
-									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=ko"><i class="kr flag"></i>한국어</a>
-									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=en"><i class="us flag"></i>English</a>
-									    <a class="dropdown-item" href="${ pageContext.request.contextPath }/change?locale=zh"><i class="cn flag"></i>中文</a>
+									    <a class="dropdown-item" href="javascript:localeChange('ko')"><i class="kr flag"></i>한국어</a>
+									    <a class="dropdown-item" href="javascript:localeChange('en')"><i class="us flag"></i>English</a>
+									    <a class="dropdown-item" href="javascript:localeChange('zh')"><i class="cn flag"></i>中文</a>
 									</div>
 	                        	</div>
                         	</li>
@@ -45,8 +45,10 @@
 	                      	<button class="btn btn-light mt-2 mr-2">회원가입</button>
                         </c:when>
                         <c:otherwise>
-	                      	<button class="btn btn-link mt-2 shadow-none text-secondary"><span class="text-info">${ loginVO.name }</span>님 어서오세요</button>
+	                      	<button class="btn btn-link mt-2 shadow-none text-secondary"><span class="text-info">${ loginVO.name }</span>님 어서오세요!</button>
+	                      	
 	                      	<button class="btn btn-info mt-2" onclick="window.location.href='${ pageContext.request.contextPath }/logout'">로그아웃</button>
+	                      	
                         </c:otherwise>
                         </c:choose>
                         </div>	

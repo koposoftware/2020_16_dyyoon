@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.account.vo.AccountVO;
+import kr.ac.kopo.remittance.vo.RemittanceVO;
 @Repository
 public class AccountDAOImpl implements AccountDAO {
 
@@ -26,6 +27,11 @@ public class AccountDAOImpl implements AccountDAO {
 	@Override
 	public AccountVO selectAccountByAccNo(String accNo) {
 		return session.selectOne("account.dao.AccountDAO.selectAccountByAccNo", accNo);
+	}
+
+	@Override
+	public void updateRemittanceAmount(RemittanceVO remittanceVO) {
+		session.update("account.dao.AccountDAO.updateRemittanceAmount", remittanceVO);
 	}
 
 	

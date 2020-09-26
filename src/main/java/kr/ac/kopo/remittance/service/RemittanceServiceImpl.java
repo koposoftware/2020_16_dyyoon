@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import kr.ac.kopo.account.dao.AccountDAO;
 import kr.ac.kopo.remittance.dao.RemittanceDAO;
 import kr.ac.kopo.remittance.vo.RemittanceVO;
 
@@ -14,10 +16,15 @@ public class RemittanceServiceImpl implements RemittanceService {
 
 	@Autowired
 	RemittanceDAO remittanceDAO;
+	
+	@Autowired
+	AccountDAO accountDAO;
 
 	@Override
+	@Transactional
 	public void insertRemittance(RemittanceVO remittanceVO) {
 		remittanceDAO.insertRemittance(remittanceVO);
+		accountDAO.updateRemittanceAmount(remittanceVO);
 	}
 
 	@Override
