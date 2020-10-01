@@ -77,8 +77,8 @@
 												data-value="${ country.currencyCode }"
 												data-phone="${ country.phoneCode }">
 									<c:choose>
-										<c:when test="${ languageSet eq 'en' }">${ country.countryEngName }</c:when>
-										<c:when test="${ languageSet eq 'zh' }">${ country.countryChName } (${ country.countryEngName })</c:when>
+										<c:when test="${ langauge eq 'en' }">${ country.countryEngName }</c:when>
+										<c:when test="${ langauge eq 'zh' }">${ country.countryChName } (${ country.countryEngName })</c:when>
 										<c:otherwise>
 											${ country.countryName } (${ country.countryEngName })
 										</c:otherwise>
@@ -200,6 +200,7 @@
 		$('input[name="bankAddrDetail"]').val('PLAZA BY THE PARK, 51, BRAS BASAH ROAD')
 		
 	})
+	
 	
 </script>
 </body>

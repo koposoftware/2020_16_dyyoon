@@ -1,6 +1,7 @@
 package kr.ac.kopo.exchange.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.kopo.exchange.vo.ExchangeVO;
 
@@ -12,5 +13,9 @@ public interface ExchangeService {
 	 */
 	List<ExchangeVO> selectAllExchangeRate();
 
+	/**
+	 * 메인 페이지(index)의 환율 정보 10개 국가 조회
+	 */
+	List<Map<String, Object>> selectExchangeRateForIndex();
 
 }

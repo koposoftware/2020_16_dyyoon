@@ -4,7 +4,6 @@
 
 var socket = null;
 
-
 function connect(){
 	var ws = new WebSocket("ws://localhost:9999/Hana-Safe/echo");
 	socket = ws;
@@ -30,7 +29,7 @@ function connect(){
 }
 
 
-/*connect();*/
+connect();
 
 $('.webSocketTest').on('click', function(evt){
 	evt.preventDefault();

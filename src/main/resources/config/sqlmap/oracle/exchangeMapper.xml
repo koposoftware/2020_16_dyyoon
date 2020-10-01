@@ -7,9 +7,16 @@
 		select * 
 		from hs_t_currency_rate 
 	</select>
-	<select id="selectExchangeRateByCountryCode">
-		select rate.* 
-		from hs_t_currency_rate rate and hs_t_country country
-		where rate.
+	<select id="selectExchangeRateForIndex" resultType="map">
+		select lower(c.country_code) as country_code, c.country_name, r.currency, r.remittance, r.receive, r.cashbuyrate, r.cashsellrate, 
+				to_char(r.regdate, 'yyyy/mm/dd hh24:mi:ss') as regdate 
+		    from hs_t_country c, hs_t_currency_rate r 
+		    where c.currency_code = r.currency
+		        and c.country_code in ('US', 'JP', 'CN', 'HK', 'TH', 'PH', 'SG', 'VN', 'GB', 'CA')
+		    union
+		select 'eu' as country_code, '유로' as country_name, 'EUR' as currency, r.remittance, r.receive, r.cashbuyrate, r.cashsellrate, 
+				to_char(r.regdate, 'yyyy/mm/dd hh24:mi:ss') as regdate 
+		    from hs_t_currency_rate r where r.currency = 'EUR' 
+		order by country_name
 	</select>
 </mapper>

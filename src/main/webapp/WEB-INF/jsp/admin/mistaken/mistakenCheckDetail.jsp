@@ -148,7 +148,7 @@
 		
 		
 	</div>
-		<form action="${ pageContext.request.contextPath }/admin/mistaken" method="post">
+		<form action="${ pageContext.request.contextPath }/admin/mistaken" method="post" name="mistakenCheckDetailForm">
 		<input type="hidden" name="misNo" value="${ mistaken.misNo }">
 		<!-- 착오송금 반환 확인 모달창 -->
 		<!-- Modal -->
@@ -169,9 +169,7 @@
 		        </div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="submit" class="btn btn-info">승인</button>
-		        <button type="button" class="btn btn-primary webSocketTest">웹소켓확인</button>
-		        <input type="text" id="msg">
+		        <button type="button" class="btn btn-info" onclick="mistakenCheckDetail()">승인</button>
 		      </div>
 		    </div>
 		  </div>
@@ -190,6 +188,25 @@ $(document).ready(function(){
 	$('#mistaken-bank-info').sticky({topSpacing:100});
 	
 })
+
+function mistakenCheckDetail(){
+	var formData = $('form[name=mistakenCheckDetailForm]').serialize();
+	var id = "<c:out value='${account.id}'/>"
+	var member = "<c:out value='${member.name}' />"
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/admin/mistaken',
+		type : 'post',
+		data : formData,
+		success : function(){
+			var msg = 'mistaken,' + id + ',' + member + ',반환완료'; 
+			socket.send(msg);
+			window.location.href='${pageContext.request.contextPath}/admin/mistaken'
+		},
+		error : function(){
+			alert('fail')
+		}
+	})
+}
 </script>
 </body>
 </html>

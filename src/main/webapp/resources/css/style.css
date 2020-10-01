@@ -319,7 +319,7 @@ table th{ background-color: #EBF7F9;}
 ----------------------------------*/
 .bg-light { }
 .bg-primary { }
-.bg-default { background-color: #f7f6f1; }
+.bg-default { background-color: #f5f5f5; }
 .bg-white { background-color: #fff; }
 .outline { }
 .section-title { }
@@ -339,7 +339,17 @@ table th{ background-color: #EBF7F9;}
 .feature-title { color: #333333; margin-bottom: 25px; }
 .feature-content { padding-left: 85px; }
 .feature-section { margin-left: 60px; }
-.feature-icon { float: left; border: 2px #589442 dashed; line-height: 14px; border-radius: 100%; padding: 14px 16px; font-size: 20px; color: #589442; width: 52px; }
+.feature-icon { 
+	float: left; 
+	border: 2px #17a2b8 dashed; 
+	line-height: 14px; 
+	border-radius: 100%; 
+	padding: 12px; 
+	font-size: 20px; 
+	color: #17a2b8; 
+	width: 52px;
+	height : 52px; 
+	}
 .feature-btn { text-align: center; margin-top: 40px; }
 
 /*----------------- video ---------------*/
@@ -456,8 +466,6 @@ th{
 /*--------------------------
     5.2 Navigations Regular
    ----------------------------*/
-   
-   
 .hero-exchange{
 	margin-top: 100px;
 	border-top-left-radius: 50px;
@@ -467,59 +475,35 @@ th{
 	background-color: 	rgba(245, 245, 245, 0.7);
 	box-shadow: 0px 0 10px rgba(175, 175, 175, 0.5);
 }   
-/* .hero-section { background: url(../images/hero-airballoon.jpg) no-repeat center; background-size: cover; } */
 .hero-section { 
 	background: url(../images/hero-airballoon.jpg) no-repeat center; background-size: cover; 
-	/* background-color: #e4f9fc; */
-	}
+}
 .hero-section-caption-withcolor {
 	margin-top: 280px; 
 	margin-bottom: 30px; 
-	/* 
-	background-color: #f9f9f9;  
-	border-radius: 0.35rem;
-	box-shadow: 0 0.5rem 1.75rem 0 rgba(58, 59, 69, 0.5) !important;
-	  */
-	/* background: url(../images/moneyFly.gif) no-repeat center; */
 }
 .hero-section-caption { margin-top: 120px; margin-bottom: 110px; }
 .hero-section-img { width:auto; height: 300px;}
 .hero-title { color: #ffffff; font-size: 35px; font-weight: 100; line-height: 45px; margin-bottom: 25px; }
-
-
 h1.gradient {
   font-weight: bold;
   font-size: 50px;
   
 }
 h1.gradient span {
-  /* background: linear-gradient(0deg, rgba(254, 180, 6, 0) 0%, rgba(254, 180, 6,0) 16%, rgba(254, 180, 6,1) 16%, rgba(254, 180, 6,1) 41%, rgba(254, 180, 6,0) 41%);  */
-  
-
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   background-repeat: no-repeat;
   background-size: 100% 0.4em;
   background-position: 0 88%;
   transition: background-size 0.25s ease-in;
- /*  background-repeat: no-repeat;
-  background-position: 0% 100%;
-  background-size: 100% 5px;
-  transition: background-size .5s, background-position .3s ease-in .5s;
- */
 }
 
-/* h1.gradient span:hover {
-  background-size: 100% 88%;
-} */
  
 h1.padding span {
   padding: 0 0.5em 0 0.1em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
-
-
-
 
 #hero-today-send input:focus {
   color: #495057;
@@ -596,14 +580,6 @@ h1.padding span {
 #navigation.small-screen.select-list { padding: 5px; }
 
 
-
-
-
-
-
-
-
-
 /*----------------------------------------------
     5.4 Page Header
 ----------------------------------------------*/
@@ -650,21 +626,89 @@ cursor:pointer;
  9.1 About us
 ---------------------------*/
 
-.about-section { }
+.about-section { 
+	
+}
 .about-title { margin-bottom: 30px; }
 .about-img img { border-radius: 10px; }
 .about-list { }
 .about-list ul li { color: #5f5f5f; }
 .about-list ul li:before { color: #5f5f5f; }
 
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES - timeline 타임라인(index 메인페이지)
+* ==========================================
+*
+*/
+
+/* Timeline holder */
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+ /* Timeline vertical line */
+ul.timeline:before {
+    content: ' ';
+   /*  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); */
+   background: #17a2b8;
+    display: inline-block;
+    position: absolute;
+    left: 16px;
+    width: 4px;
+    height: 100%;
+   /*  z-index: 400; */
+    border-radius: 1rem;
+}
+
+li.timeline-item {
+    margin: 20px 0;
+}
+
+/* Timeline item arrow */
+.timeline-arrow {
+    border-top: 0.5rem solid transparent;
+    border-right: 0.5rem solid #fff;
+    border-bottom: 0.5rem solid transparent;
+    display: block;
+    position: absolute;
+    left: 2rem;
+}
+
+/* Timeline item circle marker */
+li.timeline-item::before {
+    content: ' ';
+    background: #ddd;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    left: 11px;
+    width: 14px;
+    height: 14px;
+   /*  z-index: 400; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 /*-------------------------
  9.2  Service / single / sidebar
 --------------------------*/
-.service-block { padding: 30px; margin-bottom: 30px; background-color: #f0efe8; border-radius: 6px; }
+.service-block { 
+	padding: 30px; 
+	background-color: #f8f8f8; 
+	border-radius: 6px; 
+}
 .service-block:hover { }
 .service-icon { margin-bottom: 30px; }
-.service-img img { margin-bottom: 30px; border-radius: 10px; border: 3px solid #fff; }
-.service-content { }
+.service-content .flag-title {
+	color: #333333; 
+	font-weight: 600;
+	font-size: 22px;
+}
 .service-btn-link { margin-bottom: 8px; }
 
 /*-----------------------------------------
@@ -691,29 +735,7 @@ cursor:pointer;
 .testimonial-user-img { text-align: center; margin-top: -45px; border: none; }
 .testimonial-text { font-size: 16px; font-style: italic; font-weight: 400; color: #333333; }
 
-/*--------------------------
- 9.6  Destination/cities
----------------------------*/
-.destination-block { margin-bottom: 30px; }
-.destination-img img { margin-bottom: 30px; border-radius: 10px; }
-.destination-content { position: absolute; bottom: 40px; padding-left: 30px; color: #fff; display: inline-block }
-.destination-title { color: #fff; }
-.destination-title:hover { color: #f7da3d; }
-.destination-text { font-size: 16px; font-weight: 600; }
-.destination-details { }
 
-/*-------------------------
- 9.8 Contact us
----------------------------*/
-.contact-block { }
-.contact-info { margin-top: 30px; }
-.contact-info-title { }
-.contact-icon { margin-right: 20px; }
-.contact-icon { border: 2px #589442 dashed; line-height: 14px; border-radius: 100%; padding: 14px 18px; font-size: 20px; color: #589442; width: 52px; }
-.contact-info ul { }
-.contact-title { font-size: 15px; font-weight: 700; letter-spacing: .75px; text-transform: uppercase; }
-.contact-info li { margin-bottom: 10px }
-.get-in-touch { }
 
 /*------------------------
 10. Blog pages
@@ -727,7 +749,11 @@ cursor:pointer;
 .quoteblock p { margin: 0px; }
 .quoteblock-author { text-transform: uppercase; letter-spacing: 1.5px; font-size: 14px; font-weight: 700; color: #ffe762; }
 .recent-title { font-size: 18px; line-height: 28px; }
-.section-title { margin-bottom: 60px; }
+.section-title { margin-bottom: 60px;
+	font-weight: 500;
+	font-size: 32px; 
+	color: #2b2b2b;
+	}
 
 /*----- post-----*/
 .post-block { margin-bottom: 40px; }

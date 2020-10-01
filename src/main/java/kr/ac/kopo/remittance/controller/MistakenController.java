@@ -15,6 +15,7 @@ import org.springframework.web.socket.WebSocketHandler;
 
 import kr.ac.kopo.account.service.AccountService;
 import kr.ac.kopo.account.vo.AccountVO;
+import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.remittance.service.MistakenService;
 import kr.ac.kopo.remittance.service.RemInfoService;
@@ -37,6 +38,9 @@ public class MistakenController {
 	
 	@Autowired
 	RemInfoService remInfoService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@GetMapping("/remittance/mistake")
 	public ModelAndView remMistakeList(HttpSession session) {
@@ -94,11 +98,13 @@ public class MistakenController {
 		RemittanceVO remittanceVO = remittanceService.selectRemittanceByRemNo(mistakenVO.getRemNo());
 		AccountVO accountVO = accountService.selectAccountByAccNo(remittanceVO.getAccNo());
 		RemInfoVO remInfoVO = remInfoService.selectRemInfoDetail(remittanceVO.getInfoNo());
+		MemberVO memberVO = memberService.selectInformationById(accountVO.getId());
 		
 		mav.addObject("mistaken", mistakenVO);
 		mav.addObject("remittance", remittanceVO);
 		mav.addObject("account", accountVO);
 		mav.addObject("remInfo", remInfoVO);
+		mav.addObject("member", memberVO);
 		
 		return mav;
 	}
@@ -106,11 +112,11 @@ public class MistakenController {
 	@PostMapping("/admin/mistaken")
 	public ModelAndView mistakenCheck(MistakenVO mistaken) {
 		ModelAndView mav = new ModelAndView("redirect:/admin/mistaken");
+		//System.out.println("미스테이큰 : " + mistaken);
 		
 		//반환완료일 경우
 		if(mistaken.getStatus().equals("반환완료")) {
 			mistakenService.updateStatusMistaken(mistaken);
-			
 		}
 		
 		return mav;

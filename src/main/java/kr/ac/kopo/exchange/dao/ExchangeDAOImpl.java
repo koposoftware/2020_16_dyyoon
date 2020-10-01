@@ -1,6 +1,7 @@
 package kr.ac.kopo.exchange.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,10 @@ public class ExchangeDAOImpl implements ExchangeDAO {
 	@Override
 	public List<ExchangeVO> selectAllExchangeRate() {
 		return session.selectList("exchange.dao.ExchangeDAO.selectAllExchangeRate");
+	}
+
+	@Override
+	public List<Map<String, Object>> selectExchangeRateForIndex() {
+		return session.selectList("exchange.dao.ExchangeDAO.selectExchangeRateForIndex");
 	}
 }

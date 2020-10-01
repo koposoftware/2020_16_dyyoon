@@ -45,7 +45,7 @@
 						<div class="col-md-8">
 							<span class="material-icons md-36 align-bottom">account_balance</span>
 							<span class="align-bottom font-weight-bold" style="font-size: 20px;">
-								<span class="text-info">윤다영</span>님의 총자산
+								<span class="text-info"> ${ loginVO.name }</span>님의 총자산
 							</span>
 						</div>
 						<div class="col-md-4">
@@ -78,7 +78,7 @@
 					        	</div>
 					        	<div style="font-size: 18px;">
 					        		<span class="font-weight-bold">${ account.accNo }</span>
-					        		<span class="float-right">잔액  :  <fmt:formatNumber type="number" pattern="#,##0" value ="${ account.balance }" /> 원
+					        		<span class="float-right">  <fmt:formatNumber type="number" pattern="#,##0" value ="${ account.balance }" /> 원
 					        		</span>
 					        		<br>
 					        	</div>
@@ -103,7 +103,7 @@
 				      <c:forEach items="${ accountList }" var="account">
 				      <c:if test="${ account.type eq '04' }">
 					      <div class="card-body p-0">
-					        <!-- 계좌모록  -->
+					        <!-- 계좌모록  --> 
 					        <div class="p-3 border-bottom">
 					        	<div style="font-size: 12px;">
 					        		<span>${ account.accName }</span>
@@ -116,7 +116,7 @@
 					        	</div>
 					        	<div style="font-size: 18px;">
 					        		<span class="font-weight-bold">${ account.accNo }</span>
-					        		<span class="float-right">잔액  :  <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ account.balance }" /> </span>
+					        		<span class="float-right">  <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ account.balance }" /> </span>
 					        		<br>
 					        	</div>
 					        	<div class="d-flex justify-content-end mt-2">

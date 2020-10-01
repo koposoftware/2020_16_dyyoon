@@ -19,7 +19,7 @@ toastr.options = {
 	  "tapToDismiss": false
 	}
 	
-toastr.options.onclick = function() { console.log('clicked'); alert('clicked') }
+toastr.options.onclick = function() { console.log(mk); alert('clicked') }
 
 
 
@@ -58,6 +58,6 @@ function connect(){
 }
 
 
-/*connect();*/
+connect();
 
 	
