@@ -38,23 +38,23 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
 HanaSafe 설계 및 제작, 코딩
 <br>
 ### 사용기술
- - Spring MVC 기반 웹 애플리케이션 제작
- - Spring Locale 한국어, 영어, 중국어 3개 언어 지원
- - Javaxmail, Thymeleaf 템플릿 형태 이메일 전송
- - WebSocket 기반 실시간 알림
- - Window Task Scheduler, Python 환율 정보 크롤링
- - Spring Scheduler 기반 예약 송금
- - 계좌, 거래내역 입력 Transaction
+Spring MVC 기반 웹 애플리케이션 제작<br>
+Spring Locale 한국어, 영어, 중국어 3개 언어 지원<br>
+Javaxmail, Thymeleaf 템플릿 형태 이메일 전송<br>
+WebSocket 기반 실시간 알림<br>
+Window Task Scheduler, Python 환율 정보 크롤링<br>
+Spring Scheduler 기반 예약 송금<br>
+계좌, 거래내역 입력 Transaction<br>
 <br>
 **개발 환경**
 JDK 1.8, Window10, Oracle 11g express, Tomcat9
 <br>
 ### Language / Tool / DB
- - Language : HTML, CSS, Javascript, Python, Java
- - Framework : Spring, MyBatis, Bootstrap, WebSocket
- - Database : Oracle DBMS
- - Server : Tomcat
- - Etc : Git(Git Bash)
+Language : HTML, CSS, Javascript, Python, Java
+Framework : Spring, MyBatis, Bootstrap, WebSocket
+Database : Oracle DBMS
+Server : Tomcat
+Etc : Git(Git Bash)
 <br>
 ### 요구사항
 1.	사용자<br>
