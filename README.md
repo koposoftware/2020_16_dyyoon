@@ -49,10 +49,10 @@ JDK 1.8, Window10, Oracle 11g express, Tomcat9
 <br>
 ### Language / Tool / DB
 <br>
-Language : HTML, CSS, Javascript, Python, Java
-Framework : Spring, MyBatis, Bootstrap, WebSocket
-Database : Oracle DBMS
-Server : Tomcat
+Language : HTML, CSS, Javascript, Python, Java<br>
+Framework : Spring, MyBatis, Bootstrap, WebSocket<br>
+Database : Oracle DBMS<br>
+Server : Tomcat<br>
 Etc : Git(Git Bash)
 <br>
 ### 요구사항
