@@ -1,6 +1,6 @@
 # 프로젝트 제목
 
-[프로젝트 홈페이지 - https://koposoftware.github.io/template/](https://koposoftware.github.io/template/)
+[프로젝트 홈페이지 - https://koposoftware.github.io/2020_16_dyyoon/](https://koposoftware.github.io/2020_16_dyyoon/)
 
 # 1. 프로젝트 개요
 
@@ -31,7 +31,7 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
 
 본인 소개를 추가하세요
 
-|이름 |윤다영|![gdKO](/윤다영.jpg){: width="100" height="100"}|
+|이름 |윤다영|![gdKO](/윤다영.jpg){: width="60%"}|
 |연락처 | dayoung927(@)gmail.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Spring, Oracle|
