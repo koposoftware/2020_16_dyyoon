@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-# 착오송금을 덜어주는 HanaSafe 해외송금
-=======
+
 # 착오송금을 덜어주는 안전한 해외송금 HanaSafe
->>>>>>> 85c9488b076367e2c946a539b226c17bb1979ed6
+
 
 [프로젝트 홈페이지 - https://koposoftware.github.io/2020_16_dyyoon/](https://koposoftware.github.io/2020_16_dyyoon/)
 
