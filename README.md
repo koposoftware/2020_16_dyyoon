@@ -20,18 +20,17 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
 # 3. 프로젝트 결과
 
 
-## 발표 자료 
+## 3-1. 발표 자료 
    <img src="ppt.png"/>[발표자료](/윤다영_HANASAFE해외송금_발표.pdf)<br>
 
-## 시연 동영상 
+## 3-2. 시연 동영상 
 
-   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://youtu.be/POMcV9qG9ak" frameborder="0"></iframe>
+   <iframe id="ytplayer" type="text/html" width="640" height="360" src="//youtu.be/POMcV9qG9ak" frameborder="0"></iframe>
+## 3-3. HanaSafe 상세
 
 # 4. 본인 소개
 
-본인 소개를 추가하세요
-
-|이름 |윤다영|![gdKO](/윤다영.jpg){: width="60%"}|
+|이름 |윤다영|![gdKO](/윤다영.jpg)|
 |연락처 | dayoung927(@)gmail.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Spring, Oracle|
@@ -39,19 +38,6 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
 |수상| 통신분야 빅데이터 플랫폼 아이디어 경진대회 일반부 대상 |
 |특기사항|  TOEIC 975, HSK 6급 |
 
-# 5. 기타
-그외 프로젝트를 더욱 설명할수 있는 것들을 추가하세요
 
-# 홈페이지 설정
- 본인 repository에서 "Setting"를 들어가서 GitHub Pages에서 설정 변경.
- <Source>
- Source에서 원하는 branch와 directory 설정한다. 
- 기본값은 master 에 root를 설정 
- Save 버튼 꼭 누른다.
- 
- <Theme Chooser>
- theme을 변경하여 좀더 이쁜 홈페이지를 만든다.
-   
-   <img src="homepage.JPG"/><br>
-   
+
  
