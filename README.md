@@ -30,11 +30,11 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
   <iframe src="https://www.youtube.com/embed/POMcV9qG9ak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    
 ## 3-3. HanaSafe 프로젝트 요약
-- 수행기간
+### 수행기간
 2020.09.02 ~ 2020.10.05
-- 담당 업무
+### 담당 업무
 HanaSafe 설계 및 제작, 코딩
-- 사용기술
+### 사용기술
  - Spring MVC 기반 웹 애플리케이션 제작
  - Spring Locale 한국어, 영어, 중국어 3개 언어 지원
  - Javaxmail, Thymeleaf 템플릿 형태 이메일 전송
@@ -42,15 +42,15 @@ HanaSafe 설계 및 제작, 코딩
  - Window Task Scheduler, Python 환율 정보 크롤링
  - Spring Scheduler 기반 예약 송금
  - 계좌, 거래내역 입력 Transaction
-- 개발 환경
+### 개발 환경
 JDK 1.8, Window10, Oracle 11g express, Tomcat9
-- Language / Tool / DB
+### Language / Tool / DB
  - Language : HTML, CSS, Javascript, Python, Java
  - Framework : Spring, MyBatis, Bootstrap, WebSocket
  - Database : Oracle DBMS
  - Server : Tomcat
  - Etc : Git(Git Bash)
-- 요구사항
+### 요구사항
 1.	사용자
  1-1. 회원가입
  1-2. 로그인
@@ -73,9 +73,9 @@ JDK 1.8, Window10, Oracle 11g express, Tomcat9
  5-4. 착오송금 승인
  
  
-- 기대효과 및 보완점
+### 기대효과 및 보완점
 HanaSafe를 통해 해외송금 시 발생하는 착오송금을 줄여 그 사이에 발생하는 비용을 절감하고 동시에 사회적 이미지를 구축할 수 있어 고객 증대에 도움이 될 것으로 기대한다. 
-보완 사항
+
 1.	BankCodesAPI의 은행코드 – 은행 정보 API 접근 불가, DB에 데이터 PROTOTYPE 형태 삽입
 2.	GCP, AWS deploy 계획
 3.	외환 업무에 대한 정확한 프로세스 파악 후 관리자단 개선 필요
