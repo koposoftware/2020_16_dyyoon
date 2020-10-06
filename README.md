@@ -25,12 +25,10 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
    <img src="ppt.png"/><br>
 
 ## 3-2. 시연 동영상 
-
-   
-  <iframe src="https://www.youtube.com/embed/POMcV9qG9ak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/POMcV9qG9ak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    
 ## 3-3. HanaSafe 프로젝트 요약
-<br>
+
 ### 수행기간
 2020.09.02 ~ 2020.10.05
 <br>
@@ -44,7 +42,7 @@ Javaxmail, Thymeleaf 템플릿 형태 이메일 전송<br>
 WebSocket 기반 실시간 알림<br>
 Window Task Scheduler, Python 환율 정보 크롤링<br>
 Spring Scheduler 기반 예약 송금<br>
-계좌, 거래내역 입력 Transaction<br>
+계좌, 거래내역 입력 Transaction
 <br>
 ### 개발 환경
 JDK 1.8, Window10, Oracle 11g express, Tomcat9
@@ -78,7 +76,7 @@ Etc : Git(Git Bash)
  5-1. 송금정보 승인<br>
  5-2. 보내는 해외송금 승인<br>
  5-3. 받은 해외송금 승인<br>
- 5-4. 착오송금 승인<br>
+ 5-4. 착오송금 승인
 <br>
  
 ### 기대효과
