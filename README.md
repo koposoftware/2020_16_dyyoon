@@ -58,6 +58,7 @@ Server : Tomcat
 Etc : Git(Git Bash)
 <br>
 ### 요구사항
+<br>
 1.	사용자<br>
      1-1. 회원가입<br>
      1-2. 로그인<br>
@@ -82,6 +83,7 @@ Etc : Git(Git Bash)
  
 ### 기대효과
 HanaSafe를 통해 해외송금 시 발생하는 착오송금을 줄여 그 사이에 발생하는 비용을 절감하고 동시에 사회적 이미지를 구축할 수 있어 고객 증대에 도움이 될 것으로 기대한다. 
+<br>
 ### 보완점
 1.BankCodesAPI의 은행코드 – 은행 정보 API 접근 불가, DB에 데이터 PROTOTYPE 형태 삽입
 2.GCP, AWS deploy 계획
