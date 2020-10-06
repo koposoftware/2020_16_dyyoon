@@ -55,12 +55,6 @@
 				<i class="material-icons align-middle">how_to_reg</i>
 				<span class="align-middle">송금 정보 등록</span>
 			</div>
-			
-			<div style="height:40px;" class="mb-2">
-				<img style="height:100%;" class="float-right d-block" alt="" src="${ pageContext.request.contextPath }/resources/images/step1.png">
-			</div>
-			
-			
 			<div class="d-flex">
 			
 				<div class="font-weight-bold"><i class="material-icons md-18 align-middle text-info" >person</i><span class="align-middle">보내는 분 정보</span></div>
@@ -316,7 +310,24 @@
 	</div>
 	
 	
-	
+
+	<!-- 경고창 모달 시작 -->
+	<div class="modal" id="modalAlertBankCode">
+	  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+			<div class="modal-content border-0">
+				<div class="modal-header bg-danger">
+					<h5 class="modal-title text-white">은행코드 입력 오류</h5>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body deleteAllModalBody text-center">
+					존재하지 않는 은행코드입니다<br>다시 입력하세요<br>
+					<button type="button" class="btn btn-outline-secondary float-right" data-dismiss="modal">확인</button>
+				</div>
+				</div>
+		</div>
+	</div>
+	<!-- 경고창 모달 끝 -->
+
 	
 	<!-- modal 끝 -->
 	
@@ -334,12 +345,34 @@
 		  $('#input-group-phone-code').text('+ ' + $(this).children('option:selected').data('phone'))
 	  })
 	  
+	  
 	  $('.bankCode-btn').on('click', function(){
-		$('input[name="bankName"]').val('Bank of 000')
-		$('input[name="bankNation"]').val('US')
-		$('input[name="bankAddr"]').val('New York, ABCD Street')
-		$('input[name="bankAddrDetail"]').val('JKH Building 123')
-		
+		var bankCodeInput = $('input[name="bankCode"]').val()
+		if(bankCodeInput == ''){
+			alert('은행 코드를 입력하세요')
+		}else{
+			
+			$.ajax({
+				url : '${ pageContext.request.contextPath }/bank/' + bankCodeInput,
+				type : 'get',
+				success : function(data){
+					if(data == ''){
+						$('#modalAlertBankCode').modal()
+					}else{
+						var bank = JSON.parse(data);
+						console.log(bank)
+						$('input[name="bankName"]').val(bank.bankName)
+						$('input[name="bankNation"]').val(bank.countryCode)
+						$('input[name="bankAddr"]').val(bank.city)
+						$('input[name="bankAddrDetail"]').val(bank.address)
+						
+					}
+				},
+				error : function(){
+					alert('통신실패')
+				}
+			})
+		}
 	})
 	  
 	  //이메일로 송금정보 등록을 요청하는 AJAX

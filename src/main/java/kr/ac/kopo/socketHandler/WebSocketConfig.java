@@ -18,7 +18,6 @@ public class WebSocketConfig implements WebSocketConfigurer {
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		// TODO Auto-generated method stub
-		System.out.println("콘피그 지나감");
 		registry.addHandler(echoHandler, "/echo").addInterceptors(new HttpSessionHandshakeInterceptor()).setAllowedOrigins("*");
 	}
 

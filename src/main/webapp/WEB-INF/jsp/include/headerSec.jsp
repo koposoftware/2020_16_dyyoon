@@ -8,7 +8,7 @@
                 <div class="col-md-12 hidden-sm hidden-xs">
                     <div class="social float-right">
                         <ul>
-                        	<li><a href="#">KEB하나은행</a></li>
+                        	<li><a href="https://www.kebhana.com/">KEB하나은행</a></li>
                         	<li>
 	                        	<div class="dropdown show">
 		                        	<a href="#" class="dropdown-toggle" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -21,7 +21,6 @@
 									</div>
 	                        	</div>
                         	</li>
-                            <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -67,7 +66,7 @@
                                     </li>
                                     <li class="active"><a href="${ pageContext.request.contextPath }/exchange" title="Home">환율</a></li>
                                     <li class="active"><a href="${ pageContext.request.contextPath }/account" title="Home">계좌조회</a></li>
-                                    <li class="active"><a href="${ pageContext.request.contextPath }/service" title="Home">고객센터</a></li>
+                                    <%-- <li class="active"><a href="${ pageContext.request.contextPath }/service" title="Home">고객센터</a></li> --%>
                                 </ul>
                             </div>
                         </div>

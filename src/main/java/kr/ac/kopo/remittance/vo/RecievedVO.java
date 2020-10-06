@@ -1,5 +1,7 @@
 package kr.ac.kopo.remittance.vo;
 
+import java.math.BigDecimal;
+
 public class RecievedVO {
 
 	private Integer recievedNo;
@@ -12,7 +14,7 @@ public class RecievedVO {
 	private String fromBankCode;
 	private String fromAccNo;
 	private String currency;
-	private Float amount;
+	private BigDecimal amount;
 	
 	private String getAccNo;
 	private String getName;
@@ -139,11 +141,11 @@ public class RecievedVO {
 		this.currency = currency;
 	}
 
-	public Float getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Float amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 

@@ -92,7 +92,8 @@
 							</tr>
 						</table>
 						<c:if test="${ remInfoDetail.status eq '신청중' }">
-						<form action="${ pageContext.request.contextPath }/admin/remInfo" method="post">
+						<form action="${ pageContext.request.contextPath }/admin/remInfo" method="post"
+							name="remInfoCheckDetailForm">
 						<input type="hidden" name="infoNo" value="${ remInfoDetail.infoNo } ">
 						<table class="table table-bordered table-th-primary table-detail">
 							<tr>
@@ -113,7 +114,7 @@
 						</table>
 						<div class="text-center">
 							<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/remInfo'">목록</button>
-							<button class="btn btn-primary" type="submit">승인심사 완료</button>
+							<button class="btn btn-primary" type="button" onclick="remInfoCheckDetail()">승인심사 완료</button>
 						</div>
 						</form>
 						</c:if>
@@ -138,5 +139,32 @@
 
 <jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjsAdmin.jsp"></jsp:include>
+<script type="text/javascript">
+
+function remInfoCheckDetail(){
+	var formData = $('form[name=remInfoCheckDetailForm]').serialize();
+	var id = "<c:out value='${member.id}'/>"
+	var member = "<c:out value='${member.name}' />"
+	var formStatus = $('select[name=status]').val();
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/admin/remInfo',
+		type : 'post',
+		data : formData,
+		success : function(){
+			var msg;
+			if( formStatus == '승인'){
+				msg = 'remInfo,' + id + ',' + member + ',승인'; 
+			}else{
+				msg = 'remInfo,' + id + ',' + member + ',승인거절'; 
+			}
+			socket.send(msg);
+			window.location.href='${pageContext.request.contextPath}/admin/remInfo'
+		},
+		error : function(){
+			alert('fail')
+		}
+	})
+}
+</script>
 </body>
 </html>

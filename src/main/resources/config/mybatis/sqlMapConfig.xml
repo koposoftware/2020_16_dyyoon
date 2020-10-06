@@ -13,5 +13,6 @@
 	 	<typeAlias type="kr.ac.kopo.country.vo.CountryVO" alias="countryVO"/>
 	 	<typeAlias type="kr.ac.kopo.exchange.vo.ExchangeVO" alias="exchangeVO"/>
 	 	<typeAlias type="kr.ac.kopo.statement.vo.StatementVO" alias="statementVO"/>
+	 	<typeAlias type="kr.ac.kopo.bank.vo.BankVO" alias="bankVO"/>
 	 </typeAliases>
 </configuration>

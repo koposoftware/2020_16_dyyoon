@@ -1,5 +1,7 @@
 package kr.ac.kopo.account.vo;
 
+import java.math.BigDecimal;
+
 public class AccountVO {
 	
 	private String 	accNo;
@@ -9,14 +11,24 @@ public class AccountVO {
 	private String 	accName;
 	private String 	alias;
 	private String 	openDate;
-	private Float	balance;
+	private BigDecimal	balance;
 	private String 	id;
 	private String 	favorite;
+	
+	private String balanceConvert;
 	
 	public AccountVO() {
 		super();
 	}
 	
+	public String getBalanceConvert() {
+		return balanceConvert;
+	}
+
+	public void setBalanceConvert(String balanceConvert) {
+		this.balanceConvert = balanceConvert;
+	}
+
 	public String getFavorite() {
 		return favorite;
 	}
@@ -81,11 +93,11 @@ public class AccountVO {
 		this.openDate = openDate;
 	}
 
-	public Float getBalance() {
+	public BigDecimal getBalance() {
 		return balance;
 	}
 
-	public void setBalance(Float balance) {
+	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
 
@@ -100,9 +112,11 @@ public class AccountVO {
 	@Override
 	public String toString() {
 		return "AccountVO [accNo=" + accNo + ", pwd=" + pwd + ", type=" + type + ", currency=" + currency + ", accName="
-				+ accName + ", alias=" + alias + ", openDate=" + openDate + ", balance=" + balance + ", id=" + id + "]";
+				+ accName + ", alias=" + alias + ", openDate=" + openDate + ", balance=" + balance + ", id=" + id
+				+ ", favorite=" + favorite + ", balanceConvert=" + balanceConvert + "]";
 	}
 	
+
 	
 
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bank.dao.BankDAO">
+	<resultMap type="bankVO" id="bankMap">
+		<result column="BANK_CODE" property="bankCode"/>
+		<result column="BANK_NAME" property="bankName"/>
+		<result column="BRANCH_NAME" property="branchName"/>
+		<result column="COUNTRY_CODE" property="countryCode"/>
+		<result column="COUNTRY_NAME" property="countryName"/>
+	</resultMap>
+	<select id="selectBankByCode" parameterType="String" resultMap="bankMap">
+	select * from hs_t_bank where bank_code = #{bankCode}
+	</select>
+</mapper>

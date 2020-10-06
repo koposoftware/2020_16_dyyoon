@@ -7,29 +7,48 @@
 		<result column="acc_no" property="accNo"/>
 		<result column="acc_name" property="accName"/>
 		<result column="open_date" property="openDate"/>
-		<result column="charge_acc_no" property="chargeAccNo"/>
+		<result column="balance_convert" property="balanceConvert"/>
 	</resultMap>
-	<sql id="selectAllAccountColumn">
-		select acc_no, pwd, type, currency, acc_name, alias, open_date, balance, id, favorite 
-		 from hs_t_account
-	</sql>
 	<select id="selectAccountList" parameterType="String" resultMap="accountMap">
-		<include refid="selectAllAccountColumn" />
-		where id = #{id}
+		select  acc_no, pwd, type, currency, acc_name, alias, open_date, balance, id, favorite,
+		        case when currency = 'KRW' then to_char(balance, 'FM999,999,999,999,999,999')
+		             else to_char(balance, 'FM999,999,999,999,999,999.00')
+		             end as balance_convert
+	     from hs_t_account
+	     where id = #{id}
 	</select>
-	<select id="selectAccountBalance" parameterType="String" resultType="Float">
-		select balance
+	<select id="selectAccountBalance" parameterType="String" resultType="String">
+		select case when currency = 'KRW' then to_char(balance, 'FM999,999,999,999,999,999')
+	             else to_char(balance, 'FM999,999,999,999,999,999.00')
+	             end as balance_convert
 		 from hs_t_account
 		 where acc_no = #{ accNo }
 	</select>
 	<select id="selectAccountByAccNo" parameterType="String" resultMap="accountMap">
-		<include refid="selectAllAccountColumn"></include>
+		select acc_no, pwd, type, currency, acc_name, alias, open_date, balance, id, favorite,
+		 		case when currency = 'KRW' then to_char(balance, 'FM999,999,999,999,999,999')
+		             else to_char(balance, 'FM999,999,999,999,999,999.00')
+		             end as balance_convert
+		 from hs_t_account
 		where acc_no = #{ accNo }
-	</select>
-	<select id="selectUserAllKRWBalance" parameterType="String" resultType="Float">
-		select sum(balance) as sumBalance from hs_t_account where type='03' and id=#{id}
 	</select>
 	<update id="updateRemittanceAmount" parameterType="remittanceVO">
 		update hs_t_account set balance = balance - #{amount} where acc_no = #{accNo}
+	</update>
+	<select id="selectBalanceSumGroupByCurrency" parameterType="String" resultType="map">
+		select currency, sum(balance) as balance 
+			from hs_t_account 
+			where id=#{id} 
+			group by currency
+	</select>
+	<select id="selectFavoriteAccount" parameterType="String" resultMap="accountMap">
+		select acc_no, pwd, type, currency, acc_name, alias, open_date, balance, id, favorite,
+				case when currency = 'KRW' then to_char(balance, 'FM999,999,999,999,999,999')
+	             else to_char(balance, 'FM999,999,999,999,999,999.00')
+	             end as balance_convert 
+		 from hs_t_account where id=#{id} and favorite='Y'
+	</select>
+	<update id="updatePlusAmount" parameterType="map">
+		update hs_t_account set balance = balance + #{amount} where acc_no = #{accNo}
 	</update>
 </mapper>

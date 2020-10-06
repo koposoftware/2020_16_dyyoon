@@ -1,5 +1,7 @@
 package kr.ac.kopo.remittance.vo;
 
+import java.math.BigDecimal;
+
 import javax.validation.constraints.NotNull;
 
 public class RemittanceVO {
@@ -11,8 +13,8 @@ public class RemittanceVO {
 	
 	private String 		accType;
 	private String 		accNo;
-	private Float 		amount;
-	private Float 		exchangeRate;
+	private BigDecimal 		amount;
+	private BigDecimal 		exchangeRate;
 	private String		reason;
 	private String		remDate;
 	private String 		chargeAccNo;
@@ -37,6 +39,20 @@ public class RemittanceVO {
 		super();
 	}
 	
+	public RemittanceVO(String accNo, BigDecimal amount) {
+		super();
+		this.accNo = accNo;
+		this.amount = amount;
+	}
+	
+	
+
+	public RemittanceVO(Integer remNo, String status) {
+		super();
+		this.remNo = remNo;
+		this.status = status;
+	}
+
 	public String getStatusDesc() {
 		return statusDesc;
 	}
@@ -105,19 +121,19 @@ public class RemittanceVO {
 		this.accNo = accNo;
 	}
 
-	public Float getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Float amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
-	public Float getExchangeRate() {
+	public BigDecimal getExchangeRate() {
 		return exchangeRate;
 	}
 
-	public void setExchangeRate(Float exchangeRate) {
+	public void setExchangeRate(BigDecimal exchangeRate) {
 		this.exchangeRate = exchangeRate;
 	}
 

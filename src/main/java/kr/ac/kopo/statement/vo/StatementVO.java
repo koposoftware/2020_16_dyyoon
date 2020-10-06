@@ -1,19 +1,55 @@
 package kr.ac.kopo.statement.vo;
 
+import java.math.BigDecimal;
+
 public class StatementVO {
 	
 	private Integer stateNo;
 	private String type;
 	private String stateDate;
-	private Float amount;
-	private Float balance;
+	private BigDecimal amount;
+	private BigDecimal balance;
+	private String typeDesc;
 	private String stateDesc;
-	private String myDesc;
 	private String accNo;
+	
+	private String amountConvert;
+	private String balanceConvert;
 	
 	public StatementVO() {
 		super();
 	}
+
+	
+	
+	public StatementVO(BigDecimal amount, BigDecimal balance, String stateDesc, String accNo, String type) {
+		super();
+		this.amount = amount;
+		this.balance = balance;
+		this.stateDesc = stateDesc;
+		this.accNo = accNo;
+		this.type = type;
+	}
+
+
+
+	public String getAmountConvert() {
+		return amountConvert;
+	}
+
+	public void setAmountConvert(String amountConvert) {
+		this.amountConvert = amountConvert;
+	}
+
+	public String getBalanceConvert() {
+		return balanceConvert;
+	}
+
+
+	public void setBalanceConvert(String balanceConvert) {
+		this.balanceConvert = balanceConvert;
+	}
+
 
 	public Integer getStateNo() {
 		return stateNo;
@@ -39,19 +75,19 @@ public class StatementVO {
 		this.stateDate = stateDate;
 	}
 
-	public Float getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Float amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
-	public Float getBalance() {
+	public BigDecimal getBalance() {
 		return balance;
 	}
 
-	public void setBalance(Float balance) {
+	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
 
@@ -63,12 +99,12 @@ public class StatementVO {
 		this.stateDesc = stateDesc;
 	}
 
-	public String getMyDesc() {
-		return myDesc;
+	public String getTypeDesc() {
+		return typeDesc;
 	}
 
-	public void setMyDesc(String myDesc) {
-		this.myDesc = myDesc;
+	public void setTypeDesc(String typeDesc) {
+		this.typeDesc = typeDesc;
 	}
 
 	public String getAccNo() {
@@ -82,9 +118,9 @@ public class StatementVO {
 	@Override
 	public String toString() {
 		return "StatementVO [stateNo=" + stateNo + ", type=" + type + ", stateDate=" + stateDate + ", amount=" + amount
-				+ ", balance=" + balance + ", stateDesc=" + stateDesc + ", myDesc=" + myDesc + ", accNo=" + accNo + "]";
+				+ ", balance=" + balance + ", typeDesc=" + typeDesc + ", stateDesc=" + stateDesc + ", accNo=" + accNo
+				+ ", amountConvert=" + amountConvert + ", balanceConvert=" + balanceConvert + "]";
 	}
-	
-	
+
 
 }

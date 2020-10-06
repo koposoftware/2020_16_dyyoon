@@ -1,5 +1,6 @@
 package kr.ac.kopo.country.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import kr.ac.kopo.country.vo.CountryVO;
@@ -16,6 +17,6 @@ public interface CountryService {
 	 * @param countryCode 
 	 * @return Float 환율(송금보낼때)
 	 */
-	Float selectCountryRemittanceRate(String currencyCode);
+	BigDecimal selectCountryRemittanceRate(String currencyCode);
 
 }

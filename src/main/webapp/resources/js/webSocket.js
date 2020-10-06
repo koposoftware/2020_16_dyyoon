@@ -19,8 +19,8 @@ toastr.options = {
 	  "tapToDismiss": false
 	}
 	
-toastr.options.onclick = function() { console.log(mk); alert('clicked') }
-
+/*toastr.options.onclick = function() { console.log(mk); alert('clicked') }
+*/
 
 
 
@@ -39,7 +39,7 @@ function connect(){
 		ws.onmessage = function(event){
 			console.log("Receive Message : " + event.data + '/n')
 			
-			toastr.info(event.data, '해외 송금 승인 완료').css({
+			toastr.info(event.data, '새로운 해외송금 소식').css({
 			"width": "500px",
 			"background-color" : "#008485"
  

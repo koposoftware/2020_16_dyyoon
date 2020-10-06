@@ -73,7 +73,7 @@
 
 				<table class="table ">
 					<tr>
-						<th>보내는 분</th>
+						<th style="width:240px;">보내는 분</th>
 						<td>${ loginVO.engName }</td>
 					</tr>
 					<tr>
@@ -109,7 +109,7 @@
 				</div>
 				<table class="table ">
 					<tr>
-						<th>계좌 유형 선택</th>
+						<th style="width:240px;">계좌 유형 선택</th>
 						<td>${ remittanceVO.accType }</td>
 					</tr>
 					<tr>

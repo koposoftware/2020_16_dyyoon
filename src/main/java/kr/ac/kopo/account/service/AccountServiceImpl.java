@@ -1,6 +1,7 @@
 package kr.ac.kopo.account.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Float selectAccountBalance(String accNo) {
+	public String selectAccountBalance(String accNo) {
 		return accountDAO.selectAccountBalance(accNo);
 	}
 
@@ -33,6 +34,16 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void updateRemittanceAmount(RemittanceVO remittanceVO) {
 		accountDAO.updateRemittanceAmount(remittanceVO);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectBalanceSumGroupByCurrency(String id) {
+		return accountDAO.selectBalanceSumGroupByCurrency(id);
+	}
+
+	@Override
+	public AccountVO selectFavoriteAccount(String id) {
+		return accountDAO.selectFavoriteAccount(id);
 	}
 	
 

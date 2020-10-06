@@ -181,6 +181,23 @@
 	<!-- 페이지 끝 -->
 	
 	
+	<!-- 경고창 모달 시작 -->
+	<div class="modal" id="modalAlertBankCodeEmail">
+	  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+			<div class="modal-content border-0">
+				<div class="modal-header bg-danger">
+					<h5 class="modal-title text-white">은행코드 입력 오류</h5>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body deleteAllModalBody text-center">
+					존재하지 않는 은행코드입니다<br>다시 입력하세요<br>
+					<button type="button" class="btn btn-outline-secondary float-right" data-dismiss="modal">확인</button>
+				</div>
+				</div>
+		</div>
+	</div>
+	<!-- 경고창 모달 끝 -->
+	
 	
 <jsp:include page="/WEB-INF/jsp/include/footerSecForEmail.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjsEmail.jsp"></jsp:include>
@@ -194,10 +211,33 @@
 	})
 	
 	$('.bankCode-btn').on('click', function(){
-		$('input[name="bankName"]').val('CITIBANK SINGAPORE LTD')
-		$('input[name="bankNation"]').val('SG')
-		$('input[name="bankAddr"]').val('SINGAPORE')
-		$('input[name="bankAddrDetail"]').val('PLAZA BY THE PARK, 51, BRAS BASAH ROAD')
+		var bankCodeInput = $('input[name="bankCode"]').val()
+		if(bankCodeInput == ''){
+			alert('은행 코드를 입력하세요')
+		}else{
+			
+			$.ajax({
+				url : '${ pageContext.request.contextPath }/bank/' + bankCodeInput,
+				type : 'get',
+				success : function(data){
+					//console.log(data)
+					if(data == ''){
+						$('#modalAlertBankCodeEmail').modal()
+					}else{
+						var bank = JSON.parse(data);
+						$('input[name="bankName"]').val(bank.bankName)
+						$('input[name="bankNation"]').val(bank.countryCode)
+						$('input[name="bankAddr"]').val(bank.city)
+						$('input[name="bankAddrDetail"]').val(bank.address)
+						
+					}
+					
+				},
+				error : function(){
+					alert('통신실패')
+				}
+			})
+		}
 		
 	})
 	

@@ -1,5 +1,7 @@
 package kr.ac.kopo.country.controller;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,7 @@ public class CountryController {
 	
 	@ResponseBody
 	@GetMapping("/country/remittance/{currencyCode}")
-	public Float getRemittanceRate(@PathVariable("currencyCode") String currencyCode) {
+	public BigDecimal getRemittanceRate(@PathVariable("currencyCode") String currencyCode) {
 		return countryService.selectCountryRemittanceRate(currencyCode);
 	}
 

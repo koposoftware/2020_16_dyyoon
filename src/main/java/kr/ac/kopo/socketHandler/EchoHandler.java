@@ -40,10 +40,6 @@ public class EchoHandler extends TextWebSocketHandler {
 		System.out.println("handleTextMessage : " + session + " : " + message);
 		
 		String senderId = getId(session);
-//		전체 broadcasting
-//		for(WebSocketSession sess : sessions) {
-//			sess.sendMessage(new TextMessage(senderId + " : " + message.getPayload()));
-//		}
 		
 		//Protocol : cmd(remittance, recieve, reserve, mistaken), 해당 id, 해당 이름, status(승인 과정)
 		String msg = message.getPayload();
@@ -62,9 +58,9 @@ public class EchoHandler extends TextWebSocketHandler {
 					TextMessage sendMsg = null;
 					if(cmd.equals("remittance")) {
 						sendMsg = new TextMessage(recieverName + "님이 보낸 해외송금 내역이 업데이트되었습니다 (" + status + ")");
-					}else if(cmd.equals("recieve")) {
+					}else if(cmd.equals("recieved")) {
 						sendMsg = new TextMessage(recieverName + "님께 새로운 해외송금이 도착했습니다");
-					}else if(cmd.equals("reserve")) {
+					}else if(cmd.equals("remInfo")) {
 						sendMsg = new TextMessage(recieverName + "님이 신청한 해외송금정보가 업데이트되었습니다 (" + status + ")");
 					}else if(cmd.equals("mistaken")) {
 						sendMsg = new TextMessage(recieverName + "님이 신고한 착오송금 처리가 업데이트되었습니다 (" + status + ")");

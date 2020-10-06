@@ -33,7 +33,11 @@ public interface RemittanceService {
 	 */
 	RemittanceVO selectRemittanceByRemNo(Integer remNo);
 	
-	
+	/**
+	 * 예약된 해외송금 내역 매일 아침 9시마다 해당되면 remittance로
+	 * @param remittanceVO
+	 */
+	void insertRemittanceFromReservation();
 	
 	/*-------------------------
 		ADMIN PAGE

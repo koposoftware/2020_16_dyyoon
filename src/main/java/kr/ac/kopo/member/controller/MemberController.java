@@ -1,5 +1,8 @@
 package kr.ac.kopo.member.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.remittance.service.MistakenService;
+import kr.ac.kopo.remittance.service.RecievedService;
+import kr.ac.kopo.remittance.service.RemInfoService;
+import kr.ac.kopo.remittance.service.RemittanceService;
 
 @SessionAttributes({"loginVO"})
 @Controller
@@ -19,6 +26,14 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private MistakenService mistakenService;
+	@Autowired
+	private RemittanceService remittanceService;
+	@Autowired
+	private RemInfoService remInfoService;
+	@Autowired
+	private RecievedService recievedService;
 	
 	@GetMapping("/login")
 	public String loginForm() {
@@ -86,7 +101,17 @@ public class MemberController {
 	@GetMapping("/admin")
 	public ModelAndView adminIndex() {
 		ModelAndView mav = new ModelAndView("admin/adminIndex");
+		mav.addObject("mistakenCount", mistakenService.selectMistakenCount());
+		mav.addObject("recievedCount", recievedService.selectRecievedCount());
+		mav.addObject("remInfoCount", remInfoService.selectRemInfoCount());
+		mav.addObject("remittanceCount", remittanceService.selectRemittanceCount());
 		
+		Date today = new Date();
+	    SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+	    SimpleDateFormat time = new SimpleDateFormat("hh:mm:ss a");
+	        
+	    mav.addObject("date", date.format(today));
+	    mav.addObject("time", time.format(today));
 		
 		return mav;
 		

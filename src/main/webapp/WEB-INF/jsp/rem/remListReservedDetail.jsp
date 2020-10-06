@@ -61,7 +61,7 @@
 
 				<table class="table ">
 					<tr>	
-						<th>예약일자</th>
+						<th style="width:240px;">예약일자</th>
 						<td>${ remittanceVO.reservedDate }</td>
 					</tr>
 					<tr>
@@ -104,7 +104,7 @@
 						<td>${ remittanceVO.accNo }</td>
 					</tr>
 					<tr>
-						<th>송금 금액</th>
+						<th>예약 송금 금액</th>
 						<td>
 							<c:choose>
 								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
@@ -115,7 +115,7 @@
 									</div>
 									<div>${ remInfoDetail.currency } <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ otherAmount }" /></div>
 									<div>
-										적용환율 : <span class="text-danger">${ remittanceVO.exchangeRate }</span>
+										예상 적용환율 : <span class="text-danger">${ remittanceVO.exchangeRate }</span>
 									</div>
 								</c:when>
 								<c:otherwise>
@@ -128,35 +128,6 @@
 						<th>수수료출금계좌</th>
 						<td>${ remittanceVO.chargeAccNo }</td>
 					</tr>
-					<tr>
-						<th>총출금금액(원화)</th>
-						<td>
-							<c:choose>
-								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
-								<fmt:formatNumber type="number" pattern="#,##0" value ="${ remittanceVO.amount + remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }" />
-									
-								</c:when>
-								<c:otherwise>
-								<fmt:formatNumber type="number" pattern="#,##0.00" value ="${ remittanceVO.remCharge + remittanceVO.interCharge + remittanceVO.cableCharge }" />
-									
-								</c:otherwise>
-							</c:choose>
-						</td>
-						</td>
-					</tr>
-					<tr>
-						<th style="width:240px;">총출금금액(외화)</th>
-						<td>
-							<c:choose>
-								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
-									0.00
-								</c:when>
-								<c:otherwise>
-									<fmt:formatNumber type="number" pattern="#,##0.00" value ="${ remittanceVO.amount }" />
-								</c:otherwise>
-							</c:choose>	
-						</td>
-					</tr>
 				</table>
 
 				<div class="font-weight-bold">
@@ -165,7 +136,7 @@
 				</div>
 				<table class="table ">
 					<tr>
-						<th colspan="2">영문이름</th>
+						<th colspan="2" >영문이름</th>
 						<td>${ loginVO.engName }</td>
 					</tr>
 					<tr>

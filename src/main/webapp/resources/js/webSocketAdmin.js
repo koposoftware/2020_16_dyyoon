@@ -5,10 +5,11 @@
 var socket = null;
 
 function connect(){
-	var ws = new WebSocket("ws://localhost:9999/Hana-Safe/echo");
+	var ws = new WebSocket("ws://" + location.host + "/Hana-Safe/echo");
+	
 	socket = ws;
 
-	ws.onopen = function(){
+	ws.onopen = function(){ 
 		console.log('Info:connection opened.');
 		
 		

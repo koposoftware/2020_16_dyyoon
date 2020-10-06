@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +69,7 @@
 
 				<table class="table ">
 					<tr>
-						<th>예약날짜</th>
+						<th style="width:240px;">예약날짜</th>
 						<td>${ remittanceVO.remDate }</td>
 					</tr>
 					<tr>
@@ -101,7 +102,6 @@
 						</td>
 					</tr>
 				</table>
-				<br>
 
 				<div class="font-weight-bold">
 					<i class="material-icons md-18 align-middle text-info">monetization_on</i><span
@@ -109,7 +109,7 @@
 				</div>
 				<table class="table ">
 					<tr>
-						<th>계좌 유형 선택</th>
+						<th style="width:240px;">계좌 유형 선택</th>
 						<td>${ remittanceVO.accType }</td>
 					</tr>
 					<tr>
@@ -117,30 +117,29 @@
 						<td>${ remittanceVO.accNo }</td>
 					</tr>
 					<tr>
-						<th>송금 금액</th>
+						<th>예약 송금 금액</th>
 						<td>
-							<div>KRW ${ remittanceVO.amount }</div>
-
-							<div class="text-center">
-								<span class="material-icons">cached</span>
-							</div>
-							<div>${ remInfoDetail.currency } ${ remittanceVO.amount }</div>
-							<div>
-								적용환율 : <span class="text-danger">${ remittanceVO.exchangeRate }</span>
-							</div>
+							<c:choose>
+								<c:when test="${ remittanceVO.accType eq '원화계좌출금' }">
+									<div>KRW <fmt:formatNumber type="number" pattern="#,##0" value ="${ remittanceVO.amount }" /></div>
+		
+									<div class="text-center">
+										<span class="material-icons">cached</span>
+									</div>
+									<div>${ remInfoDetail.currency } <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ otherAmount }" /></div>
+									<div>
+										예상 적용환율 : <span class="text-danger">${ remittanceVO.exchangeRate }</span>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div>${ remInfoDetail.currency } <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ remittanceVO.amount }" /></div>
+								</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 					<tr>
 						<th>수수료출금계좌</th>
 						<td>${ remittanceVO.chargeAccNo }</td>
-					</tr>
-					<tr>
-						<th>총출금금액(원화)</th>
-						<td id="krwTotal"></td>
-					</tr>
-					<tr>
-						<th>총출금금액(외화)</th>
-						<td id="otherTotal"></td>
 					</tr>
 				</table>
 

@@ -40,24 +40,48 @@
 			<div class="col-md-9 ">
 				<div class="card bg-light border-0">
 					<div class="card-body container-fluid">
-				        <!-- 계좌모록  -->
+				        <!-- 계좌목록록  -->
 				        <div class=" p-3">
 				        	<div style="font-size: 14px;">
-				        		<span>입출금 통장</span><span>(별칭)</span>
-				        		<span class="badge badge-warning">대표계좌</span>
+				        		<span>${ account.accName }</span>
+				        		<c:if test="${ not empty account.alias }">
+				        			<span>( ${ account.alias } )</span>
+				        		</c:if>
+				        		<c:if test="${ account.favorite eq 'Y' }">
+				        			<span class="badge badge-warning">대표계좌</span>
+				        		</c:if>
 				        	</div>
 				        	<div style="font-size: 20px;">
-				        		<span>010-169854-52145</span>
-				        		<span class="float-right">잔액  :  100,000 원</span>
+				        		<span>${ account.accNo }</span>
+				        		<span class="float-right">
+				        			<c:if test="${ account.currency ne 'KRW' }">${ account.currency }</c:if>
+				        			${ account.balanceConvert }
+				        			<c:if test="${ account.currency eq 'KRW' }">원</c:if>
+				        		</span>
 				        		<br>
 				        	</div>
-				        	<div class="d-flex justify-content-end mt-2">
-				        		<button class="btn btn-outline-info btn-sm mr-1">계좌관리</button>
-				        		<button class="btn btn-outline-info btn-sm">조회</button>
-				        	</div>
+				        	<form action="${ pageContext.request.contextPath }/account/statement" method="post">
+				        	<div class="text-right mt-3">
+								<button type="button" class="btn btn-outline-info" data-toggle="collapse" data-target="#demo">다른계좌선택</button>
+								<div id="demo" class="collapse mt-3">
+								<div class="input-group">
+									<select class="form-control" name="accNo">
+									  <c:forEach items="${ accountList }" var="account">
+											<option value="${ account.accNo }">[ ${account.accName} ] ${ account.accNo }</option>
+									  </c:forEach>
+									</select>
+								    <div class="input-group-append">
+								      <button class="btn btn-secondary" type="submit">조회하기</button>
+								    </div>
+								</div>
+								</div>
+										
+							</div>
+							</form>
 				        </div>
 				</div>
 			</div>
+			
 			<div class="mt-3"> 
 			<div class="font-weight-bold mb-1">
 				<i class="material-icons md-18 align-middle text-info" >account_balance_wallet</i><span class="align-middle"> 거래내역</span>
@@ -65,19 +89,44 @@
 				<table class="table text-center">
 				    <thead>
 				      <tr>
-				        <th>거래일시</th>
+				        <th style="width: 15%;">거래일시</th>
+				        <th style="width: 7%;">구분</th>
 				        <th>보낸분/받는분</th>
 				        <th>출금액(-)</th>
 				        <th>입금액(+)</th>
 				        <th>잔액</th>
-				        <th>메모</th>
 				      </tr>
 				    </thead>
+				    <tbody>
+				    <c:if test="${ not empty statement }">
+				    <c:forEach items="${ statement }" var="statement">
+				    	<tr>
+				    		<td style="vertical-align: middle;">${ statement.stateDate }</td>
+				    		<td style="vertical-align: middle;">${ statement.typeDesc }</td>
+				    		<td style="vertical-align: middle;">${ statement.stateDesc }</td>
+				    		<td style="vertical-align: middle; text-align: right;">
+				    			<c:if test="${ statement.type eq '출금' }">
+						    		<span class="text-danger">- ${ statement.amountConvert }</span>
+				    			</c:if>
+				    			<c:if test="${ statement.type ne '출금' }">0</c:if>
+				    		</td>
+				    		<td style="vertical-align: middle; text-align: right;">
+				    			<c:if test="${ statement.type eq '입금' }">
+						    		<span class="text-success">+ ${ statement.amountConvert }</span>
+				    			</c:if>
+				    			<c:if test="${ statement.type ne '입금' }">0</c:if>
+				    		</td>
+				    		<td style="vertical-align: middle; text-align: right;">${ statement.balanceConvert }</td>
+				    	</tr>
+				    </c:forEach>
+				    </c:if>
+				    </tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjs.jsp"></jsp:include>

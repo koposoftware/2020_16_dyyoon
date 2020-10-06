@@ -14,7 +14,7 @@
                         <div class="navigation d-flex justify-content-end navForBtn">
                         <div class="pt-2">
 	                      	<button class="btn btn-link shadow-none text-secondary" data-badge="6">
-		                      	<span class="text-info"> ${ loginVO.name } </span>님 어서오세요
+		                      	<span class="text-info"> 관리자 </span>님 어서오세요
 		                      	<!--  <span class="badge badge-danger badge-pill">4</span> -->
 	                      	</button>
 	                      	<!-- 
@@ -27,6 +27,7 @@
 
                             <div id="navigation">
                                 <ul>
+                                <%-- 
                                     <li class="has-sub"><a href="#" title="Tours">해외송금 관리</a>
                                         <ul>
                                             <li><a href="${ pageContext.request.contextPath }/admin">오늘의 해외송금</a></li>
@@ -36,8 +37,14 @@
                                             <li><a href="${ pageContext.request.contextPath }/admin/mistaken">착오송금 처리</a></li>
                                         </ul>
                                     </li>
+                                     --%>
+                                    <!-- 
                                     <li class="active"><a href="#" title="Home">사용자 관리</a></li>
-                                    <li class="active"><a href="#" title="Home">고객센터 관리</a></li>
+                                     -->
+                                    <li class="active"><a href="${ pageContext.request.contextPath }/admin/remInfo">송금정보</a></li>
+                                    <li class="active"><a href="${ pageContext.request.contextPath }/admin/remittance">보내는 해외송금</a></li>
+                                    <li class="active"><a href="${ pageContext.request.contextPath }/admin/recieved">받은 해외송금</a></li>
+                                    <li class="active"><a href="${ pageContext.request.contextPath }/admin/mistaken">착오송금</a></li>
                                 </ul>
                             </div>
                         </div>

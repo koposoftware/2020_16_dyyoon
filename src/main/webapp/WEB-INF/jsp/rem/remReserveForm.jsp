@@ -191,6 +191,7 @@
 									<form:input path="amount" type="text" class="form-control krwAmountInput"
 										placeholder="0.00" />
 								</div>
+								<div class="d-flex justify-content-end text-secondary"><span id="amountInputReserveKorean"></span></div>
 								<div class="text-center align-middle accType-hideAndShow">
 									<span class="material-icons">cached</span>
 								</div>
@@ -228,7 +229,7 @@
 										<button class="btn btn-info registerForm-chargeAccNo-btn" type="button">잔액조회</button>
 									</div>
 								</div>
-								<div class="text-secondary" id="remRegister-chargeAccountBalance"></div>
+								<div class="text-secondary remRegister-chargeAccountBalance"></div>
 							</td>
 						</tr>
 						<tr>
@@ -429,6 +430,19 @@
 			var amount = parseFloat($(this).val());
 			var currencyCode = $('.registerForm-infoNo-select').children('option:selected').data('currency')
 			
+			//금액 입력시 한글로 표시
+			if(!isNaN(amount)){
+				if($('.registerForm-amount-krw-prepend').html() == 'KRW'){
+					var koreanAmount = currencyKoreanMaker(amount)
+					$('#amountInputReserveKorean').html("일금 " + koreanAmount + "원정")
+				}
+				
+			}else{
+				$('#amountInputReserveKorean').html("")
+				
+			}
+			
+			
 			if(currencyCode !== undefined ){
 				$.ajax({
 					url : '${pageContext.request.contextPath}/country/remittance/' + currencyCode,
@@ -555,7 +569,7 @@
 					var infoNo = $('.registerForm-infoNo-select').children('option:selected').val();
 					
 					$.ajax({
-						url : '${pageContext.request.contextPath}/remInfo/'	+ infoNo,
+						url : '${pageContext.request.contextPath}/remInfoAjax/'	+ infoNo,
 						type : 'get',
 						success : function(data) {
 							//console.log('통신성공~!');

@@ -74,12 +74,12 @@
 	                <table class="table table-bordered table-hover admin-table-select table-th-primary displayDataTable">
 	                  <thead>
 	                    <tr>
-	                      <th>승인요청 일자</th>
-	                      <th>아이디</th>
+	                      <th style="width:15%;">승인요청 일자</th>
+	                      <th style="width:10%;">아이디</th>
 	                      <th>받는 분</th>
 	                      <th>은행정보</th>
 	                      <th>계좌번호</th>
-	                      <th>승인 결과</th>
+	                      <th style="width:12%;">승인 결과</th>
 	                    </tr>
 	                  </thead>
 	                  <tbody>
@@ -116,12 +116,12 @@
 			                <table class="table table-bordered table-hover admin-table-select table-th-primary displayDataTable" >
 			                  <thead>
 			                    <tr>
-			                      <th>승인요청 일자</th>
-			                      <th>아이디</th>
+			                      <th style="width:15%;">승인요청 일자</th>
+			                      <th style="width:10%;">아이디</th>
 			                      <th>받는 분</th>
 			                      <th>은행정보</th>
 			                      <th>계좌번호</th>
-			                      <th>승인 결과</th>
+			                      <th style="width:12%;">승인 결과</th>
 			                    </tr>
 			                  </thead>
 			                  <tbody>

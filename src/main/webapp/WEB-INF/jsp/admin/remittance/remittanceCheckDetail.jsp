@@ -159,7 +159,8 @@
 						
 						
 						
-						<form action="${ pageContext.request.contextPath }/admin/remittance" method="post">
+						<form action="${ pageContext.request.contextPath }/admin/remittance" method="post"
+								name="remittanceCheckDetailForm">
 						<input type="hidden" name="remNo" value="${ remittance.remNo }">
 						<table class="table table-bordered table-th-success">
 							<tr>
@@ -179,7 +180,7 @@
 						</table>
 						<div class="text-center">
 							<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/remInfo'">목록</button>
-							<button class="btn btn-success" type="submit">승인심사 완료</button>
+							<button class="btn btn-success" type="button" onclick="remittanceCheckDetail()">승인심사 완료</button>
 						</div>
 						</form>
 	                </div>
@@ -196,5 +197,38 @@
 
 <jsp:include page="/WEB-INF/jsp/include/footerSec.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/jsp/include/footerjsAdmin.jsp"></jsp:include>
+
+<script type="text/javascript">
+
+function remittanceCheckDetail(){
+	var formData = $('form[name=remittanceCheckDetailForm]').serialize();
+	var id = "<c:out value='${member.id}'/>"
+	var member = "<c:out value='${member.name}' />"
+	var formStatus = $('select[name=status]').val();
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/admin/remittance',
+		type : 'post',
+		data : formData,
+		success : function(){
+			var msg;
+			if( formStatus == 'IN'){
+				msg = 'remittance,' + id + ',' + member + ',승인'; 
+			}else{
+				msg = 'remittance,' + id + ',' + member + ',승인거절'; 
+			}
+			socket.send(msg);
+			window.location.href='${pageContext.request.contextPath}/admin/remittance'
+		},
+		error : function(){
+			alert('fail')
+		}
+	})
+	
+	
+	
+	
+}
+
+</script>
 </body>
 </html>

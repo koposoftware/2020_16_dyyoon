@@ -1,5 +1,7 @@
 package kr.ac.kopo.remittance.controller;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
@@ -71,8 +73,8 @@ public class RemittanceController {
 			mav.addObject("status", status); 
 			mav.addObject("remittanceVO", remittanceVO);
 			mav.addObject("remInfoDetail", remInfoVO);
+			mav.addObject("otherAmount", remittanceVO.getAmount().divide(remittanceVO.getExchangeRate(), 2, RoundingMode.HALF_EVEN));
 			
-			System.out.println(remittanceVO);
 			remittanceService.insertRemittance(remittanceVO);
 			mav.setViewName("rem/remRegister"); 
 		}
@@ -109,6 +111,7 @@ public class RemittanceController {
 			mav.addObject("status", status); 
 			mav.addObject("remittanceVO", remittanceVO);
 			mav.addObject("remInfoDetail", remInfoVO);
+			mav.addObject("otherAmount", remittanceVO.getAmount().divide(remittanceVO.getExchangeRate(), 2, RoundingMode.HALF_EVEN));
 			
 			System.out.println(remittanceVO);
 			remittanceService.insertReservation(remittanceVO);
@@ -140,17 +143,11 @@ public class RemittanceController {
 		RemInfoVO remInfo = remInfoService.selectRemInfoDetail(remittance.getInfoNo());
 		
 		if(remittance.getAccType().equals("원화계좌출금")) {
-			Float krwAmount = remittance.getAmount();
-			Float rate = remittance.getExchangeRate();
-			Float otherAmount = krwAmount / rate;
+			BigDecimal krwAmount = remittance.getAmount();
+			BigDecimal rate = remittance.getExchangeRate();
+			BigDecimal otherAmount = krwAmount.divide(rate, 2, RoundingMode.HALF_EVEN);
 			
-			String amountCounted = String.format("%.2f", otherAmount);
-			
-			System.out.println(amountCounted);
-			
-			mav.addObject("otherAmount", amountCounted);
-			
-		}else {
+			mav.addObject("otherAmount", otherAmount);
 			
 		}
 		
@@ -174,6 +171,14 @@ public class RemittanceController {
 		mav.addObject("status", status); 
 		mav.addObject("remittanceVO", remittance);
 		mav.addObject("remInfoDetail", remInfo);
+		if(remittance.getAccType().equals("원화계좌출금")) {
+			BigDecimal krwAmount = remittance.getAmount();
+			BigDecimal rate = remittance.getExchangeRate();
+			BigDecimal otherAmount = krwAmount.divide(rate, 2, RoundingMode.HALF_EVEN);
+			
+			mav.addObject("otherAmount", otherAmount);
+			
+		}
 		
 		return mav;
 	}

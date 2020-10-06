@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="statement.dao.StatementDAO">
+	<resultMap type="statementVO" id="statementMap">
+		<result column="STATE_NO" property="stateNo"/>
+		<result column="STATE_DATE" property="stateDate"/>
+		<result column="TYPE_DESC" property="typeDesc"/>
+		<result column="STATE_DESC" property="stateDesc"/>
+		<result column="ACC_NO" property="accNo"/>
+		<result column="amount_convert" property="amountConvert"/>
+		<result column="balance_convert" property="balanceConvert"/>
+	</resultMap>
+	<select id="selectStatementByAccNo" parameterType="String" resultMap="statementMap">
+		select s.state_no, s.type, s.state_date, s.amount, s.balance, s.type_desc, s.state_desc, s.acc_no,
+		        case when a.currency = 'KRW' then to_char(s.balance, 'FM999,999,999,999,999,999')
+		             else to_char(s.balance, 'FM999,999,999,999,999,999.00')
+		             end as balance_convert,
+		        case when a.currency = 'KRW' then to_char(s.amount, 'FM999,999,999,999,999,999')
+		             else to_char(s.amount, 'FM999,999,999,999,999,999.00')
+		             end as amount_convert
+		from hs_t_statement s, hs_t_account a
+		where s.acc_no = a.acc_no and s.acc_no = #{accNo} 
+		order by state_date desc
+	</select>
+	<insert id="insertRemittanceStatement" parameterType="statementVO">
+		insert into hs_t_statement(state_no, type, amount, balance, state_desc, type_desc, acc_no)
+        values(SEQ_STATEMENT_NO.NEXTVAL, #{type}, #{amount}, #{balance}, #{stateDesc},  '해외송금', #{accNo} )
+	</insert>
+</mapper>

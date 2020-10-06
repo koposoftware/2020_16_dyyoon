@@ -6,6 +6,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:util="http://www.springframework.org/schema/util"
     xmlns:websocket="http://www.springframework.org/schema/websocket"
+    xmlns:task="http://www.springframework.org/schema/task"
     xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context   
@@ -17,11 +18,12 @@
     http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util-4.0.xsd 
     http://www.springframework.org/schema/websocket
-    http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd ">
+    http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd 
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.3.xsd ">
 
 	<context:component-scan base-package="kr.ac.kopo" />
 	<context:property-placeholder location="classpath:config/properties/key.properties" /> 
-
 	
     <mvc:annotation-driven>
     	<mvc:message-converters>
@@ -151,4 +153,10 @@
  
 	     <!--  <websocket:sockjs/> -->
 	 </websocket:handlers>
+	 
+	 
+	 <!--  task scheduler 예약 -->
+	<task:scheduler id="jobScheduler" pool-size="10"/>
+	<task:annotation-driven scheduler="jobScheduler"/>
+	
 </beans>

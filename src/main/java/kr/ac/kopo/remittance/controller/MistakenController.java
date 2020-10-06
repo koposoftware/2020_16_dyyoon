@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -111,13 +112,9 @@ public class MistakenController {
 	
 	@PostMapping("/admin/mistaken")
 	public ModelAndView mistakenCheck(MistakenVO mistaken) {
-		ModelAndView mav = new ModelAndView("redirect:/admin/mistaken");
-		//System.out.println("미스테이큰 : " + mistaken);
 		
-		//반환완료일 경우
-		if(mistaken.getStatus().equals("반환완료")) {
-			mistakenService.updateStatusMistaken(mistaken);
-		}
+		ModelAndView mav = new ModelAndView("redirect:/admin/mistaken");
+		mistakenService.updateStatusMistaken(mistaken);
 		
 		return mav;
 	}

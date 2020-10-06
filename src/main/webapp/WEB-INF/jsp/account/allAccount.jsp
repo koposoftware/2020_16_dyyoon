@@ -48,8 +48,19 @@
 								<span class="text-info"> ${ loginVO.name }</span>님의 총자산
 							</span>
 						</div>
-						<div class="col-md-4">
-							<span class=" float-right pt-1"  style="font-size: 20px;"> 600,000 원 </span>
+						<div class="col-md-4 d-flex flex-column">
+							<c:forEach items="${ myBalance }" var="balance">
+								<div class="pt-1 text-right"  style="font-size: 20px;">
+									<span style="font-size: 14px;">${ balance["CURRENCY"] }</span> 
+									<c:if test="${ balance['CURRENCY'] eq 'KRW' }">
+										<fmt:formatNumber type="number" pattern="#,###" value ="${ balance['BALANCE'] }" /> 
+									</c:if>
+									<c:if test="${ balance['CURRENCY'] ne 'KRW' }">
+										<fmt:formatNumber type="number" pattern="#,###.00" value ="${ balance['BALANCE'] }" /> 
+									</c:if>
+								</div>
+								
+							</c:forEach>
 						</div>
 					</div>
 					</div>
@@ -78,13 +89,15 @@
 					        	</div>
 					        	<div style="font-size: 18px;">
 					        		<span class="font-weight-bold">${ account.accNo }</span>
-					        		<span class="float-right">  <fmt:formatNumber type="number" pattern="#,##0" value ="${ account.balance }" /> 원
+					        		<span class="float-right"> 
+					        			<span style="font-size: 14px;">KRW</span>
+					        			${ account.balanceConvert }
 					        		</span>
 					        		<br>
 					        	</div>
 					        	<div class="d-flex justify-content-end mt-2">
-					        		<button class="btn btn-outline-info btn-sm mr-1" data-value="${ account.accNo }">계좌관리</button>
-					        		<button class="btn btn-outline-info btn-sm" data-value="${ account.accNo }">조회</button>
+					        		<%-- <button class="btn btn-outline-info btn-sm mr-1" data-value="${ account.accNo }">계좌관리</button> --%>
+					        		<button class="btn btn-outline-info btn-sm" data-value="${ account.accNo }">거래내역 조회</button>
 					        	</div>
 					        </div>
 					      </div>
@@ -116,12 +129,15 @@
 					        	</div>
 					        	<div style="font-size: 18px;">
 					        		<span class="font-weight-bold">${ account.accNo }</span>
-					        		<span class="float-right">  <fmt:formatNumber type="number" pattern="#,##0.00" value ="${ account.balance }" /> </span>
+					        		<span class="float-right">  
+					        			<span style="font-size: 14px;">${ account.currency }</span>
+					        			${ account.balanceConvert }
+					        		</span>
 					        		<br>
 					        	</div>
 					        	<div class="d-flex justify-content-end mt-2">
-					        		<button class="btn btn-outline-info btn-sm mr-1" data-value="${ account.accNo }">계좌관리</button>
-					        		<button class="btn btn-outline-info btn-sm" data-value="${ account.accNo }">조회</button>
+					        		<%-- <button class="btn btn-outline-info btn-sm mr-1" data-value="${ account.accNo }">계좌관리</button> --%>
+					        		<button class="btn btn-outline-info btn-sm" data-value="${ account.accNo }">거래내역 조회</button>
 					        	</div>
 					        </div>
 					      </div>

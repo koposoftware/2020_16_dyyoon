@@ -36,6 +36,10 @@ public class RemittanceDAOImpl implements RemittanceDAO {
 		return session.selectOne("remittance.dao.RemittanceDAO.selectRemittanceByRemNo", remNo);
 	}
 	
+	@Override
+	public List<RemittanceVO> selectReservedTodayDateEqual() {
+		return session.selectList("remittance.dao.RemittanceDAO.selectReservedTodayDateEqual");
+	}
 	
 	
 	/*-------------------------
@@ -55,6 +59,8 @@ public class RemittanceDAOImpl implements RemittanceDAO {
 	public void updateStatusRemittance(RemittanceVO remittance) {
 		session.update("remittance.dao.RemittanceDAO.updateStatusRemittance", remittance);
 	}
+
+	
 
 	
 

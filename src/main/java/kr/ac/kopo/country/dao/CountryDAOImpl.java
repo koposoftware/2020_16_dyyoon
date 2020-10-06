@@ -1,5 +1,6 @@
 package kr.ac.kopo.country.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,7 +20,7 @@ public class CountryDAOImpl implements CountryDAO {
 	}
 
 	@Override
-	public Float selectCountryRemittanceRate(String currencyCode) {
+	public BigDecimal selectCountryRemittanceRate(String currencyCode) {
 		return session.selectOne("country.dao.CountryDAO.selectCountryRemittanceRate", currencyCode);
 	}
 

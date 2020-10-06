@@ -4,10 +4,6 @@
 <div class="font-weight-bold">
 	<i class="material-icons md-18 align-middle text-info" >person</i>
 	<span class="align-middle">수취인 상세정보</span>
-	<c:if test="${ remInfoDetail.status eq '비승인' }">
-		<span class="material-icons align-middle text-danger">warning</span>
-		<span class="align-middle text-danger">비승인 - 사유 : ${ remInfoDetail.statusDesc }</span>
-	</c:if>
 </div>
 <table class="table">
 	<tr>
@@ -64,10 +60,4 @@
 		<th>세부주소</th>
 		<td>${ remInfoDetail.bankAddrDetail }</td>
 	</tr>
-	<c:if test="${ status ne 'remittanceConfirm' }">
-	<tr>
-		<th colspan="2">직원앞 전달사항</th>
-		<td>${ remInfoDetail.myDesc }</td>
-	</tr>
-	</c:if>
 </table>

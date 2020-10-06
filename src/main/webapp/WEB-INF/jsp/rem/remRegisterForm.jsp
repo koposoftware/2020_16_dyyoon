@@ -357,22 +357,6 @@
 
 	<!------------------------------------------------------------ JS  ------------------------------------------------------------>
 	<script type="text/javascript">
-		//input 시에 바로 콤마 붙게하기
-		function inputNumberFormat(obj) {
-		    obj.value = comma(uncomma(obj.value));
-		}
-	
-		function comma(str) {
-		    str = String(str);
-		    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-		}
-	
-		function uncomma(str) {
-		    str = String(str);
-		    return str.replace(/[^\d]+/g, '');
-		}
-
-
 	
 		//총 출금금액 계산
 	
@@ -433,13 +417,15 @@
 	
 		// 원화를 입력하면 해외 통화 값 자동으로 변환
 		$('.krwAmountInput').keyup(function() {
-			//inputNumberFormat(this);
 			var amount = parseFloat($(this).val());
 			var currencyCode = $('.registerForm-infoNo-select').children('option:selected').data('currency')
 			
+			//금액 입력시 한글로 표시
 			if(!isNaN(amount)){
-				var koreanAmount = currencyKoreanMaker(amount)
-				$('#amountInputKorean').html("일금 " + koreanAmount + "원정")
+				if($('.registerForm-amount-krw-prepend').html() == 'KRW'){
+					var koreanAmount = currencyKoreanMaker(amount)
+					$('#amountInputKorean').html("일금 " + koreanAmount + "원정")
+				}
 				
 			}else{
 				$('#amountInputKorean').html("")
@@ -495,25 +481,14 @@
 		})
 		
 		//계좌 잔액 구하기 ajax
-		function getAccountBalance(accNo, divSection, accType){
+		function getAccountBalance(accNo, divSection){
 			$.ajax({
 				url : '${pageContext.request.contextPath}/account/balance/' + accNo,
 				type : 'get',
 				success : function(data) {
 					divSection = '.' + divSection;
-					//var addBalance = document.getElementById(divSection);
-					//addBalance.append('잔액 : ' + data)
-					if(accType == 'krw'){
-						
-						strMoney = FormatMoney(data, '₩ ', '', ',', '', 0, 0 )
-					}else{
-						strMoney = FormatMoney(data, '$ ', '', ',', '.', 2, 2 )
-						
-					}
-					
-
 					$(divSection).empty();
-					$(divSection).text('잔액 : ' +  strMoney)
+					$(divSection).text('잔액 : ' +  data)
 				},
 				error : function() {
 					alert('계좌잔액구하기 에러')
@@ -524,17 +499,17 @@
 		//원화계좌 잔액 조회
 		$('.registerForm-accNo-btn').on('click', function(){
 			var infoNo = $('.rem-krwAccount-input-group option:selected').val();
-			getAccountBalance(infoNo, 'remRegister-mainAccountBalance', 'krw');
+			getAccountBalance(infoNo, 'remRegister-mainAccountBalance');
 		})
 		//외화통장 잔액조회
 		$('.registerForm-otherAccNo-btn').on('click', function(){
 			var infoNo = $('.rem-otherAccount-input-group option:selected').val();
-			getAccountBalance(infoNo, 'remRegister-mainAccountBalance', 'other');
+			getAccountBalance(infoNo, 'remRegister-mainAccountBalance');
 		})
 		//수수료통장 잔액 조회
 		$('.registerForm-chargeAccNo-btn').on('click', function(){
 			var infoNo = $('.rem-chargeAccount-input-group option:selected').val();
-			getAccountBalance(infoNo, 'remRegister-chargeAccountBalance', 'krw');
+			getAccountBalance(infoNo, 'remRegister-chargeAccountBalance');
 		})
 		
 		
@@ -585,7 +560,7 @@
 					var infoNo = $('.registerForm-infoNo-select').children('option:selected').val();
 					
 					$.ajax({
-						url : '${pageContext.request.contextPath}/remInfo/'	+ infoNo,
+						url : '${pageContext.request.contextPath}/remInfoAjax/'	+ infoNo,
 						type : 'get',
 						success : function(data) {
 							//console.log('통신성공~!');

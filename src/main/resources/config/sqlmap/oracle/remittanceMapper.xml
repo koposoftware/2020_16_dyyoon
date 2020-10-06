@@ -41,11 +41,19 @@
 			   rem.status, rem.reserved_date, rem.acc_type, case when rem.acc_Type = '원화계좌출금' then '원화' else '외화' end as acc_type_simple  
 		from hs_t_remittance rem, hs_t_rem_info info 
 		where rem.info_no = info.info_no and info.id=#{id}
+		order by rem.rem_date desc
 	</select>
 	<select id="selectRemittanceByRemNo" parameterType="Integer" resultMap="remittanceMap">
 		select * from hs_t_remittance 
 		where rem_no=#{remNo}
 	</select>
+	<select id="selectReservedTodayDateEqual" resultMap="remittanceMap">
+		select r.info_no, r.acc_type, r.acc_no, r.amount, c.remittance as exchange_rate, r.reason, r.rem_date, r.charge_acc_no, r.rem_charge, r.inter_charge, 
+		        r.cable_charge, r.charge_cover, 'RM' as status
+		    from hs_t_remittance r, hs_t_rem_info i, hs_t_currency_rate c
+		    where r.info_no = i.info_no and i.currency = c.currency and r.status = 'RS' and trunc(r.rem_date) = trunc(sysdate)
+	</select>
+	
 	
 	
 	<select id="selectAllRemittanceAdmin" resultType="map">

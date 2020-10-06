@@ -123,7 +123,7 @@
 					<button class="btn btn-light">즐겨찾기 등록</button>
 					<button class="btn btn-info" onclick="window.location.href='${ pageContext.request.contextPath }/remInfo/register'">새로 등록하기</button>
 				</div>
-				<div id="viewRemInfo"></div>
+				<!-- <div id="viewRemInfo"></div> -->
 			</div>
 		</div>
 	</div>
@@ -136,24 +136,7 @@
 $(document).ready(function(){
 	$("#table-rem-info tbody tr").on('click', function() {
 		var remNo = $(this).data("value");
-		console.log(remNo);
-		
-		$(this).siblings().removeClass("table-active");
-		$(this).addClass("table-active");
-		
-		$.ajax({
-			url : '${pageContext.request.contextPath}/remInfo/' + remNo,
-			type : 'get',
-			success : function(data){
-				//console.log('통신성공~!');
-				$('#viewRemInfo').empty();
-				$('#viewRemInfo').html(data)
- 			},
-			error : function(){
-				alert('실패')
-			}
-		})
-        
+		window.location.href = '${pageContext.request.contextPath}/remInfo/' + remNo;
         
       });
 });

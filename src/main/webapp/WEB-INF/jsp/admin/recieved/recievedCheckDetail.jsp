@@ -68,7 +68,7 @@
 						</tr>
 						<tr>
 							<th colspan="2">은행명</th>
-							<td>${ recievedDetail.fromBankCode }</td>
+							<td>${ bankDetail.bankName }</td>
 						</tr>
 						<tr>
 							<th colspan="2">계좌번호</th>
@@ -81,15 +81,15 @@
 						<tr>
 							<th rowspan="3">은행주소</th>
 							<th >은행국가</th>
-							<td>${ recievedDetail.fromBankCode }</td>
+							<td>${ bankDetail.countryName }</td>
 						</tr>
 						<tr>
 							<th>은행주소</th>
-							<td>${ recievedDetail.fromBankCode }</td>
+							<td>${ bankDetail.city }</td>
 						</tr>
 						<tr>
 							<th>세부주소</th>
-							<td>${ recievedDetail.fromBankCode }</td>
+							<td>${ bankDetail.address }</td>
 						</tr>
 	                	
 	                	
@@ -130,7 +130,7 @@
 						<tr>
 							<th colspan="2">계좌번호</th>
 							<td>
-								${ recievedDetail.fromAccNo }
+								${ recievedDetail.getAccNo }
 								<button class="btn btn-outline-info float-right" type="button" onclick="recievedCheckInfo(true)">계좌번호 확인</button>
 								<button class="btn btn-white float-right text-success d-none font-weight-bold" disabled="disabled" id="showTrue">정보 일치</button>
 								<button class="btn btn-white float-right text-danger d-none font-weight-bold" disabled="disabled" id="showFalse">정보 불일치(확인요망)</button>
@@ -139,8 +139,12 @@
 					</table>
 					
 					<c:if test="${ recievedDetail.status eq '요청됨' }">
-					<form action="${ pageContext.request.contextPath }/admin/recieved" method="post">
-					<input type="hidden" name="recievedNo" value="${ recievedDetail.recievedNo } ">
+					<form action="${ pageContext.request.contextPath }/admin/recieved" method="post"
+							name="recievedCheckDetailForm">
+					<input type="hidden" name="recievedNo" value="${ recievedDetail.recievedNo }">
+					<input type="hidden" name="amount" value="${ recievedDetail.amount }">
+					<input type="hidden" name="getAccNo" value="${ recievedDetail.getAccNo }">
+					<input type="hidden" name="fromName" value="${ recievedDetail.fromName }">
 					<div class="font-weight-bold">
 						<i class="material-icons md-18 align-middle text-info">check_box</i>
 						<span class="align-middle">승인 심사</span>
@@ -163,7 +167,7 @@
 					</table>
 					<div class="text-center">
 						<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/recieved'">목록</button>
-						<button class="btn btn-info" type="submit">승인심사 완료</button>
+						<button class="btn btn-info" type="button" onclick="recievedCheckDetail()">승인심사 완료</button>
 					</div>
 					</form>
 					</c:if>
@@ -201,6 +205,30 @@
 		}
 		
 	}
+	
+	function recievedCheckDetail(){
+		var formData = $('form[name=recievedCheckDetailForm]').serialize();
+		var id = "<c:out value='${member.id}'/>"
+		var member = "<c:out value='${member.name}' />"
+		var formStatus = $('select[name=status]').val();
+		$.ajax({
+			url : '${ pageContext.request.contextPath }/admin/recieved',
+			type : 'post',
+			data : formData,
+			success : function(){
+				var msg;
+				if( formStatus == '승인'){
+					msg = 'recieved,' + id + ',' + member + ',승인'; 
+					socket.send(msg);
+				}
+				window.location.href='${pageContext.request.contextPath}/admin/recieved'
+			},
+			error : function(){
+				alert('fail')
+			}
+		})
+	}
+	
 </script>
 </body>
 </html>

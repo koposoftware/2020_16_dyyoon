@@ -1,5 +1,6 @@
 package kr.ac.kopo.country.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class CountryServiceImpl implements CountryService {
 	}
 
 	@Override
-	public Float selectCountryRemittanceRate(String currencyCode) {
+	public BigDecimal selectCountryRemittanceRate(String currencyCode) {
 		return countryDAO.selectCountryRemittanceRate(currencyCode);
 	}
 	

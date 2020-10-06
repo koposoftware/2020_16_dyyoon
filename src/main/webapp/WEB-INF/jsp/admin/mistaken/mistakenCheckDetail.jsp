@@ -108,10 +108,10 @@
 					<div class="text-center">
 						<button class="btn btn-light" type="button" onclick="window.location.href='${ pageContext.request.contextPath}/admin/mistaken'">목록</button>
 						<c:if test="${ remittance.status eq 'RM' }">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#mistakenConfirmModal">착오송금 반환 승인</button>
+							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mistakenConfirmModal">착오송금 반환 승인</button>
 						</c:if>
 						<c:if test="${ remittance.status eq 'IN' or remittance.status eq 'RC' }">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#mistakenConfirmModal">해당은행 연락 완료</button>
+							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mistakenConfirmModal">해당은행 연락 완료</button>
 						</c:if>
 					</div>
 						
@@ -126,11 +126,16 @@
 	              <h6 class="m-0 font-weight-bold text-warning">수취은행 정보</h6>
 	            </div>
 				<div class="card-body">
+					<div class="font-weight-bold">은행코드</div> 
+					<div>${ remInfo.bankCode }</div>
 					<div class="font-weight-bold">은행명</div> 
-					<div>CITIBANK SINGAPORE LTD</div>
-					<div class="font-weight-bold mt-3">전화번호</div>
-					<div>+03 0109283459</div>
-					<div></div>
+					<div>${ remInfo.bankName }</div>
+					<div class="font-weight-bold mt-3">국가</div>
+					<div>${ remInfo.bankNation }</div>
+					<div class="font-weight-bold mt-3">도시</div>
+					<div>${ remInfo.bankAddr }</div>
+					<div class="font-weight-bold mt-3">주소</div>
+					<div>${ remInfo.bankAddrDetail }</div>
 				</div>
 			</div>
 		
@@ -150,22 +155,33 @@
 	</div>
 		<form action="${ pageContext.request.contextPath }/admin/mistaken" method="post" name="mistakenCheckDetailForm">
 		<input type="hidden" name="misNo" value="${ mistaken.misNo }">
+		<input type="hidden" name="remNo" value="${ mistaken.remNo }">
 		<!-- 착오송금 반환 확인 모달창 -->
 		<!-- Modal -->
 		<div class="modal fade" id="mistakenConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered">
 		    <div class="modal-content ">
 		      <div class="modal-header bg-warning">
-		        <h5 class="modal-title" id="exampleModalLabel">착오송금 반환 승인 확인</h5>
+		        <h5 class="modal-title" id="exampleModalLabel">
+		        		<c:if test="${ remittance.status eq 'RM' }">착오송금 반환 승인 확인</c:if>
+		        		<c:if test="${ remittance.status eq 'IN' or remittance.status eq 'RC' }">해당 은행 연락 완료</c:if>
+		        </h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
 		      </div>
 		      <div class="modal-body">
 		        <div class="text-center">
+		        	<c:if test="${ remittance.status eq 'RM' }">
 		        	<input type="hidden" name="status" value="반환완료">
-		        	${ remInfo.bankName }, ${ remInfo.accNo } 해외송금건의 착오송금 반환<br>
-		  	${ remittance.accNo }로 ${ remittance.amount } 원이 반환됩니다
+			        	${ remInfo.bankName }, ${ remInfo.accNo } 해외송금건의 착오송금 반환<br>
+			  			${ remittance.accNo }로 ${ remittance.amount } 원이 반환됩니다
+		  			</c:if>
+		  			<c:if test="${ remittance.status eq 'IN' or remittance.status eq 'RC' }">
+		        	<input type="hidden" name="status" value="해당은행 반환대기">
+		  				${ remInfo.bankName }, ${ remInfo.accNo } 해외송금건<br>
+		  				해당 은행 전문 발송 진행 필요
+		  			</c:if>
 		        </div>
 		      </div>
 		      <div class="modal-footer">

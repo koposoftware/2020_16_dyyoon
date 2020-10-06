@@ -44,18 +44,4 @@ public class EmailServiceImpl implements EmailService {
 	}
 
 	
-	@Override
-	public void sendEmailText(String emailAddr, String fromName) throws MessagingException {
-		String title = "제목입니다";
-		String content = "http://localhost:9999/Hana-Safe/remInfo/ask/auth";
-		
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom("hanasafetransfer@gmail.com");
-		message.setTo(emailAddr);
-		message.setSubject(title);
-		message.setText(content);
-		mailSender.send(message);
-		
-	}
-
 }

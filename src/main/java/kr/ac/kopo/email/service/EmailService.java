@@ -9,8 +9,5 @@ public interface EmailService {
 	 * @param emailAddr
 	 */
 	void sendEmail(String emailAddr, String fromName) throws MessagingException;
-	
-	
-	void sendEmailText(String emailAddr, String fromName) throws MessagingException;
 
 }

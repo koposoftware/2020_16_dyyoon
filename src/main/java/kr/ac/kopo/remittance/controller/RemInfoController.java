@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.country.service.CountryService;
 import kr.ac.kopo.country.vo.CountryVO;
+import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.remittance.service.RemInfoService;
 import kr.ac.kopo.remittance.vo.RemInfoVO;
@@ -31,6 +32,9 @@ public class RemInfoController {
 	private RemInfoService service;
 	@Autowired
 	private CountryService countryService;
+	@Autowired
+	private MemberService memberService;
+	
 
 	@GetMapping("/remInfo")
 	public ModelAndView remInfoList(HttpSession session) {
@@ -43,6 +47,14 @@ public class RemInfoController {
 	
 	@GetMapping("/remInfo/{remInfoNo}")
 	public ModelAndView remInfoDetail(@PathVariable("remInfoNo") Integer remInfoNo) {
+		
+		ModelAndView mav = new ModelAndView("rem/remInfoRecieverDetail");
+		mav.addObject("remInfoDetail", service.selectRemInfoDetail(remInfoNo));
+		return mav;
+	}
+	
+	@GetMapping("/remInfoAjax/{remInfoNo}")
+	public ModelAndView remInfoDetailAjax(@PathVariable("remInfoNo") Integer remInfoNo) {
 		
 		ModelAndView mav = new ModelAndView("rem/remInfoDetail");
 		mav.addObject("remInfoDetail", service.selectRemInfoDetail(remInfoNo));
@@ -103,8 +115,12 @@ public class RemInfoController {
 	@GetMapping("/admin/remInfo/{remInfoNo}")
 	public ModelAndView remInfoCheckDetail(@PathVariable("remInfoNo") Integer remInfoNo) {
 		
+		RemInfoVO remInfoDetail = service.selectRemInfoDetail(remInfoNo);
+		MemberVO member = memberService.selectInformationById(remInfoDetail.getId());
+		
 		ModelAndView mav = new ModelAndView("admin/remInfo/remInfoCheckDetail");
-		mav.addObject("remInfoDetail", service.selectRemInfoDetail(remInfoNo));
+		mav.addObject("remInfoDetail", remInfoDetail);
+		mav.addObject("member", member);
 		
 		return mav;
 	}

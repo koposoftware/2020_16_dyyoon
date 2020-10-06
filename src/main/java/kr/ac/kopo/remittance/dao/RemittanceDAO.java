@@ -34,6 +34,12 @@ public interface RemittanceDAO {
 	 */
 	RemittanceVO selectRemittanceByRemNo(Integer remNo);
 	
+	/**
+	 * scheduler
+	 * 예약한 이체가 오늘 도래했을때 remittanceVO list 조회
+	 * @return
+	 */
+	List<RemittanceVO> selectReservedTodayDateEqual();
 	
 	
 	/*-------------------------
