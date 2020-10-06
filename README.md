@@ -1,4 +1,4 @@
-# 프로젝트 제목
+# 착오송금을 덜어주는 안전한 해외송금 HanaSafe
 
 [프로젝트 홈페이지 - https://koposoftware.github.io/2020_16_dyyoon/](https://koposoftware.github.io/2020_16_dyyoon/)
 
@@ -94,9 +94,9 @@ HanaSafe를 통해 해외송금 시 발생하는 착오송금을 줄여 그 사�
 <br>
 
 ### 보완점
-1.BankCodesAPI의 은행코드 – 은행 정보 API 접근 불가, DB에 데이터 PROTOTYPE 형태 삽입
-2.GCP, AWS deploy 계획
-3.외환 업무에 대한 정확한 프로세스 파악 후 관리자단 개선 필요
+1.BankCodesAPI의 은행코드 – 은행 정보 API 접근 불가, DB에 데이터 PROTOTYPE 형태 삽입<br>
+2.GCP, AWS deploy 계획<br>
+3.외환 업무에 대한 정확한 프로세스 파악 후 관리자단 개선 필요<br>
 <br>
 
 
