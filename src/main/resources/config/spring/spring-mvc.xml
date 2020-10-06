@@ -135,6 +135,7 @@
 	       <property name="paramName" value="locale" />
 	    </bean>
 	    </mvc:interceptors>
+	    
 	<!-- 트랜잭션 처리  -->
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager" >
 		<property name="dataSource" ref="dataSource" />
@@ -151,7 +152,6 @@
 	        	<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 	    	</websocket:handshake-interceptors>
  
-	     <!--  <websocket:sockjs/> -->
 	 </websocket:handlers>
 	 
 	 

@@ -71,7 +71,7 @@ public class RemittanceServiceImpl implements RemittanceService {
 		return remittanceDAO.selectRemittanceByRemNo(remNo);
 	}
 	
-	@Scheduled(cron = "0 0 9 * * *")
+	@Scheduled(cron = "0 0 9 * * MON-FRI")
 	@Override
 	@Transactional
 	public void insertRemittanceFromReservation() {

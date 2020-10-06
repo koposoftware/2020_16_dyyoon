@@ -51,7 +51,6 @@ function connect(){
 
 			ws.onclose = function(event){ 
 				console.log('info : connection closed '); 
-		//setTimeout(function(){	connect();	}, 1000) //retry connection
 	};
 		
 	ws.onerror = function(err){ console.log('error :', err); };
