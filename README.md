@@ -46,7 +46,7 @@ Window Task Scheduler, Python 환율 정보 크롤링<br>
 Spring Scheduler 기반 예약 송금<br>
 계좌, 거래내역 입력 Transaction<br>
 <br>
-**개발 환경**
+### 개발 환경
 JDK 1.8, Window10, Oracle 11g express, Tomcat9
 <br>
 ### Language / Tool / DB
@@ -81,10 +81,10 @@ Etc : Git(Git Bash)
  
 ### 기대효과 및 보완점
 HanaSafe를 통해 해외송금 시 발생하는 착오송금을 줄여 그 사이에 발생하는 비용을 절감하고 동시에 사회적 이미지를 구축할 수 있어 고객 증대에 도움이 될 것으로 기대한다. 
-
-1.	BankCodesAPI의 은행코드 – 은행 정보 API 접근 불가, DB에 데이터 PROTOTYPE 형태 삽입
-2.	GCP, AWS deploy 계획
-3.	외환 업무에 대한 정확한 프로세스 파악 후 관리자단 개선 필요
+#### 
+1.BankCodesAPI의 은행코드 – 은행 정보 API 접근 불가, DB에 데이터 PROTOTYPE 형태 삽입
+2.GCP, AWS deploy 계획
+3.외환 업무에 대한 정확한 프로세스 파악 후 관리자단 개선 필요
 <br>
 
 
