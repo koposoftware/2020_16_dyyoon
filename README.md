@@ -58,7 +58,6 @@ JDK 1.8, Window10, Oracle 11g express, Tomcat9
 
 ### Language / Tool / DB
 
-<br>
 Language : HTML, CSS, Javascript, Python, Java<br>
 Framework : Spring, MyBatis, Bootstrap, WebSocket<br>
 Database : Oracle DBMS<br>
