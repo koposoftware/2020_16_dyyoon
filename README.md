@@ -26,7 +26,9 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
 
 ## 3-2. 시연 동영상 
 
-   <iframe id="ytplayer" type="text/html" width="640" height="360" src="//youtu.be/POMcV9qG9ak" frameborder="0"></iframe>
+   
+   <iframe width="560" height="315" src="https://youtu.be/POMcV9qG9ak" frameborder="0" allowfullscreen></iframe><br>
+   
 ## 3-3. HanaSafe 상세
 
 # 4. 본인 소개
