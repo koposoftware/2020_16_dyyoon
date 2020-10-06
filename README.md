@@ -1,6 +1,6 @@
-# 프로젝트 제목
+# 착오송금을 덜어주는 HanaSafe 해외송금
 
-[프로젝트 홈페이지 - https://koposoftware.github.io/template/](https://koposoftware.github.io/template/)
+[프로젝트 홈페이지 - https://koposoftware.github.io/2020_16_dyyoon/](https://koposoftware.github.io/2020_16_dyyoon/)
 
 # 1. 프로젝트 개요
 
@@ -15,7 +15,6 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
 <img src="architecture.png" /><br>
 <img src="ERD.png"/><br>
 
- 
 
 # 3. 프로젝트 결과
 
