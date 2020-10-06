@@ -46,7 +46,7 @@ HanaSafe 설계 및 제작, 코딩
  - Spring Scheduler 기반 예약 송금
  - 계좌, 거래내역 입력 Transaction
 <br>
-### 개발 환경
+**개발 환경**
 JDK 1.8, Window10, Oracle 11g express, Tomcat9
 <br>
 ### Language / Tool / DB
