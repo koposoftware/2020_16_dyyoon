@@ -21,7 +21,8 @@ HanaSafe는 기존 하나은행의 해외송금에서 착오송금을 예방하�
 
 
 ## 3-1. 발표 자료 
-   <img src="ppt.png"/>[발표자료](/윤다영_HANASAFE해외송금_발표.pdf)<br>
+   [발표자료](/윤다영_HANASAFE해외송금_발표.pdf)<br>
+   <img src="ppt.png"/><br>
 
 ## 3-2. 시연 동영상 
 
